@@ -30,6 +30,7 @@ def export_figure(figure, path):
 
 p = argparse.ArgumentParser()
 p.add_argument("--root", default="results/chp_vtok")
+p.add_argument("--metrics-root", help="explicit source of completed quality records")
 p.add_argument(
     "--figure-tools", default=str(Path.home() / ".codex/skills/nature-figure/scripts")
 )
@@ -41,7 +42,8 @@ root = Path(a.root)
 figures = root / "figures"
 figures.mkdir(parents=True, exist_ok=True)
 rows = []
-for path in sorted((root / "reconstructions").glob("rd_*/metrics.json")):
+metrics_root = Path(a.metrics_root) if a.metrics_root else root / "reconstructions"
+for path in sorted(metrics_root.glob("rd_*/metrics.json")):
     rows.extend(json.loads(path.read_text()))
 if not rows:
     raise ValueError("no completed measured rate-distortion runs")

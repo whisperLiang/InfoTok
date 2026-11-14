@@ -161,6 +161,17 @@ def main():
             "Artifact index refreshed; mutable command logs are excluded.", flush=True
         )
         return
+    quality_files = sorted((root / "quality_reference_fp32").glob("rd_*/metrics.json"))
+    source_files = sorted((root / "reconstructions").glob("rd_*/metrics.json"))
+    if len(quality_files) != len(source_files):
+        raise ValueError("complete FP32-reference quality records are required")
+    quality_rows = [
+        row for path in quality_files for row in json.loads(path.read_text())
+    ]
+    if not quality_rows or any(
+        row.get("reference_dtype") != "float32" for row in quality_rows
+    ):
+        raise ValueError("quality references must be exact FP32 source RGB")
     official = Path("checkpoints/infotok-flex/infotok_mse.pt")
     actual_sha = file_sha256(official)
     if actual_sha != OFFICIAL_SHA:
@@ -260,8 +271,10 @@ def main():
         ),
         evidence=dict(
             final_tests="tests_final.xml",
-            rd_observations=28,
+            rd_observations=len(quality_rows),
             quality_rows="summary.csv",
+            quality_reference_dtype="float32",
+            quality_record_directory="quality_reference_fp32",
             native_display_exports=verify_video_exports(root),
             receiver_protocol="CHP2/CHPB",
             final_tcp="tcp_incremental_v2/result.json",

@@ -109,3 +109,10 @@ For actual ordered TCP, start receiver with `--stream tcp://127.0.0.1:29641`, th
 ```
 
 `chp_run.py` saves verbatim argument arrays, code SHA, dirty state, timestamps, logs and exit codes. `--gpu` serializes GPU experiments so memory/latency comparisons are not contaminated by another local experiment. Output directories and stream files refuse to overwrite existing runs. Quality values, including negative incremental gains, are preserved. PSNR/SSIM/LPIPS/DISTS are computed from complete native frames; training-loss perceptual features are not mislabeled as the standardized evaluation LPIPS metric.
+
+The metric reference stays in FP32 even when inference uses BF16. Early records that cast both tensors to BF16 are retained under `reconstructions/` for provenance; the final quality records are independently recomputed from the saved reconstructions under `quality_reference_fp32/`. Final plots use that explicit source:
+
+```bash
+.venv/bin/python scripts/chp_plot_results.py \
+  --metrics-root results/chp_vtok/quality_reference_fp32
+```

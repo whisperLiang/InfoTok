@@ -202,3 +202,31 @@ def test_quantized_multiscale_staircase_reference():
         torch.testing.assert_close(refs[i], receiver_dense, atol=0, rtol=0)
     for k in (1, 255, 256, 512, 1024, 1500, 2048):
         assert torch.isfinite(m.dense_from_ids(ids[:, :k], (4, 8))).all()
+
+
+@pytest.mark.parametrize("multiscale", [False, True])
+@pytest.mark.parametrize("budget", [256, 512, 1024, 2048])
+def test_every_training_budget_has_finite_loss_discrete_ids_and_effective_gradients(
+    multiscale, budget
+):
+    model = CHPVTokenizer(
+        CHPConfig(
+            debug_backbone=True,
+            hidden_dim=16,
+            heads=2,
+            multiscale=multiscale,
+            checkpoint_decoder=True,
+        )
+    ).train()
+    video = torch.randn(1, 3, 5, 32, 64)
+    output = model(video, budgets=[budget, budget])
+    loss = (output["reconstructions"] - video).abs().mean() + output["latent_loss"]
+    assert torch.isfinite(loss)
+    assert output["token_ids"].dtype == torch.int32
+    assert 0 <= output["token_ids"].min() <= output["token_ids"].max() < 64000
+    loss.backward()
+    for modules in (model.compressors, model.latent_decoders):
+        gradients = [p.grad for p in modules.parameters() if p.grad is not None]
+        assert gradients and sum(g.abs().sum() for g in gradients) > 0
+        assert all(torch.isfinite(g).all() for g in gradients)
+    assert all(p.grad is None for p in model.decoder.parameters())

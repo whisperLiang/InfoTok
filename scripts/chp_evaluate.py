@@ -140,8 +140,9 @@ def main():
     model, identity = load_checkpoint(
         args.checkpoint, device="cuda", dtype=getattr(torch, args.dtype)
     )
-    x, fps = read_rgb(args.video, args.frames)
-    x = x.cuda().to(getattr(torch, args.dtype))
+    reference, fps = read_rgb(args.video, args.frames)
+    reference = reference.cuda()  # Keep exact FP32 RGB for quality measurements.
+    x = reference.to(getattr(torch, args.dtype))
     geometry = Geometry.from_video(x)
     encoder = ProgressiveEncoder(model)
     enc_state = None
@@ -173,7 +174,7 @@ def main():
     for k in (256, 512, 1024, 2048):
         budgets = [k] * tokens.shape[1]
         (rgb, state), perf = measured(lambda: decode(model, geometry, tokens, budgets))
-        quality = metrics(x, rgb)
+        quality = metrics(reference, rgb)
         byte_count = wire_bytes(session, tokens, budgets)
         result = dict(
             video=Path(args.video).stem,
@@ -198,6 +199,8 @@ def main():
             width=geometry.width,
             fps=fps,
             training_status="engineering-smoke-until-validated",
+            reference_dtype="float32",
+            inference_dtype=args.dtype,
             **quality,
         )
         results.append(result)
@@ -225,10 +228,11 @@ def main():
                 enhanced, _ = decode(model, geometry, tokens, budgets)
                 start = 1 + 4 * (target - 1)
                 base_quality = metrics(
-                    x[:, :, start : start + 4], base[:, :, start : start + 4]
+                    reference[:, :, start : start + 4], base[:, :, start : start + 4]
                 )
                 new_quality = metrics(
-                    x[:, :, start : start + 4], enhanced[:, :, start : start + 4]
+                    reference[:, :, start : start + 4],
+                    enhanced[:, :, start : start + 4],
                 )
                 rows.append(
                     dict(
