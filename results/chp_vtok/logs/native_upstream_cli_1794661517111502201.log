@@ -1,0 +1,250 @@
+2026-11-14 21:05:18.972 | INFO     | __main__:<module>:175 - Initializes args ...
+2026-11-14 21:05:18.973 | INFO     | __main__:_run_eval:195 - Loading a torch.jit model `checkpoints/infotok-flex` ...
+2026-11-14 21:05:19.281 | INFO     | cosmos_predict1.tokenizer.modules.layers3d:__init__:843 - Working with z of shape (1, 256, 128, 128) = 4194304 dimensions.
+2026-11-14 21:05:20.518 | INFO     | cosmos_predict1.tokenizer.networks.ours_discrete_video:__init__:64 - OURS based on FSQ-VAE, with {'name': 'OURS', 'attn_resolutions': [32], 'channels': 128, 'channels_mult': [2, 4, 4], 'dropout': 0.0, 'in_channels': 3, 'num_res_blocks': 2, 'out_channels': 3, 'resolution': 1024, 'patch_size': 2, 'patch_method': 'haar', 'num_groups': 1, 'legacy_mode': False, 'spatial_compression': 8, 'temporal_compression': 4, 'quantizer': 'FSQ', 'levels': [8, 8, 8, 5, 5, 5], 'encoder': 'FACTORIZED', 'decoder': 'FACTORIZED', 'rate_strategy': 'elbo', 'use_vit': True, 'freeze_original': False, 'vit_config': {'hidden_size': 256, 'intermediate_size': 512, 'num_encoder_layers': 8, 'num_decoder_layers': 8, 'num_attention_heads': 32, 'theta': 10000.0, 'rms_norm_eps': 1e-05, 'initializer_range': 0.02, 'max_num_video_frames': 49, 'switch_rotary_to_1d': 1.0, 'max_sequence_length': 96, 'max_sequence_length_1d': 8192, 'concat_decode_2d': False, 'special_attn': False, 'method': 'mse'}}.
+2026-11-14 21:05:20.520 | INFO     | cosmos_predict1.tokenizer.networks.ours_discrete_video:__init__:67 - model=OURS, num_parameters=112,619,766
+2026-11-14 21:05:20.520 | INFO     | cosmos_predict1.tokenizer.networks.ours_discrete_video:__init__:68 - z_channels=256, embedding_dim=6.
+2026-11-14 21:05:20.520 | INFO     | cosmos_predict1.tokenizer.networks.ours_discrete_video:__init__:87 - Not freezing original model parameters.
+2026-11-14 21:05:20.683 | INFO     | cosmos_predict1.tokenizer.networks.ours_discrete_video:init_adaptive_token:169 - Adaptive token initialized with shape torch.Size([128]) and value 0.0.
+2026-11-14 21:05:20.685 | INFO     | cosmos_predict1.tokenizer.networks.ours_discrete_video:__init__:122 - model=OURS, num_parameters=123,142,646
+2026-11-14 21:05:22.794 | INFO     | __main__:_run_eval:207 - Looking for files matching video_pattern=data/chp_vtok/mcl_jcv01.mp4 ...
+2026-11-14 21:05:22.794 | INFO     | __main__:_run_eval:209 - Found 1 videos from data/chp_vtok/mcl_jcv01.mp4.
+2026-11-14 21:05:22.794 | INFO     | __main__:_run_eval:257 - Reading video data/chp_vtok/mcl_jcv01.mp4 ...
+2026-11-14 21:05:24.940 | INFO     | __main__:_run_eval:261 - Invoking the autoencoder model ...
+Loading model from checkpoints/infotok-flex/infotok_mse.pt
+Tokenizer Type:  OURS4x8x8-mse-256p-88
+
+  0%|          | 0/1 [00:00<?, ?it/s]
+  0%|          | 0/1 [00:00<?, ?it/s]
+2026-11-14 21:05:25.618 | ERROR    | __main__:<module>:280 - An error has been caught in function '<module>', process 'MainProcess' (343930), thread 'MainThread' (130021579239872):
+Traceback (most recent call last):
+
+  File "/usr/lib/python3.10/runpy.py", line 196, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+           │         │     └ {'__name__': '__main__', '__doc__': "A CLI to run CausalVideoTokenizer on plain videos based on torch.jit.\n\nUsage:\n    pyt...
+           │         └ <code object <module> at 0x764101227940, file "/home/whisperliang/InfoTok/cosmos_predict1/tokenizer/inference/video_cli.py", ...
+           └ <function _run_code at 0x7641013db2e0>
+  File "/usr/lib/python3.10/runpy.py", line 86, in _run_code
+    exec(code, run_globals)
+         │     └ {'__name__': '__main__', '__doc__': "A CLI to run CausalVideoTokenizer on plain videos based on torch.jit.\n\nUsage:\n    pyt...
+         └ <code object <module> at 0x764101227940, file "/home/whisperliang/InfoTok/cosmos_predict1/tokenizer/inference/video_cli.py", ...
+
+> File "/home/whisperliang/InfoTok/cosmos_predict1/tokenizer/inference/video_cli.py", line 280, in <module>
+    main()
+    └ <function main at 0x763fde98a3b0>
+
+  File "/home/whisperliang/InfoTok/cosmos_predict1/tokenizer/inference/video_cli.py", line 276, in main
+    _run_eval()
+    └ <function _run_eval at 0x763fde98a050>
+
+  File "/home/whisperliang/InfoTok/cosmos_predict1/tokenizer/inference/video_cli.py", line 263, in _run_eval
+    output_video, _ = autoencoder(batch_video, temporal_window=args.temporal_window, strategy=args.strategy, avg_rate=args.avg_rate, overlap_window=args.overlap_window)
+                      │           │                            │    │                         │    │                  │    │                        │    └ 0
+                      │           │                            │    │                         │    │                  │    │                        └ Namespace(video_pattern='data/chp_vtok/mcl_jcv01.mp4', checkpoint='checkpoints/infotok-flex/infotok_mse.pt', checkpoint_enc=N...
+                      │           │                            │    │                         │    │                  │    └ 1.0
+                      │           │                            │    │                         │    │                  └ Namespace(video_pattern='data/chp_vtok/mcl_jcv01.mp4', checkpoint='checkpoints/infotok-flex/infotok_mse.pt', checkpoint_enc=N...
+                      │           │                            │    │                         │    └ 'static'
+                      │           │                            │    │                         └ Namespace(video_pattern='data/chp_vtok/mcl_jcv01.mp4', checkpoint='checkpoints/infotok-flex/infotok_mse.pt', checkpoint_enc=N...
+                      │           │                            │    └ 17
+                      │           │                            └ Namespace(video_pattern='data/chp_vtok/mcl_jcv01.mp4', checkpoint='checkpoints/infotok-flex/infotok_mse.pt', checkpoint_enc=N...
+                      │           └ array([[[[[0, 0, 0],
+                      │                       [0, 0, 0],
+                      │                       [0, 0, 0],
+                      │                       ...,
+                      │                       [0, 0, 0],
+                      │                       [0, 0, 0],
+                      │                  ...
+                      └ CausalVideoTokenizer(
+                          (_full_model): OursDiscreteVideoTokenizer(
+                            (encoder): EncoderFactorized(
+                              (patcher3d): Patch...
+
+  File "/home/whisperliang/InfoTok/.venv/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1739, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           │    │           │       └ {'temporal_window': 17, 'strategy': 'static', 'avg_rate': 1.0, 'overlap_window': 0}
+           │    │           └ (array([[[[[0, 0, 0],
+           │    │                       [0, 0, 0],
+           │    │                       [0, 0, 0],
+           │    │                       ...,
+           │    │                       [0, 0, 0],
+           │    │                       [0, 0, 0],
+           │    │                 ...
+           │    └ <function Module._call_impl at 0x76407f1d75b0>
+           └ CausalVideoTokenizer(
+               (_full_model): OursDiscreteVideoTokenizer(
+                 (encoder): EncoderFactorized(
+                   (patcher3d): Patch...
+  File "/home/whisperliang/InfoTok/.venv/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1750, in _call_impl
+    return forward_call(*args, **kwargs)
+           │             │       └ {'temporal_window': 17, 'strategy': 'static', 'avg_rate': 1.0, 'overlap_window': 0}
+           │             └ (array([[[[[0, 0, 0],
+           │                         [0, 0, 0],
+           │                         [0, 0, 0],
+           │                         ...,
+           │                         [0, 0, 0],
+           │                         [0, 0, 0],
+           │                   ...
+           └ <bound method CausalVideoTokenizer.forward of CausalVideoTokenizer(
+               (_full_model): OursDiscreteVideoTokenizer(
+                 (encoder...
+
+  File "/home/whisperliang/InfoTok/cosmos_predict1/tokenizer/inference/video_lib.py", line 239, in forward
+    output_tensor, token_rate = self.autoencode(input_tensor, strategy=strategy, avg_rate=avg_rate)
+                                │    │          │                      │                  └ 1.0
+                                │    │          │                      └ 'static'
+                                │    │          └ tensor([[[[[-1., -1., -1.,  ..., -1., -1., -1.],
+                                │    │                       [-1., -1., -1.,  ..., -1., -1., -1.],
+                                │    │                       [-1., -1., -1., ...
+                                │    └ <function CausalVideoTokenizer.autoencode at 0x763fde989ab0>
+                                └ CausalVideoTokenizer(
+                                    (_full_model): OursDiscreteVideoTokenizer(
+                                      (encoder): EncoderFactorized(
+                                        (patcher3d): Patch...
+
+  File "/home/whisperliang/InfoTok/.venv/lib/python3.10/site-packages/torch/utils/_contextlib.py", line 116, in decorate_context
+    return func(*args, **kwargs)
+           │     │       └ {'strategy': 'static', 'avg_rate': 1.0}
+           │     └ (CausalVideoTokenizer(
+           │         (_full_model): OursDiscreteVideoTokenizer(
+           │           (encoder): EncoderFactorized(
+           │             (patcher3d): Patc...
+           └ <function CausalVideoTokenizer.autoencode at 0x763fde989a20>
+
+  File "/home/whisperliang/InfoTok/cosmos_predict1/tokenizer/inference/video_lib.py", line 112, in autoencode
+    chunk_loss = self.compute_chunk_loss(hidden_tensor, input_tensor)
+                 │    │                  │              └ tensor([[[[[-1., -1., -1.,  ..., -1., -1., -1.],
+                 │    │                  │                           [-1., -1., -1.,  ..., -1., -1., -1.],
+                 │    │                  │                           [-1., -1., -1., ...
+                 │    │                  └ tensor([[[[[-1.0000, -1.0000, -1.0000,  ..., -1.0000, -1.0000, -1.0000],
+                 │    │                               [-1.0000, -1.0000, -1.0000,  ..., -1.0000...
+                 │    └ <function CausalVideoTokenizer.compute_chunk_loss at 0x763fde989990>
+                 └ CausalVideoTokenizer(
+                     (_full_model): OursDiscreteVideoTokenizer(
+                       (encoder): EncoderFactorized(
+                         (patcher3d): Patch...
+
+  File "/home/whisperliang/InfoTok/.venv/lib/python3.10/site-packages/torch/utils/_contextlib.py", line 116, in decorate_context
+    return func(*args, **kwargs)
+           │     │       └ {}
+           │     └ (CausalVideoTokenizer(
+           │         (_full_model): OursDiscreteVideoTokenizer(
+           │           (encoder): EncoderFactorized(
+           │             (patcher3d): Patc...
+           └ <function CausalVideoTokenizer.compute_chunk_loss at 0x763fde989900>
+
+  File "/home/whisperliang/InfoTok/cosmos_predict1/tokenizer/inference/video_lib.py", line 88, in compute_chunk_loss
+    recon_full = self._full_model.decode(hidden_tensor)
+                 │                       └ tensor([[[[[-1.0000, -1.0000, -1.0000,  ..., -1.0000, -1.0000, -1.0000],
+                 │                                    [-1.0000, -1.0000, -1.0000,  ..., -1.0000...
+                 └ CausalVideoTokenizer(
+                     (_full_model): OursDiscreteVideoTokenizer(
+                       (encoder): EncoderFactorized(
+                         (patcher3d): Patch...
+
+  File "/home/whisperliang/InfoTok/cosmos_predict1/tokenizer/networks/ours_discrete_video.py", line 461, in decode
+    z = self.post_quant_conv(quant) # input is [B, n_quan, t, h, w], continuous
+        │                    └ tensor([[[[[-1.0000, -1.0000, -1.0000,  ..., -1.0000, -1.0000, -1.0000],
+        │                                 [-1.0000, -1.0000, -1.0000,  ..., -1.0000...
+        └ OursDiscreteVideoTokenizer(
+            (encoder): EncoderFactorized(
+              (patcher3d): Patcher3D()
+              (conv_in): Sequential(
+                (0)...
+
+  File "/home/whisperliang/InfoTok/.venv/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1739, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           │    │           │       └ {}
+           │    │           └ (tensor([[[[[-1.0000, -1.0000, -1.0000,  ..., -1.0000, -1.0000, -1.0000],
+           │    │                        [-1.0000, -1.0000, -1.0000,  ..., -1.000...
+           │    └ <function Module._call_impl at 0x76407f1d75b0>
+           └ CausalConv3d(
+               (conv3d): Conv3d(6, 256, kernel_size=(1, 1, 1), stride=(1, 1, 1))
+             )
+  File "/home/whisperliang/InfoTok/.venv/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1750, in _call_impl
+    return forward_call(*args, **kwargs)
+           │             │       └ {}
+           │             └ (tensor([[[[[-1.0000, -1.0000, -1.0000,  ..., -1.0000, -1.0000, -1.0000],
+           │                          [-1.0000, -1.0000, -1.0000,  ..., -1.000...
+           └ <bound method CausalConv3d.forward of CausalConv3d(
+               (conv3d): Conv3d(6, 256, kernel_size=(1, 1, 1), stride=(1, 1, 1))
+             )>
+
+  File "/home/whisperliang/InfoTok/cosmos_predict1/tokenizer/modules/layers3d.py", line 97, in forward
+    return self.conv3d(x)
+           │           └ tensor([[[[[-1.0000, -1.0000, -1.0000,  ..., -1.0000, -1.0000, -1.0000],
+           │                        [-1.0000, -1.0000, -1.0000,  ..., -1.0000...
+           └ CausalConv3d(
+               (conv3d): Conv3d(6, 256, kernel_size=(1, 1, 1), stride=(1, 1, 1))
+             )
+
+  File "/home/whisperliang/InfoTok/.venv/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1739, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           │    │           │       └ {}
+           │    │           └ (tensor([[[[[-1.0000, -1.0000, -1.0000,  ..., -1.0000, -1.0000, -1.0000],
+           │    │                        [-1.0000, -1.0000, -1.0000,  ..., -1.000...
+           │    └ <function Module._call_impl at 0x76407f1d75b0>
+           └ Conv3d(6, 256, kernel_size=(1, 1, 1), stride=(1, 1, 1))
+  File "/home/whisperliang/InfoTok/.venv/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1750, in _call_impl
+    return forward_call(*args, **kwargs)
+           │             │       └ {}
+           │             └ (tensor([[[[[-1.0000, -1.0000, -1.0000,  ..., -1.0000, -1.0000, -1.0000],
+           │                          [-1.0000, -1.0000, -1.0000,  ..., -1.000...
+           └ <bound method Conv3d.forward of Conv3d(6, 256, kernel_size=(1, 1, 1), stride=(1, 1, 1))>
+  File "/home/whisperliang/InfoTok/.venv/lib/python3.10/site-packages/torch/nn/modules/conv.py", line 725, in forward
+    return self._conv_forward(input, self.weight, self.bias)
+           │    │             │      │            └ Conv3d(6, 256, kernel_size=(1, 1, 1), stride=(1, 1, 1))
+           │    │             │      └ Conv3d(6, 256, kernel_size=(1, 1, 1), stride=(1, 1, 1))
+           │    │             └ tensor([[[[[-1.0000, -1.0000, -1.0000,  ..., -1.0000, -1.0000, -1.0000],
+           │    │                          [-1.0000, -1.0000, -1.0000,  ..., -1.0000...
+           │    └ <function Conv3d._conv_forward at 0x76407739eb90>
+           └ Conv3d(6, 256, kernel_size=(1, 1, 1), stride=(1, 1, 1))
+  File "/home/whisperliang/InfoTok/.venv/lib/python3.10/site-packages/torch/nn/modules/conv.py", line 720, in _conv_forward
+    return F.conv3d(
+           │ └ <built-in method conv3d of type object at 0x76404db90ec0>
+           └ <module 'torch.nn.functional' from '/home/whisperliang/InfoTok/.venv/lib/python3.10/site-packages/torch/nn/functional.py'>
+
+RuntimeError: Input type (c10::BFloat16) and bias type (float) should be the same
+Traceback (most recent call last):
+  File "/usr/lib/python3.10/runpy.py", line 196, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/usr/lib/python3.10/runpy.py", line 86, in _run_code
+    exec(code, run_globals)
+  File "/home/whisperliang/InfoTok/cosmos_predict1/tokenizer/inference/video_cli.py", line 280, in <module>
+    main()
+  File "/home/whisperliang/InfoTok/.venv/lib/python3.10/site-packages/loguru/_logger.py", line 1277, in catch_wrapper
+    return function(*args, **kwargs)
+  File "/home/whisperliang/InfoTok/cosmos_predict1/tokenizer/inference/video_cli.py", line 276, in main
+    _run_eval()
+  File "/home/whisperliang/InfoTok/cosmos_predict1/tokenizer/inference/video_cli.py", line 263, in _run_eval
+    output_video, _ = autoencoder(batch_video, temporal_window=args.temporal_window, strategy=args.strategy, avg_rate=args.avg_rate, overlap_window=args.overlap_window)
+  File "/home/whisperliang/InfoTok/.venv/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1739, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/whisperliang/InfoTok/.venv/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1750, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/whisperliang/InfoTok/cosmos_predict1/tokenizer/inference/video_lib.py", line 239, in forward
+    output_tensor, token_rate = self.autoencode(input_tensor, strategy=strategy, avg_rate=avg_rate)
+  File "/home/whisperliang/InfoTok/.venv/lib/python3.10/site-packages/torch/utils/_contextlib.py", line 116, in decorate_context
+    return func(*args, **kwargs)
+  File "/home/whisperliang/InfoTok/cosmos_predict1/tokenizer/inference/video_lib.py", line 112, in autoencode
+    chunk_loss = self.compute_chunk_loss(hidden_tensor, input_tensor)
+  File "/home/whisperliang/InfoTok/.venv/lib/python3.10/site-packages/torch/utils/_contextlib.py", line 116, in decorate_context
+    return func(*args, **kwargs)
+  File "/home/whisperliang/InfoTok/cosmos_predict1/tokenizer/inference/video_lib.py", line 88, in compute_chunk_loss
+    recon_full = self._full_model.decode(hidden_tensor)
+  File "/home/whisperliang/InfoTok/cosmos_predict1/tokenizer/networks/ours_discrete_video.py", line 461, in decode
+    z = self.post_quant_conv(quant) # input is [B, n_quan, t, h, w], continuous
+  File "/home/whisperliang/InfoTok/.venv/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1739, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/whisperliang/InfoTok/.venv/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1750, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/whisperliang/InfoTok/cosmos_predict1/tokenizer/modules/layers3d.py", line 97, in forward
+    return self.conv3d(x)
+  File "/home/whisperliang/InfoTok/.venv/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1739, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/whisperliang/InfoTok/.venv/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1750, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/whisperliang/InfoTok/.venv/lib/python3.10/site-packages/torch/nn/modules/conv.py", line 725, in forward
+    return self._conv_forward(input, self.weight, self.bias)
+  File "/home/whisperliang/InfoTok/.venv/lib/python3.10/site-packages/torch/nn/modules/conv.py", line 720, in _conv_forward
+    return F.conv3d(
+RuntimeError: Input type (c10::BFloat16) and bias type (float) should be the same

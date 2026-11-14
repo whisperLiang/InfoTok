@@ -1,0 +1,116 @@
+/home/whisperliang/InfoTok/.venv/lib/python3.10/site-packages/megatron/core/tensor_parallel/layers.py:265: FutureWarning: `torch.cuda.amp.custom_fwd(args...)` is deprecated. Please use `torch.amp.custom_fwd(args..., device_type='cuda')` instead.
+  def forward(
+/home/whisperliang/InfoTok/.venv/lib/python3.10/site-packages/megatron/core/tensor_parallel/layers.py:277: FutureWarning: `torch.cuda.amp.custom_bwd(args...)` is deprecated. Please use `torch.amp.custom_bwd(args..., device_type='cuda')` instead.
+  def backward(ctx, grad_output):
+/home/whisperliang/InfoTok/.venv/lib/python3.10/site-packages/megatron/core/tensor_parallel/layers.py:364: FutureWarning: `torch.cuda.amp.custom_fwd(args...)` is deprecated. Please use `torch.amp.custom_fwd(args..., device_type='cuda')` instead.
+  def forward(
+/home/whisperliang/InfoTok/.venv/lib/python3.10/site-packages/megatron/core/tensor_parallel/layers.py:401: FutureWarning: `torch.cuda.amp.custom_bwd(args...)` is deprecated. Please use `torch.amp.custom_bwd(args..., device_type='cuda')` instead.
+  def backward(ctx, grad_output):
+[11-14 21:06:44|CRITICAL|cosmos_predict1/utils/distributed.py:68:init] [RANK 0] Initialized distributed program with local rank 0 with timeout 1800
+2026-11-14 21:06:44.127 | ERROR    | __main__:<module>:82 - An error has been caught in function '<module>', process 'MainProcess' (345511), thread 'MainThread' (127551538893248):
+Traceback (most recent call last):
+
+  File "/usr/lib/python3.10/runpy.py", line 196, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+           │         │     └ {'__name__': '__main__', '__doc__': None, '__package__': 'cosmos_predict1.tokenizer.training', '__loader__': <_frozen_importl...
+           │         └ <code object <module> at 0x7401e75e6550, file "/home/whisperliang/InfoTok/cosmos_predict1/tokenizer/training/train.py", line 1>
+           └ <function _run_code at 0x7401e75df2e0>
+  File "/usr/lib/python3.10/runpy.py", line 86, in _run_code
+    exec(code, run_globals)
+         │     └ {'__name__': '__main__', '__doc__': None, '__package__': 'cosmos_predict1.tokenizer.training', '__loader__': <_frozen_importl...
+         └ <code object <module> at 0x7401e75e6550, file "/home/whisperliang/InfoTok/cosmos_predict1/tokenizer/training/train.py", line 1>
+
+> File "/home/whisperliang/InfoTok/cosmos_predict1/tokenizer/training/train.py", line 82, in <module>
+    launch(config, args)
+    │      │       └ Namespace(config='cosmos_predict1/tokenizer/training/configs/chp_vtok.py', opts=['--', 'job.name=single_debug', 'trainer.max_...
+    │      └ Config(model={'config': {'network': {'config': {'kmax': 2048, 'budgets': [256, 512, 1024, 2048], 'multiscale': False, 'base_t...
+    └ <function launch at 0x7400f8c96830>
+
+  File "/home/whisperliang/InfoTok/cosmos_predict1/tokenizer/training/train.py", line 34, in launch
+    trainer = config.trainer.type(config)
+              │      │       │    └ Config(model={'config': {'network': {'config': {'kmax': 2048, 'budgets': [256, 512, 1024, 2048], 'multiscale': False, 'base_t...
+              │      │       └ <class 'cosmos_predict1.tokenizer.training.trainer.TokenizerTrainer'>
+              │      └ TrainerConfig(type=<class 'cosmos_predict1.tokenizer.training.trainer.TokenizerTrainer'>, callbacks={'low_precision': {'confi...
+              └ Config(model={'config': {'network': {'config': {'kmax': 2048, 'budgets': [256, 512, 1024, 2048], 'multiscale': False, 'base_t...
+
+  File "/home/whisperliang/InfoTok/cosmos_predict1/tokenizer/training/trainer.py", line 36, in __init__
+    super(TokenizerTrainer, self).__init__(config)
+          │                 │              └ Config(model={'config': {'network': {'config': {'kmax': 2048, 'budgets': [256, 512, 1024, 2048], 'multiscale': False, 'base_t...
+          │                 └ <cosmos_predict1.tokenizer.training.trainer.TokenizerTrainer object at 0x7400e1a9ac20>
+          └ <class 'cosmos_predict1.tokenizer.training.trainer.TokenizerTrainer'>
+
+  File "/home/whisperliang/InfoTok/cosmos_predict1/utils/trainer.py", line 56, in __init__
+    distributed.init()
+    │           └ <function init at 0x7401091eeb90>
+    └ <module 'cosmos_predict1.utils.distributed' from '/home/whisperliang/InfoTok/cosmos_predict1/utils/distributed.py'>
+
+  File "/home/whisperliang/InfoTok/cosmos_predict1/utils/distributed.py", line 73, in init
+    _libcudart = ctypes.CDLL("libcudart.so")
+                 │      └ <class 'ctypes.CDLL'>
+                 └ <module 'ctypes' from '/usr/lib/python3.10/ctypes/__init__.py'>
+
+  File "/usr/lib/python3.10/ctypes/__init__.py", line 374, in __init__
+    self._handle = _dlopen(self._name, mode)
+    │    │         │       │    │      └ 0
+    │    │         │       │    └ 'libcudart.so'
+    │    │         │       └ <CDLL 'libcudart.so', handle 0 at 0x7400e25302b0>
+    │    │         └ <built-in function dlopen>
+    │    └ 0
+    └ <CDLL 'libcudart.so', handle 0 at 0x7400e25302b0>
+
+OSError: libcudart.so: cannot open shared object file: No such file or directory
+[rank0]: Traceback (most recent call last):
+[rank0]:   File "/usr/lib/python3.10/runpy.py", line 196, in _run_module_as_main
+[rank0]:     return _run_code(code, main_globals, None,
+[rank0]:   File "/usr/lib/python3.10/runpy.py", line 86, in _run_code
+[rank0]:     exec(code, run_globals)
+[rank0]:   File "/home/whisperliang/InfoTok/cosmos_predict1/tokenizer/training/train.py", line 82, in <module>
+[rank0]:     launch(config, args)
+[rank0]:   File "/home/whisperliang/InfoTok/.venv/lib/python3.10/site-packages/loguru/_logger.py", line 1277, in catch_wrapper
+[rank0]:     return function(*args, **kwargs)
+[rank0]:   File "/home/whisperliang/InfoTok/cosmos_predict1/tokenizer/training/train.py", line 34, in launch
+[rank0]:     trainer = config.trainer.type(config)
+[rank0]:   File "/home/whisperliang/InfoTok/cosmos_predict1/tokenizer/training/trainer.py", line 36, in __init__
+[rank0]:     super(TokenizerTrainer, self).__init__(config)
+[rank0]:   File "/home/whisperliang/InfoTok/cosmos_predict1/utils/trainer.py", line 56, in __init__
+[rank0]:     distributed.init()
+[rank0]:   File "/home/whisperliang/InfoTok/cosmos_predict1/utils/distributed.py", line 73, in init
+[rank0]:     _libcudart = ctypes.CDLL("libcudart.so")
+[rank0]:   File "/usr/lib/python3.10/ctypes/__init__.py", line 374, in __init__
+[rank0]:     self._handle = _dlopen(self._name, mode)
+[rank0]: OSError: libcudart.so: cannot open shared object file: No such file or directory
+[rank0]:[W1114 21:06:44.605643546 ProcessGroupNCCL.cpp:1496] Warning: WARNING: destroy_process_group() was not called before program exit, which can leak resources. For more info, please see https://pytorch.org/docs/stable/distributed.html#shutdown (function operator())
+E1114 21:06:45.317000 345501 .venv/lib/python3.10/site-packages/torch/distributed/elastic/multiprocessing/api.py:869] failed (exitcode: 1) local_rank: 0 (pid: 345511) of binary: /home/whisperliang/InfoTok/.venv/bin/python
+Traceback (most recent call last):
+  File "/usr/lib/python3.10/runpy.py", line 196, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/usr/lib/python3.10/runpy.py", line 86, in _run_code
+    exec(code, run_globals)
+  File "/home/whisperliang/InfoTok/.venv/lib/python3.10/site-packages/torch/distributed/run.py", line 922, in <module>
+    main()
+  File "/home/whisperliang/InfoTok/.venv/lib/python3.10/site-packages/torch/distributed/elastic/multiprocessing/errors/__init__.py", line 355, in wrapper
+    return f(*args, **kwargs)
+  File "/home/whisperliang/InfoTok/.venv/lib/python3.10/site-packages/torch/distributed/run.py", line 918, in main
+    run(args)
+  File "/home/whisperliang/InfoTok/.venv/lib/python3.10/site-packages/torch/distributed/run.py", line 909, in run
+    elastic_launch(
+  File "/home/whisperliang/InfoTok/.venv/lib/python3.10/site-packages/torch/distributed/launcher/api.py", line 138, in __call__
+    return launch_agent(self._config, self._entrypoint, list(args))
+  File "/home/whisperliang/InfoTok/.venv/lib/python3.10/site-packages/torch/distributed/launcher/api.py", line 269, in launch_agent
+    raise ChildFailedError(
+torch.distributed.elastic.multiprocessing.errors.ChildFailedError: 
+============================================================
+cosmos_predict1.tokenizer.training.train FAILED
+------------------------------------------------------------
+Failures:
+  <NO_OTHER_FAILURES>
+------------------------------------------------------------
+Root Cause (first observed failure):
+[0]:
+  time      : 2026-11-14_21:06:45
+  host      : ubun
+  rank      : 0 (local_rank: 0)
+  exitcode  : 1 (pid: 345511)
+  error_file: <N/A>
+  traceback : To enable traceback see: https://pytorch.org/docs/stable/elastic/errors.html
+============================================================

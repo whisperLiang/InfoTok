@@ -1,0 +1,13 @@
+F....................                                                    [100%]
+=================================== FAILURES ===================================
+______ test_chunked_convolution_retains_stride_dilation_gradients[1-1-1] _______
+tests/test_chp_conv_chunking.py:21: in test_chunked_convolution_retains_stride_dilation_gradients
+    torch.testing.assert_close(left,right,atol=5e-5,rtol=2e-5)
+E   AssertionError: Tensor-likes are not close!
+E   
+E   Mismatched elements: 2 / 216 (0.9%)
+E   Greatest absolute difference: 0.00018310546875 at index (1, 1, 0, 0, 0) (up to 5e-05 allowed)
+E   Greatest relative difference: 0.0001114682963816449 at index (0, 1, 0, 1, 2) (up to 2e-05 allowed)
+=========================== short test summary info ============================
+FAILED tests/test_chp_conv_chunking.py::test_chunked_convolution_retains_stride_dilation_gradients[1-1-1]
+1 failed, 20 passed in 2.19s

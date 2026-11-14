@@ -1,0 +1,72 @@
+{
+  "pdf": "results/chp_vtok/figures/multiscale_ablation.pdf",
+  "auditable": true,
+  "verdict": "FIX BEFORE DELIVERY",
+  "page_count": 1,
+  "visible_text_box_count": 16,
+  "text_trace_count": 16,
+  "stroke_path_count": 35,
+  "filled_region_count": 28,
+  "image_region_count": 0,
+  "summary": {
+    "fail": 2,
+    "warn": 0,
+    "contained_fill_overlays": 0,
+    "contained_image_overlays": 0
+  },
+  "thresholds": {
+    "text_inset_pt": 0.6,
+    "min_overlap_ratio": 0.05,
+    "clipping_tolerance_pt": 0.5
+  },
+  "findings": [
+    {
+      "severity": "FAIL",
+      "kind": "text-stroke",
+      "page": 1,
+      "message": "Text is crossed by 1 stroked path(s)",
+      "text": "basketball",
+      "text_bbox": [
+        76.92362213134766,
+        131.55416870117188,
+        112.78544616699219,
+        138.55416870117188
+      ],
+      "other_text": null,
+      "other_bbox": [
+        51.02362060546875,
+        136.68756103515625,
+        329.9527587890625,
+        136.68756103515625
+      ],
+      "object_count": 1,
+      "object_indexes": [
+        28
+      ]
+    },
+    {
+      "severity": "FAIL",
+      "kind": "text-stroke",
+      "page": 1,
+      "message": "Text is crossed by 1 stroked path(s)",
+      "text": "uvg_beauty",
+      "text_bbox": [
+        76.92362213134766,
+        152.28854370117188,
+        117.81620025634766,
+        159.28854370117188
+      ],
+      "other_text": null,
+      "other_bbox": [
+        63.70221710205078,
+        140.32691955566406,
+        317.274169921875,
+        159.06227111816406
+      ],
+      "object_count": 1,
+      "object_indexes": [
+        18
+      ]
+    }
+  ]
+}

@@ -1,0 +1,685 @@
+[
+  {
+    "name": "attention_red",
+    "argv": [
+      ".venv/bin/python",
+      "-m",
+      "pytest",
+      "-q",
+      "tests/test_chp_attention.py"
+    ],
+    "cwd": "/home/whisperliang/InfoTok",
+    "start_utc": "2026-11-14T12:45:16.023227+00:00",
+    "commit": "042fc5815717ee34d7281e7eb2971ad9c9d76421",
+    "dirty": true,
+    "log": "results/chp_vtok/logs/attention_red_1794660316023262925.log",
+    "exit_code": 1,
+    "seconds": 0.019783038005698472
+  },
+  {
+    "name": "progressive_initial_tests",
+    "argv": [
+      ".venv/bin/python",
+      "-m",
+      "pytest",
+      "-q",
+      "tests/test_chp_progressive.py",
+      "tests/test_chp_state.py",
+      "tests/test_chp_protocol_edges.py"
+    ],
+    "cwd": "/home/whisperliang/InfoTok",
+    "start_utc": "2026-11-14T13:01:33.093067+00:00",
+    "commit": "042fc5815717ee34d7281e7eb2971ad9c9d76421",
+    "dirty": true,
+    "log": "results/chp_vtok/logs/progressive_initial_tests_1794661293093100462.log",
+    "exit_code": 1,
+    "seconds": 8.444004168995889
+  },
+  {
+    "name": "attention_red_upstream",
+    "argv": [
+      ".venv/bin/python",
+      "-m",
+      "pytest",
+      "-q",
+      "--tb=short",
+      "tests/test_chp_attention.py",
+      "-k",
+      "sdpa_is_used"
+    ],
+    "cwd": "/home/whisperliang/InfoTok",
+    "start_utc": "2026-11-14T13:01:54.029303+00:00",
+    "commit": "042fc5815717ee34d7281e7eb2971ad9c9d76421",
+    "dirty": true,
+    "log": "results/chp_vtok/logs/attention_red_upstream_1794661314029328637.log",
+    "exit_code": 1,
+    "seconds": 3.1588382869958878
+  },
+  {
+    "name": "upstream_training_import",
+    "argv": [
+      ".venv/bin/python",
+      "-c",
+      "from cosmos_predict1.tokenizer.training.configs.chp_vtok import make_config; c=make_config(); print(c.trainer.type,c.model.config.network)"
+    ],
+    "cwd": "/home/whisperliang/InfoTok",
+    "start_utc": "2026-11-14T13:01:55.201372+00:00",
+    "commit": "042fc5815717ee34d7281e7eb2971ad9c9d76421",
+    "dirty": true,
+    "log": "results/chp_vtok/logs/upstream_training_import_1794661315201396791.log",
+    "exit_code": 1,
+    "seconds": 4.488916483998764
+  },
+  {
+    "name": "training_import_retry",
+    "argv": [
+      ".venv/bin/python",
+      "-c",
+      "from cosmos_predict1.tokenizer.training.configs.chp_vtok import make_config; c=make_config(); print(c.trainer.type,c.model.config.network)"
+    ],
+    "cwd": "/home/whisperliang/InfoTok",
+    "start_utc": "2026-11-14T13:02:44.503433+00:00",
+    "commit": "042fc5815717ee34d7281e7eb2971ad9c9d76421",
+    "dirty": true,
+    "log": "results/chp_vtok/logs/training_import_retry_1794661364503458643.log",
+    "exit_code": 1,
+    "seconds": 7.1947699500015005
+  },
+  {
+    "name": "upstream_reproduction_256",
+    "argv": [
+      ".venv/bin/python",
+      "scripts/chp_validate.py",
+      "upstream",
+      "--video",
+      "data/chp_vtok/mcl_jcv01.mp4",
+      "--height",
+      "256",
+      "--frames",
+      "17",
+      "--dtype",
+      "float32",
+      "--output",
+      "results/chp_vtok/upstream_256.json"
+    ],
+    "cwd": "/home/whisperliang/InfoTok",
+    "start_utc": "2026-11-14T13:03:12.496006+00:00",
+    "commit": "042fc5815717ee34d7281e7eb2971ad9c9d76421",
+    "dirty": true,
+    "log": "results/chp_vtok/logs/upstream_reproduction_256_1794661392496041904.log",
+    "exit_code": 1,
+    "seconds": 5.288709961998393
+  },
+  {
+    "name": "training_import_compatibility",
+    "argv": [
+      ".venv/bin/python",
+      "-c",
+      "from cosmos_predict1.tokenizer.training.configs.chp_vtok import make_config; c=make_config(); print(c.trainer.type,c.model.config.network)"
+    ],
+    "cwd": "/home/whisperliang/InfoTok",
+    "start_utc": "2026-11-14T13:03:30.027126+00:00",
+    "commit": "042fc5815717ee34d7281e7eb2971ad9c9d76421",
+    "dirty": true,
+    "log": "results/chp_vtok/logs/training_import_compatibility_1794661410027153070.log",
+    "exit_code": 1,
+    "seconds": 7.434828901998117
+  },
+  {
+    "name": "upstream_reproduction_256_retry",
+    "argv": [
+      ".venv/bin/python",
+      "scripts/chp_validate.py",
+      "upstream",
+      "--video",
+      "data/chp_vtok/mcl_jcv01.mp4",
+      "--height",
+      "256",
+      "--frames",
+      "17",
+      "--dtype",
+      "float32",
+      "--output",
+      "results/chp_vtok/upstream_256_verified.json"
+    ],
+    "cwd": "/home/whisperliang/InfoTok",
+    "start_utc": "2026-11-14T13:04:03.614660+00:00",
+    "commit": "042fc5815717ee34d7281e7eb2971ad9c9d76421",
+    "dirty": true,
+    "log": "results/chp_vtok/logs/upstream_reproduction_256_retry_1794661443614690641.log",
+    "exit_code": 1,
+    "seconds": 4.753178600993124
+  },
+  {
+    "name": "upstream_reproduction_256_final",
+    "argv": [
+      ".venv/bin/python",
+      "scripts/chp_validate.py",
+      "upstream",
+      "--video",
+      "data/chp_vtok/mcl_jcv01.mp4",
+      "--height",
+      "256",
+      "--frames",
+      "17",
+      "--dtype",
+      "float32",
+      "--output",
+      "results/chp_vtok/upstream_256_pass.json"
+    ],
+    "cwd": "/home/whisperliang/InfoTok",
+    "start_utc": "2026-11-14T13:05:07.434586+00:00",
+    "commit": "042fc5815717ee34d7281e7eb2971ad9c9d76421",
+    "dirty": true,
+    "log": "results/chp_vtok/logs/upstream_reproduction_256_final_1794661507434615152.log",
+    "exit_code": 1,
+    "seconds": 9.62129275999905
+  },
+  {
+    "name": "native_upstream_cli",
+    "argv": [
+      ".venv/bin/python",
+      "-m",
+      "cosmos_predict1.tokenizer.inference.video_cli",
+      "--video_pattern",
+      "data/chp_vtok/mcl_jcv01.mp4",
+      "--checkpoint",
+      "checkpoints/infotok-flex/infotok_mse.pt",
+      "--output_dir",
+      "results/chp_vtok/upstream_cli",
+      "--tokenizer_type",
+      "OURS4x8x8-mse-256p-88",
+      "--temporal_window",
+      "17",
+      "--overlap_window",
+      "0",
+      "--strategy",
+      "static",
+      "--avg_rate",
+      "1.0",
+      "--short_size",
+      "256",
+      "--mode",
+      "torch",
+      "--dtype",
+      "float32"
+    ],
+    "cwd": "/home/whisperliang/InfoTok",
+    "start_utc": "2026-11-14T13:05:17.111469+00:00",
+    "commit": "042fc5815717ee34d7281e7eb2971ad9c9d76421",
+    "dirty": true,
+    "log": "results/chp_vtok/logs/native_upstream_cli_1794661517111502201.log",
+    "exit_code": 1,
+    "seconds": 9.70011667801009
+  },
+  {
+    "name": "upstream_dtype_red",
+    "argv": [
+      ".venv/bin/python",
+      "-m",
+      "pytest",
+      "-q",
+      "--tb=short",
+      "tests/test_chp_attention.py",
+      "-k",
+      "positional_to"
+    ],
+    "cwd": "/home/whisperliang/InfoTok",
+    "start_utc": "2026-11-14T13:05:48.446090+00:00",
+    "commit": "042fc5815717ee34d7281e7eb2971ad9c9d76421",
+    "dirty": true,
+    "log": "results/chp_vtok/logs/upstream_dtype_red_1794661548446113394.log",
+    "exit_code": 1,
+    "seconds": 3.156407279006089
+  },
+  {
+    "name": "stage_a_training_smoke",
+    "argv": [
+      "env",
+      "CHP_STAGE=A",
+      "CHP_DEBUG_HEIGHT=256",
+      "CHP_LPIPS=1",
+      "OMP_NUM_THREADS=4",
+      "WANDB_MODE=offline",
+      "bash",
+      "exp_scripts/chp_vtok_train.sh",
+      "job.name=single_debug",
+      "trainer.max_iter=40",
+      "checkpoint.save_iter=20",
+      "dataloader_train.dataset.num_video_frames=5",
+      "dataloader_val.dataset.num_video_frames=5"
+    ],
+    "cwd": "/home/whisperliang/InfoTok",
+    "start_utc": "2026-11-14T13:06:37.894678+00:00",
+    "commit": "042fc5815717ee34d7281e7eb2971ad9c9d76421",
+    "dirty": true,
+    "log": "results/chp_vtok/logs/stage_a_training_smoke_1794661597894703237.log",
+    "exit_code": 1,
+    "seconds": 7.956214067002293
+  },
+  {
+    "name": "complexity_audit",
+    "argv": [
+      "/home/whisperliang/video-tokenizer-benchmark/envs/ub-tools/runtime/bin/crapper",
+      "--use-existing-coverage",
+      "--threshold",
+      "10",
+      "cosmos_predict1/tokenizer/progressive",
+      "cosmos_predict1/tokenizer/training/chp_model.py"
+    ],
+    "cwd": "/home/whisperliang/InfoTok",
+    "start_utc": "2026-11-14T13:06:46.173225+00:00",
+    "commit": "042fc5815717ee34d7281e7eb2971ad9c9d76421",
+    "dirty": true,
+    "log": "results/chp_vtok/logs/complexity_audit_1794661606173249434.log",
+    "exit_code": 2,
+    "seconds": 0.14191495900740847
+  },
+  {
+    "name": "trained_bf16_1080_stream_consistency",
+    "argv": [
+      ".venv/bin/python",
+      "scripts/chp_consistency.py",
+      "--checkpoint",
+      "checkpoints/chp_vtok/tokenizer/multi_native/checkpoints/iter_000000042.pt",
+      "--video",
+      "data/chp_vtok/mcl_jcv01.mp4",
+      "--frames",
+      "17",
+      "--dtype",
+      "bfloat16",
+      "--output",
+      "results/chp_vtok/consistency_multi_1080_bf16.json"
+    ],
+    "cwd": "/home/whisperliang/InfoTok",
+    "start_utc": "2026-11-14T13:15:41.590357+00:00",
+    "commit": "ab7dff7cc37248b849795c009f8c2a2908090525",
+    "dirty": true,
+    "log": "results/chp_vtok/logs/trained_bf16_1080_stream_consistency_1794662141590389223.log",
+    "exit_code": 1,
+    "seconds": 28.70124425800168
+  },
+  {
+    "name": "single_native1080_rd",
+    "argv": [
+      ".venv/bin/python",
+      "scripts/chp_evaluate.py",
+      "--checkpoint",
+      "checkpoints/chp_vtok/tokenizer/single_native/checkpoints/iter_000000042.pt",
+      "--video",
+      "data/chp_vtok/mcl_jcv01.mp4",
+      "--frames",
+      "17",
+      "--output",
+      "results/chp_vtok/reconstructions/rd_single_mcl"
+    ],
+    "cwd": "/home/whisperliang/InfoTok",
+    "start_utc": "2026-11-14T13:21:45.197399+00:00",
+    "commit": "ab7dff7cc37248b849795c009f8c2a2908090525",
+    "dirty": true,
+    "log": "results/chp_vtok/logs/single_native1080_rd_1794662505197428671.log",
+    "exit_code": 1,
+    "seconds": 41.491848746998585
+  },
+  {
+    "name": "independent_receiver_completed_artifacts",
+    "argv": [
+      ".venv/bin/python",
+      "scripts/chp_isolated_receiver.py",
+      "--checkpoint",
+      "checkpoints/chp_vtok/multi_decoder.pt",
+      "--stream",
+      "results/chp_vtok/incremental_1080.chp",
+      "--output",
+      "results/chp_vtok/reconstructions/independent_receiver"
+    ],
+    "log": "results/chp_vtok/logs/independent_receiver1080_1794662236255669285.log",
+    "status": "completed-artifacts-verified",
+    "exit_code": null,
+    "note": "orchestrator interrupted by user steering; receiver.json and input_access_audit.json exist",
+    "seconds": 43.553423256991664
+  },
+  {
+    "name": "temporal_workspace_red",
+    "argv": [
+      ".venv/bin/python",
+      "-m",
+      "pytest",
+      "-q",
+      "--tb=short",
+      "tests/test_chp_conv_chunking.py"
+    ],
+    "cwd": "/home/whisperliang/InfoTok",
+    "start_utc": "2026-11-14T13:22:40.631887+00:00",
+    "commit": "ab7dff7cc37248b849795c009f8c2a2908090525",
+    "dirty": true,
+    "log": "results/chp_vtok/logs/temporal_workspace_red_1794662560631918668.log",
+    "exit_code": 2,
+    "seconds": 2.651287171000149
+  },
+  {
+    "name": "temporal_workspace_green",
+    "argv": [
+      ".venv/bin/python",
+      "-m",
+      "pytest",
+      "-q",
+      "--tb=short",
+      "tests/test_chp_conv_chunking.py",
+      "tests/test_chp_state.py",
+      "tests/test_chp_progressive.py"
+    ],
+    "cwd": "/home/whisperliang/InfoTok",
+    "start_utc": "2026-11-14T13:23:08.602867+00:00",
+    "commit": "ab7dff7cc37248b849795c009f8c2a2908090525",
+    "dirty": true,
+    "log": "results/chp_vtok/logs/temporal_workspace_green_1794662588602902107.log",
+    "exit_code": 1,
+    "seconds": 4.572275860991795
+  },
+  {
+    "name": "tcp_transport_red",
+    "argv": [
+      ".venv/bin/python",
+      "-m",
+      "pytest",
+      "-q",
+      "--tb=short",
+      "tests/test_chp_transport.py"
+    ],
+    "cwd": "/home/whisperliang/InfoTok",
+    "start_utc": "2026-11-14T13:25:05.407210+00:00",
+    "commit": "ab7dff7cc37248b849795c009f8c2a2908090525",
+    "dirty": true,
+    "log": "results/chp_vtok/logs/tcp_transport_red_1794662705407240670.log",
+    "exit_code": 2,
+    "seconds": 2.1878475559933577
+  },
+  {
+    "name": "no_future_packet_read_red",
+    "argv": [
+      ".venv/bin/python",
+      "-m",
+      "pytest",
+      "-q",
+      "--tb=short",
+      "tests/test_chp_receiver_boundary.py"
+    ],
+    "cwd": "/home/whisperliang/InfoTok",
+    "start_utc": "2026-11-14T13:25:58.191407+00:00",
+    "commit": "ab7dff7cc37248b849795c009f8c2a2908090525",
+    "dirty": true,
+    "log": "results/chp_vtok/logs/no_future_packet_read_red_1794662758191429817.log",
+    "exit_code": 1,
+    "seconds": 2.8359051669976907
+  },
+  {
+    "name": "revised_complexity",
+    "argv": [
+      "/home/whisperliang/video-tokenizer-benchmark/envs/ub-tools/runtime/bin/crapper",
+      "--use-existing-coverage",
+      "--threshold",
+      "10",
+      "cosmos_predict1/tokenizer/progressive",
+      "cosmos_predict1/tokenizer/training/chp_model.py"
+    ],
+    "cwd": "/home/whisperliang/InfoTok",
+    "start_utc": "2026-11-14T13:32:38.893962+00:00",
+    "commit": "ab7dff7cc37248b849795c009f8c2a2908090525",
+    "dirty": true,
+    "log": "results/chp_vtok/logs/revised_complexity_1794663158893986307.log",
+    "exit_code": 2,
+    "seconds": 0.14848628699837718
+  },
+  {
+    "name": "native17_training",
+    "argv": [
+      "env",
+      "CHP_STAGE=C",
+      "CHP_LPIPS=1",
+      "OMP_NUM_THREADS=4",
+      "WANDB_MODE=offline",
+      "PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True",
+      "bash",
+      "exp_scripts/chp_vtok_train.sh",
+      "job.name=multi_native17",
+      "trainer.max_iter=44",
+      "checkpoint.save_iter=44",
+      "checkpoint.load_path=checkpoints/chp_vtok/tokenizer/multi_native/checkpoints/iter_000000042.pt",
+      "checkpoint.load_training_state=True"
+    ],
+    "cwd": "/home/whisperliang/InfoTok",
+    "start_utc": "2026-11-14T13:34:52.046553+00:00",
+    "commit": "c3ddaf99a00c2be5f6fe4f8d2b2bc00500ce56d7",
+    "dirty": true,
+    "log": "results/chp_vtok/logs/native17_training_1794663292046672711.log",
+    "exit_code": 1,
+    "seconds": 31.60885670100106
+  },
+  {
+    "name": "file_cli_end_to_end_tests",
+    "argv": [
+      ".venv/bin/python",
+      "-m",
+      "pytest",
+      "-q",
+      "--tb=short",
+      "tests/test_chp_cli.py"
+    ],
+    "cwd": "/home/whisperliang/InfoTok",
+    "start_utc": "2026-11-14T13:37:55.673536+00:00",
+    "commit": "c3ddaf99a00c2be5f6fe4f8d2b2bc00500ce56d7",
+    "dirty": true,
+    "log": "results/chp_vtok/logs/file_cli_end_to_end_tests_1794663475673567906.log",
+    "exit_code": 1,
+    "seconds": 3.643351092003286
+  },
+  {
+    "name": "complexity_interfaces",
+    "argv": [
+      "/home/whisperliang/video-tokenizer-benchmark/envs/ub-tools/runtime/bin/crapper",
+      "--use-existing-coverage",
+      "--threshold",
+      "10",
+      "cosmos_predict1/tokenizer/progressive",
+      "cosmos_predict1/tokenizer/training/chp_model.py"
+    ],
+    "cwd": "/home/whisperliang/InfoTok",
+    "start_utc": "2026-11-14T13:42:41.390873+00:00",
+    "commit": "c3ddaf99a00c2be5f6fe4f8d2b2bc00500ce56d7",
+    "dirty": true,
+    "log": "results/chp_vtok/logs/complexity_interfaces_1794663761390894124.log",
+    "exit_code": 2,
+    "seconds": 0.15114685999287758
+  },
+  {
+    "name": "complexity_config_included",
+    "argv": [
+      "/home/whisperliang/video-tokenizer-benchmark/envs/ub-tools/runtime/bin/crapper",
+      "--use-existing-coverage",
+      "--threshold",
+      "10",
+      "cosmos_predict1/tokenizer/progressive",
+      "cosmos_predict1/tokenizer/training/chp_model.py"
+    ],
+    "cwd": "/home/whisperliang/InfoTok",
+    "start_utc": "2026-11-14T13:43:41.670019+00:00",
+    "commit": "c3ddaf99a00c2be5f6fe4f8d2b2bc00500ce56d7",
+    "dirty": true,
+    "log": "results/chp_vtok/logs/complexity_config_included_1794663821670037191.log",
+    "exit_code": 2,
+    "seconds": 0.14851354200800415
+  },
+  {
+    "name": "no_perceptual_log_red",
+    "argv": [
+      "env",
+      "OMP_NUM_THREADS=2",
+      "CUDA_VISIBLE_DEVICES=",
+      ".venv/bin/python",
+      "-m",
+      "pytest",
+      "-q",
+      "tests/test_chp_training_framework.py::test_debug_loss_without_perceptual_still_records_training_step",
+      "--tb=short"
+    ],
+    "cwd": "/home/whisperliang/InfoTok",
+    "start_utc": "2026-11-14T13:49:07.081604+00:00",
+    "commit": "c3ddaf99a00c2be5f6fe4f8d2b2bc00500ce56d7",
+    "dirty": true,
+    "log": "results/chp_vtok/logs/no_perceptual_log_red_1794664147081633594.log",
+    "exit_code": 1,
+    "seconds": 6.530311592010548
+  },
+  {
+    "name": "final_library_complexity",
+    "argv": [
+      "/home/whisperliang/video-tokenizer-benchmark/envs/ub-tools/runtime/bin/crapper",
+      "--use-existing-coverage",
+      "--threshold",
+      "10",
+      "cosmos_predict1/tokenizer/progressive",
+      "cosmos_predict1/tokenizer/training/chp_model.py",
+      "cosmos_predict1/tokenizer/training/chp_losses.py",
+      "cosmos_predict1/tokenizer/training/datasets/chp_video.py",
+      "cosmos_predict1/tokenizer/training/configs/chp_vtok.py"
+    ],
+    "cwd": "/home/whisperliang/InfoTok",
+    "start_utc": "2026-11-14T13:50:31.119529+00:00",
+    "commit": "c3ddaf99a00c2be5f6fe4f8d2b2bc00500ce56d7",
+    "dirty": true,
+    "log": "results/chp_vtok/logs/final_library_complexity_1794664231119552291.log",
+    "exit_code": 2,
+    "seconds": 0.12517603300511837
+  },
+  {
+    "name": "figure_source_preflight",
+    "argv": [
+      ".venv/bin/python",
+      "/home/whisperliang/.codex/skills/nature-figure/scripts/validate_figure.py",
+      "scripts/chp_plot_results.py",
+      "--backend",
+      "python",
+      "--json"
+    ],
+    "cwd": "/home/whisperliang/InfoTok",
+    "start_utc": "2026-11-14T13:53:10.248361+00:00",
+    "commit": "b9e02649c133259d0685dea82703ecb2d40c5686",
+    "dirty": true,
+    "log": "results/chp_vtok/logs/figure_source_preflight_1794664390248388208.log",
+    "exit_code": 1,
+    "seconds": 0.09442731099261437
+  },
+  {
+    "name": "native_video_exports",
+    "argv": [
+      ".venv/bin/python",
+      "scripts/chp_export_videos.py"
+    ],
+    "cwd": "/home/whisperliang/InfoTok",
+    "start_utc": "2026-11-14T13:53:58.225116+00:00",
+    "commit": "b9e02649c133259d0685dea82703ecb2d40c5686",
+    "dirty": true,
+    "log": "results/chp_vtok/logs/native_video_exports_1794664438225147805.log",
+    "exit_code": 1,
+    "seconds": 1.6737172190041747
+  },
+  {
+    "name": "finetune_warm_start_red",
+    "argv": [
+      "env",
+      "PYTHONPATH=.",
+      "CUDA_VISIBLE_DEVICES=",
+      ".venv/bin/python",
+      "-m",
+      "pytest",
+      "-q",
+      "tests/test_chp_training_framework.py::test_finetuning_initialization_requires_weights_only_and_identical_architecture",
+      "--tb=short"
+    ],
+    "cwd": "/home/whisperliang/InfoTok",
+    "start_utc": "2026-11-14T13:57:27.427188+00:00",
+    "commit": "b9e02649c133259d0685dea82703ecb2d40c5686",
+    "dirty": true,
+    "log": "results/chp_vtok/logs/finetune_warm_start_red_1794664647427219715.log",
+    "exit_code": 1,
+    "seconds": 6.194278038994526
+  },
+  {
+    "name": "final_library_crap",
+    "argv": [
+      "/home/whisperliang/video-tokenizer-benchmark/envs/ub-tools/runtime/bin/crapper",
+      "--use-existing-coverage",
+      "--threshold",
+      "10",
+      "cosmos_predict1/tokenizer/progressive",
+      "cosmos_predict1/tokenizer/training/chp_model.py",
+      "cosmos_predict1/tokenizer/training/chp_losses.py",
+      "cosmos_predict1/tokenizer/training/datasets/chp_video.py",
+      "cosmos_predict1/tokenizer/training/configs/chp_vtok.py"
+    ],
+    "cwd": "/home/whisperliang/InfoTok",
+    "start_utc": "2026-11-14T14:04:26.641309+00:00",
+    "commit": "b9e02649c133259d0685dea82703ecb2d40c5686",
+    "dirty": true,
+    "log": "results/chp_vtok/logs/final_library_crap_1794665066641331160.log",
+    "exit_code": 2,
+    "seconds": 0.14620359399123117
+  },
+  {
+    "name": "native_rgb_video_exports",
+    "argv": [
+      "env",
+      "PYTHONPATH=.",
+      ".venv/bin/python",
+      "scripts/chp_export_videos.py"
+    ],
+    "cwd": "/home/whisperliang/InfoTok",
+    "start_utc": "2026-11-14T13:55:09.573891+00:00",
+    "commit": "b9e02649c133259d0685dea82703ecb2d40c5686",
+    "dirty": true,
+    "log": "results/chp_vtok/logs/native_rgb_video_exports_1794664509573890843.log",
+    "exit_code": 143,
+    "seconds": null,
+    "exit_code_scope": "launcher observed via exec session 3704; child normal termination unconfirmed",
+    "observation": "28 native MP4 files and video_exports.json were created. All 28 hashes and geometries are independently verified by chp_manifest.py; no successful launcher exit is claimed."
+  },
+  {
+    "name": "native_quality_exact_rgb_reference",
+    "argv": [
+      "env",
+      "PYTHONPATH=.",
+      ".venv/bin/python",
+      "scripts/chp_remeasure_quality.py",
+      "--history"
+    ],
+    "cwd": "/home/whisperliang/InfoTok",
+    "start_utc": "2026-11-14T14:14:05.689574+00:00",
+    "commit": "5e48cdbed768ffc23e5a2aa6a257be8bda07bef3",
+    "dirty": true,
+    "log": "results/chp_vtok/logs/native_quality_exact_rgb_reference_1794665645689602817.log",
+    "exit_code": 1,
+    "seconds": 233.1123546949966
+  },
+  {
+    "name": "receiver_byte_accounting_red",
+    "argv": [
+      "env",
+      "CUDA_VISIBLE_DEVICES=",
+      "PYTHONPATH=.",
+      ".venv/bin/python",
+      "-m",
+      "pytest",
+      "-q",
+      "tests/test_chp_protocol_edges.py::test_receiver_counts_actual_session_bytes_including_json_whitespace",
+      "--tb=short"
+    ],
+    "cwd": "/home/whisperliang/InfoTok",
+    "start_utc": "2026-11-14T14:28:55.372647+00:00",
+    "commit": "74e26b63ace46475ab9cafec0f02958fd1fe4b69",
+    "dirty": true,
+    "log": "results/chp_vtok/logs/receiver_byte_accounting_red_1794666535372672815.log",
+    "exit_code": 1,
+    "seconds": 2.558705784002086
+  }
+]

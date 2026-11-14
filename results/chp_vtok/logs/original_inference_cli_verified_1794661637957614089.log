@@ -1,0 +1,21 @@
+2026-11-14 21:07:20.027 | INFO     | __main__:<module>:175 - Initializes args ...
+2026-11-14 21:07:20.028 | INFO     | __main__:_run_eval:195 - Loading a torch.jit model `checkpoints/infotok-flex` ...
+2026-11-14 21:07:20.344 | INFO     | cosmos_predict1.tokenizer.modules.layers3d:__init__:843 - Working with z of shape (1, 256, 128, 128) = 4194304 dimensions.
+2026-11-14 21:07:21.611 | INFO     | cosmos_predict1.tokenizer.networks.ours_discrete_video:__init__:64 - OURS based on FSQ-VAE, with {'name': 'OURS', 'attn_resolutions': [32], 'channels': 128, 'channels_mult': [2, 4, 4], 'dropout': 0.0, 'in_channels': 3, 'num_res_blocks': 2, 'out_channels': 3, 'resolution': 1024, 'patch_size': 2, 'patch_method': 'haar', 'num_groups': 1, 'legacy_mode': False, 'spatial_compression': 8, 'temporal_compression': 4, 'quantizer': 'FSQ', 'levels': [8, 8, 8, 5, 5, 5], 'encoder': 'FACTORIZED', 'decoder': 'FACTORIZED', 'rate_strategy': 'elbo', 'use_vit': True, 'freeze_original': False, 'vit_config': {'hidden_size': 256, 'intermediate_size': 512, 'num_encoder_layers': 8, 'num_decoder_layers': 8, 'num_attention_heads': 32, 'theta': 10000.0, 'rms_norm_eps': 1e-05, 'initializer_range': 0.02, 'max_num_video_frames': 49, 'switch_rotary_to_1d': 1.0, 'max_sequence_length': 96, 'max_sequence_length_1d': 8192, 'concat_decode_2d': False, 'special_attn': False, 'method': 'mse'}}.
+2026-11-14 21:07:21.613 | INFO     | cosmos_predict1.tokenizer.networks.ours_discrete_video:__init__:67 - model=OURS, num_parameters=112,619,766
+2026-11-14 21:07:21.613 | INFO     | cosmos_predict1.tokenizer.networks.ours_discrete_video:__init__:68 - z_channels=256, embedding_dim=6.
+2026-11-14 21:07:21.613 | INFO     | cosmos_predict1.tokenizer.networks.ours_discrete_video:__init__:87 - Not freezing original model parameters.
+2026-11-14 21:07:21.778 | INFO     | cosmos_predict1.tokenizer.networks.ours_discrete_video:init_adaptive_token:172 - Adaptive token initialized with shape torch.Size([128]) and value 0.0.
+2026-11-14 21:07:21.779 | INFO     | cosmos_predict1.tokenizer.networks.ours_discrete_video:__init__:122 - model=OURS, num_parameters=123,142,646
+2026-11-14 21:07:23.704 | INFO     | __main__:_run_eval:207 - Looking for files matching video_pattern=data/chp_vtok/mcl_jcv01.mp4 ...
+2026-11-14 21:07:23.704 | INFO     | __main__:_run_eval:209 - Found 1 videos from data/chp_vtok/mcl_jcv01.mp4.
+2026-11-14 21:07:23.704 | INFO     | __main__:_run_eval:257 - Reading video data/chp_vtok/mcl_jcv01.mp4 ...
+2026-11-14 21:07:25.761 | INFO     | __main__:_run_eval:261 - Invoking the autoencoder model ...
+Loading model from checkpoints/infotok-flex/infotok_mse.pt
+Tokenizer Type:  OURS4x8x8-mse-256p-88
+
+  0%|          | 0/1 [00:00<?, ?it/s]
+100%|██████████| 1/1 [00:01<00:00,  1.65s/it]
+100%|██████████| 1/1 [00:01<00:00,  1.65s/it]
+2026-11-14 21:07:27.420 | INFO     | __main__:_run_eval:267 - Outputing results/chp_vtok/upstream_cli_verified/mcl_jcv01.mp4 ...
+Current allocated ratios:  tensor([[1.]], device='cuda:0')

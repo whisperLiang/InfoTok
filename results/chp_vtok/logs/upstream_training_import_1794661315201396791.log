@@ -1,0 +1,15 @@
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "/home/whisperliang/InfoTok/cosmos_predict1/tokenizer/training/configs/chp_vtok.py", line 9, in <module>
+    from cosmos_predict1.utils.config import Config, JobConfig, EMAConfig
+  File "/home/whisperliang/InfoTok/cosmos_predict1/utils/config.py", line 23, in <module>
+    from megatron.core import ModelParallelConfig
+  File "/home/whisperliang/InfoTok/.venv/lib/python3.10/site-packages/megatron/core/__init__.py", line 1, in <module>
+    import megatron.core.tensor_parallel
+  File "/home/whisperliang/InfoTok/.venv/lib/python3.10/site-packages/megatron/core/tensor_parallel/__init__.py", line 3, in <module>
+    from .layers import (
+  File "/home/whisperliang/InfoTok/.venv/lib/python3.10/site-packages/megatron/core/tensor_parallel/layers.py", line 39, in <module>
+    from .random import get_cuda_rng_tracker, get_expert_parallel_rng_tracker_name
+  File "/home/whisperliang/InfoTok/.venv/lib/python3.10/site-packages/megatron/core/tensor_parallel/random.py", line 10, in <module>
+    from pkg_resources import packaging
+ModuleNotFoundError: No module named 'pkg_resources'

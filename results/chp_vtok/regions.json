@@ -1,0 +1,44 @@
+{
+  "mcl_jcv01": {
+    "static_background": [
+      950,
+      0,
+      1450,
+      250
+    ],
+    "textured_shelves": [
+      0,
+      100,
+      450,
+      650
+    ]
+  },
+  "uvg_beauty": {
+    "small_watermark_text": [
+      1600,
+      960,
+      1920,
+      1080
+    ],
+    "hair_texture": [
+      1120,
+      100,
+      1650,
+      780
+    ]
+  },
+  "basketball": {
+    "moving_player_region": [
+      0,
+      150,
+      600,
+      1000
+    ],
+    "small_wall_sign": [
+      900,
+      260,
+      1400,
+      500
+    ]
+  }
+}

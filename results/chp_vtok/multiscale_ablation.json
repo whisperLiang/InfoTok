@@ -1,0 +1,98 @@
+[
+  {
+    "video": "basketball",
+    "budget": 256,
+    "actual_bytes": 3216,
+    "psnr_delta": 5.382150706122905,
+    "lpips_delta": -0.08706544427310714,
+    "dists_delta": 0.025550260263330737
+  },
+  {
+    "video": "basketball",
+    "budget": 512,
+    "actual_bytes": 5776,
+    "psnr_delta": 4.658862562740548,
+    "lpips_delta": -0.06573502807056197,
+    "dists_delta": 0.043930302647983255
+  },
+  {
+    "video": "basketball",
+    "budget": 1024,
+    "actual_bytes": 10896,
+    "psnr_delta": 2.0739273183486038,
+    "lpips_delta": -0.06942130186978501,
+    "dists_delta": 0.056812370524686906
+  },
+  {
+    "video": "basketball",
+    "budget": 2048,
+    "actual_bytes": 21136,
+    "psnr_delta": 1.9432455511654112,
+    "lpips_delta": -0.06868931826423197,
+    "dists_delta": 0.06271088473937092
+  },
+  {
+    "video": "mcl_jcv01",
+    "budget": 256,
+    "actual_bytes": 3216,
+    "psnr_delta": -1.0597066318287567,
+    "lpips_delta": -0.019765026429120258,
+    "dists_delta": 0.021404771243824672
+  },
+  {
+    "video": "mcl_jcv01",
+    "budget": 512,
+    "actual_bytes": 5776,
+    "psnr_delta": -0.9816713894114777,
+    "lpips_delta": -0.001420185846440991,
+    "dists_delta": 0.0526450241313261
+  },
+  {
+    "video": "mcl_jcv01",
+    "budget": 1024,
+    "actual_bytes": 10896,
+    "psnr_delta": -0.890302433687097,
+    "lpips_delta": 0.012049685506259733,
+    "dists_delta": 0.06982263046152448
+  },
+  {
+    "video": "mcl_jcv01",
+    "budget": 2048,
+    "actual_bytes": 21136,
+    "psnr_delta": -0.17840340558220547,
+    "lpips_delta": 0.03405947194379921,
+    "dists_delta": 0.0889904008192175
+  },
+  {
+    "video": "uvg_beauty",
+    "budget": 256,
+    "actual_bytes": 3218,
+    "psnr_delta": 3.287892566007727,
+    "lpips_delta": -0.01897566458758182,
+    "dists_delta": -0.014715885414796626
+  },
+  {
+    "video": "uvg_beauty",
+    "budget": 512,
+    "actual_bytes": 5778,
+    "psnr_delta": 2.601833680096796,
+    "lpips_delta": -0.005036739742054652,
+    "dists_delta": 0.012939765172846118
+  },
+  {
+    "video": "uvg_beauty",
+    "budget": 1024,
+    "actual_bytes": 10898,
+    "psnr_delta": 0.12089863945456258,
+    "lpips_delta": 0.0088631019872778,
+    "dists_delta": 0.02532950218986063
+  },
+  {
+    "video": "uvg_beauty",
+    "budget": 2048,
+    "actual_bytes": 21138,
+    "psnr_delta": 0.9408739875344665,
+    "lpips_delta": 0.001204203156863981,
+    "dists_delta": 0.03953409545561848
+  }
+]

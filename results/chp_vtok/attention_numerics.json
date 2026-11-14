@@ -1,0 +1,186 @@
+{
+  "attention": [
+    {
+      "dtype": "torch.float32",
+      "class_name": "CausalAttnBlock",
+      "sdpa": {
+        "seconds": 0.7217734120058594,
+        "peak_allocated_bytes": 52520448,
+        "peak_reserved_bytes": 71303168,
+        "baseline_bytes": 2496512
+      },
+      "explicit": {
+        "seconds": 0.0016381510067731142,
+        "peak_allocated_bytes": 64561152,
+        "peak_reserved_bytes": 79691776,
+        "baseline_bytes": 47848448
+      },
+      "forward_max_abs": 2.384185791015625e-07,
+      "input_gradient_max_abs": 5.4569682106375694e-12,
+      "parameter_gradient_max_abs": 2.3283064365386963e-10
+    },
+    {
+      "dtype": "torch.float32",
+      "class_name": "CausalTemporalAttnBlock",
+      "sdpa": {
+        "seconds": 0.005113500999868847,
+        "peak_allocated_bytes": 81972224,
+        "peak_reserved_bytes": 115343360,
+        "baseline_bytes": 70135808
+      },
+      "explicit": {
+        "seconds": 0.07475545200577471,
+        "peak_allocated_bytes": 89914880,
+        "peak_reserved_bytes": 115343360,
+        "baseline_bytes": 79022592
+      },
+      "forward_max_abs": 4.76837158203125e-07,
+      "input_gradient_max_abs": 7.275957614183426e-12,
+      "parameter_gradient_max_abs": 5.820766091346741e-10
+    },
+    {
+      "dtype": "torch.float16",
+      "class_name": "CausalAttnBlock",
+      "sdpa": {
+        "seconds": 0.11580534500535578,
+        "peak_allocated_bytes": 84907520,
+        "peak_reserved_bytes": 115343360,
+        "baseline_bytes": 69421056
+      },
+      "explicit": {
+        "seconds": 0.0017078030068660155,
+        "peak_allocated_bytes": 86626304,
+        "peak_reserved_bytes": 115343360,
+        "baseline_bytes": 78269440
+      },
+      "forward_max_abs": 0.001953125,
+      "input_gradient_max_abs": 7.152557373046875e-07,
+      "parameter_gradient_max_abs": 9.870529174804688e-05
+    },
+    {
+      "dtype": "torch.float16",
+      "class_name": "CausalTemporalAttnBlock",
+      "sdpa": {
+        "seconds": 0.0013992449967190623,
+        "peak_allocated_bytes": 80562176,
+        "peak_reserved_bytes": 115343360,
+        "baseline_bytes": 69689344
+      },
+      "explicit": {
+        "seconds": 0.0015057920099934563,
+        "peak_allocated_bytes": 81074688,
+        "peak_reserved_bytes": 115343360,
+        "baseline_bytes": 75627008
+      },
+      "forward_max_abs": 0.001953125,
+      "input_gradient_max_abs": 2.384185791015625e-07,
+      "parameter_gradient_max_abs": 5.7220458984375e-06
+    },
+    {
+      "dtype": "torch.bfloat16",
+      "class_name": "CausalAttnBlock",
+      "sdpa": {
+        "seconds": 0.08390130600309931,
+        "peak_allocated_bytes": 85444096,
+        "peak_reserved_bytes": 115343360,
+        "baseline_bytes": 69957632
+      },
+      "explicit": {
+        "seconds": 0.0015994239947758615,
+        "peak_allocated_bytes": 87162880,
+        "peak_reserved_bytes": 115343360,
+        "baseline_bytes": 78806016
+      },
+      "forward_max_abs": 0.015625,
+      "input_gradient_max_abs": 2.384185791015625e-07,
+      "parameter_gradient_max_abs": 7.62939453125e-06
+    },
+    {
+      "dtype": "torch.bfloat16",
+      "class_name": "CausalTemporalAttnBlock",
+      "sdpa": {
+        "seconds": 0.0012778560048900545,
+        "peak_allocated_bytes": 81098752,
+        "peak_reserved_bytes": 115343360,
+        "baseline_bytes": 70225920
+      },
+      "explicit": {
+        "seconds": 0.004745222002384253,
+        "peak_allocated_bytes": 81611264,
+        "peak_reserved_bytes": 115343360,
+        "baseline_bytes": 76163584
+      },
+      "forward_max_abs": 0.015625,
+      "input_gradient_max_abs": 3.5762786865234375e-07,
+      "parameter_gradient_max_abs": 1.52587890625e-05
+    }
+  ],
+  "checkpoint": [
+    {
+      "dtype": "torch.float32",
+      "id_difference_fraction": 0.0,
+      "final_reconstruction_max_abs": 1.4901161193847656e-06,
+      "final_reconstruction_mean_abs": 9.585866678207822e-08,
+      "sdpa_encode": {
+        "seconds": 0.17388242200831883,
+        "peak_allocated_bytes": 1292214272,
+        "peak_reserved_bytes": 1686110208,
+        "baseline_bytes": 575578112
+      },
+      "sdpa_decode": {
+        "seconds": 0.24063829598890152,
+        "peak_allocated_bytes": 1428964864,
+        "peak_reserved_bytes": 2447376384,
+        "baseline_bytes": 575686144
+      },
+      "explicit_encode": {
+        "seconds": 0.1420732010010397,
+        "peak_allocated_bytes": 1302218240,
+        "peak_reserved_bytes": 2447376384,
+        "baseline_bytes": 584533504
+      },
+      "explicit_decode": {
+        "seconds": 0.2433312440116424,
+        "peak_allocated_bytes": 1437919744,
+        "peak_reserved_bytes": 2642411520,
+        "baseline_bytes": 584641024
+      },
+      "total_params": 123142646,
+      "encoder_params": 46645760,
+      "decoder_params": 65970672
+    },
+    {
+      "dtype": "torch.bfloat16",
+      "id_difference_fraction": 0.44296878576278687,
+      "final_reconstruction_max_abs": 0.322265625,
+      "final_reconstruction_mean_abs": 0.0084228515625,
+      "sdpa_encode": {
+        "seconds": 0.10856000900093932,
+        "peak_allocated_bytes": 762993152,
+        "peak_reserved_bytes": 1071644672,
+        "baseline_bytes": 341366784
+      },
+      "sdpa_decode": {
+        "seconds": 0.15802907399483956,
+        "peak_allocated_bytes": 840248320,
+        "peak_reserved_bytes": 1514143744,
+        "baseline_bytes": 341428736
+      },
+      "explicit_encode": {
+        "seconds": 0.06829761300468817,
+        "peak_allocated_bytes": 767478784,
+        "peak_reserved_bytes": 1514143744,
+        "baseline_bytes": 345852416
+      },
+      "explicit_decode": {
+        "seconds": 0.11400754799251445,
+        "peak_allocated_bytes": 844733440,
+        "peak_reserved_bytes": 1514143744,
+        "baseline_bytes": 345913856
+      },
+      "total_params": 123142646,
+      "encoder_params": 46645760,
+      "decoder_params": 65970672
+    }
+  ]
+}

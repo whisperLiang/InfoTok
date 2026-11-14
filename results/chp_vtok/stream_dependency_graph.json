@@ -1,0 +1,2417 @@
+[
+  {
+    "name": "encoder.conv_in.0",
+    "type": "CausalConv3d",
+    "kernel": [
+      1,
+      3,
+      3
+    ],
+    "dilation": [
+      1,
+      1,
+      1
+    ],
+    "stride": [
+      1,
+      1,
+      1
+    ],
+    "time_pad": 0,
+    "cache_policy": "next convolution output window start and stride phase"
+  },
+  {
+    "name": "encoder.conv_in.1",
+    "type": "CausalConv3d",
+    "kernel": [
+      3,
+      1,
+      1
+    ],
+    "dilation": [
+      1,
+      1,
+      1
+    ],
+    "stride": [
+      1,
+      1,
+      1
+    ],
+    "time_pad": 2,
+    "cache_policy": "next convolution output window start and stride phase"
+  },
+  {
+    "name": "encoder.down.0.block.0.conv1.0",
+    "type": "CausalConv3d",
+    "kernel": [
+      1,
+      3,
+      3
+    ],
+    "dilation": [
+      1,
+      1,
+      1
+    ],
+    "stride": [
+      1,
+      1,
+      1
+    ],
+    "time_pad": 0,
+    "cache_policy": "next convolution output window start and stride phase"
+  },
+  {
+    "name": "encoder.down.0.block.0.conv1.1",
+    "type": "CausalConv3d",
+    "kernel": [
+      3,
+      1,
+      1
+    ],
+    "dilation": [
+      1,
+      1,
+      1
+    ],
+    "stride": [
+      1,
+      1,
+      1
+    ],
+    "time_pad": 2,
+    "cache_policy": "next convolution output window start and stride phase"
+  },
+  {
+    "name": "encoder.down.0.block.0.conv2.0",
+    "type": "CausalConv3d",
+    "kernel": [
+      1,
+      3,
+      3
+    ],
+    "dilation": [
+      1,
+      1,
+      1
+    ],
+    "stride": [
+      1,
+      1,
+      1
+    ],
+    "time_pad": 0,
+    "cache_policy": "next convolution output window start and stride phase"
+  },
+  {
+    "name": "encoder.down.0.block.0.conv2.1",
+    "type": "CausalConv3d",
+    "kernel": [
+      3,
+      1,
+      1
+    ],
+    "dilation": [
+      1,
+      1,
+      1
+    ],
+    "stride": [
+      1,
+      1,
+      1
+    ],
+    "time_pad": 2,
+    "cache_policy": "next convolution output window start and stride phase"
+  },
+  {
+    "name": "encoder.down.0.block.0.nin_shortcut",
+    "type": "CausalConv3d",
+    "kernel": [
+      1,
+      1,
+      1
+    ],
+    "dilation": [
+      1,
+      1,
+      1
+    ],
+    "stride": [
+      1,
+      1,
+      1
+    ],
+    "time_pad": 0,
+    "cache_policy": "next convolution output window start and stride phase"
+  },
+  {
+    "name": "encoder.down.0.block.1.conv1.0",
+    "type": "CausalConv3d",
+    "kernel": [
+      1,
+      3,
+      3
+    ],
+    "dilation": [
+      1,
+      1,
+      1
+    ],
+    "stride": [
+      1,
+      1,
+      1
+    ],
+    "time_pad": 0,
+    "cache_policy": "next convolution output window start and stride phase"
+  },
+  {
+    "name": "encoder.down.0.block.1.conv1.1",
+    "type": "CausalConv3d",
+    "kernel": [
+      3,
+      1,
+      1
+    ],
+    "dilation": [
+      1,
+      1,
+      1
+    ],
+    "stride": [
+      1,
+      1,
+      1
+    ],
+    "time_pad": 2,
+    "cache_policy": "next convolution output window start and stride phase"
+  },
+  {
+    "name": "encoder.down.0.block.1.conv2.0",
+    "type": "CausalConv3d",
+    "kernel": [
+      1,
+      3,
+      3
+    ],
+    "dilation": [
+      1,
+      1,
+      1
+    ],
+    "stride": [
+      1,
+      1,
+      1
+    ],
+    "time_pad": 0,
+    "cache_policy": "next convolution output window start and stride phase"
+  },
+  {
+    "name": "encoder.down.0.block.1.conv2.1",
+    "type": "CausalConv3d",
+    "kernel": [
+      3,
+      1,
+      1
+    ],
+    "dilation": [
+      1,
+      1,
+      1
+    ],
+    "stride": [
+      1,
+      1,
+      1
+    ],
+    "time_pad": 2,
+    "cache_policy": "next convolution output window start and stride phase"
+  },
+  {
+    "name": "encoder.down.0.downsample.conv1",
+    "type": "CausalConv3d",
+    "kernel": [
+      1,
+      3,
+      3
+    ],
+    "dilation": [
+      1,
+      1,
+      1
+    ],
+    "stride": [
+      1,
+      2,
+      2
+    ],
+    "time_pad": 0,
+    "cache_policy": "next convolution output window start and stride phase"
+  },
+  {
+    "name": "encoder.down.0.downsample.conv2",
+    "type": "CausalConv3d",
+    "kernel": [
+      3,
+      1,
+      1
+    ],
+    "dilation": [
+      1,
+      1,
+      1
+    ],
+    "stride": [
+      2,
+      1,
+      1
+    ],
+    "time_pad": 1,
+    "cache_policy": "next convolution output window start and stride phase"
+  },
+  {
+    "name": "encoder.down.0.downsample.conv3",
+    "type": "CausalConv3d",
+    "kernel": [
+      1,
+      1,
+      1
+    ],
+    "dilation": [
+      1,
+      1,
+      1
+    ],
+    "stride": [
+      1,
+      1,
+      1
+    ],
+    "time_pad": 0,
+    "cache_policy": "next convolution output window start and stride phase"
+  },
+  {
+    "name": "encoder.down.1.block.0.conv1.0",
+    "type": "CausalConv3d",
+    "kernel": [
+      1,
+      3,
+      3
+    ],
+    "dilation": [
+      1,
+      1,
+      1
+    ],
+    "stride": [
+      1,
+      1,
+      1
+    ],
+    "time_pad": 0,
+    "cache_policy": "next convolution output window start and stride phase"
+  },
+  {
+    "name": "encoder.down.1.block.0.conv1.1",
+    "type": "CausalConv3d",
+    "kernel": [
+      3,
+      1,
+      1
+    ],
+    "dilation": [
+      1,
+      1,
+      1
+    ],
+    "stride": [
+      1,
+      1,
+      1
+    ],
+    "time_pad": 2,
+    "cache_policy": "next convolution output window start and stride phase"
+  },
+  {
+    "name": "encoder.down.1.block.0.conv2.0",
+    "type": "CausalConv3d",
+    "kernel": [
+      1,
+      3,
+      3
+    ],
+    "dilation": [
+      1,
+      1,
+      1
+    ],
+    "stride": [
+      1,
+      1,
+      1
+    ],
+    "time_pad": 0,
+    "cache_policy": "next convolution output window start and stride phase"
+  },
+  {
+    "name": "encoder.down.1.block.0.conv2.1",
+    "type": "CausalConv3d",
+    "kernel": [
+      3,
+      1,
+      1
+    ],
+    "dilation": [
+      1,
+      1,
+      1
+    ],
+    "stride": [
+      1,
+      1,
+      1
+    ],
+    "time_pad": 2,
+    "cache_policy": "next convolution output window start and stride phase"
+  },
+  {
+    "name": "encoder.down.1.block.0.nin_shortcut",
+    "type": "CausalConv3d",
+    "kernel": [
+      1,
+      1,
+      1
+    ],
+    "dilation": [
+      1,
+      1,
+      1
+    ],
+    "stride": [
+      1,
+      1,
+      1
+    ],
+    "time_pad": 0,
+    "cache_policy": "next convolution output window start and stride phase"
+  },
+  {
+    "name": "encoder.down.1.block.1.conv1.0",
+    "type": "CausalConv3d",
+    "kernel": [
+      1,
+      3,
+      3
+    ],
+    "dilation": [
+      1,
+      1,
+      1
+    ],
+    "stride": [
+      1,
+      1,
+      1
+    ],
+    "time_pad": 0,
+    "cache_policy": "next convolution output window start and stride phase"
+  },
+  {
+    "name": "encoder.down.1.block.1.conv1.1",
+    "type": "CausalConv3d",
+    "kernel": [
+      3,
+      1,
+      1
+    ],
+    "dilation": [
+      1,
+      1,
+      1
+    ],
+    "stride": [
+      1,
+      1,
+      1
+    ],
+    "time_pad": 2,
+    "cache_policy": "next convolution output window start and stride phase"
+  },
+  {
+    "name": "encoder.down.1.block.1.conv2.0",
+    "type": "CausalConv3d",
+    "kernel": [
+      1,
+      3,
+      3
+    ],
+    "dilation": [
+      1,
+      1,
+      1
+    ],
+    "stride": [
+      1,
+      1,
+      1
+    ],
+    "time_pad": 0,
+    "cache_policy": "next convolution output window start and stride phase"
+  },
+  {
+    "name": "encoder.down.1.block.1.conv2.1",
+    "type": "CausalConv3d",
+    "kernel": [
+      3,
+      1,
+      1
+    ],
+    "dilation": [
+      1,
+      1,
+      1
+    ],
+    "stride": [
+      1,
+      1,
+      1
+    ],
+    "time_pad": 2,
+    "cache_policy": "next convolution output window start and stride phase"
+  },
+  {
+    "name": "encoder.down.1.downsample.conv1",
+    "type": "CausalConv3d",
+    "kernel": [
+      1,
+      3,
+      3
+    ],
+    "dilation": [
+      1,
+      1,
+      1
+    ],
+    "stride": [
+      1,
+      2,
+      2
+    ],
+    "time_pad": 0,
+    "cache_policy": "next convolution output window start and stride phase"
+  },
+  {
+    "name": "encoder.down.1.downsample.conv3",
+    "type": "CausalConv3d",
+    "kernel": [
+      1,
+      1,
+      1
+    ],
+    "dilation": [
+      1,
+      1,
+      1
+    ],
+    "stride": [
+      1,
+      1,
+      1
+    ],
+    "time_pad": 0,
+    "cache_policy": "next convolution output window start and stride phase"
+  },
+  {
+    "name": "encoder.down.2.block.0.conv1.0",
+    "type": "CausalConv3d",
+    "kernel": [
+      1,
+      3,
+      3
+    ],
+    "dilation": [
+      1,
+      1,
+      1
+    ],
+    "stride": [
+      1,
+      1,
+      1
+    ],
+    "time_pad": 0,
+    "cache_policy": "next convolution output window start and stride phase"
+  },
+  {
+    "name": "encoder.down.2.block.0.conv1.1",
+    "type": "CausalConv3d",
+    "kernel": [
+      3,
+      1,
+      1
+    ],
+    "dilation": [
+      1,
+      1,
+      1
+    ],
+    "stride": [
+      1,
+      1,
+      1
+    ],
+    "time_pad": 2,
+    "cache_policy": "next convolution output window start and stride phase"
+  },
+  {
+    "name": "encoder.down.2.block.0.conv2.0",
+    "type": "CausalConv3d",
+    "kernel": [
+      1,
+      3,
+      3
+    ],
+    "dilation": [
+      1,
+      1,
+      1
+    ],
+    "stride": [
+      1,
+      1,
+      1
+    ],
+    "time_pad": 0,
+    "cache_policy": "next convolution output window start and stride phase"
+  },
+  {
+    "name": "encoder.down.2.block.0.conv2.1",
+    "type": "CausalConv3d",
+    "kernel": [
+      3,
+      1,
+      1
+    ],
+    "dilation": [
+      1,
+      1,
+      1
+    ],
+    "stride": [
+      1,
+      1,
+      1
+    ],
+    "time_pad": 2,
+    "cache_policy": "next convolution output window start and stride phase"
+  },
+  {
+    "name": "encoder.down.2.block.1.conv1.0",
+    "type": "CausalConv3d",
+    "kernel": [
+      1,
+      3,
+      3
+    ],
+    "dilation": [
+      1,
+      1,
+      1
+    ],
+    "stride": [
+      1,
+      1,
+      1
+    ],
+    "time_pad": 0,
+    "cache_policy": "next convolution output window start and stride phase"
+  },
+  {
+    "name": "encoder.down.2.block.1.conv1.1",
+    "type": "CausalConv3d",
+    "kernel": [
+      3,
+      1,
+      1
+    ],
+    "dilation": [
+      1,
+      1,
+      1
+    ],
+    "stride": [
+      1,
+      1,
+      1
+    ],
+    "time_pad": 2,
+    "cache_policy": "next convolution output window start and stride phase"
+  },
+  {
+    "name": "encoder.down.2.block.1.conv2.0",
+    "type": "CausalConv3d",
+    "kernel": [
+      1,
+      3,
+      3
+    ],
+    "dilation": [
+      1,
+      1,
+      1
+    ],
+    "stride": [
+      1,
+      1,
+      1
+    ],
+    "time_pad": 0,
+    "cache_policy": "next convolution output window start and stride phase"
+  },
+  {
+    "name": "encoder.down.2.block.1.conv2.1",
+    "type": "CausalConv3d",
+    "kernel": [
+      3,
+      1,
+      1
+    ],
+    "dilation": [
+      1,
+      1,
+      1
+    ],
+    "stride": [
+      1,
+      1,
+      1
+    ],
+    "time_pad": 2,
+    "cache_policy": "next convolution output window start and stride phase"
+  },
+  {
+    "name": "encoder.mid.block_1.conv1.0",
+    "type": "CausalConv3d",
+    "kernel": [
+      1,
+      3,
+      3
+    ],
+    "dilation": [
+      1,
+      1,
+      1
+    ],
+    "stride": [
+      1,
+      1,
+      1
+    ],
+    "time_pad": 0,
+    "cache_policy": "next convolution output window start and stride phase"
+  },
+  {
+    "name": "encoder.mid.block_1.conv1.1",
+    "type": "CausalConv3d",
+    "kernel": [
+      3,
+      1,
+      1
+    ],
+    "dilation": [
+      1,
+      1,
+      1
+    ],
+    "stride": [
+      1,
+      1,
+      1
+    ],
+    "time_pad": 2,
+    "cache_policy": "next convolution output window start and stride phase"
+  },
+  {
+    "name": "encoder.mid.block_1.conv2.0",
+    "type": "CausalConv3d",
+    "kernel": [
+      1,
+      3,
+      3
+    ],
+    "dilation": [
+      1,
+      1,
+      1
+    ],
+    "stride": [
+      1,
+      1,
+      1
+    ],
+    "time_pad": 0,
+    "cache_policy": "next convolution output window start and stride phase"
+  },
+  {
+    "name": "encoder.mid.block_1.conv2.1",
+    "type": "CausalConv3d",
+    "kernel": [
+      3,
+      1,
+      1
+    ],
+    "dilation": [
+      1,
+      1,
+      1
+    ],
+    "stride": [
+      1,
+      1,
+      1
+    ],
+    "time_pad": 2,
+    "cache_policy": "next convolution output window start and stride phase"
+  },
+  {
+    "name": "encoder.mid.attn_1.0.q",
+    "type": "CausalConv3d",
+    "kernel": [
+      1,
+      1,
+      1
+    ],
+    "dilation": [
+      1,
+      1,
+      1
+    ],
+    "stride": [
+      1,
+      1,
+      1
+    ],
+    "time_pad": 0,
+    "cache_policy": "next convolution output window start and stride phase"
+  },
+  {
+    "name": "encoder.mid.attn_1.0.k",
+    "type": "CausalConv3d",
+    "kernel": [
+      1,
+      1,
+      1
+    ],
+    "dilation": [
+      1,
+      1,
+      1
+    ],
+    "stride": [
+      1,
+      1,
+      1
+    ],
+    "time_pad": 0,
+    "cache_policy": "next convolution output window start and stride phase"
+  },
+  {
+    "name": "encoder.mid.attn_1.0.v",
+    "type": "CausalConv3d",
+    "kernel": [
+      1,
+      1,
+      1
+    ],
+    "dilation": [
+      1,
+      1,
+      1
+    ],
+    "stride": [
+      1,
+      1,
+      1
+    ],
+    "time_pad": 0,
+    "cache_policy": "next convolution output window start and stride phase"
+  },
+  {
+    "name": "encoder.mid.attn_1.0.proj_out",
+    "type": "CausalConv3d",
+    "kernel": [
+      1,
+      1,
+      1
+    ],
+    "dilation": [
+      1,
+      1,
+      1
+    ],
+    "stride": [
+      1,
+      1,
+      1
+    ],
+    "time_pad": 0,
+    "cache_policy": "next convolution output window start and stride phase"
+  },
+  {
+    "name": "encoder.mid.attn_1.1.q",
+    "type": "CausalConv3d",
+    "kernel": [
+      1,
+      1,
+      1
+    ],
+    "dilation": [
+      1,
+      1,
+      1
+    ],
+    "stride": [
+      1,
+      1,
+      1
+    ],
+    "time_pad": 0,
+    "cache_policy": "next convolution output window start and stride phase"
+  },
+  {
+    "name": "encoder.mid.attn_1.1.k",
+    "type": "CausalConv3d",
+    "kernel": [
+      1,
+      1,
+      1
+    ],
+    "dilation": [
+      1,
+      1,
+      1
+    ],
+    "stride": [
+      1,
+      1,
+      1
+    ],
+    "time_pad": 0,
+    "cache_policy": "next convolution output window start and stride phase"
+  },
+  {
+    "name": "encoder.mid.attn_1.1.v",
+    "type": "CausalConv3d",
+    "kernel": [
+      1,
+      1,
+      1
+    ],
+    "dilation": [
+      1,
+      1,
+      1
+    ],
+    "stride": [
+      1,
+      1,
+      1
+    ],
+    "time_pad": 0,
+    "cache_policy": "next convolution output window start and stride phase"
+  },
+  {
+    "name": "encoder.mid.attn_1.1.proj_out",
+    "type": "CausalConv3d",
+    "kernel": [
+      1,
+      1,
+      1
+    ],
+    "dilation": [
+      1,
+      1,
+      1
+    ],
+    "stride": [
+      1,
+      1,
+      1
+    ],
+    "time_pad": 0,
+    "cache_policy": "next convolution output window start and stride phase"
+  },
+  {
+    "name": "encoder.mid.block_2.conv1.0",
+    "type": "CausalConv3d",
+    "kernel": [
+      1,
+      3,
+      3
+    ],
+    "dilation": [
+      1,
+      1,
+      1
+    ],
+    "stride": [
+      1,
+      1,
+      1
+    ],
+    "time_pad": 0,
+    "cache_policy": "next convolution output window start and stride phase"
+  },
+  {
+    "name": "encoder.mid.block_2.conv1.1",
+    "type": "CausalConv3d",
+    "kernel": [
+      3,
+      1,
+      1
+    ],
+    "dilation": [
+      1,
+      1,
+      1
+    ],
+    "stride": [
+      1,
+      1,
+      1
+    ],
+    "time_pad": 2,
+    "cache_policy": "next convolution output window start and stride phase"
+  },
+  {
+    "name": "encoder.mid.block_2.conv2.0",
+    "type": "CausalConv3d",
+    "kernel": [
+      1,
+      3,
+      3
+    ],
+    "dilation": [
+      1,
+      1,
+      1
+    ],
+    "stride": [
+      1,
+      1,
+      1
+    ],
+    "time_pad": 0,
+    "cache_policy": "next convolution output window start and stride phase"
+  },
+  {
+    "name": "encoder.mid.block_2.conv2.1",
+    "type": "CausalConv3d",
+    "kernel": [
+      3,
+      1,
+      1
+    ],
+    "dilation": [
+      1,
+      1,
+      1
+    ],
+    "stride": [
+      1,
+      1,
+      1
+    ],
+    "time_pad": 2,
+    "cache_policy": "next convolution output window start and stride phase"
+  },
+  {
+    "name": "encoder.conv_out.0",
+    "type": "CausalConv3d",
+    "kernel": [
+      1,
+      3,
+      3
+    ],
+    "dilation": [
+      1,
+      1,
+      1
+    ],
+    "stride": [
+      1,
+      1,
+      1
+    ],
+    "time_pad": 0,
+    "cache_policy": "next convolution output window start and stride phase"
+  },
+  {
+    "name": "encoder.conv_out.1",
+    "type": "CausalConv3d",
+    "kernel": [
+      3,
+      1,
+      1
+    ],
+    "dilation": [
+      1,
+      1,
+      1
+    ],
+    "stride": [
+      1,
+      1,
+      1
+    ],
+    "time_pad": 2,
+    "cache_policy": "next convolution output window start and stride phase"
+  },
+  {
+    "name": "decoder.conv_in.0",
+    "type": "CausalConv3d",
+    "kernel": [
+      1,
+      3,
+      3
+    ],
+    "dilation": [
+      1,
+      1,
+      1
+    ],
+    "stride": [
+      1,
+      1,
+      1
+    ],
+    "time_pad": 0,
+    "cache_policy": "next convolution output window start and stride phase"
+  },
+  {
+    "name": "decoder.conv_in.1",
+    "type": "CausalConv3d",
+    "kernel": [
+      3,
+      1,
+      1
+    ],
+    "dilation": [
+      1,
+      1,
+      1
+    ],
+    "stride": [
+      1,
+      1,
+      1
+    ],
+    "time_pad": 2,
+    "cache_policy": "next convolution output window start and stride phase"
+  },
+  {
+    "name": "decoder.mid.block_1.conv1.0",
+    "type": "CausalConv3d",
+    "kernel": [
+      1,
+      3,
+      3
+    ],
+    "dilation": [
+      1,
+      1,
+      1
+    ],
+    "stride": [
+      1,
+      1,
+      1
+    ],
+    "time_pad": 0,
+    "cache_policy": "next convolution output window start and stride phase"
+  },
+  {
+    "name": "decoder.mid.block_1.conv1.1",
+    "type": "CausalConv3d",
+    "kernel": [
+      3,
+      1,
+      1
+    ],
+    "dilation": [
+      1,
+      1,
+      1
+    ],
+    "stride": [
+      1,
+      1,
+      1
+    ],
+    "time_pad": 2,
+    "cache_policy": "next convolution output window start and stride phase"
+  },
+  {
+    "name": "decoder.mid.block_1.conv2.0",
+    "type": "CausalConv3d",
+    "kernel": [
+      1,
+      3,
+      3
+    ],
+    "dilation": [
+      1,
+      1,
+      1
+    ],
+    "stride": [
+      1,
+      1,
+      1
+    ],
+    "time_pad": 0,
+    "cache_policy": "next convolution output window start and stride phase"
+  },
+  {
+    "name": "decoder.mid.block_1.conv2.1",
+    "type": "CausalConv3d",
+    "kernel": [
+      3,
+      1,
+      1
+    ],
+    "dilation": [
+      1,
+      1,
+      1
+    ],
+    "stride": [
+      1,
+      1,
+      1
+    ],
+    "time_pad": 2,
+    "cache_policy": "next convolution output window start and stride phase"
+  },
+  {
+    "name": "decoder.mid.attn_1.0.q",
+    "type": "CausalConv3d",
+    "kernel": [
+      1,
+      1,
+      1
+    ],
+    "dilation": [
+      1,
+      1,
+      1
+    ],
+    "stride": [
+      1,
+      1,
+      1
+    ],
+    "time_pad": 0,
+    "cache_policy": "next convolution output window start and stride phase"
+  },
+  {
+    "name": "decoder.mid.attn_1.0.k",
+    "type": "CausalConv3d",
+    "kernel": [
+      1,
+      1,
+      1
+    ],
+    "dilation": [
+      1,
+      1,
+      1
+    ],
+    "stride": [
+      1,
+      1,
+      1
+    ],
+    "time_pad": 0,
+    "cache_policy": "next convolution output window start and stride phase"
+  },
+  {
+    "name": "decoder.mid.attn_1.0.v",
+    "type": "CausalConv3d",
+    "kernel": [
+      1,
+      1,
+      1
+    ],
+    "dilation": [
+      1,
+      1,
+      1
+    ],
+    "stride": [
+      1,
+      1,
+      1
+    ],
+    "time_pad": 0,
+    "cache_policy": "next convolution output window start and stride phase"
+  },
+  {
+    "name": "decoder.mid.attn_1.0.proj_out",
+    "type": "CausalConv3d",
+    "kernel": [
+      1,
+      1,
+      1
+    ],
+    "dilation": [
+      1,
+      1,
+      1
+    ],
+    "stride": [
+      1,
+      1,
+      1
+    ],
+    "time_pad": 0,
+    "cache_policy": "next convolution output window start and stride phase"
+  },
+  {
+    "name": "decoder.mid.attn_1.1.q",
+    "type": "CausalConv3d",
+    "kernel": [
+      1,
+      1,
+      1
+    ],
+    "dilation": [
+      1,
+      1,
+      1
+    ],
+    "stride": [
+      1,
+      1,
+      1
+    ],
+    "time_pad": 0,
+    "cache_policy": "next convolution output window start and stride phase"
+  },
+  {
+    "name": "decoder.mid.attn_1.1.k",
+    "type": "CausalConv3d",
+    "kernel": [
+      1,
+      1,
+      1
+    ],
+    "dilation": [
+      1,
+      1,
+      1
+    ],
+    "stride": [
+      1,
+      1,
+      1
+    ],
+    "time_pad": 0,
+    "cache_policy": "next convolution output window start and stride phase"
+  },
+  {
+    "name": "decoder.mid.attn_1.1.v",
+    "type": "CausalConv3d",
+    "kernel": [
+      1,
+      1,
+      1
+    ],
+    "dilation": [
+      1,
+      1,
+      1
+    ],
+    "stride": [
+      1,
+      1,
+      1
+    ],
+    "time_pad": 0,
+    "cache_policy": "next convolution output window start and stride phase"
+  },
+  {
+    "name": "decoder.mid.attn_1.1.proj_out",
+    "type": "CausalConv3d",
+    "kernel": [
+      1,
+      1,
+      1
+    ],
+    "dilation": [
+      1,
+      1,
+      1
+    ],
+    "stride": [
+      1,
+      1,
+      1
+    ],
+    "time_pad": 0,
+    "cache_policy": "next convolution output window start and stride phase"
+  },
+  {
+    "name": "decoder.mid.block_2.conv1.0",
+    "type": "CausalConv3d",
+    "kernel": [
+      1,
+      3,
+      3
+    ],
+    "dilation": [
+      1,
+      1,
+      1
+    ],
+    "stride": [
+      1,
+      1,
+      1
+    ],
+    "time_pad": 0,
+    "cache_policy": "next convolution output window start and stride phase"
+  },
+  {
+    "name": "decoder.mid.block_2.conv1.1",
+    "type": "CausalConv3d",
+    "kernel": [
+      3,
+      1,
+      1
+    ],
+    "dilation": [
+      1,
+      1,
+      1
+    ],
+    "stride": [
+      1,
+      1,
+      1
+    ],
+    "time_pad": 2,
+    "cache_policy": "next convolution output window start and stride phase"
+  },
+  {
+    "name": "decoder.mid.block_2.conv2.0",
+    "type": "CausalConv3d",
+    "kernel": [
+      1,
+      3,
+      3
+    ],
+    "dilation": [
+      1,
+      1,
+      1
+    ],
+    "stride": [
+      1,
+      1,
+      1
+    ],
+    "time_pad": 0,
+    "cache_policy": "next convolution output window start and stride phase"
+  },
+  {
+    "name": "decoder.mid.block_2.conv2.1",
+    "type": "CausalConv3d",
+    "kernel": [
+      3,
+      1,
+      1
+    ],
+    "dilation": [
+      1,
+      1,
+      1
+    ],
+    "stride": [
+      1,
+      1,
+      1
+    ],
+    "time_pad": 2,
+    "cache_policy": "next convolution output window start and stride phase"
+  },
+  {
+    "name": "decoder.up.0.block.0.conv1.0",
+    "type": "CausalConv3d",
+    "kernel": [
+      1,
+      3,
+      3
+    ],
+    "dilation": [
+      1,
+      1,
+      1
+    ],
+    "stride": [
+      1,
+      1,
+      1
+    ],
+    "time_pad": 0,
+    "cache_policy": "next convolution output window start and stride phase"
+  },
+  {
+    "name": "decoder.up.0.block.0.conv1.1",
+    "type": "CausalConv3d",
+    "kernel": [
+      3,
+      1,
+      1
+    ],
+    "dilation": [
+      1,
+      1,
+      1
+    ],
+    "stride": [
+      1,
+      1,
+      1
+    ],
+    "time_pad": 2,
+    "cache_policy": "next convolution output window start and stride phase"
+  },
+  {
+    "name": "decoder.up.0.block.0.conv2.0",
+    "type": "CausalConv3d",
+    "kernel": [
+      1,
+      3,
+      3
+    ],
+    "dilation": [
+      1,
+      1,
+      1
+    ],
+    "stride": [
+      1,
+      1,
+      1
+    ],
+    "time_pad": 0,
+    "cache_policy": "next convolution output window start and stride phase"
+  },
+  {
+    "name": "decoder.up.0.block.0.conv2.1",
+    "type": "CausalConv3d",
+    "kernel": [
+      3,
+      1,
+      1
+    ],
+    "dilation": [
+      1,
+      1,
+      1
+    ],
+    "stride": [
+      1,
+      1,
+      1
+    ],
+    "time_pad": 2,
+    "cache_policy": "next convolution output window start and stride phase"
+  },
+  {
+    "name": "decoder.up.0.block.0.nin_shortcut",
+    "type": "CausalConv3d",
+    "kernel": [
+      1,
+      1,
+      1
+    ],
+    "dilation": [
+      1,
+      1,
+      1
+    ],
+    "stride": [
+      1,
+      1,
+      1
+    ],
+    "time_pad": 0,
+    "cache_policy": "next convolution output window start and stride phase"
+  },
+  {
+    "name": "decoder.up.0.block.1.conv1.0",
+    "type": "CausalConv3d",
+    "kernel": [
+      1,
+      3,
+      3
+    ],
+    "dilation": [
+      1,
+      1,
+      1
+    ],
+    "stride": [
+      1,
+      1,
+      1
+    ],
+    "time_pad": 0,
+    "cache_policy": "next convolution output window start and stride phase"
+  },
+  {
+    "name": "decoder.up.0.block.1.conv1.1",
+    "type": "CausalConv3d",
+    "kernel": [
+      3,
+      1,
+      1
+    ],
+    "dilation": [
+      1,
+      1,
+      1
+    ],
+    "stride": [
+      1,
+      1,
+      1
+    ],
+    "time_pad": 2,
+    "cache_policy": "next convolution output window start and stride phase"
+  },
+  {
+    "name": "decoder.up.0.block.1.conv2.0",
+    "type": "CausalConv3d",
+    "kernel": [
+      1,
+      3,
+      3
+    ],
+    "dilation": [
+      1,
+      1,
+      1
+    ],
+    "stride": [
+      1,
+      1,
+      1
+    ],
+    "time_pad": 0,
+    "cache_policy": "next convolution output window start and stride phase"
+  },
+  {
+    "name": "decoder.up.0.block.1.conv2.1",
+    "type": "CausalConv3d",
+    "kernel": [
+      3,
+      1,
+      1
+    ],
+    "dilation": [
+      1,
+      1,
+      1
+    ],
+    "stride": [
+      1,
+      1,
+      1
+    ],
+    "time_pad": 2,
+    "cache_policy": "next convolution output window start and stride phase"
+  },
+  {
+    "name": "decoder.up.0.block.2.conv1.0",
+    "type": "CausalConv3d",
+    "kernel": [
+      1,
+      3,
+      3
+    ],
+    "dilation": [
+      1,
+      1,
+      1
+    ],
+    "stride": [
+      1,
+      1,
+      1
+    ],
+    "time_pad": 0,
+    "cache_policy": "next convolution output window start and stride phase"
+  },
+  {
+    "name": "decoder.up.0.block.2.conv1.1",
+    "type": "CausalConv3d",
+    "kernel": [
+      3,
+      1,
+      1
+    ],
+    "dilation": [
+      1,
+      1,
+      1
+    ],
+    "stride": [
+      1,
+      1,
+      1
+    ],
+    "time_pad": 2,
+    "cache_policy": "next convolution output window start and stride phase"
+  },
+  {
+    "name": "decoder.up.0.block.2.conv2.0",
+    "type": "CausalConv3d",
+    "kernel": [
+      1,
+      3,
+      3
+    ],
+    "dilation": [
+      1,
+      1,
+      1
+    ],
+    "stride": [
+      1,
+      1,
+      1
+    ],
+    "time_pad": 0,
+    "cache_policy": "next convolution output window start and stride phase"
+  },
+  {
+    "name": "decoder.up.0.block.2.conv2.1",
+    "type": "CausalConv3d",
+    "kernel": [
+      3,
+      1,
+      1
+    ],
+    "dilation": [
+      1,
+      1,
+      1
+    ],
+    "stride": [
+      1,
+      1,
+      1
+    ],
+    "time_pad": 2,
+    "cache_policy": "next convolution output window start and stride phase"
+  },
+  {
+    "name": "decoder.up.1.block.0.conv1.0",
+    "type": "CausalConv3d",
+    "kernel": [
+      1,
+      3,
+      3
+    ],
+    "dilation": [
+      1,
+      1,
+      1
+    ],
+    "stride": [
+      1,
+      1,
+      1
+    ],
+    "time_pad": 0,
+    "cache_policy": "next convolution output window start and stride phase"
+  },
+  {
+    "name": "decoder.up.1.block.0.conv1.1",
+    "type": "CausalConv3d",
+    "kernel": [
+      3,
+      1,
+      1
+    ],
+    "dilation": [
+      1,
+      1,
+      1
+    ],
+    "stride": [
+      1,
+      1,
+      1
+    ],
+    "time_pad": 2,
+    "cache_policy": "next convolution output window start and stride phase"
+  },
+  {
+    "name": "decoder.up.1.block.0.conv2.0",
+    "type": "CausalConv3d",
+    "kernel": [
+      1,
+      3,
+      3
+    ],
+    "dilation": [
+      1,
+      1,
+      1
+    ],
+    "stride": [
+      1,
+      1,
+      1
+    ],
+    "time_pad": 0,
+    "cache_policy": "next convolution output window start and stride phase"
+  },
+  {
+    "name": "decoder.up.1.block.0.conv2.1",
+    "type": "CausalConv3d",
+    "kernel": [
+      3,
+      1,
+      1
+    ],
+    "dilation": [
+      1,
+      1,
+      1
+    ],
+    "stride": [
+      1,
+      1,
+      1
+    ],
+    "time_pad": 2,
+    "cache_policy": "next convolution output window start and stride phase"
+  },
+  {
+    "name": "decoder.up.1.block.1.conv1.0",
+    "type": "CausalConv3d",
+    "kernel": [
+      1,
+      3,
+      3
+    ],
+    "dilation": [
+      1,
+      1,
+      1
+    ],
+    "stride": [
+      1,
+      1,
+      1
+    ],
+    "time_pad": 0,
+    "cache_policy": "next convolution output window start and stride phase"
+  },
+  {
+    "name": "decoder.up.1.block.1.conv1.1",
+    "type": "CausalConv3d",
+    "kernel": [
+      3,
+      1,
+      1
+    ],
+    "dilation": [
+      1,
+      1,
+      1
+    ],
+    "stride": [
+      1,
+      1,
+      1
+    ],
+    "time_pad": 2,
+    "cache_policy": "next convolution output window start and stride phase"
+  },
+  {
+    "name": "decoder.up.1.block.1.conv2.0",
+    "type": "CausalConv3d",
+    "kernel": [
+      1,
+      3,
+      3
+    ],
+    "dilation": [
+      1,
+      1,
+      1
+    ],
+    "stride": [
+      1,
+      1,
+      1
+    ],
+    "time_pad": 0,
+    "cache_policy": "next convolution output window start and stride phase"
+  },
+  {
+    "name": "decoder.up.1.block.1.conv2.1",
+    "type": "CausalConv3d",
+    "kernel": [
+      3,
+      1,
+      1
+    ],
+    "dilation": [
+      1,
+      1,
+      1
+    ],
+    "stride": [
+      1,
+      1,
+      1
+    ],
+    "time_pad": 2,
+    "cache_policy": "next convolution output window start and stride phase"
+  },
+  {
+    "name": "decoder.up.1.block.2.conv1.0",
+    "type": "CausalConv3d",
+    "kernel": [
+      1,
+      3,
+      3
+    ],
+    "dilation": [
+      1,
+      1,
+      1
+    ],
+    "stride": [
+      1,
+      1,
+      1
+    ],
+    "time_pad": 0,
+    "cache_policy": "next convolution output window start and stride phase"
+  },
+  {
+    "name": "decoder.up.1.block.2.conv1.1",
+    "type": "CausalConv3d",
+    "kernel": [
+      3,
+      1,
+      1
+    ],
+    "dilation": [
+      1,
+      1,
+      1
+    ],
+    "stride": [
+      1,
+      1,
+      1
+    ],
+    "time_pad": 2,
+    "cache_policy": "next convolution output window start and stride phase"
+  },
+  {
+    "name": "decoder.up.1.block.2.conv2.0",
+    "type": "CausalConv3d",
+    "kernel": [
+      1,
+      3,
+      3
+    ],
+    "dilation": [
+      1,
+      1,
+      1
+    ],
+    "stride": [
+      1,
+      1,
+      1
+    ],
+    "time_pad": 0,
+    "cache_policy": "next convolution output window start and stride phase"
+  },
+  {
+    "name": "decoder.up.1.block.2.conv2.1",
+    "type": "CausalConv3d",
+    "kernel": [
+      3,
+      1,
+      1
+    ],
+    "dilation": [
+      1,
+      1,
+      1
+    ],
+    "stride": [
+      1,
+      1,
+      1
+    ],
+    "time_pad": 2,
+    "cache_policy": "next convolution output window start and stride phase"
+  },
+  {
+    "name": "decoder.up.1.upsample.conv1",
+    "type": "CausalConv3d",
+    "kernel": [
+      3,
+      1,
+      1
+    ],
+    "dilation": [
+      1,
+      1,
+      1
+    ],
+    "stride": [
+      1,
+      1,
+      1
+    ],
+    "time_pad": 2,
+    "cache_policy": "next convolution output window start and stride phase"
+  },
+  {
+    "name": "decoder.up.1.upsample.conv2",
+    "type": "CausalConv3d",
+    "kernel": [
+      1,
+      3,
+      3
+    ],
+    "dilation": [
+      1,
+      1,
+      1
+    ],
+    "stride": [
+      1,
+      1,
+      1
+    ],
+    "time_pad": 0,
+    "cache_policy": "next convolution output window start and stride phase"
+  },
+  {
+    "name": "decoder.up.1.upsample.conv3",
+    "type": "CausalConv3d",
+    "kernel": [
+      1,
+      1,
+      1
+    ],
+    "dilation": [
+      1,
+      1,
+      1
+    ],
+    "stride": [
+      1,
+      1,
+      1
+    ],
+    "time_pad": 0,
+    "cache_policy": "next convolution output window start and stride phase"
+  },
+  {
+    "name": "decoder.up.2.block.0.conv1.0",
+    "type": "CausalConv3d",
+    "kernel": [
+      1,
+      3,
+      3
+    ],
+    "dilation": [
+      1,
+      1,
+      1
+    ],
+    "stride": [
+      1,
+      1,
+      1
+    ],
+    "time_pad": 0,
+    "cache_policy": "next convolution output window start and stride phase"
+  },
+  {
+    "name": "decoder.up.2.block.0.conv1.1",
+    "type": "CausalConv3d",
+    "kernel": [
+      3,
+      1,
+      1
+    ],
+    "dilation": [
+      1,
+      1,
+      1
+    ],
+    "stride": [
+      1,
+      1,
+      1
+    ],
+    "time_pad": 2,
+    "cache_policy": "next convolution output window start and stride phase"
+  },
+  {
+    "name": "decoder.up.2.block.0.conv2.0",
+    "type": "CausalConv3d",
+    "kernel": [
+      1,
+      3,
+      3
+    ],
+    "dilation": [
+      1,
+      1,
+      1
+    ],
+    "stride": [
+      1,
+      1,
+      1
+    ],
+    "time_pad": 0,
+    "cache_policy": "next convolution output window start and stride phase"
+  },
+  {
+    "name": "decoder.up.2.block.0.conv2.1",
+    "type": "CausalConv3d",
+    "kernel": [
+      3,
+      1,
+      1
+    ],
+    "dilation": [
+      1,
+      1,
+      1
+    ],
+    "stride": [
+      1,
+      1,
+      1
+    ],
+    "time_pad": 2,
+    "cache_policy": "next convolution output window start and stride phase"
+  },
+  {
+    "name": "decoder.up.2.block.1.conv1.0",
+    "type": "CausalConv3d",
+    "kernel": [
+      1,
+      3,
+      3
+    ],
+    "dilation": [
+      1,
+      1,
+      1
+    ],
+    "stride": [
+      1,
+      1,
+      1
+    ],
+    "time_pad": 0,
+    "cache_policy": "next convolution output window start and stride phase"
+  },
+  {
+    "name": "decoder.up.2.block.1.conv1.1",
+    "type": "CausalConv3d",
+    "kernel": [
+      3,
+      1,
+      1
+    ],
+    "dilation": [
+      1,
+      1,
+      1
+    ],
+    "stride": [
+      1,
+      1,
+      1
+    ],
+    "time_pad": 2,
+    "cache_policy": "next convolution output window start and stride phase"
+  },
+  {
+    "name": "decoder.up.2.block.1.conv2.0",
+    "type": "CausalConv3d",
+    "kernel": [
+      1,
+      3,
+      3
+    ],
+    "dilation": [
+      1,
+      1,
+      1
+    ],
+    "stride": [
+      1,
+      1,
+      1
+    ],
+    "time_pad": 0,
+    "cache_policy": "next convolution output window start and stride phase"
+  },
+  {
+    "name": "decoder.up.2.block.1.conv2.1",
+    "type": "CausalConv3d",
+    "kernel": [
+      3,
+      1,
+      1
+    ],
+    "dilation": [
+      1,
+      1,
+      1
+    ],
+    "stride": [
+      1,
+      1,
+      1
+    ],
+    "time_pad": 2,
+    "cache_policy": "next convolution output window start and stride phase"
+  },
+  {
+    "name": "decoder.up.2.block.2.conv1.0",
+    "type": "CausalConv3d",
+    "kernel": [
+      1,
+      3,
+      3
+    ],
+    "dilation": [
+      1,
+      1,
+      1
+    ],
+    "stride": [
+      1,
+      1,
+      1
+    ],
+    "time_pad": 0,
+    "cache_policy": "next convolution output window start and stride phase"
+  },
+  {
+    "name": "decoder.up.2.block.2.conv1.1",
+    "type": "CausalConv3d",
+    "kernel": [
+      3,
+      1,
+      1
+    ],
+    "dilation": [
+      1,
+      1,
+      1
+    ],
+    "stride": [
+      1,
+      1,
+      1
+    ],
+    "time_pad": 2,
+    "cache_policy": "next convolution output window start and stride phase"
+  },
+  {
+    "name": "decoder.up.2.block.2.conv2.0",
+    "type": "CausalConv3d",
+    "kernel": [
+      1,
+      3,
+      3
+    ],
+    "dilation": [
+      1,
+      1,
+      1
+    ],
+    "stride": [
+      1,
+      1,
+      1
+    ],
+    "time_pad": 0,
+    "cache_policy": "next convolution output window start and stride phase"
+  },
+  {
+    "name": "decoder.up.2.block.2.conv2.1",
+    "type": "CausalConv3d",
+    "kernel": [
+      3,
+      1,
+      1
+    ],
+    "dilation": [
+      1,
+      1,
+      1
+    ],
+    "stride": [
+      1,
+      1,
+      1
+    ],
+    "time_pad": 2,
+    "cache_policy": "next convolution output window start and stride phase"
+  },
+  {
+    "name": "decoder.up.2.upsample.conv2",
+    "type": "CausalConv3d",
+    "kernel": [
+      1,
+      3,
+      3
+    ],
+    "dilation": [
+      1,
+      1,
+      1
+    ],
+    "stride": [
+      1,
+      1,
+      1
+    ],
+    "time_pad": 0,
+    "cache_policy": "next convolution output window start and stride phase"
+  },
+  {
+    "name": "decoder.up.2.upsample.conv3",
+    "type": "CausalConv3d",
+    "kernel": [
+      1,
+      1,
+      1
+    ],
+    "dilation": [
+      1,
+      1,
+      1
+    ],
+    "stride": [
+      1,
+      1,
+      1
+    ],
+    "time_pad": 0,
+    "cache_policy": "next convolution output window start and stride phase"
+  },
+  {
+    "name": "decoder.conv_out.0",
+    "type": "CausalConv3d",
+    "kernel": [
+      1,
+      3,
+      3
+    ],
+    "dilation": [
+      1,
+      1,
+      1
+    ],
+    "stride": [
+      1,
+      1,
+      1
+    ],
+    "time_pad": 0,
+    "cache_policy": "next convolution output window start and stride phase"
+  },
+  {
+    "name": "decoder.conv_out.1",
+    "type": "CausalConv3d",
+    "kernel": [
+      3,
+      1,
+      1
+    ],
+    "dilation": [
+      1,
+      1,
+      1
+    ],
+    "stride": [
+      1,
+      1,
+      1
+    ],
+    "time_pad": 2,
+    "cache_policy": "next convolution output window start and stride phase"
+  },
+  {
+    "name": "quant_conv",
+    "type": "CausalConv3d",
+    "kernel": [
+      1,
+      1,
+      1
+    ],
+    "dilation": [
+      1,
+      1,
+      1
+    ],
+    "stride": [
+      1,
+      1,
+      1
+    ],
+    "time_pad": 0,
+    "cache_policy": "next convolution output window start and stride phase"
+  },
+  {
+    "name": "post_quant_conv",
+    "type": "CausalConv3d",
+    "kernel": [
+      1,
+      1,
+      1
+    ],
+    "dilation": [
+      1,
+      1,
+      1
+    ],
+    "stride": [
+      1,
+      1,
+      1
+    ],
+    "time_pad": 0,
+    "cache_policy": "next convolution output window start and stride phase"
+  }
+]

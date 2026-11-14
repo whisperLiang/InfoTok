@@ -1,0 +1,280 @@
+/home/whisperliang/InfoTok/.venv/lib/python3.10/site-packages/megatron/core/tensor_parallel/layers.py:265: FutureWarning: `torch.cuda.amp.custom_fwd(args...)` is deprecated. Please use `torch.amp.custom_fwd(args..., device_type='cuda')` instead.
+  def forward(
+/home/whisperliang/InfoTok/.venv/lib/python3.10/site-packages/megatron/core/tensor_parallel/layers.py:277: FutureWarning: `torch.cuda.amp.custom_bwd(args...)` is deprecated. Please use `torch.amp.custom_bwd(args..., device_type='cuda')` instead.
+  def backward(ctx, grad_output):
+/home/whisperliang/InfoTok/.venv/lib/python3.10/site-packages/megatron/core/tensor_parallel/layers.py:364: FutureWarning: `torch.cuda.amp.custom_fwd(args...)` is deprecated. Please use `torch.amp.custom_fwd(args..., device_type='cuda')` instead.
+  def forward(
+/home/whisperliang/InfoTok/.venv/lib/python3.10/site-packages/megatron/core/tensor_parallel/layers.py:401: FutureWarning: `torch.cuda.amp.custom_bwd(args...)` is deprecated. Please use `torch.amp.custom_bwd(args..., device_type='cuda')` instead.
+  def backward(ctx, grad_output):
+[11-14 21:12:09|CRITICAL|cosmos_predict1/utils/distributed.py:68:init] [RANK 0] Initialized distributed program with local rank 0 with timeout 1800
+[11-14 21:12:09|INFO|cosmos_predict1/utils/distributed.py:78:init] Running with 1 GPUs.
+Config is saved using pickle at checkpoints/chp_vtok/tokenizer/multi_debug/config.pkl.
+Config is saved using omegaconf at checkpoints/chp_vtok/tokenizer/multi_debug/config.yaml.
+[rank0]:[W1114 21:12:10.997255707 ProcessGroupNCCL.cpp:4561] [PG ID 0 PG GUID 0 Rank 0]  using GPU 0 to perform barrier as devices used by this process are currently unknown. This can potentially cause a hang if this rank to GPU mapping is incorrect. Specify device_ids in barrier() to force use of a particular device, or call init_process_group() with a device_id.
+[11-14 21:12:10|INFO|cosmos_predict1/utils/trainer.py:94:__init__] Config:
+* model: {'config': {'network': {'config': {'kmax': 2048, 'budgets': [256, 512, 1024, 2048], 'multiscale': True, 'base_tokens': 256, 'structure_tokens': 768, 'hidden_dim': 128, 'heads': 4, 'local_radius': 2, 'spatial_window': 16, 'anchor_order': 'halton', 'decoder_neighbors': 8, 'checkpoint_decoder': True, 'freeze_backbone': True, 'backbone_checkpoint': 'checkpoints/infotok-flex/infotok_mse.pt', 'debug_backbone': False}, '_target_': <class 'cosmos_predict1.tokenizer.progressive.model.CHPVTokenizer'>}, 'loss': {'config': {'color': {'config': {'norm': 'L1', 'boundaries': [0], 'values': [1.0]}, '_target_': <class 'cosmos_predict1.tokenizer.training.losses.continuous.ColorLoss'>}, 'reduce': 'MEAN', 'perceptual': {'config': {'lpips_boundaries': [0], 'lpips_values': [0.1], 'layer_weights': [0.3846153846153846, 0.20833333333333334, 0.27027027027027023, 0.17857142857142858, 6.666666666666667], 'gram_enabled': False, 'gram_boundaries': [500000], 'gram_values': [0.0, 0.062], 'corr_enabled': False, 'corr_boundaries': [0], 'corr_values': [0.0], 'checkpoint_activations': True}, '_target_': <class 'cosmos_predict1.tokenizer.training.losses.continuous.PerceptualLoss'>}}, '_target_': <class 'cosmos_predict1.tokenizer.training.losses.continuous.TokenizerLoss'>}, 'metric': {'config': {}, '_target_': <class 'cosmos_predict1.tokenizer.training.metrics.TokenizerMetric'>}, 'ema': {'enabled': False, 'beta': 0.9999, 'torch_compile_buffer_renaming': False}, 'precision': 'bfloat16', 'torch_compile': False, 'disc': None, 'disc_optimizer': None, 'disc_scheduler': None, 'latent_weight': 1.0, 'temporal_weight': 0.1}, '_target_': <class 'cosmos_predict1.tokenizer.training.chp_model.CHPTrainingModel'>}
+* optimizer: {'lr': 0.0001, 'betas': [0.9, 0.999], 'eps': 1e-08, 'weight_decay': 0.01, 'amsgrad': False, 'maximize': False, 'foreach': None, 'capturable': False, 'differentiable': False, 'fused': None, 'params': None, '_target_': <class 'torch.optim.adamw.AdamW'>}
+* scheduler: {'last_epoch': -1, 'optimizer': None, 'warmup_iters': 5, 'lr_decay_iters': 10000, 'min_lr': 1e-06, '_target_': <class 'cosmos_predict1.utils.scheduler.WarmupCosineLR'>}
+* dataloader_train: {'batch_size': 1, 'shuffle': False, 'sampler': None, 'batch_sampler': None, 'num_workers': 0, 'collate_fn': None, 'pin_memory': False, 'drop_last': False, 'timeout': 0, 'worker_init_fn': None, 'multiprocessing_context': None, 'generator': None, 'prefetch_factor': None, 'persistent_workers': False, 'pin_memory_device': '', 'in_order': True, 'dataset': {'num_video_frames': 5, 'debug_height': 256, 'crop_size': None, 'video_pattern': 'data/chp_vtok/*.mp4', '_target_': <class 'cosmos_predict1.tokenizer.training.datasets.chp_video.CHPVideoDataset'>}, '_target_': <class 'torch.utils.data.dataloader.DataLoader'>}
+* dataloader_val: {'batch_size': 1, 'shuffle': False, 'sampler': None, 'batch_sampler': None, 'num_workers': 0, 'collate_fn': None, 'pin_memory': False, 'drop_last': False, 'timeout': 0, 'worker_init_fn': None, 'multiprocessing_context': None, 'generator': None, 'prefetch_factor': None, 'persistent_workers': False, 'pin_memory_device': '', 'in_order': True, 'dataset': {'num_video_frames': 5, 'debug_height': 256, 'crop_size': None, 'video_pattern': 'data/chp_vtok/*.mp4', '_target_': <class 'cosmos_predict1.tokenizer.training.datasets.chp_video.CHPVideoDataset'>}, '_target_': <class 'torch.utils.data.dataloader.DataLoader'>}
+* job:
+   * project: chp_vtok
+   * group: tokenizer
+   * name: multi_debug
+* trainer:
+   * type: <class 'cosmos_predict1.tokenizer.training.trainer.TokenizerTrainer'>
+   * callbacks: {'low_precision': {'config': None, 'trainer': None, 'update_iter': 1, '_target_': <class 'cosmos_predict1.utils.callback.LowPrecisionCallback'>}, 'grad_clip': {'grad_clip_norm': 1, 'config': None, 'trainer': None, 'verbose': False, '_target_': <class 'cosmos_predict1.tokenizer.training.callbacks.GradClipCallback'>}, 'progress': {'config': None, 'trainer': None, '_target_': <class 'cosmos_predict1.utils.callback.ProgressBarCallback'>}, 'chp_metadata': {'config': None, 'trainer': None, '_target_': <class 'cosmos_predict1.tokenizer.training.chp_model.CHPCheckpointMetadata'>}}
+   * distributed_parallelism: ddp
+   * ddp:
+      * find_unused_parameters: True
+      * static_graph: False
+      * broadcast_buffers: True
+   * cudnn:
+      * deterministic: True
+      * benchmark: False
+   * seed: 0
+   * grad_scaler_args: {'enabled': False}
+   * max_iter: 40
+   * max_val_iter: None
+   * logging_iter: 1
+   * run_validation: False
+   * validation_iter: 999999999
+   * timeout_period: 999999999
+   * memory_format: torch.preserve_format
+   * grad_accum_iter: 1
+* model_parallel: ModelParallelConfig(tensor_model_parallel_size=1, pipeline_model_parallel_size=1, virtual_pipeline_model_parallel_size=None, sequence_parallel=False, context_parallel_size=1, expert_model_parallel_size=1, moe_extended_tp=False, perform_initialization=True, use_cpu_initialization=False, fp16=False, bf16=False, params_dtype=torch.float32, timers=None, finalize_model_grads_func=None, grad_scale_func=None, no_sync_func=None, grad_sync_func=None, param_sync_func=None, enable_autocast=False, autocast_dtype=torch.float32, num_microbatches_with_partial_activation_checkpoints=None, gradient_accumulation_fusion=False, async_tensor_model_parallel_allreduce=False, use_te_rng_tracker=False, tp_comm_overlap=False, tp_comm_bulk_wgrad=True, tp_comm_bulk_dgrad=True, tp_comm_overlap_ag=True, tp_comm_overlap_rs=True, tp_comm_overlap_rs_dgrad=False, tp_comm_split_ag=True, tp_comm_atomic_ag=False, tp_comm_split_rs=True, tp_comm_atomic_rs=False, pipeline_dtype=None, variable_seq_lengths=False, overlap_p2p_comm=False, batch_p2p_comm=True, batch_p2p_sync=True, use_ring_exchange_p2p=False, deallocate_pipeline_outputs=False, defer_embedding_wgrad_compute=False, pipeline_model_parallel_split_rank=None, cpu_offloading=False, cpu_offloading_num_layers=0, _cpu_offloading_context=None, cpu_offloading_activations=True, cpu_offloading_weights=True, barrier_with_L1_time=True)
+* checkpoint:
+   * type: None
+   * dcp_async_mode_enabled: False
+   * save_iter: 20
+   * load_path: 
+   * load_training_state: False
+   * only_load_scheduler_state: False
+   * strict_resume: True
+   * verbose: True
+   * jit:
+      * enabled: False
+      * input_shape: None
+      * device: cuda
+      * dtype: bfloat16
+      * strict: True
+   * keys_not_to_resume: []
+   * broadcast_via_filesystem: False
+   * load_ema_to_reg: False
+[11-14 21:12:10|WARNING|cosmos_predict1/utils/misc.py:115:print_environ_variables] Environment variable TORCH_HOME not set!
+[11-14 21:12:10|WARNING|cosmos_predict1/utils/misc.py:115:print_environ_variables] Environment variable OUTPUT_ROOT not set!
+[11-14 21:12:10|INFO|cosmos_predict1/utils/misc.py:127:set_random_seed] Using random seed 0.
+[11-14 21:12:10|CRITICAL|cosmos_predict1/utils/callback.py:72:__init__] Instantiating callback low_precision: {'config': None, 'trainer': None, 'update_iter': 1, '_target_': <class 'cosmos_predict1.utils.callback.LowPrecisionCallback'>}
+[11-14 21:12:10|CRITICAL|cosmos_predict1/utils/callback.py:72:__init__] Instantiating callback grad_clip: {'grad_clip_norm': 1, 'config': None, 'trainer': None, 'verbose': False, '_target_': <class 'cosmos_predict1.tokenizer.training.callbacks.GradClipCallback'>}
+[11-14 21:12:10|CRITICAL|cosmos_predict1/utils/callback.py:72:__init__] Instantiating callback progress: {'config': None, 'trainer': None, '_target_': <class 'cosmos_predict1.utils.callback.ProgressBarCallback'>}
+[11-14 21:12:10|CRITICAL|cosmos_predict1/utils/callback.py:72:__init__] Instantiating callback chp_metadata: {'config': None, 'trainer': None, '_target_': <class 'cosmos_predict1.tokenizer.training.chp_model.CHPCheckpointMetadata'>}
+2026-11-14 21:12:10.736 | INFO     | cosmos_predict1.tokenizer.modules.layers3d:__init__:843 - Working with z of shape (1, 256, 128, 128) = 4194304 dimensions.
+2026-11-14 21:12:11.194 | INFO     | cosmos_predict1.tokenizer.networks.ours_discrete_video:__init__:64 - OURS based on FSQ-VAE, with {'name': 'OURS', 'attn_resolutions': [32], 'channels': 128, 'channels_mult': [2, 4, 4], 'dropout': 0.0, 'in_channels': 3, 'num_res_blocks': 2, 'out_channels': 3, 'resolution': 1024, 'patch_size': 2, 'patch_method': 'haar', 'num_groups': 1, 'legacy_mode': False, 'spatial_compression': 8, 'temporal_compression': 4, 'quantizer': 'FSQ', 'levels': [8, 8, 8, 5, 5, 5], 'encoder': 'FACTORIZED', 'decoder': 'FACTORIZED', 'rate_strategy': 'elbo', 'use_vit': True, 'freeze_original': False, 'vit_config': {'hidden_size': 256, 'intermediate_size': 512, 'num_encoder_layers': 8, 'num_decoder_layers': 8, 'num_attention_heads': 32, 'theta': 10000.0, 'rms_norm_eps': 1e-05, 'initializer_range': 0.02, 'max_num_video_frames': 49, 'switch_rotary_to_1d': 1.0, 'max_sequence_length': 96, 'max_sequence_length_1d': 8192, 'concat_decode_2d': False, 'special_attn': False, 'method': 'mse'}}.
+2026-11-14 21:12:11.195 | INFO     | cosmos_predict1.tokenizer.networks.ours_discrete_video:__init__:67 - model=OURS, num_parameters=112,619,766
+2026-11-14 21:12:11.195 | INFO     | cosmos_predict1.tokenizer.networks.ours_discrete_video:__init__:68 - z_channels=256, embedding_dim=6.
+2026-11-14 21:12:11.195 | INFO     | cosmos_predict1.tokenizer.networks.ours_discrete_video:__init__:87 - Not freezing original model parameters.
+2026-11-14 21:12:11.339 | INFO     | cosmos_predict1.tokenizer.networks.ours_discrete_video:init_adaptive_token:172 - Adaptive token initialized with shape torch.Size([128]) and value 0.0.
+2026-11-14 21:12:11.340 | INFO     | cosmos_predict1.tokenizer.networks.ours_discrete_video:__init__:122 - model=OURS, num_parameters=123,142,646
+/home/whisperliang/InfoTok/.venv/lib/python3.10/site-packages/torchvision/models/_utils.py:208: UserWarning: The parameter 'pretrained' is deprecated since 0.13 and may be removed in the future, please use 'weights' instead.
+  warnings.warn(
+/home/whisperliang/InfoTok/.venv/lib/python3.10/site-packages/torchvision/models/_utils.py:223: UserWarning: Arguments other than a weight enum or `None` for 'weights' are deprecated since 0.13 and may be removed in the future. The current behavior is equivalent to passing `weights=VGG16_Weights.IMAGENET1K_V1`. You can also use `weights=VGG16_Weights.DEFAULT` to get the most up-to-date weights.
+  warnings.warn(msg)
+2026-11-14 21:12:13.797 | INFO     | cosmos_predict1.tokenizer.training.losses.lpips:load_from_pretrained:90 - Loaded pretrained LPIPS loss from /home/whisperliang/.cache/torch/hub/checkpoints/vgg.pth
+Config(model={'config': {'network': {'config': {'kmax': 2048, 'budgets': [256, 512, 1024, 2048], 'multiscale': True, 'base_tokens': 256, 'structure_tokens': 768, 'hidden_dim': 128, 'heads': 4, 'local_radius': 2, 'spatial_window': 16, 'anchor_order': 'halton', 'decoder_neighbors': 8, 'checkpoint_decoder': True, 'freeze_backbone': True, 'backbone_checkpoint': 'checkpoints/infotok-flex/infotok_mse.pt', 'debug_backbone': False}, '_target_': <class 'cosmos_predict1.tokenizer.progressive.model.CHPVTokenizer'>}, 'loss': {'config': {'color': {'config': {'norm': 'L1', 'boundaries': [0], 'values': [1.0]}, '_target_': <class 'cosmos_predict1.tokenizer.training.losses.continuous.ColorLoss'>}, 'reduce': 'MEAN', 'perceptual': {'config': {'lpips_boundaries': [0], 'lpips_values': [0.1], 'layer_weights': [0.3846153846153846, 0.20833333333333334, 0.27027027027027023, 0.17857142857142858, 6.666666666666667], 'gram_enabled': False, 'gram_boundaries': [500000], 'gram_values': [0.0, 0.062], 'corr_enabled': False, 'corr_boundaries': [0], 'corr_values': [0.0], 'checkpoint_activations': True}, '_target_': <class 'cosmos_predict1.tokenizer.training.losses.continuous.PerceptualLoss'>}}, '_target_': <class 'cosmos_predict1.tokenizer.training.losses.continuous.TokenizerLoss'>}, 'metric': {'config': {}, '_target_': <class 'cosmos_predict1.tokenizer.training.metrics.TokenizerMetric'>}, 'ema': {'enabled': False, 'beta': 0.9999, 'torch_compile_buffer_renaming': False}, 'precision': 'bfloat16', 'torch_compile': False, 'disc': None, 'disc_optimizer': None, 'disc_scheduler': None, 'latent_weight': 1.0, 'temporal_weight': 0.1}, '_target_': <class 'cosmos_predict1.tokenizer.training.chp_model.CHPTrainingModel'>}, optimizer={'lr': 0.0001, 'betas': [0.9, 0.999], 'eps': 1e-08, 'weight_decay': 0.01, 'amsgrad': False, 'maximize': False, 'foreach': None, 'capturable': False, 'differentiable': False, 'fused': None, 'params': None, '_target_': <class 'torch.optim.adamw.AdamW'>}, scheduler={'last_epoch': -1, 'optimizer': None, 'warmup_iters': 5, 'lr_decay_iters': 10000, 'min_lr': 1e-06, '_target_': <class 'cosmos_predict1.utils.scheduler.WarmupCosineLR'>}, dataloader_train={'batch_size': 1, 'shuffle': False, 'sampler': None, 'batch_sampler': None, 'num_workers': 0, 'collate_fn': None, 'pin_memory': False, 'drop_last': False, 'timeout': 0, 'worker_init_fn': None, 'multiprocessing_context': None, 'generator': None, 'prefetch_factor': None, 'persistent_workers': False, 'pin_memory_device': '', 'in_order': True, 'dataset': {'num_video_frames': 5, 'debug_height': 256, 'crop_size': None, 'video_pattern': 'data/chp_vtok/*.mp4', '_target_': <class 'cosmos_predict1.tokenizer.training.datasets.chp_video.CHPVideoDataset'>}, '_target_': <class 'torch.utils.data.dataloader.DataLoader'>}, dataloader_val={'batch_size': 1, 'shuffle': False, 'sampler': None, 'batch_sampler': None, 'num_workers': 0, 'collate_fn': None, 'pin_memory': False, 'drop_last': False, 'timeout': 0, 'worker_init_fn': None, 'multiprocessing_context': None, 'generator': None, 'prefetch_factor': None, 'persistent_workers': False, 'pin_memory_device': '', 'in_order': True, 'dataset': {'num_video_frames': 5, 'debug_height': 256, 'crop_size': None, 'video_pattern': 'data/chp_vtok/*.mp4', '_target_': <class 'cosmos_predict1.tokenizer.training.datasets.chp_video.CHPVideoDataset'>}, '_target_': <class 'torch.utils.data.dataloader.DataLoader'>}, job=JobConfig(project='chp_vtok', group='tokenizer', name='multi_debug'), trainer=TrainerConfig(type=<class 'cosmos_predict1.tokenizer.training.trainer.TokenizerTrainer'>, callbacks={'low_precision': {'config': None, 'trainer': None, 'update_iter': 1, '_target_': <class 'cosmos_predict1.utils.callback.LowPrecisionCallback'>}, 'grad_clip': {'grad_clip_norm': 1, 'config': None, 'trainer': None, 'verbose': False, '_target_': <class 'cosmos_predict1.tokenizer.training.callbacks.GradClipCallback'>}, 'progress': {'config': None, 'trainer': None, '_target_': <class 'cosmos_predict1.utils.callback.ProgressBarCallback'>}, 'chp_metadata': {'config': None, 'trainer': None, '_target_': <class 'cosmos_predict1.tokenizer.training.chp_model.CHPCheckpointMetadata'>}}, distributed_parallelism='ddp', ddp=DDPConfig(find_unused_parameters=True, static_graph=False, broadcast_buffers=True), cudnn=CuDNNConfig(deterministic=True, benchmark=False), seed=0, grad_scaler_args={'enabled': False}, max_iter=40, max_val_iter=None, logging_iter=1, run_validation=False, validation_iter=999999999, timeout_period=999999999, memory_format=torch.preserve_format, grad_accum_iter=1), model_parallel=ModelParallelConfig(tensor_model_parallel_size=1, pipeline_model_parallel_size=1, virtual_pipeline_model_parallel_size=None, sequence_parallel=False, context_parallel_size=1, expert_model_parallel_size=1, moe_extended_tp=False, perform_initialization=True, use_cpu_initialization=False, fp16=False, bf16=False, params_dtype=torch.float32, timers=None, finalize_model_grads_func=None, grad_scale_func=None, no_sync_func=None, grad_sync_func=None, param_sync_func=None, enable_autocast=False, autocast_dtype=torch.float32, num_microbatches_with_partial_activation_checkpoints=None, gradient_accumulation_fusion=False, async_tensor_model_parallel_allreduce=False, use_te_rng_tracker=False, tp_comm_overlap=False, tp_comm_bulk_wgrad=True, tp_comm_bulk_dgrad=True, tp_comm_overlap_ag=True, tp_comm_overlap_rs=True, tp_comm_overlap_rs_dgrad=False, tp_comm_split_ag=True, tp_comm_atomic_ag=False, tp_comm_split_rs=True, tp_comm_atomic_rs=False, pipeline_dtype=None, variable_seq_lengths=False, overlap_p2p_comm=False, batch_p2p_comm=True, batch_p2p_sync=True, use_ring_exchange_p2p=False, deallocate_pipeline_outputs=False, defer_embedding_wgrad_compute=False, pipeline_model_parallel_split_rank=None, cpu_offloading=False, cpu_offloading_num_layers=0, _cpu_offloading_context=None, cpu_offloading_activations=True, cpu_offloading_weights=True, barrier_with_L1_time=True), checkpoint=CheckpointConfig(type=None, dcp_async_mode_enabled=False, save_iter=20, load_path='', load_training_state=False, only_load_scheduler_state=False, strict_resume=True, verbose=True, jit=JITConfig(enabled=False, input_shape=None, device='cuda', dtype='bfloat16', strict=True), keys_not_to_resume=[], broadcast_via_filesystem=False, load_ema_to_reg=False))
+wandb: Using wandb-core as the SDK backend.  Please refer to https://wandb.me/wandb-core for more information.
+wandb: Tracking run with wandb version 0.19.8
+wandb: W&B syncing is set to `offline` in this directory.  
+wandb: Run `wandb online` or set WANDB_MODE=online to enable cloud syncing.
+[11-14 21:12:14|INFO|cosmos_predict1/utils/checkpointer.py:196:load] Training from scratch.
+[11-14 21:12:14|CRITICAL|cosmos_predict1/utils/trainer.py:152:train] Distributed parallelism mode: ddp
+[11-14 21:12:14|INFO|cosmos_predict1/utils/trainer.py:160:train] Starting training...
+
+Training:   0%|          | 0/40 [00:00<?, ?it/s]CHP_GRADIENTS {"iteration": 0, "norm": 7.035847416216046, "latent_decoder_norm": 6.134993893285778}
+Iteration=     0, loss=0.8521
+
+Training:   2%|▎         | 1/40 [00:03<02:14,  3.44s/it]CHP_TRAIN_STEP {"iteration": 1, "loss": 0.8521405458450317, "budgets": [[512.0, 512.0]], "components": {"color": 0.380859375, "lpips": 0.1591796875, "latent": 0.2757245600223541, "temporal": 0.373046875, "quant": 0.0}, "seconds": 1.4688379909930518, "shape": [1, 3, 5, 256, 455], "peak_allocated_bytes": 1972154368, "peak_reserved_bytes": 2248146944}
+[rank0]:[W1114 21:12:19.533708084 reducer.cpp:1400] Warning: find_unused_parameters=True was specified in DDP constructor, but did not find any unused parameters in the forward pass. This flag results in an extra traversal of the autograd graph every iteration,  which can adversely affect performance. If your model indeed never has any unused parameters in the forward pass, consider turning this flag off. Note that this warning may be a false positive if your model has flow control causing later iterations to have unused parameters. (function operator())
+CHP_GRADIENTS {"iteration": 1, "norm": 10.977168115651816, "latent_decoder_norm": 8.340656736318145}
+Iteration=     1, loss=1.0676
+
+Training:   5%|▌         | 2/40 [00:05<01:36,  2.55s/it]CHP_TRAIN_STEP {"iteration": 2, "loss": 1.0675629377365112, "budgets": [[2048.0, 256.0]], "components": {"color": 0.625, "lpips": 0.12353515625, "latent": 0.28802189230918884, "temporal": 0.294921875, "quant": 0.0}, "seconds": 0.4656367660063552, "shape": [1, 3, 5, 256, 455], "peak_allocated_bytes": 2025753600, "peak_reserved_bytes": 2394947584}
+CHP_GRADIENTS {"iteration": 2, "norm": 9.145223481641333, "latent_decoder_norm": 6.861348333458574}
+Iteration=     2, loss=0.9951
+
+Training:   8%|▊         | 3/40 [00:07<01:33,  2.53s/it]CHP_TRAIN_STEP {"iteration": 3, "loss": 0.9951168894767761, "budgets": [[2048.0, 512.0]], "components": {"color": 0.58984375, "lpips": 0.1015625, "latent": 0.2524411082267761, "temporal": 0.51171875, "quant": 0.0}, "seconds": 0.4688063170033274, "shape": [1, 3, 5, 256, 455], "peak_allocated_bytes": 2031323136, "peak_reserved_bytes": 2522873856}
+CHP_GRADIENTS {"iteration": 3, "norm": 7.346919118440213, "latent_decoder_norm": 6.545344760895446}
+Iteration=     3, loss=0.9483
+
+Training:  10%|█         | 4/40 [00:10<01:27,  2.42s/it]CHP_TRAIN_STEP {"iteration": 4, "loss": 0.9482890963554382, "budgets": [[256.0, 2048.0]], "components": {"color": 0.4921875, "lpips": 0.1533203125, "latent": 0.28483694791793823, "temporal": 0.189453125, "quant": 0.0}, "seconds": 0.465092023005127, "shape": [1, 3, 5, 256, 455], "peak_allocated_bytes": 2026440704, "peak_reserved_bytes": 2522873856}
+CHP_GRADIENTS {"iteration": 4, "norm": 11.15157982434698, "latent_decoder_norm": 8.800332658071541}
+Iteration=     4, loss=0.8607
+
+Training:  12%|█▎        | 5/40 [00:11<01:17,  2.22s/it]CHP_TRAIN_STEP {"iteration": 5, "loss": 0.8606833219528198, "budgets": [[512.0, 256.0]], "components": {"color": 0.451171875, "lpips": 0.12353515625, "latent": 0.2718161344528198, "temporal": 0.146484375, "quant": 0.0}, "seconds": 0.46382726600859314, "shape": [1, 3, 5, 256, 455], "peak_allocated_bytes": 2012394496, "peak_reserved_bytes": 2522873856}
+CHP_GRADIENTS {"iteration": 5, "norm": 6.5710108308796915, "latent_decoder_norm": 5.2126278785860505}
+Iteration=     5, loss=0.8501
+
+Training:  15%|█▌        | 6/40 [00:14<01:17,  2.29s/it]CHP_TRAIN_STEP {"iteration": 6, "loss": 0.8501378297805786, "budgets": [[2048.0, 256.0]], "components": {"color": 0.46875, "lpips": 0.10302734375, "latent": 0.24857531487941742, "temporal": 0.3125, "quant": 0.0}, "seconds": 0.4707883950031828, "shape": [1, 3, 5, 256, 455], "peak_allocated_bytes": 2026725888, "peak_reserved_bytes": 2524971008}
+CHP_GRADIENTS {"iteration": 6, "norm": 8.00254370603854, "latent_decoder_norm": 6.942667038071832}
+Iteration=     6, loss=0.8332
+
+Training:  18%|█▊        | 7/40 [00:16<01:15,  2.28s/it]CHP_TRAIN_STEP {"iteration": 7, "loss": 0.8331843614578247, "budgets": [[256.0, 2048.0]], "components": {"color": 0.375, "lpips": 0.154296875, "latent": 0.2864924967288971, "temporal": 0.154296875, "quant": 0.0}, "seconds": 0.4650299479981186, "shape": [1, 3, 5, 256, 455], "peak_allocated_bytes": 2026440704, "peak_reserved_bytes": 2524971008}
+CHP_GRADIENTS {"iteration": 7, "norm": 5.905116331807469, "latent_decoder_norm": 4.9520469111464935}
+Iteration=     7, loss=0.7021
+
+Training:  20%|██        | 8/40 [00:18<01:08,  2.14s/it]CHP_TRAIN_STEP {"iteration": 8, "loss": 0.7021223306655884, "budgets": [[256.0, 256.0]], "components": {"color": 0.3046875, "lpips": 0.12060546875, "latent": 0.269016832113266, "temporal": 0.0732421875, "quant": 0.0}, "seconds": 0.46372218400938436, "shape": [1, 3, 5, 256, 455], "peak_allocated_bytes": 2008417792, "peak_reserved_bytes": 2524971008}
+CHP_GRADIENTS {"iteration": 8, "norm": 10.857201134852055, "latent_decoder_norm": 8.138195487956624}
+Iteration=     8, loss=0.8438
+
+Training:  22%|██▎       | 9/40 [00:20<01:09,  2.24s/it]CHP_TRAIN_STEP {"iteration": 9, "loss": 0.8438324928283691, "budgets": [[2048.0, 2048.0]], "components": {"color": 0.447265625, "lpips": 0.10009765625, "latent": 0.26766058802604675, "temporal": 0.29296875, "quant": 0.0}, "seconds": 0.4740607249987079, "shape": [1, 3, 5, 256, 455], "peak_allocated_bytes": 2046611968, "peak_reserved_bytes": 2533359616}
+CHP_GRADIENTS {"iteration": 9, "norm": 3.037745375762187, "latent_decoder_norm": 2.305080261230788}
+Iteration=     9, loss=0.7433
+
+Training:  25%|██▌       | 10/40 [00:23<01:07,  2.24s/it]CHP_TRAIN_STEP {"iteration": 10, "loss": 0.7433182001113892, "budgets": [[2048.0, 2048.0]], "components": {"color": 0.26171875, "lpips": 0.1552734375, "latent": 0.30948033928871155, "temporal": 0.158203125, "quant": 0.0}, "seconds": 0.47990829299669713, "shape": [1, 3, 5, 256, 455], "peak_allocated_bytes": 2046326784, "peak_reserved_bytes": 2533359616}
+CHP_GRADIENTS {"iteration": 10, "norm": 5.892644978318887, "latent_decoder_norm": 4.8661967366171535}
+Iteration=    10, loss=0.7134
+
+Training:  28%|██▊       | 11/40 [00:25<01:03,  2.18s/it]CHP_TRAIN_STEP {"iteration": 11, "loss": 0.7134217023849487, "budgets": [[256.0, 2048.0]], "components": {"color": 0.296875, "lpips": 0.1181640625, "latent": 0.29020392894744873, "temporal": 0.09130859375, "quant": 0.0}, "seconds": 0.47271213500062004, "shape": [1, 3, 5, 256, 455], "peak_allocated_bytes": 2028303872, "peak_reserved_bytes": 2533359616}
+CHP_GRADIENTS {"iteration": 11, "norm": 3.144938590342844, "latent_decoder_norm": 2.0679905021622846}
+Iteration=    11, loss=0.6510
+
+Training:  30%|███       | 12/40 [00:27<01:04,  2.30s/it]CHP_TRAIN_STEP {"iteration": 12, "loss": 0.6509719491004944, "budgets": [[512.0, 256.0]], "components": {"color": 0.30859375, "lpips": 0.09716796875, "latent": 0.2365432232618332, "temporal": 0.08203125, "quant": 0.0}, "seconds": 0.46964792600192595, "shape": [1, 3, 5, 256, 455], "peak_allocated_bytes": 2010816512, "peak_reserved_bytes": 2533359616}
+CHP_GRADIENTS {"iteration": 12, "norm": 3.9052173284095217, "latent_decoder_norm": 3.0815890134682524}
+Iteration=    12, loss=0.7146
+
+Training:  32%|███▎      | 13/40 [00:30<01:01,  2.28s/it]CHP_TRAIN_STEP {"iteration": 13, "loss": 0.7146027684211731, "budgets": [[256.0, 2048.0]], "components": {"color": 0.26171875, "lpips": 0.150390625, "latent": 0.2896760106086731, "temporal": 0.1279296875, "quant": 0.0}, "seconds": 0.4662759930070024, "shape": [1, 3, 5, 256, 455], "peak_allocated_bytes": 2026440704, "peak_reserved_bytes": 2533359616}
+CHP_GRADIENTS {"iteration": 13, "norm": 1.685345814368916, "latent_decoder_norm": 1.3894672744656185}
+Iteration=    13, loss=0.6557
+
+Training:  35%|███▌      | 14/40 [00:31<00:55,  2.14s/it]CHP_TRAIN_STEP {"iteration": 14, "loss": 0.6557118892669678, "budgets": [[512.0, 256.0]], "components": {"color": 0.2578125, "lpips": 0.11572265625, "latent": 0.2747304439544678, "temporal": 0.0791015625, "quant": 0.0}, "seconds": 0.4635843359865248, "shape": [1, 3, 5, 256, 455], "peak_allocated_bytes": 2012394496, "peak_reserved_bytes": 2533359616}
+CHP_GRADIENTS {"iteration": 14, "norm": 3.2550954986622607, "latent_decoder_norm": 1.9611944793725267}
+Iteration=    14, loss=0.6712
+
+Training:  38%|███▊      | 15/40 [00:34<00:55,  2.23s/it]CHP_TRAIN_STEP {"iteration": 15, "loss": 0.6711938977241516, "budgets": [[2048.0, 1024.0]], "components": {"color": 0.302734375, "lpips": 0.09521484375, "latent": 0.2619531750679016, "temporal": 0.10791015625, "quant": 0.0}, "seconds": 0.46951773700129706, "shape": [1, 3, 5, 256, 455], "peak_allocated_bytes": 2030708736, "peak_reserved_bytes": 2533359616}
+CHP_GRADIENTS {"iteration": 15, "norm": 8.47188676241087, "latent_decoder_norm": 6.597266903149859}
+Iteration=    15, loss=0.7766
+
+Training:  40%|████      | 16/40 [00:36<00:53,  2.23s/it]CHP_TRAIN_STEP {"iteration": 16, "loss": 0.7765966653823853, "budgets": [[1024.0, 1024.0]], "components": {"color": 0.31640625, "lpips": 0.15625, "latent": 0.29155027866363525, "temporal": 0.1240234375, "quant": 0.0}, "seconds": 0.46879619600076694, "shape": [1, 3, 5, 256, 455], "peak_allocated_bytes": 2014520320, "peak_reserved_bytes": 2533359616}
+CHP_GRADIENTS {"iteration": 16, "norm": 1.9561355876181667, "latent_decoder_norm": 1.5676069834555204}
+Iteration=    16, loss=0.6530
+
+Training:  42%|████▎     | 17/40 [00:38<00:48,  2.12s/it]CHP_TRAIN_STEP {"iteration": 17, "loss": 0.652952253818512, "budgets": [[1024.0, 1024.0]], "components": {"color": 0.2451171875, "lpips": 0.11279296875, "latent": 0.28811460733413696, "temporal": 0.07421875, "quant": 0.0}, "seconds": 0.4676494629966328, "shape": [1, 3, 5, 256, 455], "peak_allocated_bytes": 2016383488, "peak_reserved_bytes": 2533359616}
+CHP_GRADIENTS {"iteration": 17, "norm": 2.6319505382029846, "latent_decoder_norm": 1.8016456531478393}
+Iteration=    17, loss=0.6108
+
+Training:  45%|████▌     | 18/40 [00:40<00:48,  2.22s/it]CHP_TRAIN_STEP {"iteration": 18, "loss": 0.6107829213142395, "budgets": [[512.0, 512.0]], "components": {"color": 0.271484375, "lpips": 0.091796875, "latent": 0.2413981705904007, "temporal": 0.06103515625, "quant": 0.0}, "seconds": 0.47118010598933324, "shape": [1, 3, 5, 256, 455], "peak_allocated_bytes": 2014793216, "peak_reserved_bytes": 2533359616}
+CHP_GRADIENTS {"iteration": 18, "norm": 4.780768142024241, "latent_decoder_norm": 3.8554707349800275}
+Iteration=    18, loss=0.7117
+
+Training:  48%|████▊     | 19/40 [00:43<00:46,  2.23s/it]CHP_TRAIN_STEP {"iteration": 19, "loss": 0.7117475271224976, "budgets": [[256.0, 1024.0]], "components": {"color": 0.26171875, "lpips": 0.1552734375, "latent": 0.28108349442481995, "temporal": 0.126953125, "quant": 0.0}, "seconds": 0.468206874007592, "shape": [1, 3, 5, 256, 455], "peak_allocated_bytes": 2010537472, "peak_reserved_bytes": 2533359616}
+CHP_GRADIENTS {"iteration": 19, "norm": 1.2803614131470222, "latent_decoder_norm": 1.1138846128232773}
+Iteration=    19, loss=0.6217
+/home/whisperliang/InfoTok/cosmos_predict1/tokenizer/training/model.py:89: FutureWarning: Positional args are being deprecated, use kwargs instead. Refer to https://pytorch.org/docs/main/generated/torch.nn.Module.html#torch.nn.Module.state_dict for details.
+  original_state_dict = super(TokenizerModel, self).state_dict(destination, prefix, keep_vars)
+
+Training:  50%|█████     | 20/40 [00:45<00:43,  2.18s/it]CHP_TRAIN_STEP {"iteration": 20, "loss": 0.6216673851013184, "budgets": [[512.0, 512.0]], "components": {"color": 0.2255859375, "lpips": 0.11279296875, "latent": 0.27785632014274597, "temporal": 0.059326171875, "quant": 0.0}, "seconds": 0.6757718910084805, "shape": [1, 3, 5, 256, 455], "peak_allocated_bytes": 2016371200, "peak_reserved_bytes": 2533359616}
+
+                                                         
+[11-14 21:12:59|SUCCESS|cosmos_predict1/tokenizer/training/checkpointer.py:116:_save_worker_local] Saved checkpoint (local): checkpoints/chp_vtok/tokenizer/multi_debug/checkpoints/iter_000000020.pt
+
+Training:  50%|█████     | 20/40 [00:45<00:43,  2.18s/it]CHP_GRADIENTS {"iteration": 20, "norm": 3.9676917435357475, "latent_decoder_norm": 3.1448212895284384}
+Iteration=    20, loss=0.5545
+
+Training:  52%|█████▎    | 21/40 [00:47<00:43,  2.30s/it]CHP_TRAIN_STEP {"iteration": 21, "loss": 0.5545458793640137, "budgets": [[256.0, 256.0]], "components": {"color": 0.22265625, "lpips": 0.0927734375, "latent": 0.23231075704097748, "temporal": 0.058349609375, "quant": 0.0}, "seconds": 0.477638971991837, "shape": [1, 3, 5, 256, 455], "peak_allocated_bytes": 2006839808, "peak_reserved_bytes": 2533359616}
+CHP_GRADIENTS {"iteration": 21, "norm": 3.2375887010230207, "latent_decoder_norm": 2.68842916204856}
+Iteration=    21, loss=0.6805
+
+Training:  55%|█████▌    | 22/40 [00:50<00:41,  2.30s/it]CHP_TRAIN_STEP {"iteration": 22, "loss": 0.6805315017700195, "budgets": [[256.0, 1024.0]], "components": {"color": 0.2412109375, "lpips": 0.15234375, "latent": 0.27440357208251953, "temporal": 0.11572265625, "quant": 0.0}, "seconds": 0.4772404370014556, "shape": [1, 3, 5, 256, 455], "peak_allocated_bytes": 2010537472, "peak_reserved_bytes": 2533359616}
+CHP_GRADIENTS {"iteration": 22, "norm": 1.684053982619929, "latent_decoder_norm": 1.0118591976998552}
+Iteration=    22, loss=0.5978
+
+Training:  57%|█████▊    | 23/40 [00:51<00:37,  2.18s/it]CHP_TRAIN_STEP {"iteration": 23, "loss": 0.5978178977966309, "budgets": [[256.0, 1024.0]], "components": {"color": 0.2060546875, "lpips": 0.11279296875, "latent": 0.27643725275993347, "temporal": 0.0301513671875, "quant": 0.0}, "seconds": 0.4652424810046796, "shape": [1, 3, 5, 256, 455], "peak_allocated_bytes": 2012400640, "peak_reserved_bytes": 2533359616}
+CHP_GRADIENTS {"iteration": 23, "norm": 3.0461041937341182, "latent_decoder_norm": 2.6708974598591135}
+Iteration=    23, loss=0.5147
+
+Training:  60%|██████    | 24/40 [00:54<00:36,  2.29s/it]CHP_TRAIN_STEP {"iteration": 24, "loss": 0.5147252082824707, "budgets": [[256.0, 256.0]], "components": {"color": 0.18359375, "lpips": 0.0927734375, "latent": 0.2317662388086319, "temporal": 0.05615234375, "quant": 0.0}, "seconds": 0.4672903250029776, "shape": [1, 3, 5, 256, 455], "peak_allocated_bytes": 2006839808, "peak_reserved_bytes": 2533359616}
+CHP_GRADIENTS {"iteration": 24, "norm": 1.28845090082148, "latent_decoder_norm": 1.041404301739197}
+Iteration=    24, loss=0.6563
+
+Training:  62%|██████▎   | 25/40 [00:56<00:34,  2.27s/it]CHP_TRAIN_STEP {"iteration": 25, "loss": 0.656253457069397, "budgets": [[256.0, 256.0]], "components": {"color": 0.2236328125, "lpips": 0.15234375, "latent": 0.2702670991420746, "temporal": 0.10986328125, "quant": 0.0}, "seconds": 0.47415905399248004, "shape": [1, 3, 5, 256, 455], "peak_allocated_bytes": 2006554624, "peak_reserved_bytes": 2533359616}
+CHP_GRADIENTS {"iteration": 25, "norm": 2.013997130958078, "latent_decoder_norm": 1.2610428173634662}
+Iteration=    25, loss=0.5948
+
+Training:  65%|██████▌   | 26/40 [00:58<00:30,  2.17s/it]CHP_TRAIN_STEP {"iteration": 26, "loss": 0.5948307514190674, "budgets": [[256.0, 1024.0]], "components": {"color": 0.2041015625, "lpips": 0.11279296875, "latent": 0.27547958493232727, "temporal": 0.0294189453125, "quant": 0.0}, "seconds": 0.4760985480097588, "shape": [1, 3, 5, 256, 455], "peak_allocated_bytes": 2012400640, "peak_reserved_bytes": 2533359616}
+CHP_GRADIENTS {"iteration": 26, "norm": 1.6442639973348376, "latent_decoder_norm": 1.3231539241731751}
+Iteration=    26, loss=0.5078
+
+Training:  68%|██████▊   | 27/40 [01:01<00:29,  2.29s/it]CHP_TRAIN_STEP {"iteration": 27, "loss": 0.5078109502792358, "budgets": [[1024.0, 256.0]], "components": {"color": 0.16796875, "lpips": 0.09326171875, "latent": 0.24029387533664703, "temporal": 0.057861328125, "quant": 0.0}, "seconds": 0.477085108999745, "shape": [1, 3, 5, 256, 455], "peak_allocated_bytes": 2010822656, "peak_reserved_bytes": 2533359616}
+CHP_GRADIENTS {"iteration": 27, "norm": 2.7828818324521696, "latent_decoder_norm": 2.3808083834709777}
+Iteration=    27, loss=0.6745
+
+Training:  70%|███████   | 28/40 [01:03<00:27,  2.30s/it]CHP_TRAIN_STEP {"iteration": 28, "loss": 0.6744798421859741, "budgets": [[1024.0, 512.0]], "components": {"color": 0.2275390625, "lpips": 0.1533203125, "latent": 0.2822679281234741, "temporal": 0.11376953125, "quant": 0.0}, "seconds": 0.47461624500283506, "shape": [1, 3, 5, 256, 455], "peak_allocated_bytes": 2014514176, "peak_reserved_bytes": 2533359616}
+CHP_GRADIENTS {"iteration": 28, "norm": 2.207789769824635, "latent_decoder_norm": 1.511603054233698}
+Iteration=    28, loss=0.5937
+
+Training:  72%|███████▎  | 29/40 [01:05<00:24,  2.18s/it]CHP_TRAIN_STEP {"iteration": 29, "loss": 0.5936864614486694, "budgets": [[256.0, 1024.0]], "components": {"color": 0.203125, "lpips": 0.11328125, "latent": 0.27438104152679443, "temporal": 0.029052734375, "quant": 0.0}, "seconds": 0.4657344170118449, "shape": [1, 3, 5, 256, 455], "peak_allocated_bytes": 2012400640, "peak_reserved_bytes": 2533359616}
+CHP_GRADIENTS {"iteration": 29, "norm": 1.32092981272733, "latent_decoder_norm": 0.9383080254192329}
+Iteration=    29, loss=0.4803
+
+Training:  75%|███████▌  | 30/40 [01:08<00:23,  2.33s/it]CHP_TRAIN_STEP {"iteration": 30, "loss": 0.4803122580051422, "budgets": [[256.0, 1024.0]], "components": {"color": 0.1474609375, "lpips": 0.09228515625, "latent": 0.2364462912082672, "temporal": 0.036376953125, "quant": 0.0}, "seconds": 0.6546487040031934, "shape": [1, 3, 5, 256, 455], "peak_allocated_bytes": 2010822656, "peak_reserved_bytes": 2533359616}
+CHP_GRADIENTS {"iteration": 30, "norm": 1.8429358863943326, "latent_decoder_norm": 1.6840316129236321}
+Iteration=    30, loss=0.6735
+
+Training:  78%|███████▊  | 31/40 [01:10<00:20,  2.32s/it]CHP_TRAIN_STEP {"iteration": 31, "loss": 0.6735082864761353, "budgets": [[512.0, 1024.0]], "components": {"color": 0.228515625, "lpips": 0.154296875, "latent": 0.27671876549720764, "temporal": 0.1396484375, "quant": 0.0}, "seconds": 0.4777567670098506, "shape": [1, 3, 5, 256, 455], "peak_allocated_bytes": 2014514176, "peak_reserved_bytes": 2533359616}
+CHP_GRADIENTS {"iteration": 31, "norm": 1.325123193492723, "latent_decoder_norm": 1.119476951038589}
+Iteration=    31, loss=0.5878
+
+Training:  80%|████████  | 32/40 [01:12<00:17,  2.20s/it]CHP_TRAIN_STEP {"iteration": 32, "loss": 0.5878066420555115, "budgets": [[256.0, 512.0]], "components": {"color": 0.2001953125, "lpips": 0.11328125, "latent": 0.2715224623680115, "temporal": 0.037841796875, "quant": 0.0}, "seconds": 0.46435566199943423, "shape": [1, 3, 5, 256, 455], "peak_allocated_bytes": 2012394496, "peak_reserved_bytes": 2533359616}
+CHP_GRADIENTS {"iteration": 32, "norm": 1.2464319432674775, "latent_decoder_norm": 0.7893014120085896}
+Iteration=    32, loss=0.5028
+
+Training:  82%|████████▎ | 33/40 [01:14<00:15,  2.27s/it]CHP_TRAIN_STEP {"iteration": 33, "loss": 0.5028238892555237, "budgets": [[512.0, 256.0]], "components": {"color": 0.1669921875, "lpips": 0.09375, "latent": 0.23387247323989868, "temporal": 0.072265625, "quant": 0.0}, "seconds": 0.4692959439998958, "shape": [1, 3, 5, 256, 455], "peak_allocated_bytes": 2010816512, "peak_reserved_bytes": 2533359616}
+CHP_GRADIENTS {"iteration": 33, "norm": 1.139315718368666, "latent_decoder_norm": 0.9469944590203293}
+Iteration=    33, loss=0.6744
+
+Training:  85%|████████▌ | 34/40 [01:17<00:13,  2.27s/it]CHP_TRAIN_STEP {"iteration": 34, "loss": 0.6743887662887573, "budgets": [[1024.0, 2048.0]], "components": {"color": 0.2138671875, "lpips": 0.154296875, "latent": 0.2960928678512573, "temporal": 0.11083984375, "quant": 0.0}, "seconds": 0.4699129280052148, "shape": [1, 3, 5, 256, 455], "peak_allocated_bytes": 2030423552, "peak_reserved_bytes": 2533359616}
+CHP_GRADIENTS {"iteration": 34, "norm": 1.8507336879565999, "latent_decoder_norm": 1.4917123652997122}
+Iteration=    34, loss=0.6115
+
+Training:  88%|████████▊ | 35/40 [01:18<00:10,  2.14s/it]CHP_TRAIN_STEP {"iteration": 35, "loss": 0.6115479469299316, "budgets": [[512.0, 2048.0]], "components": {"color": 0.203125, "lpips": 0.11328125, "latent": 0.28919073939323425, "temporal": 0.0595703125, "quant": 0.0}, "seconds": 0.4663587970135268, "shape": [1, 3, 5, 256, 455], "peak_allocated_bytes": 2032280576, "peak_reserved_bytes": 2533359616}
+CHP_GRADIENTS {"iteration": 35, "norm": 1.064478297153513, "latent_decoder_norm": 0.8665514425911887}
+Iteration=    35, loss=0.4964
+
+Training:  90%|█████████ | 36/40 [01:21<00:08,  2.24s/it]CHP_TRAIN_STEP {"iteration": 36, "loss": 0.4963768422603607, "budgets": [[512.0, 512.0]], "components": {"color": 0.1611328125, "lpips": 0.0927734375, "latent": 0.23621448874473572, "temporal": 0.0625, "quant": 0.0}, "seconds": 0.4766097899992019, "shape": [1, 3, 5, 256, 455], "peak_allocated_bytes": 2014793216, "peak_reserved_bytes": 2533359616}
+CHP_GRADIENTS {"iteration": 36, "norm": 1.0925217370572775, "latent_decoder_norm": 0.9616290396498157}
+Iteration=    36, loss=0.6690
+
+Training:  92%|█████████▎| 37/40 [01:23<00:06,  2.26s/it]CHP_TRAIN_STEP {"iteration": 37, "loss": 0.6690113544464111, "budgets": [[512.0, 2048.0]], "components": {"color": 0.21484375, "lpips": 0.154296875, "latent": 0.28717538714408875, "temporal": 0.126953125, "quant": 0.0}, "seconds": 0.4653557639976498, "shape": [1, 3, 5, 256, 455], "peak_allocated_bytes": 2030417408, "peak_reserved_bytes": 2533359616}
+CHP_GRADIENTS {"iteration": 37, "norm": 1.207047718125669, "latent_decoder_norm": 0.8153442783474918}
+Iteration=    37, loss=0.5902
+
+Training:  95%|█████████▌| 38/40 [01:25<00:04,  2.14s/it]CHP_TRAIN_STEP {"iteration": 38, "loss": 0.590203046798706, "budgets": [[512.0, 1024.0]], "components": {"color": 0.1953125, "lpips": 0.1123046875, "latent": 0.27724528312683105, "temporal": 0.043701171875, "quant": 0.0}, "seconds": 0.46813935099635273, "shape": [1, 3, 5, 256, 455], "peak_allocated_bytes": 2016377344, "peak_reserved_bytes": 2533359616}
+CHP_GRADIENTS {"iteration": 38, "norm": 1.8622334456412508, "latent_decoder_norm": 1.3289411369529978}
+Iteration=    38, loss=0.5065
+
+Training:  98%|█████████▊| 39/40 [01:27<00:02,  2.24s/it]CHP_TRAIN_STEP {"iteration": 39, "loss": 0.5064657926559448, "budgets": [[1024.0, 2048.0]], "components": {"color": 0.16015625, "lpips": 0.091796875, "latent": 0.24929416179656982, "temporal": 0.05224609375, "quant": 0.0}, "seconds": 0.46777303899580147, "shape": [1, 3, 5, 256, 455], "peak_allocated_bytes": 2030708736, "peak_reserved_bytes": 2533359616}
+CHP_GRADIENTS {"iteration": 39, "norm": 0.7493988399714754, "latent_decoder_norm": 0.6219702577026683}
+Iteration=    39, loss=0.6407
+
+Training: 100%|██████████| 40/40 [01:30<00:00,  2.29s/it]CHP_TRAIN_STEP {"iteration": 40, "loss": 0.6407123804092407, "budgets": [[512.0, 512.0]], "components": {"color": 0.2060546875, "lpips": 0.15234375, "latent": 0.2692524492740631, "temporal": 0.12060546875, "quant": 0.0}, "seconds": 0.6242015799944056, "shape": [1, 3, 5, 256, 455], "peak_allocated_bytes": 2014508032, "peak_reserved_bytes": 2533359616}
+
+                                                         
+[11-14 21:13:45|SUCCESS|cosmos_predict1/tokenizer/training/checkpointer.py:116:_save_worker_local] Saved checkpoint (local): checkpoints/chp_vtok/tokenizer/multi_debug/checkpoints/iter_000000040.pt
+
+Training: 100%|██████████| 40/40 [01:30<00:00,  2.29s/it]
+                                                         
+[11-14 21:13:46|SUCCESS|cosmos_predict1/utils/trainer.py:216:train] Done with training.
+
+Training: 100%|██████████| 40/40 [01:31<00:00,  2.29s/it]
+Training: 100%|██████████| 40/40 [01:31<00:00,  2.30s/it]
+wandb:                                                                                
+wandb: 
+wandb: Run history:
+wandb: loss ▅█▇▇▆▅▅▄▅▄▄▃▄▃▃▅▃▃▄▃▂▃▂▁▃▂▁▃▂▁▃▂▁▃▃▁▃▂▁▃
+wandb: 
+wandb: Run summary:
+wandb: loss 0.64071
+wandb: 
+wandb: You can sync this run to the cloud by running:
+wandb: wandb sync /home/whisperliang/InfoTok/wandb/offline-run-20261114_211213-77qiz4vo
+wandb: Find logs at: ./wandb/offline-run-20261114_211213-77qiz4vo/logs
+[rank0]:[W1114 21:13:47.773684380 ProcessGroupNCCL.cpp:1496] Warning: WARNING: destroy_process_group() was not called before program exit, which can leak resources. For more info, please see https://pytorch.org/docs/stable/distributed.html#shutdown (function operator())

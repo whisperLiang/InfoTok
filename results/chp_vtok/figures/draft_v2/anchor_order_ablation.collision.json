@@ -1,0 +1,48 @@
+{
+  "pdf": "results/chp_vtok/figures/anchor_order_ablation.pdf",
+  "auditable": true,
+  "verdict": "FIX BEFORE DELIVERY",
+  "page_count": 1,
+  "visible_text_box_count": 16,
+  "text_trace_count": 16,
+  "stroke_path_count": 28,
+  "filled_region_count": 24,
+  "image_region_count": 0,
+  "summary": {
+    "fail": 1,
+    "warn": 0,
+    "contained_fill_overlays": 0,
+    "contained_image_overlays": 0
+  },
+  "thresholds": {
+    "text_inset_pt": 0.6,
+    "min_overlap_ratio": 0.05,
+    "clipping_tolerance_pt": 0.5
+  },
+  "findings": [
+    {
+      "severity": "FAIL",
+      "kind": "text-stroke",
+      "page": 1,
+      "message": "Text is crossed by 1 stroked path(s)",
+      "text": "Halton",
+      "text_bbox": [
+        76.92362213134766,
+        142.22604370117188,
+        99.88914489746094,
+        149.22604370117188
+      ],
+      "other_text": null,
+      "other_bbox": [
+        63.70221710205078,
+        74.17324829101562,
+        317.274169921875,
+        159.06227111816406
+      ],
+      "object_count": 1,
+      "object_indexes": [
+        19
+      ]
+    }
+  ]
+}

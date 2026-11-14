@@ -1,0 +1,16 @@
+FF                                                                       [100%]
+=================================== FAILURES ===================================
+_________ test_sdpa_is_used_without_parameter_changes[CausalAttnBlock] _________
+tests/test_chp_attention.py:37: in test_sdpa_is_used_without_parameter_changes
+    assert spy.call_count == 1
+E   AssertionError: assert 0 == 1
+E    +  where 0 = <MagicMock name='scaled_dot_product_attention' id='132861403008736'>.call_count
+_____ test_sdpa_is_used_without_parameter_changes[CausalTemporalAttnBlock] _____
+tests/test_chp_attention.py:37: in test_sdpa_is_used_without_parameter_changes
+    assert spy.call_count == 1
+E   AssertionError: assert 0 == 1
+E    +  where 0 = <MagicMock name='scaled_dot_product_attention' id='132859655754496'>.call_count
+=========================== short test summary info ============================
+FAILED tests/test_chp_attention.py::test_sdpa_is_used_without_parameter_changes[CausalAttnBlock]
+FAILED tests/test_chp_attention.py::test_sdpa_is_used_without_parameter_changes[CausalTemporalAttnBlock]
+2 failed, 7 deselected in 0.83s

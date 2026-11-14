@@ -1,0 +1,40 @@
+F........                                                                [100%]
+=================================== FAILURES ===================================
+_______________ test_file_sender_receiver_mixed_budgets_and_tail _______________
+tests/test_chp_cli.py:32: in test_file_sender_receiver_mixed_budgets_and_tail
+    receive(SimpleNamespace(checkpoint=str(decoder),stream=str(wire),output=str(output),device='cpu',dtype='float32',model_id='test'))
+.venv/lib/python3.10/site-packages/torch/utils/_contextlib.py:116: in decorate_context
+    return func(*args, **kwargs)
+cosmos_predict1/tokenizer/progressive/cli.py:264: in receive
+    packet = receiver.read_packet(source)
+cosmos_predict1/tokenizer/progressive/protocol.py:258: in read_packet
+    self.append_tokens(packet)
+cosmos_predict1/tokenizer/progressive/protocol.py:239: in append_tokens
+    self._validate_new_block(packet)
+cosmos_predict1/tokenizer/progressive/protocol.py:213: in _validate_new_block
+    self._validate_frame_metadata(packet)
+cosmos_predict1/tokenizer/progressive/protocol.py:225: in _validate_frame_metadata
+    raise ValueError("partial tail needs EOS")
+E   ValueError: partial tail needs EOS
+----------------------------- Captured stderr call -----------------------------
+2026-11-14 21:37:57.776 | INFO     | cosmos_predict1.tokenizer.modules.layers3d:__init__:843 - Working with z of shape (1, 16, 128, 128) = 262144 dimensions.
+2026-11-14 21:37:58.350 | INFO     | cosmos_predict1.tokenizer.networks.ours_discrete_video:__init__:64 - OURS based on FSQ-VAE, with {'name': 'OURS', 'attn_resolutions': [], 'channels': 8, 'channels_mult': [1, 2, 2], 'dropout': 0.0, 'in_channels': 3, 'num_res_blocks': 1, 'out_channels': 3, 'resolution': 1024, 'patch_size': 2, 'patch_method': 'haar', 'num_groups': 1, 'legacy_mode': False, 'spatial_compression': 8, 'temporal_compression': 4, 'quantizer': 'FSQ', 'levels': [8, 8, 8, 5, 5, 5], 'encoder': 'FACTORIZED', 'decoder': 'FACTORIZED', 'rate_strategy': 'elbo', 'use_vit': False, 'freeze_original': False, 'vit_config': {'hidden_size': 256, 'intermediate_size': 512, 'num_encoder_layers': 8, 'num_decoder_layers': 8, 'num_attention_heads': 32, 'theta': 10000.0, 'rms_norm_eps': 1e-05, 'initializer_range': 0.02, 'max_num_video_frames': 49, 'switch_rotary_to_1d': 1.0, 'max_sequence_length': 96, 'max_sequence_length_1d': 8192, 'concat_decode_2d': False, 'special_attn': False, 'method': 'mse'}}.
+2026-11-14 21:37:58.351 | INFO     | cosmos_predict1.tokenizer.networks.ours_discrete_video:__init__:67 - model=OURS, num_parameters=93,030
+2026-11-14 21:37:58.351 | INFO     | cosmos_predict1.tokenizer.networks.ours_discrete_video:__init__:68 - z_channels=16, embedding_dim=6.
+2026-11-14 21:37:58.351 | INFO     | cosmos_predict1.tokenizer.networks.ours_discrete_video:init_adaptive_token:172 - Adaptive token initialized with shape torch.Size([128]) and value 0.0.
+2026-11-14 21:37:58.352 | INFO     | cosmos_predict1.tokenizer.networks.ours_discrete_video:__init__:122 - model=OURS, num_parameters=93,030
+2026-11-14 21:37:58.413 | INFO     | cosmos_predict1.tokenizer.modules.layers3d:__init__:843 - Working with z of shape (1, 16, 128, 128) = 262144 dimensions.
+2026-11-14 21:37:58.426 | INFO     | cosmos_predict1.tokenizer.networks.ours_discrete_video:__init__:64 - OURS based on FSQ-VAE, with {'name': 'OURS', 'attn_resolutions': [], 'channels': 8, 'channels_mult': [1, 2, 2], 'dropout': 0.0, 'in_channels': 3, 'num_res_blocks': 1, 'out_channels': 3, 'resolution': 1024, 'patch_size': 2, 'patch_method': 'haar', 'num_groups': 1, 'legacy_mode': False, 'spatial_compression': 8, 'temporal_compression': 4, 'quantizer': 'FSQ', 'levels': [8, 8, 8, 5, 5, 5], 'encoder': 'FACTORIZED', 'decoder': 'FACTORIZED', 'rate_strategy': 'elbo', 'use_vit': False, 'freeze_original': False, 'vit_config': {'hidden_size': 256, 'intermediate_size': 512, 'num_encoder_layers': 8, 'num_decoder_layers': 8, 'num_attention_heads': 32, 'theta': 10000.0, 'rms_norm_eps': 1e-05, 'initializer_range': 0.02, 'max_num_video_frames': 49, 'switch_rotary_to_1d': 1.0, 'max_sequence_length': 96, 'max_sequence_length_1d': 8192, 'concat_decode_2d': False, 'special_attn': False, 'method': 'mse'}}.
+2026-11-14 21:37:58.426 | INFO     | cosmos_predict1.tokenizer.networks.ours_discrete_video:__init__:67 - model=OURS, num_parameters=93,030
+2026-11-14 21:37:58.426 | INFO     | cosmos_predict1.tokenizer.networks.ours_discrete_video:__init__:68 - z_channels=16, embedding_dim=6.
+2026-11-14 21:37:58.427 | INFO     | cosmos_predict1.tokenizer.networks.ours_discrete_video:init_adaptive_token:172 - Adaptive token initialized with shape torch.Size([128]) and value 0.0.
+2026-11-14 21:37:58.427 | INFO     | cosmos_predict1.tokenizer.networks.ours_discrete_video:__init__:122 - model=OURS, num_parameters=93,030
+2026-11-14 21:37:58.505 | INFO     | cosmos_predict1.tokenizer.modules.layers3d:__init__:843 - Working with z of shape (1, 16, 128, 128) = 262144 dimensions.
+2026-11-14 21:37:58.516 | INFO     | cosmos_predict1.tokenizer.networks.ours_discrete_video:__init__:64 - OURS based on FSQ-VAE, with {'name': 'OURS', 'attn_resolutions': [], 'channels': 8, 'channels_mult': [1, 2, 2], 'dropout': 0.0, 'in_channels': 3, 'num_res_blocks': 1, 'out_channels': 3, 'resolution': 1024, 'patch_size': 2, 'patch_method': 'haar', 'num_groups': 1, 'legacy_mode': False, 'spatial_compression': 8, 'temporal_compression': 4, 'quantizer': 'FSQ', 'levels': [8, 8, 8, 5, 5, 5], 'encoder': 'FACTORIZED', 'decoder': 'FACTORIZED', 'rate_strategy': 'elbo', 'use_vit': False, 'freeze_original': False, 'vit_config': {'hidden_size': 256, 'intermediate_size': 512, 'num_encoder_layers': 8, 'num_decoder_layers': 8, 'num_attention_heads': 32, 'theta': 10000.0, 'rms_norm_eps': 1e-05, 'initializer_range': 0.02, 'max_num_video_frames': 49, 'switch_rotary_to_1d': 1.0, 'max_sequence_length': 96, 'max_sequence_length_1d': 8192, 'concat_decode_2d': False, 'special_attn': False, 'method': 'mse'}}.
+2026-11-14 21:37:58.517 | INFO     | cosmos_predict1.tokenizer.networks.ours_discrete_video:__init__:67 - model=OURS, num_parameters=93,030
+2026-11-14 21:37:58.517 | INFO     | cosmos_predict1.tokenizer.networks.ours_discrete_video:__init__:68 - z_channels=16, embedding_dim=6.
+2026-11-14 21:37:58.517 | INFO     | cosmos_predict1.tokenizer.networks.ours_discrete_video:init_adaptive_token:172 - Adaptive token initialized with shape torch.Size([128]) and value 0.0.
+2026-11-14 21:37:58.518 | INFO     | cosmos_predict1.tokenizer.networks.ours_discrete_video:__init__:122 - model=OURS, num_parameters=93,030
+=========================== short test summary info ============================
+FAILED tests/test_chp_cli.py::test_file_sender_receiver_mixed_budgets_and_tail
+1 failed, 8 passed in 1.28s

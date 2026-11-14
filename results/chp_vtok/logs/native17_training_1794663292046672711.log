@@ -1,0 +1,602 @@
+/home/whisperliang/InfoTok/.venv/lib/python3.10/site-packages/megatron/core/tensor_parallel/layers.py:265: FutureWarning: `torch.cuda.amp.custom_fwd(args...)` is deprecated. Please use `torch.amp.custom_fwd(args..., device_type='cuda')` instead.
+  def forward(
+/home/whisperliang/InfoTok/.venv/lib/python3.10/site-packages/megatron/core/tensor_parallel/layers.py:277: FutureWarning: `torch.cuda.amp.custom_bwd(args...)` is deprecated. Please use `torch.amp.custom_bwd(args..., device_type='cuda')` instead.
+  def backward(ctx, grad_output):
+/home/whisperliang/InfoTok/.venv/lib/python3.10/site-packages/megatron/core/tensor_parallel/layers.py:364: FutureWarning: `torch.cuda.amp.custom_fwd(args...)` is deprecated. Please use `torch.amp.custom_fwd(args..., device_type='cuda')` instead.
+  def forward(
+/home/whisperliang/InfoTok/.venv/lib/python3.10/site-packages/megatron/core/tensor_parallel/layers.py:401: FutureWarning: `torch.cuda.amp.custom_bwd(args...)` is deprecated. Please use `torch.amp.custom_bwd(args..., device_type='cuda')` instead.
+  def backward(ctx, grad_output):
+[11-14 21:34:58|CRITICAL|cosmos_predict1/utils/distributed.py:68:init] [RANK 0] Initialized distributed program with local rank 0 with timeout 1800
+[11-14 21:34:58|INFO|cosmos_predict1/utils/distributed.py:78:init] Running with 1 GPUs.
+Config is saved using pickle at checkpoints/chp_vtok/tokenizer/multi_native17/config.pkl.
+Config is saved using omegaconf at checkpoints/chp_vtok/tokenizer/multi_native17/config.yaml.
+[rank0]:[W1114 21:34:58.229830700 ProcessGroupNCCL.cpp:4561] [PG ID 0 PG GUID 0 Rank 0]  using GPU 0 to perform barrier as devices used by this process are currently unknown. This can potentially cause a hang if this rank to GPU mapping is incorrect. Specify device_ids in barrier() to force use of a particular device, or call init_process_group() with a device_id.
+[11-14 21:34:58|INFO|cosmos_predict1/utils/trainer.py:94:__init__] Config:
+* model: {'config': {'network': {'config': {'kmax': 2048, 'budgets': [256, 512, 1024, 2048], 'multiscale': True, 'base_tokens': 256, 'structure_tokens': 768, 'hidden_dim': 128, 'heads': 4, 'local_radius': 2, 'spatial_window': 16, 'anchor_order': 'halton', 'decoder_neighbors': 8, 'checkpoint_decoder': True, 'freeze_backbone': True, 'backbone_checkpoint': 'checkpoints/infotok-flex/infotok_mse.pt', 'debug_backbone': False}, '_target_': <class 'cosmos_predict1.tokenizer.progressive.model.CHPVTokenizer'>}, 'loss': {'config': {'color': {'config': {'norm': 'L1', 'boundaries': [0], 'values': [1.0]}, '_target_': <class 'cosmos_predict1.tokenizer.training.losses.continuous.ColorLoss'>}, 'reduce': 'MEAN', 'perceptual': {'config': {'lpips_boundaries': [0], 'lpips_values': [0.1], 'layer_weights': [0.3846153846153846, 0.20833333333333334, 0.27027027027027023, 0.17857142857142858, 6.666666666666667], 'gram_enabled': False, 'gram_boundaries': [500000], 'gram_values': [0.0, 0.062], 'corr_enabled': False, 'corr_boundaries': [0], 'corr_values': [0.0], 'checkpoint_activations': True}, '_target_': <class 'cosmos_predict1.tokenizer.training.losses.continuous.PerceptualLoss'>}}, '_target_': <class 'cosmos_predict1.tokenizer.training.losses.continuous.TokenizerLoss'>}, 'metric': {'config': {}, '_target_': <class 'cosmos_predict1.tokenizer.training.metrics.TokenizerMetric'>}, 'ema': {'enabled': False, 'beta': 0.9999, 'torch_compile_buffer_renaming': False}, 'precision': 'bfloat16', 'torch_compile': False, 'disc': None, 'disc_optimizer': None, 'disc_scheduler': None, 'latent_weight': 1.0, 'temporal_weight': 0.1}, '_target_': <class 'cosmos_predict1.tokenizer.training.chp_model.CHPTrainingModel'>}
+* optimizer: {'lr': 0.0001, 'betas': [0.9, 0.999], 'eps': 1e-08, 'weight_decay': 0.01, 'amsgrad': False, 'maximize': False, 'foreach': None, 'capturable': False, 'differentiable': False, 'fused': None, 'params': None, '_target_': <class 'torch.optim.adamw.AdamW'>}
+* scheduler: {'last_epoch': -1, 'optimizer': None, 'warmup_iters': 5, 'lr_decay_iters': 10000, 'min_lr': 1e-06, '_target_': <class 'cosmos_predict1.utils.scheduler.WarmupCosineLR'>}
+* dataloader_train: {'batch_size': 1, 'shuffle': False, 'sampler': None, 'batch_sampler': None, 'num_workers': 0, 'collate_fn': None, 'pin_memory': False, 'drop_last': False, 'timeout': 0, 'worker_init_fn': None, 'multiprocessing_context': None, 'generator': None, 'prefetch_factor': None, 'persistent_workers': False, 'pin_memory_device': '', 'in_order': True, 'dataset': {'num_video_frames': 17, 'debug_height': None, 'crop_size': None, 'video_pattern': 'data/chp_vtok/*.mp4', '_target_': <class 'cosmos_predict1.tokenizer.training.datasets.chp_video.CHPVideoDataset'>}, '_target_': <class 'torch.utils.data.dataloader.DataLoader'>}
+* dataloader_val: {'batch_size': 1, 'shuffle': False, 'sampler': None, 'batch_sampler': None, 'num_workers': 0, 'collate_fn': None, 'pin_memory': False, 'drop_last': False, 'timeout': 0, 'worker_init_fn': None, 'multiprocessing_context': None, 'generator': None, 'prefetch_factor': None, 'persistent_workers': False, 'pin_memory_device': '', 'in_order': True, 'dataset': {'num_video_frames': 17, 'debug_height': None, 'crop_size': None, 'video_pattern': 'data/chp_vtok/*.mp4', '_target_': <class 'cosmos_predict1.tokenizer.training.datasets.chp_video.CHPVideoDataset'>}, '_target_': <class 'torch.utils.data.dataloader.DataLoader'>}
+* job:
+   * project: chp_vtok
+   * group: tokenizer
+   * name: multi_native17
+* trainer:
+   * type: <class 'cosmos_predict1.tokenizer.training.trainer.TokenizerTrainer'>
+   * callbacks: {'low_precision': {'config': None, 'trainer': None, 'update_iter': 1, '_target_': <class 'cosmos_predict1.utils.callback.LowPrecisionCallback'>}, 'grad_clip': {'grad_clip_norm': 1, 'config': None, 'trainer': None, 'verbose': False, '_target_': <class 'cosmos_predict1.tokenizer.training.callbacks.GradClipCallback'>}, 'progress': {'config': None, 'trainer': None, '_target_': <class 'cosmos_predict1.utils.callback.ProgressBarCallback'>}, 'chp_metadata': {'config': None, 'trainer': None, '_target_': <class 'cosmos_predict1.tokenizer.training.chp_model.CHPCheckpointMetadata'>}}
+   * distributed_parallelism: ddp
+   * ddp:
+      * find_unused_parameters: True
+      * static_graph: False
+      * broadcast_buffers: True
+   * cudnn:
+      * deterministic: True
+      * benchmark: False
+   * seed: 0
+   * grad_scaler_args: {'enabled': False}
+   * max_iter: 44
+   * max_val_iter: None
+   * logging_iter: 1
+   * run_validation: False
+   * validation_iter: 999999999
+   * timeout_period: 999999999
+   * memory_format: torch.preserve_format
+   * grad_accum_iter: 1
+* model_parallel: ModelParallelConfig(tensor_model_parallel_size=1, pipeline_model_parallel_size=1, virtual_pipeline_model_parallel_size=None, sequence_parallel=False, context_parallel_size=1, expert_model_parallel_size=1, moe_extended_tp=False, perform_initialization=True, use_cpu_initialization=False, fp16=False, bf16=False, params_dtype=torch.float32, timers=None, finalize_model_grads_func=None, grad_scale_func=None, no_sync_func=None, grad_sync_func=None, param_sync_func=None, enable_autocast=False, autocast_dtype=torch.float32, num_microbatches_with_partial_activation_checkpoints=None, gradient_accumulation_fusion=False, async_tensor_model_parallel_allreduce=False, use_te_rng_tracker=False, tp_comm_overlap=False, tp_comm_bulk_wgrad=True, tp_comm_bulk_dgrad=True, tp_comm_overlap_ag=True, tp_comm_overlap_rs=True, tp_comm_overlap_rs_dgrad=False, tp_comm_split_ag=True, tp_comm_atomic_ag=False, tp_comm_split_rs=True, tp_comm_atomic_rs=False, pipeline_dtype=None, variable_seq_lengths=False, overlap_p2p_comm=False, batch_p2p_comm=True, batch_p2p_sync=True, use_ring_exchange_p2p=False, deallocate_pipeline_outputs=False, defer_embedding_wgrad_compute=False, pipeline_model_parallel_split_rank=None, cpu_offloading=False, cpu_offloading_num_layers=0, _cpu_offloading_context=None, cpu_offloading_activations=True, cpu_offloading_weights=True, barrier_with_L1_time=True)
+* checkpoint:
+   * type: None
+   * dcp_async_mode_enabled: False
+   * save_iter: 44
+   * load_path: checkpoints/chp_vtok/tokenizer/multi_native/checkpoints/iter_000000042.pt
+   * load_training_state: True
+   * only_load_scheduler_state: False
+   * strict_resume: True
+   * verbose: True
+   * jit:
+      * enabled: False
+      * input_shape: None
+      * device: cuda
+      * dtype: bfloat16
+      * strict: True
+   * keys_not_to_resume: []
+   * broadcast_via_filesystem: False
+   * load_ema_to_reg: False
+[11-14 21:34:58|WARNING|cosmos_predict1/utils/misc.py:115:print_environ_variables] Environment variable TORCH_HOME not set!
+[11-14 21:34:58|WARNING|cosmos_predict1/utils/misc.py:115:print_environ_variables] Environment variable OUTPUT_ROOT not set!
+[11-14 21:34:58|INFO|cosmos_predict1/utils/misc.py:127:set_random_seed] Using random seed 0.
+[11-14 21:34:58|CRITICAL|cosmos_predict1/utils/callback.py:72:__init__] Instantiating callback low_precision: {'config': None, 'trainer': None, 'update_iter': 1, '_target_': <class 'cosmos_predict1.utils.callback.LowPrecisionCallback'>}
+[11-14 21:34:58|CRITICAL|cosmos_predict1/utils/callback.py:72:__init__] Instantiating callback grad_clip: {'grad_clip_norm': 1, 'config': None, 'trainer': None, 'verbose': False, '_target_': <class 'cosmos_predict1.tokenizer.training.callbacks.GradClipCallback'>}
+[11-14 21:34:58|CRITICAL|cosmos_predict1/utils/callback.py:72:__init__] Instantiating callback progress: {'config': None, 'trainer': None, '_target_': <class 'cosmos_predict1.utils.callback.ProgressBarCallback'>}
+[11-14 21:34:58|CRITICAL|cosmos_predict1/utils/callback.py:72:__init__] Instantiating callback chp_metadata: {'config': None, 'trainer': None, '_target_': <class 'cosmos_predict1.tokenizer.training.chp_model.CHPCheckpointMetadata'>}
+2026-11-14 21:34:58.952 | INFO     | cosmos_predict1.tokenizer.modules.layers3d:__init__:843 - Working with z of shape (1, 256, 128, 128) = 4194304 dimensions.
+2026-11-14 21:34:59.387 | INFO     | cosmos_predict1.tokenizer.networks.ours_discrete_video:__init__:64 - OURS based on FSQ-VAE, with {'name': 'OURS', 'attn_resolutions': [32], 'channels': 128, 'channels_mult': [2, 4, 4], 'dropout': 0.0, 'in_channels': 3, 'num_res_blocks': 2, 'out_channels': 3, 'resolution': 1024, 'patch_size': 2, 'patch_method': 'haar', 'num_groups': 1, 'legacy_mode': False, 'spatial_compression': 8, 'temporal_compression': 4, 'quantizer': 'FSQ', 'levels': [8, 8, 8, 5, 5, 5], 'encoder': 'FACTORIZED', 'decoder': 'FACTORIZED', 'rate_strategy': 'elbo', 'use_vit': True, 'freeze_original': False, 'vit_config': {'hidden_size': 256, 'intermediate_size': 512, 'num_encoder_layers': 8, 'num_decoder_layers': 8, 'num_attention_heads': 32, 'theta': 10000.0, 'rms_norm_eps': 1e-05, 'initializer_range': 0.02, 'max_num_video_frames': 49, 'switch_rotary_to_1d': 1.0, 'max_sequence_length': 96, 'max_sequence_length_1d': 8192, 'concat_decode_2d': False, 'special_attn': False, 'method': 'mse'}}.
+2026-11-14 21:34:59.388 | INFO     | cosmos_predict1.tokenizer.networks.ours_discrete_video:__init__:67 - model=OURS, num_parameters=112,619,766
+2026-11-14 21:34:59.388 | INFO     | cosmos_predict1.tokenizer.networks.ours_discrete_video:__init__:68 - z_channels=256, embedding_dim=6.
+2026-11-14 21:34:59.388 | INFO     | cosmos_predict1.tokenizer.networks.ours_discrete_video:__init__:87 - Not freezing original model parameters.
+2026-11-14 21:34:59.522 | INFO     | cosmos_predict1.tokenizer.networks.ours_discrete_video:init_adaptive_token:172 - Adaptive token initialized with shape torch.Size([128]) and value 0.0.
+2026-11-14 21:34:59.523 | INFO     | cosmos_predict1.tokenizer.networks.ours_discrete_video:__init__:122 - model=OURS, num_parameters=123,142,646
+/home/whisperliang/InfoTok/.venv/lib/python3.10/site-packages/torchvision/models/_utils.py:208: UserWarning: The parameter 'pretrained' is deprecated since 0.13 and may be removed in the future, please use 'weights' instead.
+  warnings.warn(
+/home/whisperliang/InfoTok/.venv/lib/python3.10/site-packages/torchvision/models/_utils.py:223: UserWarning: Arguments other than a weight enum or `None` for 'weights' are deprecated since 0.13 and may be removed in the future. The current behavior is equivalent to passing `weights=VGG16_Weights.IMAGENET1K_V1`. You can also use `weights=VGG16_Weights.DEFAULT` to get the most up-to-date weights.
+  warnings.warn(msg)
+2026-11-14 21:35:01.942 | INFO     | cosmos_predict1.tokenizer.training.losses.lpips:load_from_pretrained:90 - Loaded pretrained LPIPS loss from /home/whisperliang/.cache/torch/hub/checkpoints/vgg.pth
+Config(model={'config': {'network': {'config': {'kmax': 2048, 'budgets': [256, 512, 1024, 2048], 'multiscale': True, 'base_tokens': 256, 'structure_tokens': 768, 'hidden_dim': 128, 'heads': 4, 'local_radius': 2, 'spatial_window': 16, 'anchor_order': 'halton', 'decoder_neighbors': 8, 'checkpoint_decoder': True, 'freeze_backbone': True, 'backbone_checkpoint': 'checkpoints/infotok-flex/infotok_mse.pt', 'debug_backbone': False}, '_target_': <class 'cosmos_predict1.tokenizer.progressive.model.CHPVTokenizer'>}, 'loss': {'config': {'color': {'config': {'norm': 'L1', 'boundaries': [0], 'values': [1.0]}, '_target_': <class 'cosmos_predict1.tokenizer.training.losses.continuous.ColorLoss'>}, 'reduce': 'MEAN', 'perceptual': {'config': {'lpips_boundaries': [0], 'lpips_values': [0.1], 'layer_weights': [0.3846153846153846, 0.20833333333333334, 0.27027027027027023, 0.17857142857142858, 6.666666666666667], 'gram_enabled': False, 'gram_boundaries': [500000], 'gram_values': [0.0, 0.062], 'corr_enabled': False, 'corr_boundaries': [0], 'corr_values': [0.0], 'checkpoint_activations': True}, '_target_': <class 'cosmos_predict1.tokenizer.training.losses.continuous.PerceptualLoss'>}}, '_target_': <class 'cosmos_predict1.tokenizer.training.losses.continuous.TokenizerLoss'>}, 'metric': {'config': {}, '_target_': <class 'cosmos_predict1.tokenizer.training.metrics.TokenizerMetric'>}, 'ema': {'enabled': False, 'beta': 0.9999, 'torch_compile_buffer_renaming': False}, 'precision': 'bfloat16', 'torch_compile': False, 'disc': None, 'disc_optimizer': None, 'disc_scheduler': None, 'latent_weight': 1.0, 'temporal_weight': 0.1}, '_target_': <class 'cosmos_predict1.tokenizer.training.chp_model.CHPTrainingModel'>}, optimizer={'lr': 0.0001, 'betas': [0.9, 0.999], 'eps': 1e-08, 'weight_decay': 0.01, 'amsgrad': False, 'maximize': False, 'foreach': None, 'capturable': False, 'differentiable': False, 'fused': None, 'params': None, '_target_': <class 'torch.optim.adamw.AdamW'>}, scheduler={'last_epoch': -1, 'optimizer': None, 'warmup_iters': 5, 'lr_decay_iters': 10000, 'min_lr': 1e-06, '_target_': <class 'cosmos_predict1.utils.scheduler.WarmupCosineLR'>}, dataloader_train={'batch_size': 1, 'shuffle': False, 'sampler': None, 'batch_sampler': None, 'num_workers': 0, 'collate_fn': None, 'pin_memory': False, 'drop_last': False, 'timeout': 0, 'worker_init_fn': None, 'multiprocessing_context': None, 'generator': None, 'prefetch_factor': None, 'persistent_workers': False, 'pin_memory_device': '', 'in_order': True, 'dataset': {'num_video_frames': 17, 'debug_height': None, 'crop_size': None, 'video_pattern': 'data/chp_vtok/*.mp4', '_target_': <class 'cosmos_predict1.tokenizer.training.datasets.chp_video.CHPVideoDataset'>}, '_target_': <class 'torch.utils.data.dataloader.DataLoader'>}, dataloader_val={'batch_size': 1, 'shuffle': False, 'sampler': None, 'batch_sampler': None, 'num_workers': 0, 'collate_fn': None, 'pin_memory': False, 'drop_last': False, 'timeout': 0, 'worker_init_fn': None, 'multiprocessing_context': None, 'generator': None, 'prefetch_factor': None, 'persistent_workers': False, 'pin_memory_device': '', 'in_order': True, 'dataset': {'num_video_frames': 17, 'debug_height': None, 'crop_size': None, 'video_pattern': 'data/chp_vtok/*.mp4', '_target_': <class 'cosmos_predict1.tokenizer.training.datasets.chp_video.CHPVideoDataset'>}, '_target_': <class 'torch.utils.data.dataloader.DataLoader'>}, job=JobConfig(project='chp_vtok', group='tokenizer', name='multi_native17'), trainer=TrainerConfig(type=<class 'cosmos_predict1.tokenizer.training.trainer.TokenizerTrainer'>, callbacks={'low_precision': {'config': None, 'trainer': None, 'update_iter': 1, '_target_': <class 'cosmos_predict1.utils.callback.LowPrecisionCallback'>}, 'grad_clip': {'grad_clip_norm': 1, 'config': None, 'trainer': None, 'verbose': False, '_target_': <class 'cosmos_predict1.tokenizer.training.callbacks.GradClipCallback'>}, 'progress': {'config': None, 'trainer': None, '_target_': <class 'cosmos_predict1.utils.callback.ProgressBarCallback'>}, 'chp_metadata': {'config': None, 'trainer': None, '_target_': <class 'cosmos_predict1.tokenizer.training.chp_model.CHPCheckpointMetadata'>}}, distributed_parallelism='ddp', ddp=DDPConfig(find_unused_parameters=True, static_graph=False, broadcast_buffers=True), cudnn=CuDNNConfig(deterministic=True, benchmark=False), seed=0, grad_scaler_args={'enabled': False}, max_iter=44, max_val_iter=None, logging_iter=1, run_validation=False, validation_iter=999999999, timeout_period=999999999, memory_format=torch.preserve_format, grad_accum_iter=1), model_parallel=ModelParallelConfig(tensor_model_parallel_size=1, pipeline_model_parallel_size=1, virtual_pipeline_model_parallel_size=None, sequence_parallel=False, context_parallel_size=1, expert_model_parallel_size=1, moe_extended_tp=False, perform_initialization=True, use_cpu_initialization=False, fp16=False, bf16=False, params_dtype=torch.float32, timers=None, finalize_model_grads_func=None, grad_scale_func=None, no_sync_func=None, grad_sync_func=None, param_sync_func=None, enable_autocast=False, autocast_dtype=torch.float32, num_microbatches_with_partial_activation_checkpoints=None, gradient_accumulation_fusion=False, async_tensor_model_parallel_allreduce=False, use_te_rng_tracker=False, tp_comm_overlap=False, tp_comm_bulk_wgrad=True, tp_comm_bulk_dgrad=True, tp_comm_overlap_ag=True, tp_comm_overlap_rs=True, tp_comm_overlap_rs_dgrad=False, tp_comm_split_ag=True, tp_comm_atomic_ag=False, tp_comm_split_rs=True, tp_comm_atomic_rs=False, pipeline_dtype=None, variable_seq_lengths=False, overlap_p2p_comm=False, batch_p2p_comm=True, batch_p2p_sync=True, use_ring_exchange_p2p=False, deallocate_pipeline_outputs=False, defer_embedding_wgrad_compute=False, pipeline_model_parallel_split_rank=None, cpu_offloading=False, cpu_offloading_num_layers=0, _cpu_offloading_context=None, cpu_offloading_activations=True, cpu_offloading_weights=True, barrier_with_L1_time=True), checkpoint=CheckpointConfig(type=None, dcp_async_mode_enabled=False, save_iter=44, load_path='checkpoints/chp_vtok/tokenizer/multi_native/checkpoints/iter_000000042.pt', load_training_state=True, only_load_scheduler_state=False, strict_resume=True, verbose=True, jit=JITConfig(enabled=False, input_shape=None, device='cuda', dtype='bfloat16', strict=True), keys_not_to_resume=[], broadcast_via_filesystem=False, load_ema_to_reg=False))
+wandb: Using wandb-core as the SDK backend.  Please refer to https://wandb.me/wandb-core for more information.
+wandb: Tracking run with wandb version 0.19.8
+wandb: W&B syncing is set to `offline` in this directory.  
+wandb: Run `wandb online` or set WANDB_MODE=online to enable cloud syncing.
+[11-14 21:35:02|INFO|cosmos_predict1/utils/checkpointer.py:165:load] Loading checkpoint (local): checkpoints/chp_vtok/tokenizer/multi_native/checkpoints/iter_000000042.pt
+[11-14 21:35:02|SUCCESS|cosmos_predict1/utils/checkpointer.py:168:load] Complete loading checkpoint (local): checkpoints/chp_vtok/tokenizer/multi_native/checkpoints/iter_000000042.pt
+[11-14 21:35:02|INFO|cosmos_predict1/utils/checkpointer.py:171:load] - Loading the model...
+/home/whisperliang/InfoTok/cosmos_predict1/tokenizer/training/model.py:89: FutureWarning: Positional args are being deprecated, use kwargs instead. Refer to https://pytorch.org/docs/main/generated/torch.nn.Module.html#torch.nn.Module.state_dict for details.
+  original_state_dict = super(TokenizerModel, self).state_dict(destination, prefix, keep_vars)
+[11-14 21:35:02|INFO|cosmos_predict1/utils/checkpointer.py:179:load] - Loading the scheduler...
+[11-14 21:35:02|INFO|cosmos_predict1/utils/checkpointer.py:186:load] - Loading the optimizer...
+[11-14 21:35:02|INFO|cosmos_predict1/utils/checkpointer.py:188:load] - Loading the gradient scaler...
+[11-14 21:35:02|SUCCESS|cosmos_predict1/utils/checkpointer.py:190:load] Done with loading the checkpoint (iteration 42).
+[11-14 21:35:02|CRITICAL|cosmos_predict1/utils/trainer.py:152:train] Distributed parallelism mode: ddp
+[11-14 21:35:02|INFO|cosmos_predict1/utils/trainer.py:160:train] Starting training...
+
+Training:  95%|█████████▌| 42/44 [00:00<?, ?it/s]2026-11-14 21:35:19.123 | ERROR    | __main__:<module>:82 - An error has been caught in function '<module>', process 'MainProcess' (366663), thread 'MainThread' (127065737654912):
+Traceback (most recent call last):
+
+  File "/usr/lib/python3.10/runpy.py", line 196, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+           │         │     └ {'__name__': '__main__', '__doc__': None, '__package__': 'cosmos_predict1.tokenizer.training', '__loader__': <_frozen_importl...
+           │         └ <code object <module> at 0x7390cb5ea550, file "/home/whisperliang/InfoTok/cosmos_predict1/tokenizer/training/train.py", line 1>
+           └ <function _run_code at 0x7390cb5e3400>
+  File "/usr/lib/python3.10/runpy.py", line 86, in _run_code
+    exec(code, run_globals)
+         │     └ {'__name__': '__main__', '__doc__': None, '__package__': 'cosmos_predict1.tokenizer.training', '__loader__': <_frozen_importl...
+         └ <code object <module> at 0x7390cb5ea550, file "/home/whisperliang/InfoTok/cosmos_predict1/tokenizer/training/train.py", line 1>
+
+> File "/home/whisperliang/InfoTok/cosmos_predict1/tokenizer/training/train.py", line 82, in <module>
+    launch(config, args)
+    │      │       └ Namespace(config='cosmos_predict1/tokenizer/training/configs/chp_vtok.py', opts=['--', 'job.name=multi_native17', 'trainer.ma...
+    │      └ Config(model={'config': {'network': {'config': {'kmax': 2048, 'budgets': [256, 512, 1024, 2048], 'multiscale': True, 'base_to...
+    └ <function launch at 0x738fdcc96a70>
+
+  File "/home/whisperliang/InfoTok/cosmos_predict1/tokenizer/training/train.py", line 41, in launch
+    trainer.train(
+    │       └ <function Trainer.train at 0x738fdced24d0>
+    └ <cosmos_predict1.tokenizer.training.trainer.TokenizerTrainer object at 0x738fc5a52ef0>
+
+  File "/home/whisperliang/InfoTok/cosmos_predict1/utils/trainer.py", line 188, in train
+    output_batch, loss, grad_accum_iter = self.training_step(
+                                          │    └ <function Trainer.training_step at 0x738fdced2560>
+                                          └ <cosmos_predict1.tokenizer.training.trainer.TokenizerTrainer object at 0x738fc5a52ef0>
+
+  File "/home/whisperliang/InfoTok/cosmos_predict1/utils/trainer.py", line 258, in training_step
+    output_batch, loss = model_ddp.training_step(data, iteration)
+                         │         │             │     └ 42
+                         │         │             └ {'video': tensor([[[[[-0.1299, -0.1216, -0.1689,  ..., -0.1455, -0.1689, -0.1768],
+                         │         │                          [-0.1377, -0.1533, -0.1533,  .....
+                         │         └ <function DistributedDataParallel.training_step at 0x738fecfcc4c0>
+                         └ DistributedDataParallel(
+                             (module): CHPTrainingModel(
+                               (network): CHPVTokenizer(
+                                 (encoder): EncoderFactorized(
+                               ...
+
+  File "/home/whisperliang/InfoTok/cosmos_predict1/utils/distributed.py", line 228, in training_step
+    return self(*args, **kwargs)
+           │     │       └ {}
+           │     └ ({'video': tensor([[[[[-0.1299, -0.1216, -0.1689,  ..., -0.1455, -0.1689, -0.1768],
+           │                  [-0.1377, -0.1533, -0.1533,  ....
+           └ DistributedDataParallel(
+               (module): CHPTrainingModel(
+                 (network): CHPVTokenizer(
+                   (encoder): EncoderFactorized(
+                 ...
+
+  File "/home/whisperliang/InfoTok/.venv/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1739, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           │    │           │       └ {}
+           │    │           └ ({'video': tensor([[[[[-0.1299, -0.1216, -0.1689,  ..., -0.1455, -0.1689, -0.1768],
+           │    │                        [-0.1377, -0.1533, -0.1533,  ....
+           │    └ <function Module._call_impl at 0x738ffbd4fe20>
+           └ DistributedDataParallel(
+               (module): CHPTrainingModel(
+                 (network): CHPVTokenizer(
+                   (encoder): EncoderFactorized(
+                 ...
+  File "/home/whisperliang/InfoTok/.venv/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1750, in _call_impl
+    return forward_call(*args, **kwargs)
+           │             │       └ {}
+           │             └ ({'video': tensor([[[[[-0.1299, -0.1216, -0.1689,  ..., -0.1455, -0.1689, -0.1768],
+           │                          [-0.1377, -0.1533, -0.1533,  ....
+           └ <bound method DistributedDataParallel.forward of DistributedDataParallel(
+               (module): CHPTrainingModel(
+                 (network): CHPVTo...
+  File "/home/whisperliang/InfoTok/.venv/lib/python3.10/site-packages/torch/nn/parallel/distributed.py", line 1643, in forward
+    else self._run_ddp_forward(*inputs, **kwargs)
+         │    │                 │         └ {}
+         │    │                 └ ({'video': tensor([[[[[-0.1299, -0.1216, -0.1689,  ..., -0.1455, -0.1689, -0.1768],
+         │    │                              [-0.1377, -0.1533, -0.1533,  ....
+         │    └ <function DistributedDataParallel._run_ddp_forward at 0x738ffb850790>
+         └ DistributedDataParallel(
+             (module): CHPTrainingModel(
+               (network): CHPVTokenizer(
+                 (encoder): EncoderFactorized(
+               ...
+  File "/home/whisperliang/InfoTok/.venv/lib/python3.10/site-packages/torch/nn/parallel/distributed.py", line 1459, in _run_ddp_forward
+    return self.module(*inputs, **kwargs)  # type: ignore[index]
+           │            │         └ {}
+           │            └ ({'video': tensor([[[[[-0.1299, -0.1216, -0.1689,  ..., -0.1455, -0.1689, -0.1768],
+           │                         [-0.1377, -0.1533, -0.1533,  ....
+           └ DistributedDataParallel(
+               (module): CHPTrainingModel(
+                 (network): CHPVTokenizer(
+                   (encoder): EncoderFactorized(
+                 ...
+  File "/home/whisperliang/InfoTok/.venv/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1739, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           │    │           │       └ {}
+           │    │           └ ({'video': tensor([[[[[-0.1299, -0.1216, -0.1689,  ..., -0.1455, -0.1689, -0.1768],
+           │    │                        [-0.1377, -0.1533, -0.1533,  ....
+           │    └ <function Module._call_impl at 0x738ffbd4fe20>
+           └ CHPTrainingModel(
+               (network): CHPVTokenizer(
+                 (encoder): EncoderFactorized(
+                   (patcher3d): Patcher3D()
+                   (conv_in...
+  File "/home/whisperliang/InfoTok/.venv/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1750, in _call_impl
+    return forward_call(*args, **kwargs)
+           │             │       └ {}
+           │             └ ({'video': tensor([[[[[-0.1299, -0.1216, -0.1689,  ..., -0.1455, -0.1689, -0.1768],
+           │                          [-0.1377, -0.1533, -0.1533,  ....
+           └ <function DistributedDataParallel.training_step.<locals>.wrapped_training_step at 0x738dac022a70>
+
+  File "/home/whisperliang/InfoTok/cosmos_predict1/utils/distributed.py", line 222, in wrapped_training_step
+    return self.module.training_step(*_args, **_kwargs)
+           │                          │        └ {}
+           │                          └ ({'video': tensor([[[[[-0.1299, -0.1216, -0.1689,  ..., -0.1455, -0.1689, -0.1768],
+           │                                       [-0.1377, -0.1533, -0.1533,  ....
+           └ DistributedDataParallel(
+               (module): CHPTrainingModel(
+                 (network): CHPVTokenizer(
+                   (encoder): EncoderFactorized(
+                 ...
+
+  File "/home/whisperliang/InfoTok/cosmos_predict1/tokenizer/training/chp_model.py", line 27, in training_step
+    losses, value = self.loss(inputs, output, iteration)
+                    │         │       │       └ 42
+                    │         │       └ {'reconstructions': tensor([[[[[ 0.3008,  0.2988,  0.2891,  ...,  0.2676,  0.2852,  0.2754],
+                    │         │                    [ 0.2949,  0.2949,  0...
+                    │         └ {'INPUT': tensor([[[[[-0.1299, -0.1216, -0.1689,  ..., -0.1455, -0.1689, -0.1768],
+                    │                      [-0.1377, -0.1533, -0.1533,  .....
+                    └ CHPTrainingModel(
+                        (network): CHPVTokenizer(
+                          (encoder): EncoderFactorized(
+                            (patcher3d): Patcher3D()
+                            (conv_in...
+
+  File "/home/whisperliang/InfoTok/.venv/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1739, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           │    │           │       └ {}
+           │    │           └ ({'INPUT': tensor([[[[[-0.1299, -0.1216, -0.1689,  ..., -0.1455, -0.1689, -0.1768],
+           │    │                        [-0.1377, -0.1533, -0.1533,  ....
+           │    └ <function Module._call_impl at 0x738ffbd4fe20>
+           └ TokenizerLoss(
+               (loss_modules): ModuleDict(
+                 (color): ColorLoss(
+                   (schedule): WeightScheduler()
+                 )
+                 (perceptua...
+  File "/home/whisperliang/InfoTok/.venv/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1750, in _call_impl
+    return forward_call(*args, **kwargs)
+           │             │       └ {}
+           │             └ ({'INPUT': tensor([[[[[-0.1299, -0.1216, -0.1689,  ..., -0.1455, -0.1689, -0.1768],
+           │                          [-0.1377, -0.1533, -0.1533,  ....
+           └ <bound method TokenizerLoss.forward of TokenizerLoss(
+               (loss_modules): ModuleDict(
+                 (color): ColorLoss(
+                   (schedule):...
+
+  File "/home/whisperliang/InfoTok/cosmos_predict1/tokenizer/training/losses/continuous.py", line 52, in forward
+    curr_loss = module(inputs, output_batch, iteration)
+                │      │       │             └ 42
+                │      │       └ {'reconstructions': tensor([[[[[ 0.3008,  0.2988,  0.2891,  ...,  0.2676,  0.2852,  0.2754],
+                │      │                    [ 0.2949,  0.2949,  0...
+                │      └ {'INPUT': tensor([[[[[-0.1299, -0.1216, -0.1689,  ..., -0.1455, -0.1689, -0.1768],
+                │                   [-0.1377, -0.1533, -0.1533,  .....
+                └ PerceptualLoss(
+                    (scaling_layer): ScalingLayer()
+                    (net): vgg16(
+                      (slice1): Sequential(
+                        (0): Conv2d(3, 64, kernel_s...
+
+  File "/home/whisperliang/InfoTok/.venv/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1739, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           │    │           │       └ {}
+           │    │           └ ({'INPUT': tensor([[[[[-0.1299, -0.1216, -0.1689,  ..., -0.1455, -0.1689, -0.1768],
+           │    │                        [-0.1377, -0.1533, -0.1533,  ....
+           │    └ <function Module._call_impl at 0x738ffbd4fe20>
+           └ PerceptualLoss(
+               (scaling_layer): ScalingLayer()
+               (net): vgg16(
+                 (slice1): Sequential(
+                   (0): Conv2d(3, 64, kernel_s...
+  File "/home/whisperliang/InfoTok/.venv/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1750, in _call_impl
+    return forward_call(*args, **kwargs)
+           │             │       └ {}
+           │             └ ({'INPUT': tensor([[[[[-0.1299, -0.1216, -0.1689,  ..., -0.1455, -0.1689, -0.1768],
+           │                          [-0.1377, -0.1533, -0.1533,  ....
+           └ <bound method PerceptualLoss.forward of PerceptualLoss(
+               (scaling_layer): ScalingLayer()
+               (net): vgg16(
+                 (slice1): Seque...
+
+  File "/home/whisperliang/InfoTok/cosmos_predict1/tokenizer/training/losses/continuous.py", line 169, in forward
+    outs0, outs1 = self.net(in0_input), self.net(in1_input)
+                   │        │           │        └ tensor([[[[ 0.7227,  0.7188,  0.6953,  ...,  0.6484,  0.6875,  0.6680],
+                   │        │           │                    [ 0.7109,  0.7109,  0.6836,  ...,  0.6562, ...
+                   │        │           └ PerceptualLoss(
+                   │        │               (scaling_layer): ScalingLayer()
+                   │        │               (net): vgg16(
+                   │        │                 (slice1): Sequential(
+                   │        │                   (0): Conv2d(3, 64, kernel_s...
+                   │        └ tensor([[[[-0.2178, -0.2012, -0.3027,  ..., -0.2520, -0.3027, -0.3203],
+                   │                    [-0.2354, -0.2695, -0.2695,  ..., -0.3379, ...
+                   └ PerceptualLoss(
+                       (scaling_layer): ScalingLayer()
+                       (net): vgg16(
+                         (slice1): Sequential(
+                           (0): Conv2d(3, 64, kernel_s...
+
+  File "/home/whisperliang/InfoTok/.venv/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1739, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           │    │           │       └ {}
+           │    │           └ (tensor([[[[-0.2178, -0.2012, -0.3027,  ..., -0.2520, -0.3027, -0.3203],
+           │    │                       [-0.2354, -0.2695, -0.2695,  ..., -0.3379,...
+           │    └ <function Module._call_impl at 0x738ffbd4fe20>
+           └ vgg16(
+               (slice1): Sequential(
+                 (0): Conv2d(3, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+                 (1): ReLU(inplac...
+  File "/home/whisperliang/InfoTok/.venv/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1750, in _call_impl
+    return forward_call(*args, **kwargs)
+           │             │       └ {}
+           │             └ (tensor([[[[-0.2178, -0.2012, -0.3027,  ..., -0.2520, -0.3027, -0.3203],
+           │                         [-0.2354, -0.2695, -0.2695,  ..., -0.3379,...
+           └ <bound method vgg16.forward of vgg16(
+               (slice1): Sequential(
+                 (0): Conv2d(3, 64, kernel_size=(3, 3), stride=(1, 1), paddi...
+
+  File "/home/whisperliang/InfoTok/cosmos_predict1/tokenizer/training/losses/lpips.py", line 164, in forward
+    h = checkpoint.checkpoint(self.slice2, h, use_reentrant=False)
+        │          │          │            └ tensor([[[[0.0000, 0.0000, 0.0000,  ..., 0.1406, 0.1836, 0.8555],
+        │          │          │                        [0.0000, 0.0000, 0.0000,  ..., 0.1816, 0.4023, 1....
+        │          │          └ vgg16(
+        │          │              (slice1): Sequential(
+        │          │                (0): Conv2d(3, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+        │          │                (1): ReLU(inplac...
+        │          └ <function checkpoint at 0x738ff0dbb490>
+        └ <module 'torch.utils.checkpoint' from '/home/whisperliang/InfoTok/.venv/lib/python3.10/site-packages/torch/utils/checkpoint.py'>
+
+  File "/home/whisperliang/InfoTok/.venv/lib/python3.10/site-packages/torch/_compile.py", line 32, in inner
+    return disable_fn(*args, **kwargs)
+           │           │       └ {'use_reentrant': False}
+           │           └ (Sequential(
+           │               (4): MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)
+           │               (5): Conv2d(64, 128, kernel_...
+           └ <function checkpoint at 0x738dac022dd0>
+  File "/home/whisperliang/InfoTok/.venv/lib/python3.10/site-packages/torch/_dynamo/eval_frame.py", line 745, in _fn
+    return fn(*args, **kwargs)
+           │   │       └ {'use_reentrant': False}
+           │   └ (Sequential(
+           │       (4): MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)
+           │       (5): Conv2d(64, 128, kernel_...
+           └ <function checkpoint at 0x738ff0dbb400>
+  File "/home/whisperliang/InfoTok/.venv/lib/python3.10/site-packages/torch/utils/checkpoint.py", line 496, in checkpoint
+    ret = function(*args, **kwargs)
+          │         │       └ {}
+          │         └ (tensor([[[[0.0000, 0.0000, 0.0000,  ..., 0.1406, 0.1836, 0.8555],
+          │                     [0.0000, 0.0000, 0.0000,  ..., 0.1816, 0.4023, 1...
+          └ Sequential(
+              (4): MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)
+              (5): Conv2d(64, 128, kernel_s...
+  File "/home/whisperliang/InfoTok/.venv/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1739, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           │    │           │       └ {}
+           │    │           └ (tensor([[[[0.0000, 0.0000, 0.0000,  ..., 0.1406, 0.1836, 0.8555],
+           │    │                       [0.0000, 0.0000, 0.0000,  ..., 0.1816, 0.4023, 1...
+           │    └ <function Module._call_impl at 0x738ffbd4fe20>
+           └ Sequential(
+               (4): MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)
+               (5): Conv2d(64, 128, kernel_s...
+  File "/home/whisperliang/InfoTok/.venv/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1750, in _call_impl
+    return forward_call(*args, **kwargs)
+           │             │       └ {}
+           │             └ (tensor([[[[0.0000, 0.0000, 0.0000,  ..., 0.1406, 0.1836, 0.8555],
+           │                         [0.0000, 0.0000, 0.0000,  ..., 0.1816, 0.4023, 1...
+           └ <bound method Sequential.forward of Sequential(
+               (4): MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=Fa...
+  File "/home/whisperliang/InfoTok/.venv/lib/python3.10/site-packages/torch/nn/modules/container.py", line 250, in forward
+    input = module(input)
+            │      └ tensor([[[[0.0000, 0.0000, 0.0000,  ..., 0.1406, 0.1836, 0.8555],
+            │                  [0.0000, 0.0000, 0.0000,  ..., 0.1816, 0.4023, 1....
+            └ MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)
+  File "/home/whisperliang/InfoTok/.venv/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1739, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           │    │           │       └ {}
+           │    │           └ (tensor([[[[0.0000, 0.0000, 0.0000,  ..., 0.1406, 0.1836, 0.8555],
+           │    │                       [0.0000, 0.0000, 0.0000,  ..., 0.1816, 0.4023, 1...
+           │    └ <function Module._call_impl at 0x738ffbd4fe20>
+           └ MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)
+  File "/home/whisperliang/InfoTok/.venv/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1750, in _call_impl
+    return forward_call(*args, **kwargs)
+           │             │       └ {}
+           │             └ (tensor([[[[0.0000, 0.0000, 0.0000,  ..., 0.1406, 0.1836, 0.8555],
+           │                         [0.0000, 0.0000, 0.0000,  ..., 0.1816, 0.4023, 1...
+           └ <bound method MaxPool2d.forward of MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)>
+  File "/home/whisperliang/InfoTok/.venv/lib/python3.10/site-packages/torch/nn/modules/pooling.py", line 213, in forward
+    return F.max_pool2d(
+           │ └ <function boolean_dispatch.<locals>.fn at 0x738ffba3da20>
+           └ <module 'torch.nn.functional' from '/home/whisperliang/InfoTok/.venv/lib/python3.10/site-packages/torch/nn/functional.py'>
+  File "/home/whisperliang/InfoTok/.venv/lib/python3.10/site-packages/torch/_jit_internal.py", line 624, in fn
+    return if_false(*args, **kwargs)
+           │         │       └ {'ceil_mode': False, 'return_indices': False}
+           │         └ (tensor([[[[0.0000, 0.0000, 0.0000,  ..., 0.1406, 0.1836, 0.8555],
+           │                     [0.0000, 0.0000, 0.0000,  ..., 0.1816, 0.4023, 1...
+           └ <function _max_pool2d at 0x738ffba3d990>
+  File "/home/whisperliang/InfoTok/.venv/lib/python3.10/site-packages/torch/nn/functional.py", line 830, in _max_pool2d
+    return torch.max_pool2d(input, kernel_size, stride, padding, dilation, ceil_mode)
+           │     │          │      │            │       │        │         └ False
+           │     │          │      │            │       │        └ 1
+           │     │          │      │            │       └ 0
+           │     │          │      │            └ 2
+           │     │          │      └ 2
+           │     │          └ tensor([[[[0.0000, 0.0000, 0.0000,  ..., 0.1406, 0.1836, 0.8555],
+           │     │                      [0.0000, 0.0000, 0.0000,  ..., 0.1816, 0.4023, 1....
+           │     └ <built-in method max_pool2d of type object at 0x7390c2990ec0>
+           └ <module 'torch' from '/home/whisperliang/InfoTok/.venv/lib/python3.10/site-packages/torch/__init__.py'>
+
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 4.20 GiB. GPU 0 has a total capacity of 79.18 GiB of which 3.40 GiB is free. Including non-PyTorch memory, this process has 75.75 GiB memory in use. Of the allocated memory 73.98 GiB is allocated by PyTorch, and 534.26 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
+Traceback (most recent call last):
+  File "/usr/lib/python3.10/runpy.py", line 196, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/usr/lib/python3.10/runpy.py", line 86, in _run_code
+    exec(code, run_globals)
+  File "/home/whisperliang/InfoTok/cosmos_predict1/tokenizer/training/train.py", line 82, in <module>
+    launch(config, args)
+  File "/home/whisperliang/InfoTok/.venv/lib/python3.10/site-packages/loguru/_logger.py", line 1277, in catch_wrapper
+    return function(*args, **kwargs)
+  File "/home/whisperliang/InfoTok/cosmos_predict1/tokenizer/training/train.py", line 41, in launch
+    trainer.train(
+  File "/home/whisperliang/InfoTok/cosmos_predict1/utils/trainer.py", line 188, in train
+    output_batch, loss, grad_accum_iter = self.training_step(
+  File "/home/whisperliang/InfoTok/cosmos_predict1/utils/trainer.py", line 258, in training_step
+    output_batch, loss = model_ddp.training_step(data, iteration)
+  File "/home/whisperliang/InfoTok/cosmos_predict1/utils/distributed.py", line 228, in training_step
+    return self(*args, **kwargs)
+  File "/home/whisperliang/InfoTok/.venv/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1739, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/whisperliang/InfoTok/.venv/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1750, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/whisperliang/InfoTok/.venv/lib/python3.10/site-packages/torch/nn/parallel/distributed.py", line 1643, in forward
+    else self._run_ddp_forward(*inputs, **kwargs)
+  File "/home/whisperliang/InfoTok/.venv/lib/python3.10/site-packages/torch/nn/parallel/distributed.py", line 1459, in _run_ddp_forward
+    return self.module(*inputs, **kwargs)  # type: ignore[index]
+  File "/home/whisperliang/InfoTok/.venv/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1739, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/whisperliang/InfoTok/.venv/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1750, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/whisperliang/InfoTok/cosmos_predict1/utils/distributed.py", line 222, in wrapped_training_step
+    return self.module.training_step(*_args, **_kwargs)
+  File "/home/whisperliang/InfoTok/cosmos_predict1/tokenizer/training/chp_model.py", line 27, in training_step
+    losses, value = self.loss(inputs, output, iteration)
+  File "/home/whisperliang/InfoTok/.venv/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1739, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/whisperliang/InfoTok/.venv/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1750, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/whisperliang/InfoTok/cosmos_predict1/tokenizer/training/losses/continuous.py", line 52, in forward
+    curr_loss = module(inputs, output_batch, iteration)
+  File "/home/whisperliang/InfoTok/.venv/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1739, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/whisperliang/InfoTok/.venv/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1750, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/whisperliang/InfoTok/cosmos_predict1/tokenizer/training/losses/continuous.py", line 169, in forward
+    outs0, outs1 = self.net(in0_input), self.net(in1_input)
+  File "/home/whisperliang/InfoTok/.venv/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1739, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/whisperliang/InfoTok/.venv/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1750, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/whisperliang/InfoTok/cosmos_predict1/tokenizer/training/losses/lpips.py", line 164, in forward
+    h = checkpoint.checkpoint(self.slice2, h, use_reentrant=False)
+  File "/home/whisperliang/InfoTok/.venv/lib/python3.10/site-packages/torch/_compile.py", line 32, in inner
+    return disable_fn(*args, **kwargs)
+  File "/home/whisperliang/InfoTok/.venv/lib/python3.10/site-packages/torch/_dynamo/eval_frame.py", line 745, in _fn
+    return fn(*args, **kwargs)
+  File "/home/whisperliang/InfoTok/.venv/lib/python3.10/site-packages/torch/utils/checkpoint.py", line 496, in checkpoint
+    ret = function(*args, **kwargs)
+  File "/home/whisperliang/InfoTok/.venv/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1739, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/whisperliang/InfoTok/.venv/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1750, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/whisperliang/InfoTok/.venv/lib/python3.10/site-packages/torch/nn/modules/container.py", line 250, in forward
+    input = module(input)
+  File "/home/whisperliang/InfoTok/.venv/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1739, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/whisperliang/InfoTok/.venv/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1750, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/whisperliang/InfoTok/.venv/lib/python3.10/site-packages/torch/nn/modules/pooling.py", line 213, in forward
+    return F.max_pool2d(
+  File "/home/whisperliang/InfoTok/.venv/lib/python3.10/site-packages/torch/_jit_internal.py", line 624, in fn
+    return if_false(*args, **kwargs)
+  File "/home/whisperliang/InfoTok/.venv/lib/python3.10/site-packages/torch/nn/functional.py", line 830, in _max_pool2d
+    return torch.max_pool2d(input, kernel_size, stride, padding, dilation, ceil_mode)
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 4.20 GiB. GPU 0 has a total capacity of 79.18 GiB of which 3.40 GiB is free. Including non-PyTorch memory, this process has 75.75 GiB memory in use. Of the allocated memory 73.98 GiB is allocated by PyTorch, and 534.26 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
+[rank0]: Traceback (most recent call last):
+[rank0]:   File "/usr/lib/python3.10/runpy.py", line 196, in _run_module_as_main
+[rank0]:     return _run_code(code, main_globals, None,
+[rank0]:   File "/usr/lib/python3.10/runpy.py", line 86, in _run_code
+[rank0]:     exec(code, run_globals)
+[rank0]:   File "/home/whisperliang/InfoTok/cosmos_predict1/tokenizer/training/train.py", line 82, in <module>
+[rank0]:     launch(config, args)
+[rank0]:   File "/home/whisperliang/InfoTok/.venv/lib/python3.10/site-packages/loguru/_logger.py", line 1277, in catch_wrapper
+[rank0]:     return function(*args, **kwargs)
+[rank0]:   File "/home/whisperliang/InfoTok/cosmos_predict1/tokenizer/training/train.py", line 41, in launch
+[rank0]:     trainer.train(
+[rank0]:   File "/home/whisperliang/InfoTok/cosmos_predict1/utils/trainer.py", line 188, in train
+[rank0]:     output_batch, loss, grad_accum_iter = self.training_step(
+[rank0]:   File "/home/whisperliang/InfoTok/cosmos_predict1/utils/trainer.py", line 258, in training_step
+[rank0]:     output_batch, loss = model_ddp.training_step(data, iteration)
+[rank0]:   File "/home/whisperliang/InfoTok/cosmos_predict1/utils/distributed.py", line 228, in training_step
+[rank0]:     return self(*args, **kwargs)
+[rank0]:   File "/home/whisperliang/InfoTok/.venv/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1739, in _wrapped_call_impl
+[rank0]:     return self._call_impl(*args, **kwargs)
+[rank0]:   File "/home/whisperliang/InfoTok/.venv/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1750, in _call_impl
+[rank0]:     return forward_call(*args, **kwargs)
+[rank0]:   File "/home/whisperliang/InfoTok/.venv/lib/python3.10/site-packages/torch/nn/parallel/distributed.py", line 1643, in forward
+[rank0]:     else self._run_ddp_forward(*inputs, **kwargs)
+[rank0]:   File "/home/whisperliang/InfoTok/.venv/lib/python3.10/site-packages/torch/nn/parallel/distributed.py", line 1459, in _run_ddp_forward
+[rank0]:     return self.module(*inputs, **kwargs)  # type: ignore[index]
+[rank0]:   File "/home/whisperliang/InfoTok/.venv/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1739, in _wrapped_call_impl
+[rank0]:     return self._call_impl(*args, **kwargs)
+[rank0]:   File "/home/whisperliang/InfoTok/.venv/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1750, in _call_impl
+[rank0]:     return forward_call(*args, **kwargs)
+[rank0]:   File "/home/whisperliang/InfoTok/cosmos_predict1/utils/distributed.py", line 222, in wrapped_training_step
+[rank0]:     return self.module.training_step(*_args, **_kwargs)
+[rank0]:   File "/home/whisperliang/InfoTok/cosmos_predict1/tokenizer/training/chp_model.py", line 27, in training_step
+[rank0]:     losses, value = self.loss(inputs, output, iteration)
+[rank0]:   File "/home/whisperliang/InfoTok/.venv/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1739, in _wrapped_call_impl
+[rank0]:     return self._call_impl(*args, **kwargs)
+[rank0]:   File "/home/whisperliang/InfoTok/.venv/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1750, in _call_impl
+[rank0]:     return forward_call(*args, **kwargs)
+[rank0]:   File "/home/whisperliang/InfoTok/cosmos_predict1/tokenizer/training/losses/continuous.py", line 52, in forward
+[rank0]:     curr_loss = module(inputs, output_batch, iteration)
+[rank0]:   File "/home/whisperliang/InfoTok/.venv/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1739, in _wrapped_call_impl
+[rank0]:     return self._call_impl(*args, **kwargs)
+[rank0]:   File "/home/whisperliang/InfoTok/.venv/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1750, in _call_impl
+[rank0]:     return forward_call(*args, **kwargs)
+[rank0]:   File "/home/whisperliang/InfoTok/cosmos_predict1/tokenizer/training/losses/continuous.py", line 169, in forward
+[rank0]:     outs0, outs1 = self.net(in0_input), self.net(in1_input)
+[rank0]:   File "/home/whisperliang/InfoTok/.venv/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1739, in _wrapped_call_impl
+[rank0]:     return self._call_impl(*args, **kwargs)
+[rank0]:   File "/home/whisperliang/InfoTok/.venv/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1750, in _call_impl
+[rank0]:     return forward_call(*args, **kwargs)
+[rank0]:   File "/home/whisperliang/InfoTok/cosmos_predict1/tokenizer/training/losses/lpips.py", line 164, in forward
+[rank0]:     h = checkpoint.checkpoint(self.slice2, h, use_reentrant=False)
+[rank0]:   File "/home/whisperliang/InfoTok/.venv/lib/python3.10/site-packages/torch/_compile.py", line 32, in inner
+[rank0]:     return disable_fn(*args, **kwargs)
+[rank0]:   File "/home/whisperliang/InfoTok/.venv/lib/python3.10/site-packages/torch/_dynamo/eval_frame.py", line 745, in _fn
+[rank0]:     return fn(*args, **kwargs)
+[rank0]:   File "/home/whisperliang/InfoTok/.venv/lib/python3.10/site-packages/torch/utils/checkpoint.py", line 496, in checkpoint
+[rank0]:     ret = function(*args, **kwargs)
+[rank0]:   File "/home/whisperliang/InfoTok/.venv/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1739, in _wrapped_call_impl
+[rank0]:     return self._call_impl(*args, **kwargs)
+[rank0]:   File "/home/whisperliang/InfoTok/.venv/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1750, in _call_impl
+[rank0]:     return forward_call(*args, **kwargs)
+[rank0]:   File "/home/whisperliang/InfoTok/.venv/lib/python3.10/site-packages/torch/nn/modules/container.py", line 250, in forward
+[rank0]:     input = module(input)
+[rank0]:   File "/home/whisperliang/InfoTok/.venv/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1739, in _wrapped_call_impl
+[rank0]:     return self._call_impl(*args, **kwargs)
+[rank0]:   File "/home/whisperliang/InfoTok/.venv/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1750, in _call_impl
+[rank0]:     return forward_call(*args, **kwargs)
+[rank0]:   File "/home/whisperliang/InfoTok/.venv/lib/python3.10/site-packages/torch/nn/modules/pooling.py", line 213, in forward
+[rank0]:     return F.max_pool2d(
+[rank0]:   File "/home/whisperliang/InfoTok/.venv/lib/python3.10/site-packages/torch/_jit_internal.py", line 624, in fn
+[rank0]:     return if_false(*args, **kwargs)
+[rank0]:   File "/home/whisperliang/InfoTok/.venv/lib/python3.10/site-packages/torch/nn/functional.py", line 830, in _max_pool2d
+[rank0]:     return torch.max_pool2d(input, kernel_size, stride, padding, dilation, ceil_mode)
+[rank0]: torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 4.20 GiB. GPU 0 has a total capacity of 79.18 GiB of which 3.40 GiB is free. Including non-PyTorch memory, this process has 75.75 GiB memory in use. Of the allocated memory 73.98 GiB is allocated by PyTorch, and 534.26 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
+[1;34mwandb[0m: 
+[1;34mwandb[0m: You can sync this run to the cloud by running:
+[1;34mwandb[0m: [1mwandb sync /home/whisperliang/InfoTok/wandb/offline-run-20261114_213501-weqplc7w[0m
+[1;34mwandb[0m: Find logs at: [1;35mwandb/offline-run-20261114_213501-weqplc7w/logs[0m
+[rank0]:[W1114 21:35:21.706451055 ProcessGroupNCCL.cpp:1496] Warning: WARNING: destroy_process_group() was not called before program exit, which can leak resources. For more info, please see https://pytorch.org/docs/stable/distributed.html#shutdown (function operator())
+E1114 21:35:23.260000 366652 .venv/lib/python3.10/site-packages/torch/distributed/elastic/multiprocessing/api.py:869] failed (exitcode: 1) local_rank: 0 (pid: 366663) of binary: /home/whisperliang/InfoTok/.venv/bin/python
+Traceback (most recent call last):
+  File "/usr/lib/python3.10/runpy.py", line 196, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/usr/lib/python3.10/runpy.py", line 86, in _run_code
+    exec(code, run_globals)
+  File "/home/whisperliang/InfoTok/.venv/lib/python3.10/site-packages/torch/distributed/run.py", line 922, in <module>
+    main()
+  File "/home/whisperliang/InfoTok/.venv/lib/python3.10/site-packages/torch/distributed/elastic/multiprocessing/errors/__init__.py", line 355, in wrapper
+    return f(*args, **kwargs)
+  File "/home/whisperliang/InfoTok/.venv/lib/python3.10/site-packages/torch/distributed/run.py", line 918, in main
+    run(args)
+  File "/home/whisperliang/InfoTok/.venv/lib/python3.10/site-packages/torch/distributed/run.py", line 909, in run
+    elastic_launch(
+  File "/home/whisperliang/InfoTok/.venv/lib/python3.10/site-packages/torch/distributed/launcher/api.py", line 138, in __call__
+    return launch_agent(self._config, self._entrypoint, list(args))
+  File "/home/whisperliang/InfoTok/.venv/lib/python3.10/site-packages/torch/distributed/launcher/api.py", line 269, in launch_agent
+    raise ChildFailedError(
+torch.distributed.elastic.multiprocessing.errors.ChildFailedError: 
+============================================================
+cosmos_predict1.tokenizer.training.train FAILED
+------------------------------------------------------------
+Failures:
+  <NO_OTHER_FAILURES>
+------------------------------------------------------------
+Root Cause (first observed failure):
+[0]:
+  time      : 2026-11-14_21:35:23
+  host      : ubun
+  rank      : 0 (local_rank: 0)
+  exitcode  : 1 (pid: 366663)
+  error_file: <N/A>
+  traceback : To enable traceback see: https://pytorch.org/docs/stable/elastic/errors.html
+============================================================

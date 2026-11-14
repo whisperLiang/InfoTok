@@ -1,0 +1,226 @@
+{
+  "transport": "tcp-loopback",
+  "protocol_version": 2,
+  "sender_command": [
+    "/home/whisperliang/InfoTok/.venv/bin/python",
+    "-m",
+    "cosmos_predict1.tokenizer.progressive.cli",
+    "send",
+    "--checkpoint",
+    "checkpoints/chp_vtok/tokenizer/multi_native/checkpoints/iter_000000042.pt",
+    "--stream",
+    "tcp://127.0.0.1:41479",
+    "--video",
+    "data/chp_vtok/mcl_jcv01.mp4",
+    "--frames",
+    "17",
+    "--log-prefix",
+    "results/chp_vtok/tcp_incremental_v2/transmission"
+  ],
+  "receiver_command": [
+    "/home/whisperliang/InfoTok/.venv/bin/python",
+    "scripts/chp_isolated_receiver.py",
+    "--checkpoint",
+    "checkpoints/chp_vtok/multi_decoder.pt",
+    "--stream",
+    "tcp://127.0.0.1:41479",
+    "--output",
+    "results/chp_vtok/tcp_incremental_v2/receiver"
+  ],
+  "actual_bytes": 21601,
+  "all_received_ids_equal": true,
+  "actual_budgets": [
+    2048,
+    2048,
+    2048,
+    2048,
+    2048
+  ],
+  "elapsed_including_startup_seconds": 56.589939686,
+  "peak_sender_bytes": 11108839936,
+  "peak_receiver_bytes": 19690989568,
+  "end_to_end_definition": "same-host monotonic clock: block encode start to RGB ready, including queueing",
+  "source_pacing": "17 file frames available at sender before encode; not live 30fps capture",
+  "packets": [
+    {
+      "block_id": 0,
+      "budget": 256,
+      "new_ids": 256,
+      "packet_bytes": 543,
+      "encode_seconds": 2.982106699,
+      "decode_seconds": 3.8909283629909623,
+      "end_to_end_seconds": 6.874076941
+    },
+    {
+      "block_id": 0,
+      "budget": 512,
+      "new_ids": 256,
+      "packet_bytes": 543,
+      "encode_seconds": 2.982106699,
+      "decode_seconds": 3.144154413996148,
+      "end_to_end_seconds": 10.042054404
+    },
+    {
+      "block_id": 0,
+      "budget": 1024,
+      "new_ids": 512,
+      "packet_bytes": 1055,
+      "encode_seconds": 2.982106699,
+      "decode_seconds": 1.5443692469998496,
+      "end_to_end_seconds": 11.600461331
+    },
+    {
+      "block_id": 0,
+      "budget": 2048,
+      "new_ids": 1024,
+      "packet_bytes": 2079,
+      "encode_seconds": 2.982106699,
+      "decode_seconds": 4.471167907991912,
+      "end_to_end_seconds": 16.086651784
+    },
+    {
+      "block_id": 1,
+      "budget": 256,
+      "new_ids": 256,
+      "packet_bytes": 543,
+      "encode_seconds": 1.378704605,
+      "decode_seconds": 1.6269545480026864,
+      "end_to_end_seconds": 14.744667159
+    },
+    {
+      "block_id": 1,
+      "budget": 512,
+      "new_ids": 256,
+      "packet_bytes": 543,
+      "encode_seconds": 1.378704605,
+      "decode_seconds": 1.6312649190076627,
+      "end_to_end_seconds": 16.42437469
+    },
+    {
+      "block_id": 1,
+      "budget": 1024,
+      "new_ids": 512,
+      "packet_bytes": 1055,
+      "encode_seconds": 1.378704605,
+      "decode_seconds": 1.6300582340045366,
+      "end_to_end_seconds": 18.103595659
+    },
+    {
+      "block_id": 1,
+      "budget": 2048,
+      "new_ids": 1024,
+      "packet_bytes": 2079,
+      "encode_seconds": 1.378704605,
+      "decode_seconds": 3.2656685519905295,
+      "end_to_end_seconds": 21.446425257
+    },
+    {
+      "block_id": 2,
+      "budget": 256,
+      "new_ids": 256,
+      "packet_bytes": 543,
+      "encode_seconds": 1.915961981,
+      "decode_seconds": 1.6285654549865285,
+      "end_to_end_seconds": 21.8178786
+    },
+    {
+      "block_id": 2,
+      "budget": 512,
+      "new_ids": 256,
+      "packet_bytes": 543,
+      "encode_seconds": 1.915961981,
+      "decode_seconds": 1.6301866639987566,
+      "end_to_end_seconds": 23.527360222
+    },
+    {
+      "block_id": 2,
+      "budget": 1024,
+      "new_ids": 512,
+      "packet_bytes": 1055,
+      "encode_seconds": 1.915961981,
+      "decode_seconds": 1.6298702679923736,
+      "end_to_end_seconds": 25.233059024
+    },
+    {
+      "block_id": 2,
+      "budget": 2048,
+      "new_ids": 1024,
+      "packet_bytes": 2079,
+      "encode_seconds": 1.915961981,
+      "decode_seconds": 3.2682236730033765,
+      "end_to_end_seconds": 28.579848919
+    },
+    {
+      "block_id": 3,
+      "budget": 256,
+      "new_ids": 256,
+      "packet_bytes": 543,
+      "encode_seconds": 1.444283362,
+      "decode_seconds": 1.6269711130007636,
+      "end_to_end_seconds": 28.39466881
+    },
+    {
+      "block_id": 3,
+      "budget": 512,
+      "new_ids": 256,
+      "packet_bytes": 543,
+      "encode_seconds": 1.444283362,
+      "decode_seconds": 1.6304601970041404,
+      "end_to_end_seconds": 30.099248743
+    },
+    {
+      "block_id": 3,
+      "budget": 1024,
+      "new_ids": 512,
+      "packet_bytes": 1055,
+      "encode_seconds": 1.444283362,
+      "decode_seconds": 1.6311784599965904,
+      "end_to_end_seconds": 31.804873144
+    },
+    {
+      "block_id": 3,
+      "budget": 2048,
+      "new_ids": 1024,
+      "packet_bytes": 2079,
+      "encode_seconds": 1.444283362,
+      "decode_seconds": 3.267787215008866,
+      "end_to_end_seconds": 35.146962331
+    },
+    {
+      "block_id": 4,
+      "budget": 256,
+      "new_ids": 256,
+      "packet_bytes": 543,
+      "encode_seconds": 1.91920434,
+      "decode_seconds": 1.6274403970019193,
+      "end_to_end_seconds": 35.433123821
+    },
+    {
+      "block_id": 4,
+      "budget": 512,
+      "new_ids": 256,
+      "packet_bytes": 543,
+      "encode_seconds": 1.91920434,
+      "decode_seconds": 1.6308901719894493,
+      "end_to_end_seconds": 37.137947981
+    },
+    {
+      "block_id": 4,
+      "budget": 1024,
+      "new_ids": 512,
+      "packet_bytes": 1055,
+      "encode_seconds": 1.91920434,
+      "decode_seconds": 1.630637647002004,
+      "end_to_end_seconds": 38.842644063
+    },
+    {
+      "block_id": 4,
+      "budget": 2048,
+      "new_ids": 1024,
+      "packet_bytes": 2079,
+      "encode_seconds": 1.91920434,
+      "decode_seconds": 3.297698012989713,
+      "end_to_end_seconds": 42.214454483
+    }
+  ]
+}

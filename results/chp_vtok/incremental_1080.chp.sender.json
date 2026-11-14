@@ -1,0 +1,187 @@
+{
+  "packets": [
+    {
+      "block_id": 0,
+      "budget": 256,
+      "offset": 0,
+      "new_ids": 256,
+      "packet_bytes": 543,
+      "encode_seconds": 2.4548951069882605,
+      "cache_bytes": 4177920000
+    },
+    {
+      "block_id": 0,
+      "budget": 512,
+      "offset": 256,
+      "new_ids": 256,
+      "packet_bytes": 543,
+      "encode_seconds": 2.4548951069882605,
+      "cache_bytes": 4177920000
+    },
+    {
+      "block_id": 0,
+      "budget": 1024,
+      "offset": 512,
+      "new_ids": 512,
+      "packet_bytes": 1055,
+      "encode_seconds": 2.4548951069882605,
+      "cache_bytes": 4177920000
+    },
+    {
+      "block_id": 0,
+      "budget": 2048,
+      "offset": 1024,
+      "new_ids": 1024,
+      "packet_bytes": 2079,
+      "encode_seconds": 2.4548951069882605,
+      "cache_bytes": 4177920000
+    },
+    {
+      "block_id": 1,
+      "budget": 256,
+      "offset": 0,
+      "new_ids": 256,
+      "packet_bytes": 543,
+      "encode_seconds": 0.878507670990075,
+      "cache_bytes": 4244766720
+    },
+    {
+      "block_id": 1,
+      "budget": 512,
+      "offset": 256,
+      "new_ids": 256,
+      "packet_bytes": 543,
+      "encode_seconds": 0.878507670990075,
+      "cache_bytes": 4244766720
+    },
+    {
+      "block_id": 1,
+      "budget": 1024,
+      "offset": 512,
+      "new_ids": 512,
+      "packet_bytes": 1055,
+      "encode_seconds": 0.878507670990075,
+      "cache_bytes": 4244766720
+    },
+    {
+      "block_id": 1,
+      "budget": 2048,
+      "offset": 1024,
+      "new_ids": 1024,
+      "packet_bytes": 2079,
+      "encode_seconds": 0.878507670990075,
+      "cache_bytes": 4244766720
+    },
+    {
+      "block_id": 2,
+      "budget": 256,
+      "offset": 0,
+      "new_ids": 256,
+      "packet_bytes": 543,
+      "encode_seconds": 0.8756298609951045,
+      "cache_bytes": 4311613440
+    },
+    {
+      "block_id": 2,
+      "budget": 512,
+      "offset": 256,
+      "new_ids": 256,
+      "packet_bytes": 543,
+      "encode_seconds": 0.8756298609951045,
+      "cache_bytes": 4311613440
+    },
+    {
+      "block_id": 2,
+      "budget": 1024,
+      "offset": 512,
+      "new_ids": 512,
+      "packet_bytes": 1055,
+      "encode_seconds": 0.8756298609951045,
+      "cache_bytes": 4311613440
+    },
+    {
+      "block_id": 2,
+      "budget": 2048,
+      "offset": 1024,
+      "new_ids": 1024,
+      "packet_bytes": 2079,
+      "encode_seconds": 0.8756298609951045,
+      "cache_bytes": 4311613440
+    },
+    {
+      "block_id": 3,
+      "budget": 256,
+      "offset": 0,
+      "new_ids": 256,
+      "packet_bytes": 543,
+      "encode_seconds": 0.8760116880002897,
+      "cache_bytes": 4378460160
+    },
+    {
+      "block_id": 3,
+      "budget": 512,
+      "offset": 256,
+      "new_ids": 256,
+      "packet_bytes": 543,
+      "encode_seconds": 0.8760116880002897,
+      "cache_bytes": 4378460160
+    },
+    {
+      "block_id": 3,
+      "budget": 1024,
+      "offset": 512,
+      "new_ids": 512,
+      "packet_bytes": 1055,
+      "encode_seconds": 0.8760116880002897,
+      "cache_bytes": 4378460160
+    },
+    {
+      "block_id": 3,
+      "budget": 2048,
+      "offset": 1024,
+      "new_ids": 1024,
+      "packet_bytes": 2079,
+      "encode_seconds": 0.8760116880002897,
+      "cache_bytes": 4378460160
+    },
+    {
+      "block_id": 4,
+      "budget": 256,
+      "offset": 0,
+      "new_ids": 256,
+      "packet_bytes": 543,
+      "encode_seconds": 0.8772348089987645,
+      "cache_bytes": 4445306880
+    },
+    {
+      "block_id": 4,
+      "budget": 512,
+      "offset": 256,
+      "new_ids": 256,
+      "packet_bytes": 543,
+      "encode_seconds": 0.8772348089987645,
+      "cache_bytes": 4445306880
+    },
+    {
+      "block_id": 4,
+      "budget": 1024,
+      "offset": 512,
+      "new_ids": 512,
+      "packet_bytes": 1055,
+      "encode_seconds": 0.8772348089987645,
+      "cache_bytes": 4445306880
+    },
+    {
+      "block_id": 4,
+      "budget": 2048,
+      "offset": 1024,
+      "new_ids": 1024,
+      "packet_bytes": 2079,
+      "encode_seconds": 0.8772348089987645,
+      "cache_bytes": 4445306880
+    }
+  ],
+  "elapsed_seconds": 5.9682021779881325,
+  "actual_bytes": 21601,
+  "source": "/home/whisperliang/InfoTok/data/chp_vtok/mcl_jcv01.mp4"
+}

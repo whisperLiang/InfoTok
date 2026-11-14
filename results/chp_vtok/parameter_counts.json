@@ -1,0 +1,15 @@
+{
+  "official": {
+    "total": 123142646,
+    "trainable": 123142646,
+    "trainable_in_chp": 0
+  },
+  "single": {
+    "total": 113474806,
+    "trainable": 858374
+  },
+  "multi": {
+    "total": 113880834,
+    "trainable": 1264402
+  }
+}

@@ -1,0 +1,222 @@
+[
+  {
+    "name": "encoder.down.0.block.0.norm1",
+    "groups": 1,
+    "causal": true
+  },
+  {
+    "name": "encoder.down.0.block.0.norm2",
+    "groups": 1,
+    "causal": true
+  },
+  {
+    "name": "encoder.down.0.block.1.norm1",
+    "groups": 1,
+    "causal": true
+  },
+  {
+    "name": "encoder.down.0.block.1.norm2",
+    "groups": 1,
+    "causal": true
+  },
+  {
+    "name": "encoder.down.1.block.0.norm1",
+    "groups": 1,
+    "causal": true
+  },
+  {
+    "name": "encoder.down.1.block.0.norm2",
+    "groups": 1,
+    "causal": true
+  },
+  {
+    "name": "encoder.down.1.block.1.norm1",
+    "groups": 1,
+    "causal": true
+  },
+  {
+    "name": "encoder.down.1.block.1.norm2",
+    "groups": 1,
+    "causal": true
+  },
+  {
+    "name": "encoder.down.2.block.0.norm1",
+    "groups": 1,
+    "causal": true
+  },
+  {
+    "name": "encoder.down.2.block.0.norm2",
+    "groups": 1,
+    "causal": true
+  },
+  {
+    "name": "encoder.down.2.block.1.norm1",
+    "groups": 1,
+    "causal": true
+  },
+  {
+    "name": "encoder.down.2.block.1.norm2",
+    "groups": 1,
+    "causal": true
+  },
+  {
+    "name": "encoder.mid.block_1.norm1",
+    "groups": 1,
+    "causal": true
+  },
+  {
+    "name": "encoder.mid.block_1.norm2",
+    "groups": 1,
+    "causal": true
+  },
+  {
+    "name": "encoder.mid.attn_1.0.norm",
+    "groups": 1,
+    "causal": true
+  },
+  {
+    "name": "encoder.mid.attn_1.1.norm",
+    "groups": 1,
+    "causal": true
+  },
+  {
+    "name": "encoder.mid.block_2.norm1",
+    "groups": 1,
+    "causal": true
+  },
+  {
+    "name": "encoder.mid.block_2.norm2",
+    "groups": 1,
+    "causal": true
+  },
+  {
+    "name": "encoder.norm_out",
+    "groups": 1,
+    "causal": true
+  },
+  {
+    "name": "decoder.mid.block_1.norm1",
+    "groups": 1,
+    "causal": true
+  },
+  {
+    "name": "decoder.mid.block_1.norm2",
+    "groups": 1,
+    "causal": true
+  },
+  {
+    "name": "decoder.mid.attn_1.0.norm",
+    "groups": 1,
+    "causal": true
+  },
+  {
+    "name": "decoder.mid.attn_1.1.norm",
+    "groups": 1,
+    "causal": true
+  },
+  {
+    "name": "decoder.mid.block_2.norm1",
+    "groups": 1,
+    "causal": true
+  },
+  {
+    "name": "decoder.mid.block_2.norm2",
+    "groups": 1,
+    "causal": true
+  },
+  {
+    "name": "decoder.up.0.block.0.norm1",
+    "groups": 1,
+    "causal": true
+  },
+  {
+    "name": "decoder.up.0.block.0.norm2",
+    "groups": 1,
+    "causal": true
+  },
+  {
+    "name": "decoder.up.0.block.1.norm1",
+    "groups": 1,
+    "causal": true
+  },
+  {
+    "name": "decoder.up.0.block.1.norm2",
+    "groups": 1,
+    "causal": true
+  },
+  {
+    "name": "decoder.up.0.block.2.norm1",
+    "groups": 1,
+    "causal": true
+  },
+  {
+    "name": "decoder.up.0.block.2.norm2",
+    "groups": 1,
+    "causal": true
+  },
+  {
+    "name": "decoder.up.1.block.0.norm1",
+    "groups": 1,
+    "causal": true
+  },
+  {
+    "name": "decoder.up.1.block.0.norm2",
+    "groups": 1,
+    "causal": true
+  },
+  {
+    "name": "decoder.up.1.block.1.norm1",
+    "groups": 1,
+    "causal": true
+  },
+  {
+    "name": "decoder.up.1.block.1.norm2",
+    "groups": 1,
+    "causal": true
+  },
+  {
+    "name": "decoder.up.1.block.2.norm1",
+    "groups": 1,
+    "causal": true
+  },
+  {
+    "name": "decoder.up.1.block.2.norm2",
+    "groups": 1,
+    "causal": true
+  },
+  {
+    "name": "decoder.up.2.block.0.norm1",
+    "groups": 1,
+    "causal": true
+  },
+  {
+    "name": "decoder.up.2.block.0.norm2",
+    "groups": 1,
+    "causal": true
+  },
+  {
+    "name": "decoder.up.2.block.1.norm1",
+    "groups": 1,
+    "causal": true
+  },
+  {
+    "name": "decoder.up.2.block.1.norm2",
+    "groups": 1,
+    "causal": true
+  },
+  {
+    "name": "decoder.up.2.block.2.norm1",
+    "groups": 1,
+    "causal": true
+  },
+  {
+    "name": "decoder.up.2.block.2.norm2",
+    "groups": 1,
+    "causal": true
+  },
+  {
+    "name": "decoder.norm_out",
+    "groups": 1,
+    "causal": true
+  }
+]

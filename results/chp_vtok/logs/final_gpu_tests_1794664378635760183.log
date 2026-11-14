@@ -1,0 +1,33 @@
+........................................................................ [ 91%]
+.......                                                                  [100%]
+=============================== warnings summary ===============================
+.venv/lib/python3.10/site-packages/megatron/core/tensor_parallel/random.py:10
+  /home/whisperliang/InfoTok/.venv/lib/python3.10/site-packages/megatron/core/tensor_parallel/random.py:10: DeprecationWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html
+    from pkg_resources import packaging
+
+.venv/lib/python3.10/site-packages/megatron/core/tensor_parallel/layers.py:265
+  /home/whisperliang/InfoTok/.venv/lib/python3.10/site-packages/megatron/core/tensor_parallel/layers.py:265: FutureWarning: `torch.cuda.amp.custom_fwd(args...)` is deprecated. Please use `torch.amp.custom_fwd(args..., device_type='cuda')` instead.
+    def forward(
+
+.venv/lib/python3.10/site-packages/megatron/core/tensor_parallel/layers.py:277
+  /home/whisperliang/InfoTok/.venv/lib/python3.10/site-packages/megatron/core/tensor_parallel/layers.py:277: FutureWarning: `torch.cuda.amp.custom_bwd(args...)` is deprecated. Please use `torch.amp.custom_bwd(args..., device_type='cuda')` instead.
+    def backward(ctx, grad_output):
+
+.venv/lib/python3.10/site-packages/megatron/core/tensor_parallel/layers.py:364
+  /home/whisperliang/InfoTok/.venv/lib/python3.10/site-packages/megatron/core/tensor_parallel/layers.py:364: FutureWarning: `torch.cuda.amp.custom_fwd(args...)` is deprecated. Please use `torch.amp.custom_fwd(args..., device_type='cuda')` instead.
+    def forward(
+
+.venv/lib/python3.10/site-packages/megatron/core/tensor_parallel/layers.py:401
+  /home/whisperliang/InfoTok/.venv/lib/python3.10/site-packages/megatron/core/tensor_parallel/layers.py:401: FutureWarning: `torch.cuda.amp.custom_bwd(args...)` is deprecated. Please use `torch.amp.custom_bwd(args..., device_type='cuda')` instead.
+    def backward(ctx, grad_output):
+
+tests/test_chp_perceptual_crop.py::test_native_crop_is_exact_pixel_selection_and_preserves_rgb_gradient
+  /home/whisperliang/InfoTok/.venv/lib/python3.10/site-packages/torchvision/models/_utils.py:208: UserWarning: The parameter 'pretrained' is deprecated since 0.13 and may be removed in the future, please use 'weights' instead.
+    warnings.warn(
+
+tests/test_chp_perceptual_crop.py::test_native_crop_is_exact_pixel_selection_and_preserves_rgb_gradient
+  /home/whisperliang/InfoTok/.venv/lib/python3.10/site-packages/torchvision/models/_utils.py:223: UserWarning: Arguments other than a weight enum or `None` for 'weights' are deprecated since 0.13 and may be removed in the future. The current behavior is equivalent to passing `weights=VGG16_Weights.IMAGENET1K_V1`. You can also use `weights=VGG16_Weights.DEFAULT` to get the most up-to-date weights.
+    warnings.warn(msg)
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+79 passed, 7 warnings in 9.34s

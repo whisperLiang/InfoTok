@@ -1,0 +1,9 @@
+Resolved 6 packages in 919ms
+Downloading setuptools (1.2MiB)
+ Downloaded setuptools
+Prepared 1 package in 411ms
+Uninstalled 1 package in 0.59ms
+Installed 2 packages in 24ms
+ - requests==2.34.2
+ + requests==2.32.3
+ + setuptools==76.0.0

@@ -1,0 +1,14 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+_____ test_receiver_counts_actual_session_bytes_including_json_whitespace ______
+tests/test_chp_protocol_edges.py:115: in test_receiver_counts_actual_session_bytes_including_json_whitespace
+    assert r.actual_bytes == len(session_wire) + len(packet.to_bytes())
+E   assert 1034 == (597 + 543)
+E    +  where 1034 = <cosmos_predict1.tokenizer.progressive.protocol.PrefixReceiver object at 0x7d3cbcbefaf0>.actual_bytes
+E    +  and   597 = len(b'CHP2\x00\x00\x02I{\n  "model_id": "m",\n  "checkpoint_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa...n    8,\n    5,\n    5,\n    5\n  ],\n  "bits_per_token": 16,\n  "timebase_num": 1,\n  "timebase_den": 30\n}m\xd9\x8fY')
+E    +  and   543 = len(b'CHPB\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x01\x00\x00\x01\x00\x00\x00\x02\x00\x03\x00\x00\x00\x00\x00...0\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00D\xd7\xe1\x90')
+E    +    where b'CHPB\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x01\x00\x00\x01\x00\x00\x00\x02\x00\x03\x00\x00\x00\x00\x00...0\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00D\xd7\xe1\x90' = to_bytes()
+E    +      where to_bytes = Packet(block_id=0, frame_start=0, frame_count=1, prefix_offset=0, ids=(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,...0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), eos=True, block_end=True, tail=False).to_bytes
+=========================== short test summary info ============================
+FAILED tests/test_chp_protocol_edges.py::test_receiver_counts_actual_session_bytes_including_json_whitespace
+1 failed in 0.35s

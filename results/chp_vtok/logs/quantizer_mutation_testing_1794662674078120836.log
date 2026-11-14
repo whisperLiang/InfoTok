@@ -1,0 +1,14 @@
+Wrote /home/whisperliang/InfoTok/.metrics/mutate/cosmos_predict1.tokenizer.progressive.quantizer.edn
+KILLED    cosmos_predict1/tokenizer/progressive/quantizer.py:13 and -> or
+KILLED    cosmos_predict1/tokenizer/progressive/quantizer.py:14 < -> <=
+KILLED    cosmos_predict1/tokenizer/progressive/quantizer.py:14 0 -> 1
+KILLED    cosmos_predict1/tokenizer/progressive/quantizer.py:14 or -> and
+KILLED    cosmos_predict1/tokenizer/progressive/quantizer.py:14 >= -> >
+KILLED    cosmos_predict1/tokenizer/progressive/quantizer.py:25 False -> True
+Function     Namespace                                        Killed  Survived  Uncovered  Sites   Score
+--------------------------------------------------------------------------------------------------------
+make_fsq     cosmos_predict1.tokenizer.progressive.quantizer       0         0          0      0    n/a
+quantize     cosmos_predict1.tokenizer.progressive.quantizer       1         0          0      1 100.0%
+validate_ids cosmos_predict1.tokenizer.progressive.quantizer       5         0          0      5 100.0%
+--------------------------------------------------------------------------------------------------------
+Total                                                              6         0          0      6  100.0%

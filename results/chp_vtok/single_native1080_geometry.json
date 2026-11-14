@@ -1,0 +1,142 @@
+{
+  "mode": "progressive",
+  "checkpoint_sha256": "960f768ca8dba70ac261d949a263602c01cf33c7b1bf763797dfa0d4145addca",
+  "config_sha256": "f5adc30638dea3b6b231ea94f533c3eda4f2384c9449b45b9f5d49862e8298cd",
+  "encode": {
+    "seconds": 0.8691029339970555,
+    "peak_allocated_bytes": 10757928448,
+    "peak_reserved_bytes": 14216593408,
+    "baseline_bytes": 4507366400
+  },
+  "budgets": [
+    {
+      "budget": 256,
+      "psnr": 20.19073486328125,
+      "decode": {
+        "seconds": 3.271761397001683,
+        "peak_allocated_bytes": 23669904896,
+        "peak_reserved_bytes": 28993126400,
+        "baseline_bytes": 10567029760
+      },
+      "input_shape": [
+        1,
+        3,
+        4,
+        1080,
+        1920
+      ],
+      "output_shape": [
+        1,
+        3,
+        4,
+        1080,
+        1920
+      ],
+      "payload_bytes": 512,
+      "encoder_cache_bytes": 4244766720,
+      "decoder_cache_bytes": 5999493120
+    },
+    {
+      "budget": 512,
+      "psnr": 20.244600296020508,
+      "decode": {
+        "seconds": 3.2695307660032995,
+        "peak_allocated_bytes": 23719417856,
+        "peak_reserved_bytes": 28993126400,
+        "baseline_bytes": 10616542720
+      },
+      "input_shape": [
+        1,
+        3,
+        4,
+        1080,
+        1920
+      ],
+      "output_shape": [
+        1,
+        3,
+        4,
+        1080,
+        1920
+      ],
+      "payload_bytes": 1024,
+      "encoder_cache_bytes": 4244766720,
+      "decoder_cache_bytes": 5999493120
+    },
+    {
+      "budget": 1024,
+      "psnr": 19.645591735839844,
+      "decode": {
+        "seconds": 3.2725694260007003,
+        "peak_allocated_bytes": 23719516160,
+        "peak_reserved_bytes": 30607933440,
+        "baseline_bytes": 10616641024
+      },
+      "input_shape": [
+        1,
+        3,
+        4,
+        1080,
+        1920
+      ],
+      "output_shape": [
+        1,
+        3,
+        4,
+        1080,
+        1920
+      ],
+      "payload_bytes": 2048,
+      "encoder_cache_bytes": 4244766720,
+      "decoder_cache_bytes": 5999493120
+    },
+    {
+      "budget": 2048,
+      "psnr": 19.04705238342285,
+      "decode": {
+        "seconds": 3.266340930000297,
+        "peak_allocated_bytes": 23719417856,
+        "peak_reserved_bytes": 30607933440,
+        "baseline_bytes": 10616542720
+      },
+      "input_shape": [
+        1,
+        3,
+        4,
+        1080,
+        1920
+      ],
+      "output_shape": [
+        1,
+        3,
+        4,
+        1080,
+        1920
+      ],
+      "payload_bytes": 4096,
+      "encoder_cache_bytes": 4244766720,
+      "decoder_cache_bytes": 5999493120
+    }
+  ],
+  "training_status": "engineering-smoke-until-validated",
+  "status": "completed",
+  "argv": [
+    "scripts/chp_validate.py",
+    "progressive",
+    "--video",
+    "data/chp_vtok/mcl_jcv01.mp4",
+    "--checkpoint",
+    "checkpoints/chp_vtok/tokenizer/single_debug/checkpoints/iter_000000040.pt",
+    "--frames",
+    "5",
+    "--dtype",
+    "bfloat16",
+    "--output",
+    "results/chp_vtok/single_native1080_geometry.json"
+  ],
+  "device": "NVIDIA H100 PCIe",
+  "torch": "2.6.0+cu124",
+  "cuda": "12.4",
+  "dtype": "bfloat16",
+  "backbone_sha256": "bd69629a8f8fcfc4808d29eec5bed68177e22aa14e3b9b799599791e26af935a"
+}

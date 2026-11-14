@@ -1,0 +1,453 @@
+[
+  {
+    "path": "/home/whisperliang/InfoTok/checkpoints/chp_vtok/multi_decoder.pt",
+    "sha256": "e0a8d43c7fd4dccd646d9bd397671451006d319b2c136f5b5c36a5061a3af32d",
+    "bytes": 134384662,
+    "kind": "chp_decoder",
+    "global_step": 42,
+    "config_sha256": "3c531d052749d2c40a234f2fd865bd41781e3a0dc2fcea243782a906f2ad73f7",
+    "training_config_sha256": null,
+    "source_checkpoint_sha256": "6d94c620a276f2baf215512bd5ea775dd6bc4e6ead35625ab279fd92ed6bb79d",
+    "saved_states": {
+      "model": false,
+      "optimizer": false,
+      "scheduler": false,
+      "grad_scaler": false,
+      "rng": false
+    },
+    "config": {
+      "kmax": 2048,
+      "budgets": [
+        256,
+        512,
+        1024,
+        2048
+      ],
+      "multiscale": true,
+      "base_tokens": 256,
+      "structure_tokens": 768,
+      "hidden_dim": 128,
+      "heads": 4,
+      "local_radius": 2,
+      "spatial_window": 16,
+      "anchor_order": "halton",
+      "decoder_neighbors": 8,
+      "checkpoint_decoder": true,
+      "freeze_backbone": true,
+      "backbone_checkpoint": "checkpoints/infotok-flex/infotok_mse.pt",
+      "debug_backbone": false
+    },
+    "training_status": "engineering-smoke-until-validated",
+    "distribution": "local ignored checkpoint; not uploaded"
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/checkpoints/chp_vtok/tokenizer/morton_debug/checkpoints/iter_000000040.pt",
+    "sha256": "1b7c873569b1fd319e055688d736905eae689b24549357ffae097d5d69f27133",
+    "bytes": 233804805,
+    "kind": "training",
+    "global_step": 40,
+    "config_sha256": "ba586b73bbe8002e39a2e1aea8a5ef442f61e1a31af4043c06862e1977871ad8",
+    "training_config_sha256": "9a5cb4c5db69927aa0a4161d49fd2185d3d4b60a579611acef9a33059b6342a4",
+    "source_checkpoint_sha256": null,
+    "saved_states": {
+      "model": true,
+      "optimizer": true,
+      "scheduler": true,
+      "grad_scaler": true,
+      "rng": true
+    },
+    "config": {
+      "kmax": 2048,
+      "budgets": [
+        256,
+        512,
+        1024,
+        2048
+      ],
+      "multiscale": true,
+      "base_tokens": 256,
+      "structure_tokens": 768,
+      "hidden_dim": 128,
+      "heads": 4,
+      "local_radius": 2,
+      "spatial_window": 16,
+      "anchor_order": "morton",
+      "decoder_neighbors": 8,
+      "checkpoint_decoder": true,
+      "freeze_backbone": true,
+      "backbone_checkpoint": "checkpoints/infotok-flex/infotok_mse.pt",
+      "debug_backbone": false
+    },
+    "training_status": "engineering-smoke-until-validated",
+    "distribution": "local ignored checkpoint; not uploaded"
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/checkpoints/chp_vtok/tokenizer/morton_native/checkpoints/iter_000000042.pt",
+    "sha256": "44a0c0d815831dec819afb74bff5f66c68048144f193332fb29a20ac0a7d5050",
+    "bytes": 233804805,
+    "kind": "training",
+    "global_step": 42,
+    "config_sha256": "ba586b73bbe8002e39a2e1aea8a5ef442f61e1a31af4043c06862e1977871ad8",
+    "training_config_sha256": "efc0560ca362ba82ee1b5099e0726459e44166418034b1467e85ddb6ced31ced",
+    "source_checkpoint_sha256": null,
+    "saved_states": {
+      "model": true,
+      "optimizer": true,
+      "scheduler": true,
+      "grad_scaler": true,
+      "rng": true
+    },
+    "config": {
+      "kmax": 2048,
+      "budgets": [
+        256,
+        512,
+        1024,
+        2048
+      ],
+      "multiscale": true,
+      "base_tokens": 256,
+      "structure_tokens": 768,
+      "hidden_dim": 128,
+      "heads": 4,
+      "local_radius": 2,
+      "spatial_window": 16,
+      "anchor_order": "morton",
+      "decoder_neighbors": 8,
+      "checkpoint_decoder": true,
+      "freeze_backbone": true,
+      "backbone_checkpoint": "checkpoints/infotok-flex/infotok_mse.pt",
+      "debug_backbone": false
+    },
+    "training_status": "engineering-smoke-until-validated",
+    "distribution": "local ignored checkpoint; not uploaded"
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/checkpoints/chp_vtok/tokenizer/multi_backbone_finetune/checkpoints/iter_000000002.pt",
+    "sha256": "a27138f96911ce51990e43f479806fde3901470ebb16a219dde8b255f1641fa8",
+    "bytes": 684536380,
+    "kind": "training",
+    "global_step": 2,
+    "config_sha256": "d5555e3000372282edd63e026eea41ae96676ced62cd3c0fb7bfbf3990ca0980",
+    "training_config_sha256": "c4add705d19b9574bad496a84c472f7eb1eebb79c8cfb8a84f178f60e941da8c",
+    "source_checkpoint_sha256": null,
+    "saved_states": {
+      "model": true,
+      "optimizer": true,
+      "scheduler": true,
+      "grad_scaler": true,
+      "rng": true
+    },
+    "config": {
+      "kmax": 2048,
+      "budgets": [
+        256,
+        512,
+        1024,
+        2048
+      ],
+      "multiscale": true,
+      "base_tokens": 256,
+      "structure_tokens": 768,
+      "hidden_dim": 128,
+      "heads": 4,
+      "local_radius": 2,
+      "spatial_window": 16,
+      "anchor_order": "halton",
+      "decoder_neighbors": 8,
+      "checkpoint_decoder": true,
+      "freeze_backbone": false,
+      "backbone_checkpoint": "checkpoints/infotok-flex/infotok_mse.pt",
+      "debug_backbone": false
+    },
+    "training_status": "engineering-smoke-until-validated",
+    "distribution": "local ignored checkpoint; not uploaded"
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/checkpoints/chp_vtok/tokenizer/multi_debug/checkpoints/iter_000000020.pt",
+    "sha256": "5634042818b44c8b258aa87f42d6b824f9a466ff36f810079a159816bf5e1e18",
+    "bytes": 233804805,
+    "kind": "training",
+    "global_step": 20,
+    "config_sha256": "3c531d052749d2c40a234f2fd865bd41781e3a0dc2fcea243782a906f2ad73f7",
+    "training_config_sha256": "1f77870203079d06c0fef07e031bd3eeeff80acd46b050e95b228bb206028839",
+    "source_checkpoint_sha256": null,
+    "saved_states": {
+      "model": true,
+      "optimizer": true,
+      "scheduler": true,
+      "grad_scaler": true,
+      "rng": true
+    },
+    "config": {
+      "kmax": 2048,
+      "budgets": [
+        256,
+        512,
+        1024,
+        2048
+      ],
+      "multiscale": true,
+      "base_tokens": 256,
+      "structure_tokens": 768,
+      "hidden_dim": 128,
+      "heads": 4,
+      "local_radius": 2,
+      "spatial_window": 16,
+      "anchor_order": "halton",
+      "decoder_neighbors": 8,
+      "checkpoint_decoder": true,
+      "freeze_backbone": true,
+      "backbone_checkpoint": "checkpoints/infotok-flex/infotok_mse.pt",
+      "debug_backbone": false
+    },
+    "training_status": "engineering-smoke-until-validated",
+    "distribution": "local ignored checkpoint; not uploaded"
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/checkpoints/chp_vtok/tokenizer/multi_debug/checkpoints/iter_000000040.pt",
+    "sha256": "b9259242cb432dc8ac896737224600608af10dd2104e5c5f03532b2ebf3a479b",
+    "bytes": 233804805,
+    "kind": "training",
+    "global_step": 40,
+    "config_sha256": "3c531d052749d2c40a234f2fd865bd41781e3a0dc2fcea243782a906f2ad73f7",
+    "training_config_sha256": "1f77870203079d06c0fef07e031bd3eeeff80acd46b050e95b228bb206028839",
+    "source_checkpoint_sha256": null,
+    "saved_states": {
+      "model": true,
+      "optimizer": true,
+      "scheduler": true,
+      "grad_scaler": true,
+      "rng": true
+    },
+    "config": {
+      "kmax": 2048,
+      "budgets": [
+        256,
+        512,
+        1024,
+        2048
+      ],
+      "multiscale": true,
+      "base_tokens": 256,
+      "structure_tokens": 768,
+      "hidden_dim": 128,
+      "heads": 4,
+      "local_radius": 2,
+      "spatial_window": 16,
+      "anchor_order": "halton",
+      "decoder_neighbors": 8,
+      "checkpoint_decoder": true,
+      "freeze_backbone": true,
+      "backbone_checkpoint": "checkpoints/infotok-flex/infotok_mse.pt",
+      "debug_backbone": false
+    },
+    "training_status": "engineering-smoke-until-validated",
+    "distribution": "local ignored checkpoint; not uploaded"
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/checkpoints/chp_vtok/tokenizer/multi_native/checkpoints/iter_000000042.pt",
+    "sha256": "6d94c620a276f2baf215512bd5ea775dd6bc4e6ead35625ab279fd92ed6bb79d",
+    "bytes": 233804805,
+    "kind": "training",
+    "global_step": 42,
+    "config_sha256": "3c531d052749d2c40a234f2fd865bd41781e3a0dc2fcea243782a906f2ad73f7",
+    "training_config_sha256": "a84e30ff82a14119423587a531b990527c42688516f62ab5dd1851eb2dea280f",
+    "source_checkpoint_sha256": null,
+    "saved_states": {
+      "model": true,
+      "optimizer": true,
+      "scheduler": true,
+      "grad_scaler": true,
+      "rng": true
+    },
+    "config": {
+      "kmax": 2048,
+      "budgets": [
+        256,
+        512,
+        1024,
+        2048
+      ],
+      "multiscale": true,
+      "base_tokens": 256,
+      "structure_tokens": 768,
+      "hidden_dim": 128,
+      "heads": 4,
+      "local_radius": 2,
+      "spatial_window": 16,
+      "anchor_order": "halton",
+      "decoder_neighbors": 8,
+      "checkpoint_decoder": true,
+      "freeze_backbone": true,
+      "backbone_checkpoint": "checkpoints/infotok-flex/infotok_mse.pt",
+      "debug_backbone": false
+    },
+    "training_status": "engineering-smoke-until-validated",
+    "distribution": "local ignored checkpoint; not uploaded"
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/checkpoints/chp_vtok/tokenizer/multi_native17_sampled/checkpoints/iter_000000044.pt",
+    "sha256": "c2e2680f0f016059ec883dc98574c0a30de7c6b87f195b165fc5142e0ff6902f",
+    "bytes": 233804805,
+    "kind": "training",
+    "global_step": 44,
+    "config_sha256": "3c531d052749d2c40a234f2fd865bd41781e3a0dc2fcea243782a906f2ad73f7",
+    "training_config_sha256": "216eb2460ffa50bb48d0061eedcbeab2b1cb0ad0d130b3362df8b691a4d342bf",
+    "source_checkpoint_sha256": null,
+    "saved_states": {
+      "model": true,
+      "optimizer": true,
+      "scheduler": true,
+      "grad_scaler": true,
+      "rng": true
+    },
+    "config": {
+      "kmax": 2048,
+      "budgets": [
+        256,
+        512,
+        1024,
+        2048
+      ],
+      "multiscale": true,
+      "base_tokens": 256,
+      "structure_tokens": 768,
+      "hidden_dim": 128,
+      "heads": 4,
+      "local_radius": 2,
+      "spatial_window": 16,
+      "anchor_order": "halton",
+      "decoder_neighbors": 8,
+      "checkpoint_decoder": true,
+      "freeze_backbone": true,
+      "backbone_checkpoint": "checkpoints/infotok-flex/infotok_mse.pt",
+      "debug_backbone": false
+    },
+    "training_status": "engineering-smoke-until-validated",
+    "distribution": "local ignored checkpoint; not uploaded"
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/checkpoints/chp_vtok/tokenizer/single_debug/checkpoints/iter_000000020.pt",
+    "sha256": "3621efd709d409aef78a50d0901c5ce8ffb649910e8391abe9c3503713d89241",
+    "bytes": 231306573,
+    "kind": "training",
+    "global_step": 20,
+    "config_sha256": "f5adc30638dea3b6b231ea94f533c3eda4f2384c9449b45b9f5d49862e8298cd",
+    "training_config_sha256": null,
+    "source_checkpoint_sha256": null,
+    "saved_states": {
+      "model": true,
+      "optimizer": true,
+      "scheduler": true,
+      "grad_scaler": true,
+      "rng": true
+    },
+    "config": {
+      "kmax": 2048,
+      "budgets": [
+        256,
+        512,
+        1024,
+        2048
+      ],
+      "multiscale": false,
+      "base_tokens": 256,
+      "structure_tokens": 768,
+      "hidden_dim": 128,
+      "heads": 4,
+      "local_radius": 2,
+      "spatial_window": 16,
+      "anchor_order": "halton",
+      "decoder_neighbors": 8,
+      "checkpoint_decoder": true,
+      "freeze_backbone": true,
+      "backbone_checkpoint": "checkpoints/infotok-flex/infotok_mse.pt",
+      "debug_backbone": false
+    },
+    "training_status": "engineering-smoke-until-validated",
+    "distribution": "local ignored checkpoint; not uploaded"
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/checkpoints/chp_vtok/tokenizer/single_debug/checkpoints/iter_000000040.pt",
+    "sha256": "960f768ca8dba70ac261d949a263602c01cf33c7b1bf763797dfa0d4145addca",
+    "bytes": 231306573,
+    "kind": "training",
+    "global_step": 40,
+    "config_sha256": "f5adc30638dea3b6b231ea94f533c3eda4f2384c9449b45b9f5d49862e8298cd",
+    "training_config_sha256": null,
+    "source_checkpoint_sha256": null,
+    "saved_states": {
+      "model": true,
+      "optimizer": true,
+      "scheduler": true,
+      "grad_scaler": true,
+      "rng": true
+    },
+    "config": {
+      "kmax": 2048,
+      "budgets": [
+        256,
+        512,
+        1024,
+        2048
+      ],
+      "multiscale": false,
+      "base_tokens": 256,
+      "structure_tokens": 768,
+      "hidden_dim": 128,
+      "heads": 4,
+      "local_radius": 2,
+      "spatial_window": 16,
+      "anchor_order": "halton",
+      "decoder_neighbors": 8,
+      "checkpoint_decoder": true,
+      "freeze_backbone": true,
+      "backbone_checkpoint": "checkpoints/infotok-flex/infotok_mse.pt",
+      "debug_backbone": false
+    },
+    "training_status": "engineering-smoke-until-validated",
+    "distribution": "local ignored checkpoint; not uploaded"
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/checkpoints/chp_vtok/tokenizer/single_native/checkpoints/iter_000000042.pt",
+    "sha256": "d5fc365f92bad72bc3d2b1e93ddb0203ee450872ff374ba5f174cdc191394ea1",
+    "bytes": 231306701,
+    "kind": "training",
+    "global_step": 42,
+    "config_sha256": "f5adc30638dea3b6b231ea94f533c3eda4f2384c9449b45b9f5d49862e8298cd",
+    "training_config_sha256": "9b771ca19ee3b86f3dff8d14e6d5a838ec83c11bd9f1e11077f2d1639a7e3353",
+    "source_checkpoint_sha256": null,
+    "saved_states": {
+      "model": true,
+      "optimizer": true,
+      "scheduler": true,
+      "grad_scaler": true,
+      "rng": true
+    },
+    "config": {
+      "kmax": 2048,
+      "budgets": [
+        256,
+        512,
+        1024,
+        2048
+      ],
+      "multiscale": false,
+      "base_tokens": 256,
+      "structure_tokens": 768,
+      "hidden_dim": 128,
+      "heads": 4,
+      "local_radius": 2,
+      "spatial_window": 16,
+      "anchor_order": "halton",
+      "decoder_neighbors": 8,
+      "checkpoint_decoder": true,
+      "freeze_backbone": true,
+      "backbone_checkpoint": "checkpoints/infotok-flex/infotok_mse.pt",
+      "debug_backbone": false
+    },
+    "training_status": "engineering-smoke-until-validated",
+    "distribution": "local ignored checkpoint; not uploaded"
+  }
+]

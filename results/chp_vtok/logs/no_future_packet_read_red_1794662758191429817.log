@@ -1,0 +1,14 @@
+FF                                                                       [100%]
+=================================== FAILURES ===================================
+____________ test_final_prefix_is_self_describing_without_lookahead ____________
+tests/test_chp_receiver_boundary.py:8: in test_final_prefix_is_self_describing_without_lookahead
+    packet=Packet(0,0,1,0,tuple([0]*256),block_end=True)
+E   TypeError: Packet.__init__() got an unexpected keyword argument 'block_end'
+__________ test_next_block_cannot_finalize_an_unclosed_previous_block __________
+tests/test_chp_receiver_boundary.py:25: in test_next_block_cannot_finalize_an_unclosed_previous_block
+    r.append_tokens(Packet(1,1,4,0,(0,)*256,block_end=True))
+E   TypeError: Packet.__init__() got an unexpected keyword argument 'block_end'
+=========================== short test summary info ============================
+FAILED tests/test_chp_receiver_boundary.py::test_final_prefix_is_self_describing_without_lookahead
+FAILED tests/test_chp_receiver_boundary.py::test_next_block_cannot_finalize_an_unclosed_previous_block
+2 failed in 0.41s

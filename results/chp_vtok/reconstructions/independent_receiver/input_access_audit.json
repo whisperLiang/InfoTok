@@ -1,0 +1,9 @@
+{
+  "permitted_repository_inputs": [
+    "/home/whisperliang/InfoTok/checkpoints/chp_vtok/multi_decoder.pt",
+    "/home/whisperliang/InfoTok/results/chp_vtok/incremental_1080.chp"
+  ],
+  "raw_video_access": false,
+  "sender_latent_access": false,
+  "process_id": 354833
+}

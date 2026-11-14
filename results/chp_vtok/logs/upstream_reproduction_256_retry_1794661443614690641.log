@@ -1,0 +1,35 @@
+Traceback (most recent call last):
+  File "/home/whisperliang/InfoTok/scripts/chp_validate.py", line 228, in main
+    result = globals()[args.mode](args)
+  File "/home/whisperliang/InfoTok/.venv/lib/python3.10/site-packages/torch/utils/_contextlib.py", line 116, in decorate_context
+    return func(*args, **kwargs)
+  File "/home/whisperliang/InfoTok/scripts/chp_validate.py", line 65, in upstream
+    tokenizer_config=TokenizerConfigs["OURS4x8x8-mse-256p-88"].value,
+  File "/usr/lib/python3.10/enum.py", line 440, in __getitem__
+    return cls._member_map_[name]
+KeyError: 'OURS4x8x8-mse-256p-88'
+{
+  "status": "failed",
+  "error": "KeyError",
+  "message": "'OURS4x8x8-mse-256p-88'",
+  "traceback": "Traceback (most recent call last):\n  File \"/home/whisperliang/InfoTok/scripts/chp_validate.py\", line 228, in main\n    result = globals()[args.mode](args)\n  File \"/home/whisperliang/InfoTok/.venv/lib/python3.10/site-packages/torch/utils/_contextlib.py\", line 116, in decorate_context\n    return func(*args, **kwargs)\n  File \"/home/whisperliang/InfoTok/scripts/chp_validate.py\", line 65, in upstream\n    tokenizer_config=TokenizerConfigs[\"OURS4x8x8-mse-256p-88\"].value,\n  File \"/usr/lib/python3.10/enum.py\", line 440, in __getitem__\n    return cls._member_map_[name]\nKeyError: 'OURS4x8x8-mse-256p-88'\n",
+  "argv": [
+    "scripts/chp_validate.py",
+    "upstream",
+    "--video",
+    "data/chp_vtok/mcl_jcv01.mp4",
+    "--height",
+    "256",
+    "--frames",
+    "17",
+    "--dtype",
+    "float32",
+    "--output",
+    "results/chp_vtok/upstream_256_verified.json"
+  ],
+  "device": "NVIDIA H100 PCIe",
+  "torch": "2.6.0+cu124",
+  "cuda": "12.4",
+  "dtype": "float32",
+  "backbone_sha256": "bd69629a8f8fcfc4808d29eec5bed68177e22aa14e3b9b799599791e26af935a"
+}

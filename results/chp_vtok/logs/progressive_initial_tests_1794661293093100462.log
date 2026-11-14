@@ -1,0 +1,1158 @@
+...F.FFF............F                                                    [100%]
+=================================== FAILURES ===================================
+___________________ test_encoder_causality_and_exact_prefix ____________________
+
+tensor = tensor([[[[ True,  True,  True,  ..., False, False, False],
+          [ True,  True,  True,  ..., False, False, False]...       [False, False, False,  ..., False, False, False],
+          [False, False, False,  ..., False, False, False]]]])
+pattern = 'b c (h u) (w v) -> (b h w) 1 (u v) c', reduction = 'rearrange'
+axes_lengths = {'u': 16, 'v': 16}
+
+    def reduce(tensor: Union[Tensor, List[Tensor]], pattern: str, reduction: Reduction, **axes_lengths: Size) -> Tensor:
+        """
+        einops.reduce combines rearrangement and reduction using reader-friendly notation.
+    
+        Some examples:
+    
+        ```python
+        >>> x = np.random.randn(100, 32, 64)
+    
+        # perform max-reduction on the first axis
+        # Axis t does not appear on RHS - thus we reduced over t
+        >>> y = reduce(x, 't b c -> b c', 'max')
+    
+        # same as previous, but using verbose names for axes
+        >>> y = reduce(x, 'time batch channel -> batch channel', 'max')
+    
+        # let's pretend now that x is a batch of images
+        # with 4 dims: batch=10, height=20, width=30, channel=40
+        >>> x = np.random.randn(10, 20, 30, 40)
+    
+        # 2d max-pooling with kernel size = 2 * 2 for image processing
+        >>> y1 = reduce(x, 'b c (h1 h2) (w1 w2) -> b c h1 w1', 'max', h2=2, w2=2)
+    
+        # same as previous, using anonymous axes,
+        # note: only reduced axes can be anonymous
+        >>> y1 = reduce(x, 'b c (h1 2) (w1 2) -> b c h1 w1', 'max')
+    
+        # adaptive 2d max-pooling to 3 * 4 grid,
+        # each element is max of 10x10 tile in the original tensor.
+        >>> reduce(x, 'b c (h1 h2) (w1 w2) -> b c h1 w1', 'max', h1=3, w1=4).shape
+        (10, 20, 3, 4)
+    
+        # Global average pooling
+        >>> reduce(x, 'b c h w -> b c', 'mean').shape
+        (10, 20)
+    
+        # subtracting mean over batch for each channel;
+        # similar to x - np.mean(x, axis=(0, 2, 3), keepdims=True)
+        >>> y = x - reduce(x, 'b c h w -> 1 c 1 1', 'mean')
+    
+        # Subtracting per-image mean for each channel
+        >>> y = x - reduce(x, 'b c h w -> b c 1 1', 'mean')
+    
+        # same as previous, but using empty compositions
+        >>> y = x - reduce(x, 'b c h w -> b c () ()', 'mean')
+    
+        ```
+    
+        Parameters:
+            tensor: tensor: tensor of any supported library (e.g. numpy.ndarray, tensorflow, pytorch).
+                list of tensors is also accepted, those should be of the same type and shape
+            pattern: string, reduction pattern
+            reduction: one of available reductions ('min', 'max', 'sum', 'mean', 'prod', 'any', 'all').
+                Alternatively, a callable f(tensor, reduced_axes) -> tensor can be provided.
+                This allows using various reductions like: np.max, np.nanmean, tf.reduce_logsumexp, torch.var, etc.
+            axes_lengths: any additional specifications for dimensions
+    
+        Returns:
+            tensor of the same type as input
+        """
+        try:
+            if isinstance(tensor, list):
+                if len(tensor) == 0:
+                    raise TypeError("Rearrange/Reduce/Repeat can't be applied to an empty list")
+                backend = get_backend(tensor[0])
+                tensor = backend.stack_on_zeroth_dimension(tensor)
+            else:
+                backend = get_backend(tensor)
+    
+            hashable_axes_lengths = tuple(axes_lengths.items())
+            shape = backend.shape(tensor)
+            recipe = _prepare_transformation_recipe(pattern, reduction, axes_names=tuple(axes_lengths), ndim=len(shape))
+>           return _apply_recipe(
+                backend, recipe, cast(Tensor, tensor), reduction_type=reduction, axes_lengths=hashable_axes_lengths
+            )
+
+.venv/lib/python3.10/site-packages/einops/einops.py:532: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+.venv/lib/python3.10/site-packages/einops/einops.py:235: in _apply_recipe
+    init_shapes, axes_reordering, reduced_axes, added_axes, final_shapes, n_axes_w_added = _reconstruct_from_shape(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <einops.einops.TransformRecipe object at 0x7d70399459f0>
+shape = torch.Size([3, 1, 28, 24]), axes_dims = (('u', 16), ('v', 16))
+
+    def _reconstruct_from_shape_uncached(
+        self: TransformRecipe, shape: List[int], axes_dims: FakeHashableAxesLengths
+    ) -> CookedRecipe:
+        """
+        Reconstruct all actual parameters using shape.
+        Shape is a tuple that may contain integers, shape symbols (tf, theano) and UnknownSize (tf, previously mxnet)
+        known axes can be integers or symbols, but not Nones.
+        """
+        # magic number
+        need_init_reshape = False
+    
+        # last axis is allocated for collapsed ellipsis
+        axes_lengths: List[int] = list(self.elementary_axes_lengths)
+        for axis, dim in axes_dims:
+            axes_lengths[self.axis_name2elementary_axis[axis]] = dim
+    
+        for input_axis, (known_axes, unknown_axes) in enumerate(self.input_composition_known_unknown):
+            length = shape[input_axis]
+            if len(known_axes) == 0 and len(unknown_axes) == 1:
+                # shortcut for the most common case
+                axes_lengths[unknown_axes[0]] = length
+                continue
+    
+            known_product = 1
+            for axis in known_axes:
+                known_product *= axes_lengths[axis]
+    
+            if len(unknown_axes) == 0:
+                if isinstance(length, int) and isinstance(known_product, int) and length != known_product:
+                    raise EinopsError(f"Shape mismatch, {length} != {known_product}")
+            else:
+                # assert len(unknown_axes) == 1, 'this is enforced when recipe is created, so commented out'
+                if isinstance(length, int) and isinstance(known_product, int) and length % known_product != 0:
+>                   raise EinopsError(f"Shape mismatch, can't divide axis of length {length} in chunks of {known_product}")
+E                   einops.EinopsError: Shape mismatch, can't divide axis of length 28 in chunks of 16
+
+.venv/lib/python3.10/site-packages/einops/einops.py:188: EinopsError
+
+During handling of the above exception, another exception occurred:
+
+model = CHPVTokenizer(
+  (encoder): EncoderFactorized(
+    (patcher3d): Patcher3D()
+    (conv_in): Sequential(
+      (0): Caus... 1), stride=(1, 1), bias=False)
+  (display_projection): Conv2d(16, 16, kernel_size=(1, 1), stride=(1, 1), bias=False)
+)
+
+    @torch.no_grad()
+    def test_encoder_causality_and_exact_prefix(model):
+        x = torch.randn(1,3,9,32,64)
+        y = x.clone()
+        y[:, :, 5:] += 3
+>       ids, geometry = model.encode(x)
+
+tests/test_chp_progressive.py:49: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+cosmos_predict1/tokenizer/progressive/model.py:175: in encode
+    features = self.backbone_encode(geometry.pad(video))
+cosmos_predict1/tokenizer/progressive/model.py:120: in backbone_encode
+    return self.encoder(x)
+.venv/lib/python3.10/site-packages/torch/nn/modules/module.py:1739: in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+.venv/lib/python3.10/site-packages/torch/nn/modules/module.py:1750: in _call_impl
+    return forward_call(*args, **kwargs)
+cosmos_predict1/tokenizer/modules/layers3d.py:798: in forward
+    h = self.mid.attn_1(h)
+.venv/lib/python3.10/site-packages/torch/nn/modules/module.py:1739: in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+.venv/lib/python3.10/site-packages/torch/nn/modules/module.py:1750: in _call_impl
+    return forward_call(*args, **kwargs)
+.venv/lib/python3.10/site-packages/torch/nn/modules/container.py:250: in forward
+    input = module(input)
+.venv/lib/python3.10/site-packages/torch/nn/modules/module.py:1739: in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+.venv/lib/python3.10/site-packages/torch/nn/modules/module.py:1750: in _call_impl
+    return forward_call(*args, **kwargs)
+cosmos_predict1/tokenizer/progressive/causal_state.py:194: in forward
+    return compute(x)
+cosmos_predict1/tokenizer/progressive/causal_state.py:191: in compute
+    return window_attention(self, value, window) if _local else _original(value)
+cosmos_predict1/tokenizer/progressive/causal_state.py:162: in window_attention
+    allowed = partition(valid).squeeze(-1).unsqueeze(-2)
+cosmos_predict1/tokenizer/progressive/causal_state.py:159: in partition
+    return rearrange(F.pad(a, (0, pw, 0, ph)),
+.venv/lib/python3.10/site-packages/einops/einops.py:600: in rearrange
+    return reduce(tensor, pattern, reduction="rearrange", **axes_lengths)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+tensor = tensor([[[[ True,  True,  True,  ..., False, False, False],
+          [ True,  True,  True,  ..., False, False, False]...       [False, False, False,  ..., False, False, False],
+          [False, False, False,  ..., False, False, False]]]])
+pattern = 'b c (h u) (w v) -> (b h w) 1 (u v) c', reduction = 'rearrange'
+axes_lengths = {'u': 16, 'v': 16}
+
+    def reduce(tensor: Union[Tensor, List[Tensor]], pattern: str, reduction: Reduction, **axes_lengths: Size) -> Tensor:
+        """
+        einops.reduce combines rearrangement and reduction using reader-friendly notation.
+    
+        Some examples:
+    
+        ```python
+        >>> x = np.random.randn(100, 32, 64)
+    
+        # perform max-reduction on the first axis
+        # Axis t does not appear on RHS - thus we reduced over t
+        >>> y = reduce(x, 't b c -> b c', 'max')
+    
+        # same as previous, but using verbose names for axes
+        >>> y = reduce(x, 'time batch channel -> batch channel', 'max')
+    
+        # let's pretend now that x is a batch of images
+        # with 4 dims: batch=10, height=20, width=30, channel=40
+        >>> x = np.random.randn(10, 20, 30, 40)
+    
+        # 2d max-pooling with kernel size = 2 * 2 for image processing
+        >>> y1 = reduce(x, 'b c (h1 h2) (w1 w2) -> b c h1 w1', 'max', h2=2, w2=2)
+    
+        # same as previous, using anonymous axes,
+        # note: only reduced axes can be anonymous
+        >>> y1 = reduce(x, 'b c (h1 2) (w1 2) -> b c h1 w1', 'max')
+    
+        # adaptive 2d max-pooling to 3 * 4 grid,
+        # each element is max of 10x10 tile in the original tensor.
+        >>> reduce(x, 'b c (h1 h2) (w1 w2) -> b c h1 w1', 'max', h1=3, w1=4).shape
+        (10, 20, 3, 4)
+    
+        # Global average pooling
+        >>> reduce(x, 'b c h w -> b c', 'mean').shape
+        (10, 20)
+    
+        # subtracting mean over batch for each channel;
+        # similar to x - np.mean(x, axis=(0, 2, 3), keepdims=True)
+        >>> y = x - reduce(x, 'b c h w -> 1 c 1 1', 'mean')
+    
+        # Subtracting per-image mean for each channel
+        >>> y = x - reduce(x, 'b c h w -> b c 1 1', 'mean')
+    
+        # same as previous, but using empty compositions
+        >>> y = x - reduce(x, 'b c h w -> b c () ()', 'mean')
+    
+        ```
+    
+        Parameters:
+            tensor: tensor: tensor of any supported library (e.g. numpy.ndarray, tensorflow, pytorch).
+                list of tensors is also accepted, those should be of the same type and shape
+            pattern: string, reduction pattern
+            reduction: one of available reductions ('min', 'max', 'sum', 'mean', 'prod', 'any', 'all').
+                Alternatively, a callable f(tensor, reduced_axes) -> tensor can be provided.
+                This allows using various reductions like: np.max, np.nanmean, tf.reduce_logsumexp, torch.var, etc.
+            axes_lengths: any additional specifications for dimensions
+    
+        Returns:
+            tensor of the same type as input
+        """
+        try:
+            if isinstance(tensor, list):
+                if len(tensor) == 0:
+                    raise TypeError("Rearrange/Reduce/Repeat can't be applied to an empty list")
+                backend = get_backend(tensor[0])
+                tensor = backend.stack_on_zeroth_dimension(tensor)
+            else:
+                backend = get_backend(tensor)
+    
+            hashable_axes_lengths = tuple(axes_lengths.items())
+            shape = backend.shape(tensor)
+            recipe = _prepare_transformation_recipe(pattern, reduction, axes_names=tuple(axes_lengths), ndim=len(shape))
+            return _apply_recipe(
+                backend, recipe, cast(Tensor, tensor), reduction_type=reduction, axes_lengths=hashable_axes_lengths
+            )
+        except EinopsError as e:
+            message = ' Error while processing {}-reduction pattern "{}".'.format(reduction, pattern)
+            if not isinstance(tensor, list):
+                message += "\n Input tensor shape: {}. ".format(shape)
+            else:
+                message += "\n Input is list. "
+            message += "Additional info: {}.".format(axes_lengths)
+>           raise EinopsError(message + "\n {}".format(e))
+E           einops.EinopsError:  Error while processing rearrange-reduction pattern "b c (h u) (w v) -> (b h w) 1 (u v) c".
+E            Input tensor shape: torch.Size([3, 1, 28, 24]). Additional info: {'u': 16, 'v': 16}.
+E            Shape mismatch, can't divide axis of length 28 in chunks of 16
+
+.venv/lib/python3.10/site-packages/einops/einops.py:542: EinopsError
+---------------------------- Captured stderr setup -----------------------------
+2026-11-14 21:01:39.462 | INFO     | cosmos_predict1.tokenizer.modules.layers3d:__init__:843 - Working with z of shape (1, 16, 128, 128) = 262144 dimensions.
+2026-11-14 21:01:39.477 | INFO     | cosmos_predict1.tokenizer.networks.ours_discrete_video:__init__:64 - OURS based on FSQ-VAE, with {'name': 'OURS', 'attn_resolutions': [], 'channels': 8, 'channels_mult': [1, 2, 2], 'dropout': 0.0, 'in_channels': 3, 'num_res_blocks': 1, 'out_channels': 3, 'resolution': 1024, 'patch_size': 2, 'patch_method': 'haar', 'num_groups': 1, 'legacy_mode': False, 'spatial_compression': 8, 'temporal_compression': 4, 'quantizer': 'FSQ', 'levels': [8, 8, 8, 5, 5, 5], 'encoder': 'FACTORIZED', 'decoder': 'FACTORIZED', 'rate_strategy': 'elbo', 'use_vit': False, 'freeze_original': False, 'vit_config': {'hidden_size': 256, 'intermediate_size': 512, 'num_encoder_layers': 8, 'num_decoder_layers': 8, 'num_attention_heads': 32, 'theta': 10000.0, 'rms_norm_eps': 1e-05, 'initializer_range': 0.02, 'max_num_video_frames': 49, 'switch_rotary_to_1d': 1.0, 'max_sequence_length': 96, 'max_sequence_length_1d': 8192, 'concat_decode_2d': False, 'special_attn': False, 'method': 'mse'}}.
+2026-11-14 21:01:39.478 | INFO     | cosmos_predict1.tokenizer.networks.ours_discrete_video:__init__:67 - model=OURS, num_parameters=93,030
+2026-11-14 21:01:39.478 | INFO     | cosmos_predict1.tokenizer.networks.ours_discrete_video:__init__:68 - z_channels=16, embedding_dim=6.
+2026-11-14 21:01:39.478 | INFO     | cosmos_predict1.tokenizer.networks.ours_discrete_video:init_adaptive_token:169 - Adaptive token initialized with shape torch.Size([128]) and value 0.0.
+2026-11-14 21:01:39.478 | INFO     | cosmos_predict1.tokenizer.networks.ours_discrete_video:__init__:122 - model=OURS, num_parameters=93,030
+________________ test_stream_full_encoder_and_decoder_alignment ________________
+
+tensor = tensor([[[[ True,  True,  True,  ..., False, False, False],
+          [ True,  True,  True,  ..., False, False, False]...       [False, False, False,  ..., False, False, False],
+          [False, False, False,  ..., False, False, False]]]])
+pattern = 'b c (h u) (w v) -> (b h w) 1 (u v) c', reduction = 'rearrange'
+axes_lengths = {'u': 16, 'v': 16}
+
+    def reduce(tensor: Union[Tensor, List[Tensor]], pattern: str, reduction: Reduction, **axes_lengths: Size) -> Tensor:
+        """
+        einops.reduce combines rearrangement and reduction using reader-friendly notation.
+    
+        Some examples:
+    
+        ```python
+        >>> x = np.random.randn(100, 32, 64)
+    
+        # perform max-reduction on the first axis
+        # Axis t does not appear on RHS - thus we reduced over t
+        >>> y = reduce(x, 't b c -> b c', 'max')
+    
+        # same as previous, but using verbose names for axes
+        >>> y = reduce(x, 'time batch channel -> batch channel', 'max')
+    
+        # let's pretend now that x is a batch of images
+        # with 4 dims: batch=10, height=20, width=30, channel=40
+        >>> x = np.random.randn(10, 20, 30, 40)
+    
+        # 2d max-pooling with kernel size = 2 * 2 for image processing
+        >>> y1 = reduce(x, 'b c (h1 h2) (w1 w2) -> b c h1 w1', 'max', h2=2, w2=2)
+    
+        # same as previous, using anonymous axes,
+        # note: only reduced axes can be anonymous
+        >>> y1 = reduce(x, 'b c (h1 2) (w1 2) -> b c h1 w1', 'max')
+    
+        # adaptive 2d max-pooling to 3 * 4 grid,
+        # each element is max of 10x10 tile in the original tensor.
+        >>> reduce(x, 'b c (h1 h2) (w1 w2) -> b c h1 w1', 'max', h1=3, w1=4).shape
+        (10, 20, 3, 4)
+    
+        # Global average pooling
+        >>> reduce(x, 'b c h w -> b c', 'mean').shape
+        (10, 20)
+    
+        # subtracting mean over batch for each channel;
+        # similar to x - np.mean(x, axis=(0, 2, 3), keepdims=True)
+        >>> y = x - reduce(x, 'b c h w -> 1 c 1 1', 'mean')
+    
+        # Subtracting per-image mean for each channel
+        >>> y = x - reduce(x, 'b c h w -> b c 1 1', 'mean')
+    
+        # same as previous, but using empty compositions
+        >>> y = x - reduce(x, 'b c h w -> b c () ()', 'mean')
+    
+        ```
+    
+        Parameters:
+            tensor: tensor: tensor of any supported library (e.g. numpy.ndarray, tensorflow, pytorch).
+                list of tensors is also accepted, those should be of the same type and shape
+            pattern: string, reduction pattern
+            reduction: one of available reductions ('min', 'max', 'sum', 'mean', 'prod', 'any', 'all').
+                Alternatively, a callable f(tensor, reduced_axes) -> tensor can be provided.
+                This allows using various reductions like: np.max, np.nanmean, tf.reduce_logsumexp, torch.var, etc.
+            axes_lengths: any additional specifications for dimensions
+    
+        Returns:
+            tensor of the same type as input
+        """
+        try:
+            if isinstance(tensor, list):
+                if len(tensor) == 0:
+                    raise TypeError("Rearrange/Reduce/Repeat can't be applied to an empty list")
+                backend = get_backend(tensor[0])
+                tensor = backend.stack_on_zeroth_dimension(tensor)
+            else:
+                backend = get_backend(tensor)
+    
+            hashable_axes_lengths = tuple(axes_lengths.items())
+            shape = backend.shape(tensor)
+            recipe = _prepare_transformation_recipe(pattern, reduction, axes_names=tuple(axes_lengths), ndim=len(shape))
+>           return _apply_recipe(
+                backend, recipe, cast(Tensor, tensor), reduction_type=reduction, axes_lengths=hashable_axes_lengths
+            )
+
+.venv/lib/python3.10/site-packages/einops/einops.py:532: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+.venv/lib/python3.10/site-packages/einops/einops.py:235: in _apply_recipe
+    init_shapes, axes_reordering, reduced_axes, added_axes, final_shapes, n_axes_w_added = _reconstruct_from_shape(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <einops.einops.TransformRecipe object at 0x7d70399459f0>
+shape = torch.Size([3, 1, 28, 24]), axes_dims = (('u', 16), ('v', 16))
+
+    def _reconstruct_from_shape_uncached(
+        self: TransformRecipe, shape: List[int], axes_dims: FakeHashableAxesLengths
+    ) -> CookedRecipe:
+        """
+        Reconstruct all actual parameters using shape.
+        Shape is a tuple that may contain integers, shape symbols (tf, theano) and UnknownSize (tf, previously mxnet)
+        known axes can be integers or symbols, but not Nones.
+        """
+        # magic number
+        need_init_reshape = False
+    
+        # last axis is allocated for collapsed ellipsis
+        axes_lengths: List[int] = list(self.elementary_axes_lengths)
+        for axis, dim in axes_dims:
+            axes_lengths[self.axis_name2elementary_axis[axis]] = dim
+    
+        for input_axis, (known_axes, unknown_axes) in enumerate(self.input_composition_known_unknown):
+            length = shape[input_axis]
+            if len(known_axes) == 0 and len(unknown_axes) == 1:
+                # shortcut for the most common case
+                axes_lengths[unknown_axes[0]] = length
+                continue
+    
+            known_product = 1
+            for axis in known_axes:
+                known_product *= axes_lengths[axis]
+    
+            if len(unknown_axes) == 0:
+                if isinstance(length, int) and isinstance(known_product, int) and length != known_product:
+                    raise EinopsError(f"Shape mismatch, {length} != {known_product}")
+            else:
+                # assert len(unknown_axes) == 1, 'this is enforced when recipe is created, so commented out'
+                if isinstance(length, int) and isinstance(known_product, int) and length % known_product != 0:
+>                   raise EinopsError(f"Shape mismatch, can't divide axis of length {length} in chunks of {known_product}")
+E                   einops.EinopsError: Shape mismatch, can't divide axis of length 28 in chunks of 16
+
+.venv/lib/python3.10/site-packages/einops/einops.py:188: EinopsError
+
+During handling of the above exception, another exception occurred:
+
+model = CHPVTokenizer(
+  (encoder): EncoderFactorized(
+    (patcher3d): Patcher3D()
+    (conv_in): Sequential(
+      (0): Caus... 1), stride=(1, 1), bias=False)
+  (display_projection): Conv2d(16, 16, kernel_size=(1, 1), stride=(1, 1), bias=False)
+)
+
+    @torch.no_grad()
+    def test_stream_full_encoder_and_decoder_alignment(model):
+        x = torch.randn(1,3,9,32,64)
+>       full_ids, geometry = model.encode(x)
+
+tests/test_chp_progressive.py:73: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+cosmos_predict1/tokenizer/progressive/model.py:175: in encode
+    features = self.backbone_encode(geometry.pad(video))
+cosmos_predict1/tokenizer/progressive/model.py:120: in backbone_encode
+    return self.encoder(x)
+.venv/lib/python3.10/site-packages/torch/nn/modules/module.py:1739: in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+.venv/lib/python3.10/site-packages/torch/nn/modules/module.py:1750: in _call_impl
+    return forward_call(*args, **kwargs)
+cosmos_predict1/tokenizer/modules/layers3d.py:798: in forward
+    h = self.mid.attn_1(h)
+.venv/lib/python3.10/site-packages/torch/nn/modules/module.py:1739: in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+.venv/lib/python3.10/site-packages/torch/nn/modules/module.py:1750: in _call_impl
+    return forward_call(*args, **kwargs)
+.venv/lib/python3.10/site-packages/torch/nn/modules/container.py:250: in forward
+    input = module(input)
+.venv/lib/python3.10/site-packages/torch/nn/modules/module.py:1739: in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+.venv/lib/python3.10/site-packages/torch/nn/modules/module.py:1750: in _call_impl
+    return forward_call(*args, **kwargs)
+cosmos_predict1/tokenizer/progressive/causal_state.py:194: in forward
+    return compute(x)
+cosmos_predict1/tokenizer/progressive/causal_state.py:191: in compute
+    return window_attention(self, value, window) if _local else _original(value)
+cosmos_predict1/tokenizer/progressive/causal_state.py:162: in window_attention
+    allowed = partition(valid).squeeze(-1).unsqueeze(-2)
+cosmos_predict1/tokenizer/progressive/causal_state.py:159: in partition
+    return rearrange(F.pad(a, (0, pw, 0, ph)),
+.venv/lib/python3.10/site-packages/einops/einops.py:600: in rearrange
+    return reduce(tensor, pattern, reduction="rearrange", **axes_lengths)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+tensor = tensor([[[[ True,  True,  True,  ..., False, False, False],
+          [ True,  True,  True,  ..., False, False, False]...       [False, False, False,  ..., False, False, False],
+          [False, False, False,  ..., False, False, False]]]])
+pattern = 'b c (h u) (w v) -> (b h w) 1 (u v) c', reduction = 'rearrange'
+axes_lengths = {'u': 16, 'v': 16}
+
+    def reduce(tensor: Union[Tensor, List[Tensor]], pattern: str, reduction: Reduction, **axes_lengths: Size) -> Tensor:
+        """
+        einops.reduce combines rearrangement and reduction using reader-friendly notation.
+    
+        Some examples:
+    
+        ```python
+        >>> x = np.random.randn(100, 32, 64)
+    
+        # perform max-reduction on the first axis
+        # Axis t does not appear on RHS - thus we reduced over t
+        >>> y = reduce(x, 't b c -> b c', 'max')
+    
+        # same as previous, but using verbose names for axes
+        >>> y = reduce(x, 'time batch channel -> batch channel', 'max')
+    
+        # let's pretend now that x is a batch of images
+        # with 4 dims: batch=10, height=20, width=30, channel=40
+        >>> x = np.random.randn(10, 20, 30, 40)
+    
+        # 2d max-pooling with kernel size = 2 * 2 for image processing
+        >>> y1 = reduce(x, 'b c (h1 h2) (w1 w2) -> b c h1 w1', 'max', h2=2, w2=2)
+    
+        # same as previous, using anonymous axes,
+        # note: only reduced axes can be anonymous
+        >>> y1 = reduce(x, 'b c (h1 2) (w1 2) -> b c h1 w1', 'max')
+    
+        # adaptive 2d max-pooling to 3 * 4 grid,
+        # each element is max of 10x10 tile in the original tensor.
+        >>> reduce(x, 'b c (h1 h2) (w1 w2) -> b c h1 w1', 'max', h1=3, w1=4).shape
+        (10, 20, 3, 4)
+    
+        # Global average pooling
+        >>> reduce(x, 'b c h w -> b c', 'mean').shape
+        (10, 20)
+    
+        # subtracting mean over batch for each channel;
+        # similar to x - np.mean(x, axis=(0, 2, 3), keepdims=True)
+        >>> y = x - reduce(x, 'b c h w -> 1 c 1 1', 'mean')
+    
+        # Subtracting per-image mean for each channel
+        >>> y = x - reduce(x, 'b c h w -> b c 1 1', 'mean')
+    
+        # same as previous, but using empty compositions
+        >>> y = x - reduce(x, 'b c h w -> b c () ()', 'mean')
+    
+        ```
+    
+        Parameters:
+            tensor: tensor: tensor of any supported library (e.g. numpy.ndarray, tensorflow, pytorch).
+                list of tensors is also accepted, those should be of the same type and shape
+            pattern: string, reduction pattern
+            reduction: one of available reductions ('min', 'max', 'sum', 'mean', 'prod', 'any', 'all').
+                Alternatively, a callable f(tensor, reduced_axes) -> tensor can be provided.
+                This allows using various reductions like: np.max, np.nanmean, tf.reduce_logsumexp, torch.var, etc.
+            axes_lengths: any additional specifications for dimensions
+    
+        Returns:
+            tensor of the same type as input
+        """
+        try:
+            if isinstance(tensor, list):
+                if len(tensor) == 0:
+                    raise TypeError("Rearrange/Reduce/Repeat can't be applied to an empty list")
+                backend = get_backend(tensor[0])
+                tensor = backend.stack_on_zeroth_dimension(tensor)
+            else:
+                backend = get_backend(tensor)
+    
+            hashable_axes_lengths = tuple(axes_lengths.items())
+            shape = backend.shape(tensor)
+            recipe = _prepare_transformation_recipe(pattern, reduction, axes_names=tuple(axes_lengths), ndim=len(shape))
+            return _apply_recipe(
+                backend, recipe, cast(Tensor, tensor), reduction_type=reduction, axes_lengths=hashable_axes_lengths
+            )
+        except EinopsError as e:
+            message = ' Error while processing {}-reduction pattern "{}".'.format(reduction, pattern)
+            if not isinstance(tensor, list):
+                message += "\n Input tensor shape: {}. ".format(shape)
+            else:
+                message += "\n Input is list. "
+            message += "Additional info: {}.".format(axes_lengths)
+>           raise EinopsError(message + "\n {}".format(e))
+E           einops.EinopsError:  Error while processing rearrange-reduction pattern "b c (h u) (w v) -> (b h w) 1 (u v) c".
+E            Input tensor shape: torch.Size([3, 1, 28, 24]). Additional info: {'u': 16, 'v': 16}.
+E            Shape mismatch, can't divide axis of length 28 in chunks of 16
+
+.venv/lib/python3.10/site-packages/einops/einops.py:542: EinopsError
+---------------------------- Captured stderr setup -----------------------------
+2026-11-14 21:01:39.721 | INFO     | cosmos_predict1.tokenizer.modules.layers3d:__init__:843 - Working with z of shape (1, 16, 128, 128) = 262144 dimensions.
+2026-11-14 21:01:39.733 | INFO     | cosmos_predict1.tokenizer.networks.ours_discrete_video:__init__:64 - OURS based on FSQ-VAE, with {'name': 'OURS', 'attn_resolutions': [], 'channels': 8, 'channels_mult': [1, 2, 2], 'dropout': 0.0, 'in_channels': 3, 'num_res_blocks': 1, 'out_channels': 3, 'resolution': 1024, 'patch_size': 2, 'patch_method': 'haar', 'num_groups': 1, 'legacy_mode': False, 'spatial_compression': 8, 'temporal_compression': 4, 'quantizer': 'FSQ', 'levels': [8, 8, 8, 5, 5, 5], 'encoder': 'FACTORIZED', 'decoder': 'FACTORIZED', 'rate_strategy': 'elbo', 'use_vit': False, 'freeze_original': False, 'vit_config': {'hidden_size': 256, 'intermediate_size': 512, 'num_encoder_layers': 8, 'num_decoder_layers': 8, 'num_attention_heads': 32, 'theta': 10000.0, 'rms_norm_eps': 1e-05, 'initializer_range': 0.02, 'max_num_video_frames': 49, 'switch_rotary_to_1d': 1.0, 'max_sequence_length': 96, 'max_sequence_length_1d': 8192, 'concat_decode_2d': False, 'special_attn': False, 'method': 'mse'}}.
+2026-11-14 21:01:39.734 | INFO     | cosmos_predict1.tokenizer.networks.ours_discrete_video:__init__:67 - model=OURS, num_parameters=93,030
+2026-11-14 21:01:39.734 | INFO     | cosmos_predict1.tokenizer.networks.ours_discrete_video:__init__:68 - z_channels=16, embedding_dim=6.
+2026-11-14 21:01:39.734 | INFO     | cosmos_predict1.tokenizer.networks.ours_discrete_video:init_adaptive_token:169 - Adaptive token initialized with shape torch.Size([128]) and value 0.0.
+2026-11-14 21:01:39.735 | INFO     | cosmos_predict1.tokenizer.networks.ours_discrete_video:__init__:122 - model=OURS, num_parameters=93,030
+____________ test_decoder_future_intervention_and_display_reference ____________
+
+tensor = tensor([[[[ True,  True,  True,  True,  True,  True,  True,  True, False, False,
+           False, False, False, False...       False, False, False, False, False, False, False, False, False, False,
+           False, False, False, False]]]])
+pattern = 'b c (h u) (w v) -> (b h w) 1 (u v) c', reduction = 'rearrange'
+axes_lengths = {'u': 16, 'v': 16}
+
+    def reduce(tensor: Union[Tensor, List[Tensor]], pattern: str, reduction: Reduction, **axes_lengths: Size) -> Tensor:
+        """
+        einops.reduce combines rearrangement and reduction using reader-friendly notation.
+    
+        Some examples:
+    
+        ```python
+        >>> x = np.random.randn(100, 32, 64)
+    
+        # perform max-reduction on the first axis
+        # Axis t does not appear on RHS - thus we reduced over t
+        >>> y = reduce(x, 't b c -> b c', 'max')
+    
+        # same as previous, but using verbose names for axes
+        >>> y = reduce(x, 'time batch channel -> batch channel', 'max')
+    
+        # let's pretend now that x is a batch of images
+        # with 4 dims: batch=10, height=20, width=30, channel=40
+        >>> x = np.random.randn(10, 20, 30, 40)
+    
+        # 2d max-pooling with kernel size = 2 * 2 for image processing
+        >>> y1 = reduce(x, 'b c (h1 h2) (w1 w2) -> b c h1 w1', 'max', h2=2, w2=2)
+    
+        # same as previous, using anonymous axes,
+        # note: only reduced axes can be anonymous
+        >>> y1 = reduce(x, 'b c (h1 2) (w1 2) -> b c h1 w1', 'max')
+    
+        # adaptive 2d max-pooling to 3 * 4 grid,
+        # each element is max of 10x10 tile in the original tensor.
+        >>> reduce(x, 'b c (h1 h2) (w1 w2) -> b c h1 w1', 'max', h1=3, w1=4).shape
+        (10, 20, 3, 4)
+    
+        # Global average pooling
+        >>> reduce(x, 'b c h w -> b c', 'mean').shape
+        (10, 20)
+    
+        # subtracting mean over batch for each channel;
+        # similar to x - np.mean(x, axis=(0, 2, 3), keepdims=True)
+        >>> y = x - reduce(x, 'b c h w -> 1 c 1 1', 'mean')
+    
+        # Subtracting per-image mean for each channel
+        >>> y = x - reduce(x, 'b c h w -> b c 1 1', 'mean')
+    
+        # same as previous, but using empty compositions
+        >>> y = x - reduce(x, 'b c h w -> b c () ()', 'mean')
+    
+        ```
+    
+        Parameters:
+            tensor: tensor: tensor of any supported library (e.g. numpy.ndarray, tensorflow, pytorch).
+                list of tensors is also accepted, those should be of the same type and shape
+            pattern: string, reduction pattern
+            reduction: one of available reductions ('min', 'max', 'sum', 'mean', 'prod', 'any', 'all').
+                Alternatively, a callable f(tensor, reduced_axes) -> tensor can be provided.
+                This allows using various reductions like: np.max, np.nanmean, tf.reduce_logsumexp, torch.var, etc.
+            axes_lengths: any additional specifications for dimensions
+    
+        Returns:
+            tensor of the same type as input
+        """
+        try:
+            if isinstance(tensor, list):
+                if len(tensor) == 0:
+                    raise TypeError("Rearrange/Reduce/Repeat can't be applied to an empty list")
+                backend = get_backend(tensor[0])
+                tensor = backend.stack_on_zeroth_dimension(tensor)
+            else:
+                backend = get_backend(tensor)
+    
+            hashable_axes_lengths = tuple(axes_lengths.items())
+            shape = backend.shape(tensor)
+            recipe = _prepare_transformation_recipe(pattern, reduction, axes_names=tuple(axes_lengths), ndim=len(shape))
+>           return _apply_recipe(
+                backend, recipe, cast(Tensor, tensor), reduction_type=reduction, axes_lengths=hashable_axes_lengths
+            )
+
+.venv/lib/python3.10/site-packages/einops/einops.py:532: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+.venv/lib/python3.10/site-packages/einops/einops.py:235: in _apply_recipe
+    init_shapes, axes_reordering, reduced_axes, added_axes, final_shapes, n_axes_w_added = _reconstruct_from_shape(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <einops.einops.TransformRecipe object at 0x7d70399459f0>
+shape = torch.Size([1, 1, 28, 24]), axes_dims = (('u', 16), ('v', 16))
+
+    def _reconstruct_from_shape_uncached(
+        self: TransformRecipe, shape: List[int], axes_dims: FakeHashableAxesLengths
+    ) -> CookedRecipe:
+        """
+        Reconstruct all actual parameters using shape.
+        Shape is a tuple that may contain integers, shape symbols (tf, theano) and UnknownSize (tf, previously mxnet)
+        known axes can be integers or symbols, but not Nones.
+        """
+        # magic number
+        need_init_reshape = False
+    
+        # last axis is allocated for collapsed ellipsis
+        axes_lengths: List[int] = list(self.elementary_axes_lengths)
+        for axis, dim in axes_dims:
+            axes_lengths[self.axis_name2elementary_axis[axis]] = dim
+    
+        for input_axis, (known_axes, unknown_axes) in enumerate(self.input_composition_known_unknown):
+            length = shape[input_axis]
+            if len(known_axes) == 0 and len(unknown_axes) == 1:
+                # shortcut for the most common case
+                axes_lengths[unknown_axes[0]] = length
+                continue
+    
+            known_product = 1
+            for axis in known_axes:
+                known_product *= axes_lengths[axis]
+    
+            if len(unknown_axes) == 0:
+                if isinstance(length, int) and isinstance(known_product, int) and length != known_product:
+                    raise EinopsError(f"Shape mismatch, {length} != {known_product}")
+            else:
+                # assert len(unknown_axes) == 1, 'this is enforced when recipe is created, so commented out'
+                if isinstance(length, int) and isinstance(known_product, int) and length % known_product != 0:
+>                   raise EinopsError(f"Shape mismatch, can't divide axis of length {length} in chunks of {known_product}")
+E                   einops.EinopsError: Shape mismatch, can't divide axis of length 28 in chunks of 16
+
+.venv/lib/python3.10/site-packages/einops/einops.py:188: EinopsError
+
+During handling of the above exception, another exception occurred:
+
+model = CHPVTokenizer(
+  (encoder): EncoderFactorized(
+    (patcher3d): Patcher3D()
+    (conv_in): Sequential(
+      (0): Caus... 1), stride=(1, 1), bias=False)
+  (display_projection): Conv2d(16, 16, kernel_size=(1, 1), stride=(1, 1), bias=False)
+)
+
+    @torch.no_grad()
+    def test_decoder_future_intervention_and_display_reference(model):
+        ids = torch.randint(64000, (1,3,2048), dtype=torch.int32)
+        altered = ids.clone()
+        altered[:,2] = torch.randint(64000, (1,2048),dtype=torch.int32)
+        geometry = Geometry(32,64,32,64)
+>       a, b = model.decode(ids, geometry), model.decode(altered, geometry)
+
+tests/test_chp_progressive.py:99: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+cosmos_predict1/tokenizer/progressive/model.py:193: in decode
+    return self.decode_latent_sequence(dense, bases, geometry)
+cosmos_predict1/tokenizer/progressive/model.py:202: in decode_latent_sequence
+    decoded = geometry.crop(self.decoder(latent))
+.venv/lib/python3.10/site-packages/torch/nn/modules/module.py:1739: in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+.venv/lib/python3.10/site-packages/torch/nn/modules/module.py:1750: in _call_impl
+    return forward_call(*args, **kwargs)
+cosmos_predict1/tokenizer/modules/layers3d.py:926: in forward
+    h = self.mid.attn_1(h)
+.venv/lib/python3.10/site-packages/torch/nn/modules/module.py:1739: in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+.venv/lib/python3.10/site-packages/torch/nn/modules/module.py:1750: in _call_impl
+    return forward_call(*args, **kwargs)
+.venv/lib/python3.10/site-packages/torch/nn/modules/container.py:250: in forward
+    input = module(input)
+.venv/lib/python3.10/site-packages/torch/nn/modules/module.py:1739: in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+.venv/lib/python3.10/site-packages/torch/nn/modules/module.py:1750: in _call_impl
+    return forward_call(*args, **kwargs)
+cosmos_predict1/tokenizer/progressive/causal_state.py:194: in forward
+    return compute(x)
+cosmos_predict1/tokenizer/progressive/causal_state.py:191: in compute
+    return window_attention(self, value, window) if _local else _original(value)
+cosmos_predict1/tokenizer/progressive/causal_state.py:162: in window_attention
+    allowed = partition(valid).squeeze(-1).unsqueeze(-2)
+cosmos_predict1/tokenizer/progressive/causal_state.py:159: in partition
+    return rearrange(F.pad(a, (0, pw, 0, ph)),
+.venv/lib/python3.10/site-packages/einops/einops.py:600: in rearrange
+    return reduce(tensor, pattern, reduction="rearrange", **axes_lengths)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+tensor = tensor([[[[ True,  True,  True,  True,  True,  True,  True,  True, False, False,
+           False, False, False, False...       False, False, False, False, False, False, False, False, False, False,
+           False, False, False, False]]]])
+pattern = 'b c (h u) (w v) -> (b h w) 1 (u v) c', reduction = 'rearrange'
+axes_lengths = {'u': 16, 'v': 16}
+
+    def reduce(tensor: Union[Tensor, List[Tensor]], pattern: str, reduction: Reduction, **axes_lengths: Size) -> Tensor:
+        """
+        einops.reduce combines rearrangement and reduction using reader-friendly notation.
+    
+        Some examples:
+    
+        ```python
+        >>> x = np.random.randn(100, 32, 64)
+    
+        # perform max-reduction on the first axis
+        # Axis t does not appear on RHS - thus we reduced over t
+        >>> y = reduce(x, 't b c -> b c', 'max')
+    
+        # same as previous, but using verbose names for axes
+        >>> y = reduce(x, 'time batch channel -> batch channel', 'max')
+    
+        # let's pretend now that x is a batch of images
+        # with 4 dims: batch=10, height=20, width=30, channel=40
+        >>> x = np.random.randn(10, 20, 30, 40)
+    
+        # 2d max-pooling with kernel size = 2 * 2 for image processing
+        >>> y1 = reduce(x, 'b c (h1 h2) (w1 w2) -> b c h1 w1', 'max', h2=2, w2=2)
+    
+        # same as previous, using anonymous axes,
+        # note: only reduced axes can be anonymous
+        >>> y1 = reduce(x, 'b c (h1 2) (w1 2) -> b c h1 w1', 'max')
+    
+        # adaptive 2d max-pooling to 3 * 4 grid,
+        # each element is max of 10x10 tile in the original tensor.
+        >>> reduce(x, 'b c (h1 h2) (w1 w2) -> b c h1 w1', 'max', h1=3, w1=4).shape
+        (10, 20, 3, 4)
+    
+        # Global average pooling
+        >>> reduce(x, 'b c h w -> b c', 'mean').shape
+        (10, 20)
+    
+        # subtracting mean over batch for each channel;
+        # similar to x - np.mean(x, axis=(0, 2, 3), keepdims=True)
+        >>> y = x - reduce(x, 'b c h w -> 1 c 1 1', 'mean')
+    
+        # Subtracting per-image mean for each channel
+        >>> y = x - reduce(x, 'b c h w -> b c 1 1', 'mean')
+    
+        # same as previous, but using empty compositions
+        >>> y = x - reduce(x, 'b c h w -> b c () ()', 'mean')
+    
+        ```
+    
+        Parameters:
+            tensor: tensor: tensor of any supported library (e.g. numpy.ndarray, tensorflow, pytorch).
+                list of tensors is also accepted, those should be of the same type and shape
+            pattern: string, reduction pattern
+            reduction: one of available reductions ('min', 'max', 'sum', 'mean', 'prod', 'any', 'all').
+                Alternatively, a callable f(tensor, reduced_axes) -> tensor can be provided.
+                This allows using various reductions like: np.max, np.nanmean, tf.reduce_logsumexp, torch.var, etc.
+            axes_lengths: any additional specifications for dimensions
+    
+        Returns:
+            tensor of the same type as input
+        """
+        try:
+            if isinstance(tensor, list):
+                if len(tensor) == 0:
+                    raise TypeError("Rearrange/Reduce/Repeat can't be applied to an empty list")
+                backend = get_backend(tensor[0])
+                tensor = backend.stack_on_zeroth_dimension(tensor)
+            else:
+                backend = get_backend(tensor)
+    
+            hashable_axes_lengths = tuple(axes_lengths.items())
+            shape = backend.shape(tensor)
+            recipe = _prepare_transformation_recipe(pattern, reduction, axes_names=tuple(axes_lengths), ndim=len(shape))
+            return _apply_recipe(
+                backend, recipe, cast(Tensor, tensor), reduction_type=reduction, axes_lengths=hashable_axes_lengths
+            )
+        except EinopsError as e:
+            message = ' Error while processing {}-reduction pattern "{}".'.format(reduction, pattern)
+            if not isinstance(tensor, list):
+                message += "\n Input tensor shape: {}. ".format(shape)
+            else:
+                message += "\n Input is list. "
+            message += "Additional info: {}.".format(axes_lengths)
+>           raise EinopsError(message + "\n {}".format(e))
+E           einops.EinopsError:  Error while processing rearrange-reduction pattern "b c (h u) (w v) -> (b h w) 1 (u v) c".
+E            Input tensor shape: torch.Size([1, 1, 28, 24]). Additional info: {'u': 16, 'v': 16}.
+E            Shape mismatch, can't divide axis of length 28 in chunks of 16
+
+.venv/lib/python3.10/site-packages/einops/einops.py:542: EinopsError
+---------------------------- Captured stderr setup -----------------------------
+2026-11-14 21:01:39.930 | INFO     | cosmos_predict1.tokenizer.modules.layers3d:__init__:843 - Working with z of shape (1, 16, 128, 128) = 262144 dimensions.
+2026-11-14 21:01:39.941 | INFO     | cosmos_predict1.tokenizer.networks.ours_discrete_video:__init__:64 - OURS based on FSQ-VAE, with {'name': 'OURS', 'attn_resolutions': [], 'channels': 8, 'channels_mult': [1, 2, 2], 'dropout': 0.0, 'in_channels': 3, 'num_res_blocks': 1, 'out_channels': 3, 'resolution': 1024, 'patch_size': 2, 'patch_method': 'haar', 'num_groups': 1, 'legacy_mode': False, 'spatial_compression': 8, 'temporal_compression': 4, 'quantizer': 'FSQ', 'levels': [8, 8, 8, 5, 5, 5], 'encoder': 'FACTORIZED', 'decoder': 'FACTORIZED', 'rate_strategy': 'elbo', 'use_vit': False, 'freeze_original': False, 'vit_config': {'hidden_size': 256, 'intermediate_size': 512, 'num_encoder_layers': 8, 'num_decoder_layers': 8, 'num_attention_heads': 32, 'theta': 10000.0, 'rms_norm_eps': 1e-05, 'initializer_range': 0.02, 'max_num_video_frames': 49, 'switch_rotary_to_1d': 1.0, 'max_sequence_length': 96, 'max_sequence_length_1d': 8192, 'concat_decode_2d': False, 'special_attn': False, 'method': 'mse'}}.
+2026-11-14 21:01:39.942 | INFO     | cosmos_predict1.tokenizer.networks.ours_discrete_video:__init__:67 - model=OURS, num_parameters=93,030
+2026-11-14 21:01:39.942 | INFO     | cosmos_predict1.tokenizer.networks.ours_discrete_video:__init__:68 - z_channels=16, embedding_dim=6.
+2026-11-14 21:01:39.942 | INFO     | cosmos_predict1.tokenizer.networks.ours_discrete_video:init_adaptive_token:169 - Adaptive token initialized with shape torch.Size([128]) and value 0.0.
+2026-11-14 21:01:39.943 | INFO     | cosmos_predict1.tokenizer.networks.ours_discrete_video:__init__:122 - model=OURS, num_parameters=93,030
+__________________ test_gradient_survives_frozen_rgb_decoder ___________________
+
+tensor = tensor([[[[ True,  True,  True,  ..., False, False, False],
+          [ True,  True,  True,  ..., False, False, False]...       [False, False, False,  ..., False, False, False],
+          [False, False, False,  ..., False, False, False]]]])
+pattern = 'b c (h u) (w v) -> (b h w) 1 (u v) c', reduction = 'rearrange'
+axes_lengths = {'u': 16, 'v': 16}
+
+    def reduce(tensor: Union[Tensor, List[Tensor]], pattern: str, reduction: Reduction, **axes_lengths: Size) -> Tensor:
+        """
+        einops.reduce combines rearrangement and reduction using reader-friendly notation.
+    
+        Some examples:
+    
+        ```python
+        >>> x = np.random.randn(100, 32, 64)
+    
+        # perform max-reduction on the first axis
+        # Axis t does not appear on RHS - thus we reduced over t
+        >>> y = reduce(x, 't b c -> b c', 'max')
+    
+        # same as previous, but using verbose names for axes
+        >>> y = reduce(x, 'time batch channel -> batch channel', 'max')
+    
+        # let's pretend now that x is a batch of images
+        # with 4 dims: batch=10, height=20, width=30, channel=40
+        >>> x = np.random.randn(10, 20, 30, 40)
+    
+        # 2d max-pooling with kernel size = 2 * 2 for image processing
+        >>> y1 = reduce(x, 'b c (h1 h2) (w1 w2) -> b c h1 w1', 'max', h2=2, w2=2)
+    
+        # same as previous, using anonymous axes,
+        # note: only reduced axes can be anonymous
+        >>> y1 = reduce(x, 'b c (h1 2) (w1 2) -> b c h1 w1', 'max')
+    
+        # adaptive 2d max-pooling to 3 * 4 grid,
+        # each element is max of 10x10 tile in the original tensor.
+        >>> reduce(x, 'b c (h1 h2) (w1 w2) -> b c h1 w1', 'max', h1=3, w1=4).shape
+        (10, 20, 3, 4)
+    
+        # Global average pooling
+        >>> reduce(x, 'b c h w -> b c', 'mean').shape
+        (10, 20)
+    
+        # subtracting mean over batch for each channel;
+        # similar to x - np.mean(x, axis=(0, 2, 3), keepdims=True)
+        >>> y = x - reduce(x, 'b c h w -> 1 c 1 1', 'mean')
+    
+        # Subtracting per-image mean for each channel
+        >>> y = x - reduce(x, 'b c h w -> b c 1 1', 'mean')
+    
+        # same as previous, but using empty compositions
+        >>> y = x - reduce(x, 'b c h w -> b c () ()', 'mean')
+    
+        ```
+    
+        Parameters:
+            tensor: tensor: tensor of any supported library (e.g. numpy.ndarray, tensorflow, pytorch).
+                list of tensors is also accepted, those should be of the same type and shape
+            pattern: string, reduction pattern
+            reduction: one of available reductions ('min', 'max', 'sum', 'mean', 'prod', 'any', 'all').
+                Alternatively, a callable f(tensor, reduced_axes) -> tensor can be provided.
+                This allows using various reductions like: np.max, np.nanmean, tf.reduce_logsumexp, torch.var, etc.
+            axes_lengths: any additional specifications for dimensions
+    
+        Returns:
+            tensor of the same type as input
+        """
+        try:
+            if isinstance(tensor, list):
+                if len(tensor) == 0:
+                    raise TypeError("Rearrange/Reduce/Repeat can't be applied to an empty list")
+                backend = get_backend(tensor[0])
+                tensor = backend.stack_on_zeroth_dimension(tensor)
+            else:
+                backend = get_backend(tensor)
+    
+            hashable_axes_lengths = tuple(axes_lengths.items())
+            shape = backend.shape(tensor)
+            recipe = _prepare_transformation_recipe(pattern, reduction, axes_names=tuple(axes_lengths), ndim=len(shape))
+>           return _apply_recipe(
+                backend, recipe, cast(Tensor, tensor), reduction_type=reduction, axes_lengths=hashable_axes_lengths
+            )
+
+.venv/lib/python3.10/site-packages/einops/einops.py:532: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+.venv/lib/python3.10/site-packages/einops/einops.py:235: in _apply_recipe
+    init_shapes, axes_reordering, reduced_axes, added_axes, final_shapes, n_axes_w_added = _reconstruct_from_shape(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <einops.einops.TransformRecipe object at 0x7d70399459f0>
+shape = torch.Size([2, 1, 28, 24]), axes_dims = (('u', 16), ('v', 16))
+
+    def _reconstruct_from_shape_uncached(
+        self: TransformRecipe, shape: List[int], axes_dims: FakeHashableAxesLengths
+    ) -> CookedRecipe:
+        """
+        Reconstruct all actual parameters using shape.
+        Shape is a tuple that may contain integers, shape symbols (tf, theano) and UnknownSize (tf, previously mxnet)
+        known axes can be integers or symbols, but not Nones.
+        """
+        # magic number
+        need_init_reshape = False
+    
+        # last axis is allocated for collapsed ellipsis
+        axes_lengths: List[int] = list(self.elementary_axes_lengths)
+        for axis, dim in axes_dims:
+            axes_lengths[self.axis_name2elementary_axis[axis]] = dim
+    
+        for input_axis, (known_axes, unknown_axes) in enumerate(self.input_composition_known_unknown):
+            length = shape[input_axis]
+            if len(known_axes) == 0 and len(unknown_axes) == 1:
+                # shortcut for the most common case
+                axes_lengths[unknown_axes[0]] = length
+                continue
+    
+            known_product = 1
+            for axis in known_axes:
+                known_product *= axes_lengths[axis]
+    
+            if len(unknown_axes) == 0:
+                if isinstance(length, int) and isinstance(known_product, int) and length != known_product:
+                    raise EinopsError(f"Shape mismatch, {length} != {known_product}")
+            else:
+                # assert len(unknown_axes) == 1, 'this is enforced when recipe is created, so commented out'
+                if isinstance(length, int) and isinstance(known_product, int) and length % known_product != 0:
+>                   raise EinopsError(f"Shape mismatch, can't divide axis of length {length} in chunks of {known_product}")
+E                   einops.EinopsError: Shape mismatch, can't divide axis of length 28 in chunks of 16
+
+.venv/lib/python3.10/site-packages/einops/einops.py:188: EinopsError
+
+During handling of the above exception, another exception occurred:
+
+model = CHPVTokenizer(
+  (encoder): EncoderFactorized(
+    (patcher3d): Patcher3D()
+    (conv_in): Sequential(
+      (0): Caus... 1), stride=(1, 1), bias=False)
+  (display_projection): Conv2d(16, 16, kernel_size=(1, 1), stride=(1, 1), bias=False)
+)
+
+    def test_gradient_survives_frozen_rgb_decoder(model):
+        model.train()
+        x = torch.randn(1,3,5,32,64)
+>       output = model(x, budgets=[256,512])
+
+tests/test_chp_progressive.py:114: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+.venv/lib/python3.10/site-packages/torch/nn/modules/module.py:1739: in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+.venv/lib/python3.10/site-packages/torch/nn/modules/module.py:1750: in _call_impl
+    return forward_call(*args, **kwargs)
+cosmos_predict1/tokenizer/progressive/model.py:210: in forward
+    features = self.backbone_encode(geometry.pad(video))
+cosmos_predict1/tokenizer/progressive/model.py:120: in backbone_encode
+    return self.encoder(x)
+.venv/lib/python3.10/site-packages/torch/nn/modules/module.py:1739: in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+.venv/lib/python3.10/site-packages/torch/nn/modules/module.py:1750: in _call_impl
+    return forward_call(*args, **kwargs)
+cosmos_predict1/tokenizer/modules/layers3d.py:798: in forward
+    h = self.mid.attn_1(h)
+.venv/lib/python3.10/site-packages/torch/nn/modules/module.py:1739: in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+.venv/lib/python3.10/site-packages/torch/nn/modules/module.py:1750: in _call_impl
+    return forward_call(*args, **kwargs)
+.venv/lib/python3.10/site-packages/torch/nn/modules/container.py:250: in forward
+    input = module(input)
+.venv/lib/python3.10/site-packages/torch/nn/modules/module.py:1739: in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+.venv/lib/python3.10/site-packages/torch/nn/modules/module.py:1750: in _call_impl
+    return forward_call(*args, **kwargs)
+cosmos_predict1/tokenizer/progressive/causal_state.py:194: in forward
+    return compute(x)
+cosmos_predict1/tokenizer/progressive/causal_state.py:191: in compute
+    return window_attention(self, value, window) if _local else _original(value)
+cosmos_predict1/tokenizer/progressive/causal_state.py:162: in window_attention
+    allowed = partition(valid).squeeze(-1).unsqueeze(-2)
+cosmos_predict1/tokenizer/progressive/causal_state.py:159: in partition
+    return rearrange(F.pad(a, (0, pw, 0, ph)),
+.venv/lib/python3.10/site-packages/einops/einops.py:600: in rearrange
+    return reduce(tensor, pattern, reduction="rearrange", **axes_lengths)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+tensor = tensor([[[[ True,  True,  True,  ..., False, False, False],
+          [ True,  True,  True,  ..., False, False, False]...       [False, False, False,  ..., False, False, False],
+          [False, False, False,  ..., False, False, False]]]])
+pattern = 'b c (h u) (w v) -> (b h w) 1 (u v) c', reduction = 'rearrange'
+axes_lengths = {'u': 16, 'v': 16}
+
+    def reduce(tensor: Union[Tensor, List[Tensor]], pattern: str, reduction: Reduction, **axes_lengths: Size) -> Tensor:
+        """
+        einops.reduce combines rearrangement and reduction using reader-friendly notation.
+    
+        Some examples:
+    
+        ```python
+        >>> x = np.random.randn(100, 32, 64)
+    
+        # perform max-reduction on the first axis
+        # Axis t does not appear on RHS - thus we reduced over t
+        >>> y = reduce(x, 't b c -> b c', 'max')
+    
+        # same as previous, but using verbose names for axes
+        >>> y = reduce(x, 'time batch channel -> batch channel', 'max')
+    
+        # let's pretend now that x is a batch of images
+        # with 4 dims: batch=10, height=20, width=30, channel=40
+        >>> x = np.random.randn(10, 20, 30, 40)
+    
+        # 2d max-pooling with kernel size = 2 * 2 for image processing
+        >>> y1 = reduce(x, 'b c (h1 h2) (w1 w2) -> b c h1 w1', 'max', h2=2, w2=2)
+    
+        # same as previous, using anonymous axes,
+        # note: only reduced axes can be anonymous
+        >>> y1 = reduce(x, 'b c (h1 2) (w1 2) -> b c h1 w1', 'max')
+    
+        # adaptive 2d max-pooling to 3 * 4 grid,
+        # each element is max of 10x10 tile in the original tensor.
+        >>> reduce(x, 'b c (h1 h2) (w1 w2) -> b c h1 w1', 'max', h1=3, w1=4).shape
+        (10, 20, 3, 4)
+    
+        # Global average pooling
+        >>> reduce(x, 'b c h w -> b c', 'mean').shape
+        (10, 20)
+    
+        # subtracting mean over batch for each channel;
+        # similar to x - np.mean(x, axis=(0, 2, 3), keepdims=True)
+        >>> y = x - reduce(x, 'b c h w -> 1 c 1 1', 'mean')
+    
+        # Subtracting per-image mean for each channel
+        >>> y = x - reduce(x, 'b c h w -> b c 1 1', 'mean')
+    
+        # same as previous, but using empty compositions
+        >>> y = x - reduce(x, 'b c h w -> b c () ()', 'mean')
+    
+        ```
+    
+        Parameters:
+            tensor: tensor: tensor of any supported library (e.g. numpy.ndarray, tensorflow, pytorch).
+                list of tensors is also accepted, those should be of the same type and shape
+            pattern: string, reduction pattern
+            reduction: one of available reductions ('min', 'max', 'sum', 'mean', 'prod', 'any', 'all').
+                Alternatively, a callable f(tensor, reduced_axes) -> tensor can be provided.
+                This allows using various reductions like: np.max, np.nanmean, tf.reduce_logsumexp, torch.var, etc.
+            axes_lengths: any additional specifications for dimensions
+    
+        Returns:
+            tensor of the same type as input
+        """
+        try:
+            if isinstance(tensor, list):
+                if len(tensor) == 0:
+                    raise TypeError("Rearrange/Reduce/Repeat can't be applied to an empty list")
+                backend = get_backend(tensor[0])
+                tensor = backend.stack_on_zeroth_dimension(tensor)
+            else:
+                backend = get_backend(tensor)
+    
+            hashable_axes_lengths = tuple(axes_lengths.items())
+            shape = backend.shape(tensor)
+            recipe = _prepare_transformation_recipe(pattern, reduction, axes_names=tuple(axes_lengths), ndim=len(shape))
+            return _apply_recipe(
+                backend, recipe, cast(Tensor, tensor), reduction_type=reduction, axes_lengths=hashable_axes_lengths
+            )
+        except EinopsError as e:
+            message = ' Error while processing {}-reduction pattern "{}".'.format(reduction, pattern)
+            if not isinstance(tensor, list):
+                message += "\n Input tensor shape: {}. ".format(shape)
+            else:
+                message += "\n Input is list. "
+            message += "Additional info: {}.".format(axes_lengths)
+>           raise EinopsError(message + "\n {}".format(e))
+E           einops.EinopsError:  Error while processing rearrange-reduction pattern "b c (h u) (w v) -> (b h w) 1 (u v) c".
+E            Input tensor shape: torch.Size([2, 1, 28, 24]). Additional info: {'u': 16, 'v': 16}.
+E            Shape mismatch, can't divide axis of length 28 in chunks of 16
+
+.venv/lib/python3.10/site-packages/einops/einops.py:542: EinopsError
+---------------------------- Captured stderr setup -----------------------------
+2026-11-14 21:01:40.045 | INFO     | cosmos_predict1.tokenizer.modules.layers3d:__init__:843 - Working with z of shape (1, 16, 128, 128) = 262144 dimensions.
+2026-11-14 21:01:40.056 | INFO     | cosmos_predict1.tokenizer.networks.ours_discrete_video:__init__:64 - OURS based on FSQ-VAE, with {'name': 'OURS', 'attn_resolutions': [], 'channels': 8, 'channels_mult': [1, 2, 2], 'dropout': 0.0, 'in_channels': 3, 'num_res_blocks': 1, 'out_channels': 3, 'resolution': 1024, 'patch_size': 2, 'patch_method': 'haar', 'num_groups': 1, 'legacy_mode': False, 'spatial_compression': 8, 'temporal_compression': 4, 'quantizer': 'FSQ', 'levels': [8, 8, 8, 5, 5, 5], 'encoder': 'FACTORIZED', 'decoder': 'FACTORIZED', 'rate_strategy': 'elbo', 'use_vit': False, 'freeze_original': False, 'vit_config': {'hidden_size': 256, 'intermediate_size': 512, 'num_encoder_layers': 8, 'num_decoder_layers': 8, 'num_attention_heads': 32, 'theta': 10000.0, 'rms_norm_eps': 1e-05, 'initializer_range': 0.02, 'max_num_video_frames': 49, 'switch_rotary_to_1d': 1.0, 'max_sequence_length': 96, 'max_sequence_length_1d': 8192, 'concat_decode_2d': False, 'special_attn': False, 'method': 'mse'}}.
+2026-11-14 21:01:40.057 | INFO     | cosmos_predict1.tokenizer.networks.ours_discrete_video:__init__:67 - model=OURS, num_parameters=93,030
+2026-11-14 21:01:40.057 | INFO     | cosmos_predict1.tokenizer.networks.ours_discrete_video:__init__:68 - z_channels=16, embedding_dim=6.
+2026-11-14 21:01:40.057 | INFO     | cosmos_predict1.tokenizer.networks.ours_discrete_video:init_adaptive_token:169 - Adaptive token initialized with shape torch.Size([128]) and value 0.0.
+2026-11-14 21:01:40.058 | INFO     | cosmos_predict1.tokenizer.networks.ours_discrete_video:__init__:122 - model=OURS, num_parameters=93,030
+_____________ test_rejected_packet_does_not_mutate_receiver_state ______________
+
+    def test_rejected_packet_does_not_mutate_receiver_state():
+        r=fresh()
+        r.append_tokens(Packet(0,0,1,0,(0,)*256))
+        before=(r.actual_bytes,list(map(list,r.blocks)),list(r.metadata))
+        with pytest.raises(ValueError):
+            r.append_tokens(Packet(1,1,4,0,(0,)*4096))
+>       assert (r.actual_bytes,r.blocks,r.metadata) == before
+E       AssertionError: assert (1034, [[0, 0..., 1), (1, 4)]) == (1034, [[0, 0....]], [(0, 1)])
+E         
+E         At index 1 diff: [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,...
+E         
+E         ...Full output truncated, use '-vv' to show
+
+tests/test_chp_protocol_edges.py:60: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_chp_progressive.py::test_encoder_causality_and_exact_prefix
+FAILED tests/test_chp_progressive.py::test_stream_full_encoder_and_decoder_alignment
+FAILED tests/test_chp_progressive.py::test_decoder_future_intervention_and_display_reference
+FAILED tests/test_chp_progressive.py::test_gradient_survives_frozen_rgb_decoder
+FAILED tests/test_chp_protocol_edges.py::test_rejected_packet_does_not_mutate_receiver_state
+5 failed, 16 passed in 4.25s

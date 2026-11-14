@@ -1,0 +1,62 @@
+/home/whisperliang/InfoTok/.venv/lib/python3.10/site-packages/megatron/core/tensor_parallel/layers.py:265: FutureWarning: `torch.cuda.amp.custom_fwd(args...)` is deprecated. Please use `torch.amp.custom_fwd(args..., device_type='cuda')` instead.
+  def forward(
+/home/whisperliang/InfoTok/.venv/lib/python3.10/site-packages/megatron/core/tensor_parallel/layers.py:277: FutureWarning: `torch.cuda.amp.custom_bwd(args...)` is deprecated. Please use `torch.amp.custom_bwd(args..., device_type='cuda')` instead.
+  def backward(ctx, grad_output):
+/home/whisperliang/InfoTok/.venv/lib/python3.10/site-packages/megatron/core/tensor_parallel/layers.py:364: FutureWarning: `torch.cuda.amp.custom_fwd(args...)` is deprecated. Please use `torch.amp.custom_fwd(args..., device_type='cuda')` instead.
+  def forward(
+/home/whisperliang/InfoTok/.venv/lib/python3.10/site-packages/megatron/core/tensor_parallel/layers.py:401: FutureWarning: `torch.cuda.amp.custom_bwd(args...)` is deprecated. Please use `torch.amp.custom_bwd(args..., device_type='cuda')` instead.
+  def backward(ctx, grad_output):
+2026-11-14 21:04:09.633 | INFO     | __main__:<module>:74 - Config:
+* model: {'config': {'network': {'config': {'kmax': 2048, 'budgets': [256, 512, 1024, 2048], 'multiscale': False, 'base_tokens': 256, 'structure_tokens': 768, 'hidden_dim': 128, 'heads': 4, 'local_radius': 2, 'spatial_window': 16, 'anchor_order': 'halton', 'decoder_neighbors': 8, 'checkpoint_decoder': True, 'freeze_backbone': True, 'backbone_checkpoint': 'checkpoints/infotok-flex/infotok_mse.pt', 'debug_backbone': False}, '_target_': <class 'cosmos_predict1.tokenizer.progressive.model.CHPVTokenizer'>}, 'loss': {'config': {'color': {'config': {'norm': 'L1', 'boundaries': [0], 'values': [1.0]}, '_target_': <class 'cosmos_predict1.tokenizer.training.losses.continuous.ColorLoss'>}, 'reduce': 'MEAN', 'perceptual': {'config': {'lpips_boundaries': [0], 'lpips_values': [0.1], 'layer_weights': [0.3846153846153846, 0.20833333333333334, 0.27027027027027023, 0.17857142857142858, 6.666666666666667], 'gram_enabled': False, 'gram_boundaries': [500000], 'gram_values': [0.0, 0.062], 'corr_enabled': False, 'corr_boundaries': [0], 'corr_values': [0.0], 'checkpoint_activations': True}, '_target_': <class 'cosmos_predict1.tokenizer.training.losses.continuous.PerceptualLoss'>}}, '_target_': <class 'cosmos_predict1.tokenizer.training.losses.continuous.TokenizerLoss'>}, 'metric': {'config': {}, '_target_': <class 'cosmos_predict1.tokenizer.training.metrics.TokenizerMetric'>}, 'ema': {'enabled': False, 'beta': 0.9999, 'torch_compile_buffer_renaming': False}, 'precision': 'bfloat16', 'torch_compile': False, 'disc': None, 'disc_optimizer': None, 'disc_scheduler': None, 'latent_weight': 1.0, 'temporal_weight': 0.1}, '_target_': <class 'cosmos_predict1.tokenizer.training.chp_model.CHPTrainingModel'>}
+* optimizer: {'lr': 0.0001, 'betas': [0.9, 0.999], 'eps': 1e-08, 'weight_decay': 0.01, 'amsgrad': False, 'maximize': False, 'foreach': None, 'capturable': False, 'differentiable': False, 'fused': None, 'params': None, '_target_': <class 'torch.optim.adamw.AdamW'>}
+* scheduler: {'last_epoch': -1, 'optimizer': None, 'warmup_iters': 5, 'lr_decay_iters': 10000, 'min_lr': 1e-06, '_target_': <class 'cosmos_predict1.utils.scheduler.WarmupCosineLR'>}
+* dataloader_train: {'batch_size': 1, 'shuffle': False, 'sampler': None, 'batch_sampler': None, 'num_workers': 0, 'collate_fn': None, 'pin_memory': False, 'drop_last': False, 'timeout': 0, 'worker_init_fn': None, 'multiprocessing_context': None, 'generator': None, 'prefetch_factor': None, 'persistent_workers': False, 'pin_memory_device': '', 'in_order': True, 'dataset': {'num_video_frames': 17, 'debug_height': None, 'crop_size': None, 'video_pattern': 'data/chp_vtok/*.mp4', '_target_': <class 'cosmos_predict1.tokenizer.training.datasets.chp_video.CHPVideoDataset'>}, '_target_': <class 'torch.utils.data.dataloader.DataLoader'>}
+* dataloader_val: {'batch_size': 1, 'shuffle': False, 'sampler': None, 'batch_sampler': None, 'num_workers': 0, 'collate_fn': None, 'pin_memory': False, 'drop_last': False, 'timeout': 0, 'worker_init_fn': None, 'multiprocessing_context': None, 'generator': None, 'prefetch_factor': None, 'persistent_workers': False, 'pin_memory_device': '', 'in_order': True, 'dataset': {'num_video_frames': 17, 'debug_height': None, 'crop_size': None, 'video_pattern': 'data/chp_vtok/*.mp4', '_target_': <class 'cosmos_predict1.tokenizer.training.datasets.chp_video.CHPVideoDataset'>}, '_target_': <class 'torch.utils.data.dataloader.DataLoader'>}
+* job:
+   * project: chp_vtok
+   * group: tokenizer
+   * name: config_validation
+* trainer:
+   * type: <class 'cosmos_predict1.tokenizer.training.trainer.TokenizerTrainer'>
+   * callbacks: {'low_precision': {'config': None, 'trainer': None, 'update_iter': 1, '_target_': <class 'cosmos_predict1.utils.callback.LowPrecisionCallback'>}, 'grad_clip': {'grad_clip_norm': 1, '_target_': <class 'cosmos_predict1.tokenizer.training.callbacks.GradClipCallback'>}, 'progress': {'config': None, 'trainer': None, '_target_': <class 'cosmos_predict1.utils.callback.ProgressBarCallback'>}, 'chp_metadata': {'config': None, 'trainer': None, '_target_': <class 'cosmos_predict1.tokenizer.training.chp_model.CHPCheckpointMetadata'>}}
+   * distributed_parallelism: ddp
+   * ddp:
+      * find_unused_parameters: True
+      * static_graph: False
+      * broadcast_buffers: True
+   * cudnn:
+      * deterministic: True
+      * benchmark: False
+   * seed: 0
+   * grad_scaler_args: {'enabled': False}
+   * max_iter: 1000
+   * max_val_iter: None
+   * logging_iter: 1
+   * run_validation: False
+   * validation_iter: 999999999
+   * timeout_period: 999999999
+   * memory_format: torch.preserve_format
+   * grad_accum_iter: 1
+* model_parallel: ModelParallelConfig(tensor_model_parallel_size=1, pipeline_model_parallel_size=1, virtual_pipeline_model_parallel_size=None, sequence_parallel=False, context_parallel_size=1, expert_model_parallel_size=1, moe_extended_tp=False, perform_initialization=True, use_cpu_initialization=False, fp16=False, bf16=False, params_dtype=torch.float32, timers=None, finalize_model_grads_func=None, grad_scale_func=None, no_sync_func=None, grad_sync_func=None, param_sync_func=None, enable_autocast=False, autocast_dtype=torch.float32, num_microbatches_with_partial_activation_checkpoints=None, gradient_accumulation_fusion=False, async_tensor_model_parallel_allreduce=False, use_te_rng_tracker=False, tp_comm_overlap=False, tp_comm_bulk_wgrad=True, tp_comm_bulk_dgrad=True, tp_comm_overlap_ag=True, tp_comm_overlap_rs=True, tp_comm_overlap_rs_dgrad=False, tp_comm_split_ag=True, tp_comm_atomic_ag=False, tp_comm_split_rs=True, tp_comm_atomic_rs=False, pipeline_dtype=None, variable_seq_lengths=False, overlap_p2p_comm=False, batch_p2p_comm=True, batch_p2p_sync=True, use_ring_exchange_p2p=False, deallocate_pipeline_outputs=False, defer_embedding_wgrad_compute=False, pipeline_model_parallel_split_rank=None, cpu_offloading=False, cpu_offloading_num_layers=0, _cpu_offloading_context=None, cpu_offloading_activations=True, cpu_offloading_weights=True, barrier_with_L1_time=True)
+* checkpoint:
+   * type: None
+   * dcp_async_mode_enabled: False
+   * save_iter: 100
+   * load_path: 
+   * load_training_state: False
+   * only_load_scheduler_state: False
+   * strict_resume: True
+   * verbose: True
+   * jit:
+      * enabled: False
+      * input_shape: None
+      * device: cuda
+      * dtype: bfloat16
+      * strict: True
+   * keys_not_to_resume: []
+   * broadcast_via_filesystem: False
+   * load_ema_to_reg: False
+* overrides: 
+   * job.name: config_validation
+Config is saved using omegaconf at checkpoints/chp_vtok/tokenizer/config_validation/config.yaml.
+checkpoints/chp_vtok/tokenizer/config_validation/config.yaml

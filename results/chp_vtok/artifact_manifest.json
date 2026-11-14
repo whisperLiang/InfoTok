@@ -1,0 +1,2168 @@
+[
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/anchor_coverage.json",
+    "bytes": 20011,
+    "sha256": "121aa0a854caba4ecab11a7d9122f07b2ebc5ac36dbc676e201a943d9a9e93d0",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/anchor_quality_ablation.json",
+    "bytes": 24579,
+    "sha256": "ea4a6b7594a75b464e4a2b7e090b88ec54f68d88bcf367be3e1c64e1d1935e73",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/attention_final.json",
+    "bytes": 6807,
+    "sha256": "e030b5092db7c6638acb5b13aaaca6d9f71a95aa07fe8ca8b1f91c727b3c1ddf",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/attention_numerics.json",
+    "bytes": 5912,
+    "sha256": "a8c69538368ac9b9b5c79ab01cf69bd7b69280092ac9953270c5bbef4f5adbe2",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/attention_uncontended.json",
+    "bytes": 6807,
+    "sha256": "cf2833ee59eabc3ca10f22081d258908b1fbe26d483d7cf74bfd393cc75808d0",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/attention_warm_numerics.json",
+    "bytes": 6806,
+    "sha256": "dbfda2dab265be7006838fb7d39eb1cb6785ef98720def9098045fe1cc87189a",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/audit.json",
+    "bytes": 9273,
+    "sha256": "6945f249bc0b1b0612d1805af8590d720590aa0494a4fc127b60b390a2633cfd",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/backbone_1080_bf16.json",
+    "bytes": 1638,
+    "sha256": "8a041d437f687894e10fda871889285dc881203bf3ba1cacabaafbfce97eaf43",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/backbone_360_fp32.json",
+    "bytes": 1686,
+    "sha256": "8b4c8e307fe6a096e46ab7a64e84eb4d12c8faf5a8401115f684fbcbfcb8bce2",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/backbone_720_bf16.json",
+    "bytes": 1658,
+    "sha256": "87dbcc35c72b4d733825f03fd521d6e35bfd91e08701901d96846b24cab5910a",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/checkpoint_1080_off.json",
+    "bytes": 438,
+    "sha256": "cdc8aede207ed135f710b6e84956371bd389dc78cbcb0cf4e846f2e34d18191f",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/checkpoint_1080_off.pt",
+    "bytes": 95632928,
+    "sha256": "d549598e4f03e158dd56782929c3e95c8a4eb1471d00bb047b7688cbb412aa3a",
+    "local_tensor_excluded_from_git": true
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/checkpoint_1080_on.json",
+    "bytes": 438,
+    "sha256": "a5a7d67448ddf08a99b4999d02a8507a60c70c2935c07203a00c9691fe7a6443",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/checkpoint_1080_on.pt",
+    "bytes": 95632922,
+    "sha256": "8413262df2114d0c876d27aa48ebf323f61f0eecfa1d318a86ef2df40e2a83aa",
+    "local_tensor_excluded_from_git": true
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/checkpoint_manifest.json",
+    "bytes": 14186,
+    "sha256": "0dbc6e878eb182c9a43b6650c70ec7e9d004a717abad5c938ffe7074e79dfb78",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/consistency_multi_1080_bounded_serial.json",
+    "bytes": 1886,
+    "sha256": "9cf02ebeb9604dc19c049e97e5442df791da256d48623f5ed4307d87e0306484",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/consistency_multi_1080_five_fp32.json",
+    "bytes": 1835,
+    "sha256": "125ca505daa90cad2a1b6cb5375d951ee7e90825f1f394a2ee4aaa66e9bdf47e",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/consistency_multi_1080_fp32.json",
+    "bytes": 1871,
+    "sha256": "c5363efeaa681100299e41752fc98b672a73498856c4107fd0f97d3957d058dc",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/consistency_single_360_fp32.json",
+    "bytes": 1857,
+    "sha256": "b30d8e0b9d684a234cf3259b7a1e5f1f4456371a89d2e659d05bcfc591455da7",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/coverage.json",
+    "bytes": 141846,
+    "sha256": "4ca8fe98b09d55c6c15d12b34b667f872bcab3b5a5dab1158614d4ea6327ffc7",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/coverage_delivery.json",
+    "bytes": 142416,
+    "sha256": "807aa6a40dd553f3ef322488cda0798018e19132a2342336c371cf366b723b61",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/coverage_final.json",
+    "bytes": 141732,
+    "sha256": "3e2d00ba3bb8ee96eb7639312e973de91db93b96864c9e2ba8589f7b3b2837fe",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/data_manifest.json",
+    "bytes": 2798,
+    "sha256": "97589799102f48d824bfe8c0bd464046cd8ad4d4981ba6a44efe85c20a6a77e9",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/dependencies.txt",
+    "bytes": 2589,
+    "sha256": "af5044ba322263f22c1128068e24f3e5e5bbf032f8217dfa30e851d9146ffcb4",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/device.txt",
+    "bytes": 14738,
+    "sha256": "f32e0afc5602d42d5c98007935892fb4cf8868ae1af76939b28b4aa6600bfe36",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/failures.json",
+    "bytes": 21464,
+    "sha256": "63daa77335a3277847f4097448f3ff4eaaff1b86f127a39fc2c4a63d6dad8a43",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/figure_source_data.json",
+    "bytes": 86385,
+    "sha256": "eaa943080fdb0a079544dec289344e385fa3310331894eb8f321be842f7100a5",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/figures/anchor_coverage.png",
+    "bytes": 65756,
+    "sha256": "c21fb4df1ef18eccb71b2a1d9b78cbdf05e69f676dd1f8a025ea4e9399c4bb6d",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/figures/anchor_order_ablation.collision.json",
+    "bytes": 517,
+    "sha256": "b19b9de9b027477048372428aed1da39306db6bf515072137ca5fbb05eb6a46b",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/figures/anchor_order_ablation.pdf",
+    "bytes": 14820,
+    "sha256": "e5568c5929d9fcbfe264218d3d523e4372efce8218e422867c651989a617a412",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/figures/anchor_order_ablation.png",
+    "bytes": 79412,
+    "sha256": "7d67f7c54d49ede802f8ff10eab855b19f881e2a7cf6f5c970fb5f921ed92685",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/figures/anchor_order_ablation.svg",
+    "bytes": 10886,
+    "sha256": "0df509c52194d5cfac0adc78d5c91e8436bb6895e35f08f7fe3cba9869b661ba",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/figures/anchor_order_ablation.text-audit.json",
+    "bytes": 236,
+    "sha256": "d54502a509e956c8d8a35f073baac4580f49f4dd650b196b8ad846e3f8bdf6c5",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/figures/anchors_final/anchor_coverage.alignment.json",
+    "bytes": 3866,
+    "sha256": "31031cc26c6d643a859f8aef95f94ef9776cee91182f9bce978c13a3df6c08c9",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/figures/anchors_final/anchor_coverage.collision.json",
+    "bytes": 524,
+    "sha256": "9953a2c36c82a621859ff07834c32662c597c8c712f91e678b9f715ad9f35154",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/figures/anchors_final/anchor_coverage.json",
+    "bytes": 20011,
+    "sha256": "121aa0a854caba4ecab11a7d9122f07b2ebc5ac36dbc676e201a943d9a9e93d0",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/figures/anchors_final/anchor_coverage.pdf",
+    "bytes": 16855,
+    "sha256": "e075c32c715ea39e0560a4cdfe6e3d40e1d683b464ce59ab89bb82ac54f94158",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/figures/anchors_final/anchor_coverage.png",
+    "bytes": 82395,
+    "sha256": "5ff217bdfcb52a74132aa36bfb2ad3f837f9cef7473967f4d295963e62a2f1b5",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/figures/anchors_final/anchor_coverage.svg",
+    "bytes": 20439,
+    "sha256": "8c6e56455594726c307bb9cbe4bc04ee210d294b66875843ec9bfd6dff6c66c4",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/figures/anchors_final/anchor_coverage.text-audit.json",
+    "bytes": 244,
+    "sha256": "ff105df29e760833975cae2687b33327731692384ba3f7099f97fa8ae8783c2a",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/figures/chp_anchor_report.source-audit.json",
+    "bytes": 3808,
+    "sha256": "2f3ff306b5517892f3ebe8e01397cbbf32071f0a78d1793b599159f1f31861c8",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/figures/chp_plot_results.source-audit.json",
+    "bytes": 3945,
+    "sha256": "3d12cd8753b9b3dfbacaecabb7f96767a61a953908979cc6d03e29689ce10d28",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/figures/draft_bf16_reference/anchor_order_ablation.collision.json",
+    "bytes": 517,
+    "sha256": "b19b9de9b027477048372428aed1da39306db6bf515072137ca5fbb05eb6a46b",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/figures/draft_bf16_reference/anchor_order_ablation.pdf",
+    "bytes": 14817,
+    "sha256": "861b122e64fd0820d539ea81e0fac9599648d2ec93a02e42641d6d570b78e266",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/figures/draft_bf16_reference/anchor_order_ablation.png",
+    "bytes": 79847,
+    "sha256": "e7ddb1bb1fbb9ab7612c7b766e5b54f6a3bccc67d935f0957c5c94b5fcf8f9eb",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/figures/draft_bf16_reference/anchor_order_ablation.svg",
+    "bytes": 10884,
+    "sha256": "ea51c63ec6269f56e590eb804311df4f93e732a5534afee8877f120399d1ddda",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/figures/draft_bf16_reference/anchor_order_ablation.text-audit.json",
+    "bytes": 236,
+    "sha256": "d54502a509e956c8d8a35f073baac4580f49f4dd650b196b8ad846e3f8bdf6c5",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/figures/draft_bf16_reference/multiscale_ablation.collision.json",
+    "bytes": 515,
+    "sha256": "ee17d3cbb99608c5c8e459ff72200d2d355771e34387b01187b7995e0766843a",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/figures/draft_bf16_reference/multiscale_ablation.pdf",
+    "bytes": 14344,
+    "sha256": "279f18c3b495cae9722408547315977a2f0e6a2bf69628db668b23a704e1c217",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/figures/draft_bf16_reference/multiscale_ablation.png",
+    "bytes": 77609,
+    "sha256": "4f917bde89edf3fdea8490a40e488a8178856c2d303240657d257ce6725301cf",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/figures/draft_bf16_reference/multiscale_ablation.svg",
+    "bytes": 12355,
+    "sha256": "1f09137a468db9d06221610ffc06443dd8e83a0cd06381f070b71aaeded715a5",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/figures/draft_bf16_reference/multiscale_ablation.text-audit.json",
+    "bytes": 234,
+    "sha256": "144611e83192bf5e5b01dc5e6bdc91df261c2f4a3d481e6d4091b70054744316",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/figures/draft_bf16_reference/rate_distortion.alignment.json",
+    "bytes": 2832,
+    "sha256": "717e1f271b03f6ab14ef38ec8dc04b80de2b489d934d7d7033d4584f34cef340",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/figures/draft_bf16_reference/rate_distortion.collision.json",
+    "bytes": 512,
+    "sha256": "38f81f619bd571ef868196e1423225571849d827149bd231b8eb5464a4de5ce1",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/figures/draft_bf16_reference/rate_distortion.pdf",
+    "bytes": 24511,
+    "sha256": "84e0dccf0eaeb9b951256f707b80621d2a2291a2575d8a3f71dd74a78e5746c3",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/figures/draft_bf16_reference/rate_distortion.png",
+    "bytes": 261265,
+    "sha256": "8e9a1cb42e837db299753646ec63ecc24c3765e57534289728efcffc0d92f390",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/figures/draft_bf16_reference/rate_distortion.svg",
+    "bytes": 43424,
+    "sha256": "1bb578c19b6ddd8c04663e87447975043917c4a8180f7947f3293ade4917fbe6",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/figures/draft_bf16_reference/rate_distortion.text-audit.json",
+    "bytes": 231,
+    "sha256": "81c8df1fe4386275a225598ceaa471b7194ec4dccd6dbed02a7bb44f2a27f292",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/figures/draft_v1/anchor_order_ablation.pdf",
+    "bytes": 14794,
+    "sha256": "71c9f3b106cc2e2fd3166ca02c6c3aebc5d06e7736bca743a33de814822bd32a",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/figures/draft_v1/anchor_order_ablation.png",
+    "bytes": 61265,
+    "sha256": "9d67a25cbc4fc0c47b61c16bc1aa570f5418d5b5d64ac5e98a73c2ddd434991a",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/figures/draft_v1/anchor_order_ablation.svg",
+    "bytes": 10700,
+    "sha256": "1bb611a7c6b279cd110784cf2fcbe61e7c53634797ca8cacce615c5719514315",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/figures/draft_v1/multiscale_ablation.pdf",
+    "bytes": 14317,
+    "sha256": "bb009551938693e32442b4331bfab9bcdefe24b87b44acdd4147156ab151ddee",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/figures/draft_v1/multiscale_ablation.png",
+    "bytes": 65055,
+    "sha256": "eeee094533e57da261003dcb6ec3e05f78f58f5bac3c3c80fed60c9e42cd3241",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/figures/draft_v1/multiscale_ablation.svg",
+    "bytes": 12196,
+    "sha256": "a0857142fe67dfa6e4c13ff8ec5c1702ad1fbaaf0fc65f18d19435a1612f1c10",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/figures/draft_v1/rate_distortion.alignment.json",
+    "bytes": 2832,
+    "sha256": "717e1f271b03f6ab14ef38ec8dc04b80de2b489d934d7d7033d4584f34cef340",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/figures/draft_v1/rate_distortion.pdf",
+    "bytes": 24511,
+    "sha256": "3bfa82c02a3a59a3633f80850462d3c75781fd56a995b87cbfafaf3584570357",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/figures/draft_v1/rate_distortion.png",
+    "bytes": 204109,
+    "sha256": "66ee5372c4379e0e584e11ee8635e1fc20f300d3bf9434e1bf2281bfe1864d57",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/figures/draft_v1/rate_distortion.svg",
+    "bytes": 42764,
+    "sha256": "f4d9731c6918a79174640da512f6eac31ad70bb0129435817db12a306acac1fe",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/figures/draft_v2/anchor_order_ablation.collision.json",
+    "bytes": 1073,
+    "sha256": "0c40a8ade95b2c0f97a8f2252c9c563dd20a832d4c64e2481c79cfe21c20a253",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/figures/draft_v2/anchor_order_ablation.collision.pdf",
+    "bytes": 15147,
+    "sha256": "f19cb070a7d7eddf59714cf93929397891d4e8bac52332672dffb61f461a6d8f",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/figures/draft_v2/anchor_order_ablation.pdf",
+    "bytes": 14794,
+    "sha256": "9c67b52ac8a929daec30136040ccfd87c24d27f7e33d12b3b6e31ff5608aef9f",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/figures/draft_v2/anchor_order_ablation.png",
+    "bytes": 75718,
+    "sha256": "fbf3b337b91786f67e57c74dfeee0e0cb9e9565cdbc08b0379e0ddb847c8009f",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/figures/draft_v2/anchor_order_ablation.svg",
+    "bytes": 10892,
+    "sha256": "88b958480d79cf510983cd15c44a6c4b1f0497e9604aaf8397c4e5a88f82ec87",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/figures/draft_v2/anchor_order_ablation.text-audit.json",
+    "bytes": 236,
+    "sha256": "d54502a509e956c8d8a35f073baac4580f49f4dd650b196b8ad846e3f8bdf6c5",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/figures/draft_v2/multiscale_ablation.collision.json",
+    "bytes": 1623,
+    "sha256": "40f658d59234fa2bcc5afff44371d230e793411e00611c4ba51ee5cd362121cd",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/figures/draft_v2/multiscale_ablation.collision.pdf",
+    "bytes": 14944,
+    "sha256": "c6c6daef966bebb0cfcee092c96988563f6ea12784f8f93a5dd882895a541de8",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/figures/draft_v2/multiscale_ablation.pdf",
+    "bytes": 14317,
+    "sha256": "2b3181d6c37f62eb6d99a91d784b22a59305ffc3f482fa25ece54c2b88c53e04",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/figures/draft_v2/multiscale_ablation.png",
+    "bytes": 83340,
+    "sha256": "37c964448da5558e118900499bb8e79f46b64a8aa9aa22d2b79360a3273f387e",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/figures/draft_v2/multiscale_ablation.svg",
+    "bytes": 12388,
+    "sha256": "c29f0bab290ac7cd0a3944673b7d4c047d7f5916616745ae993eba8e210c3ab4",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/figures/draft_v2/multiscale_ablation.text-audit.json",
+    "bytes": 234,
+    "sha256": "144611e83192bf5e5b01dc5e6bdc91df261c2f4a3d481e6d4091b70054744316",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/figures/draft_v2/rate_distortion.alignment.json",
+    "bytes": 2832,
+    "sha256": "717e1f271b03f6ab14ef38ec8dc04b80de2b489d934d7d7033d4584f34cef340",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/figures/draft_v2/rate_distortion.collision.json",
+    "bytes": 512,
+    "sha256": "38f81f619bd571ef868196e1423225571849d827149bd231b8eb5464a4de5ce1",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/figures/draft_v2/rate_distortion.pdf",
+    "bytes": 24511,
+    "sha256": "a27a0e3f547713a2fad79f279e8b75bddce40167afdf2534a5581b35eaa36eb3",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/figures/draft_v2/rate_distortion.png",
+    "bytes": 261265,
+    "sha256": "8e9a1cb42e837db299753646ec63ecc24c3765e57534289728efcffc0d92f390",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/figures/draft_v2/rate_distortion.svg",
+    "bytes": 43424,
+    "sha256": "3f6db03917e2d9e3759217610c579ca87387e9bbb7d7f414041580da33432292",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/figures/draft_v2/rate_distortion.text-audit.json",
+    "bytes": 231,
+    "sha256": "81c8df1fe4386275a225598ceaa471b7194ec4dccd6dbed02a7bb44f2a27f292",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/figures/figure_contract.md",
+    "bytes": 1336,
+    "sha256": "9be4e2ab2e723e2ff61800924ca35f36b23dd27aea14438d04f477cfdb7f9f0a",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/figures/multiscale_ablation.collision.json",
+    "bytes": 515,
+    "sha256": "ee17d3cbb99608c5c8e459ff72200d2d355771e34387b01187b7995e0766843a",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/figures/multiscale_ablation.pdf",
+    "bytes": 14333,
+    "sha256": "a4c3f88087460c345d9ee6c227427ec53a5e88d326ac869b8391395c2639847b",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/figures/multiscale_ablation.png",
+    "bytes": 78508,
+    "sha256": "ede3531fd830e7c92271f9eab6902e41078cf9be4372f9f38a0e115700bbc75a",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/figures/multiscale_ablation.svg",
+    "bytes": 12359,
+    "sha256": "3e056ff16ffa0d10727d2ac6b32df5b8da3736443ef73847d60a9bde928b5d3a",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/figures/multiscale_ablation.text-audit.json",
+    "bytes": 234,
+    "sha256": "144611e83192bf5e5b01dc5e6bdc91df261c2f4a3d481e6d4091b70054744316",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/figures/qa_review.md",
+    "bytes": 1773,
+    "sha256": "78940c3e3bc29eff29fcbf08535067a2318c9099976607bd9338071da0a053a4",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/figures/rate_distortion.alignment.json",
+    "bytes": 2832,
+    "sha256": "717e1f271b03f6ab14ef38ec8dc04b80de2b489d934d7d7033d4584f34cef340",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/figures/rate_distortion.collision.json",
+    "bytes": 512,
+    "sha256": "38f81f619bd571ef868196e1423225571849d827149bd231b8eb5464a4de5ce1",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/figures/rate_distortion.pdf",
+    "bytes": 24509,
+    "sha256": "f213ad957ca562a99f6b1832c92908a4c13ccd7f94146dc9fb0c81e63466e7ec",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/figures/rate_distortion.png",
+    "bytes": 261830,
+    "sha256": "bc93081e6b0a4f57ee6eeae15b8e8a3445d23490d1ed882980b8595e4fe48b35",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/figures/rate_distortion.svg",
+    "bytes": 43411,
+    "sha256": "db8153037ade0d64d035e970cee5116bd33c682e9beaa6af1a63e677d53458f6",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/figures/rate_distortion.text-audit.json",
+    "bytes": 231,
+    "sha256": "81c8df1fe4386275a225598ceaa471b7194ec4dccd6dbed02a7bb44f2a27f292",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/figures/sources.png",
+    "bytes": 261029,
+    "sha256": "3bde9435445261ae6bdd525de86464c83f4d9e7b822e232671fdef7e651730ab",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/implementation.diff",
+    "bytes": 238722,
+    "sha256": "7bdf7dca9fb113f1f59f15664b2e7578fb869c1953b330fa173c519063913fe0",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/incremental_1080.chp",
+    "bytes": 21601,
+    "sha256": "91400cef20c89d840650be1bf3499e573067bae4f52e504103039b1d8652c9c3",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/incremental_1080.chp.sender.json",
+    "bytes": 4193,
+    "sha256": "b4a426915124a2732b67d8279eb672059dbf19d8a895dd43cc4e7b87a599f503",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/incremental_1080.chp.sender_ids.pt",
+    "bytes": 42324,
+    "sha256": "e38f7c0dd0dec5e908c9654f4f6df02d0661a5f8466974f4be2caca81abd8e24",
+    "local_tensor_excluded_from_git": true
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/multiscale_ablation.json",
+    "bytes": 2405,
+    "sha256": "8a1cde230d53ff33b1702e63df78f34b3118c43e868c762938aa19710a3031a2",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/normalization_audit.json",
+    "bytes": 3823,
+    "sha256": "6a71920f199a1582d67d2015eac255187096ab788ea88e77416409f26859fd4e",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/parameter_counts.json",
+    "bytes": 236,
+    "sha256": "f6c82ea405d0dc527cf5bb78415f73d043a8aa350a185b245a05bb7c42f6740e",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/pretrained_model_card.md",
+    "bytes": 5403,
+    "sha256": "010ca6a4804ff0abd408d6949fd1650a3b757f4e261562a83f8daaf4e69da094",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/quality_reference_fp32/history_intervention.json",
+    "bytes": 11890,
+    "sha256": "4395a1a3df270c9ed7a57c8c96f4ac1c495ce314b6e7ac5645e39a55c717cb88",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/quality_reference_fp32/rd_morton_mcl/metrics.json",
+    "bytes": 12318,
+    "sha256": "dff544a1b96b781b01b890a72202386b0703291cc29bb6e0703f77a4b78a5d97",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/quality_reference_fp32/rd_multi_basketball/metrics.json",
+    "bytes": 12384,
+    "sha256": "69d9de97be83ad62e1965561f2cb43ec0b8876bb258b7e84a543b392c97aaf08",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/quality_reference_fp32/rd_multi_mcl_verified/metrics.json",
+    "bytes": 12264,
+    "sha256": "8e400287613b8f9ccde0f6b04842eed379e48d4078de8f4f172676be7af43af2",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/quality_reference_fp32/rd_multi_uvg_beauty/metrics.json",
+    "bytes": 12372,
+    "sha256": "5d51d218dfbd5547601a43c8288c38a87445a951701c6830fc6a201679a2ad66",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/quality_reference_fp32/rd_single_basketball/metrics.json",
+    "bytes": 12396,
+    "sha256": "b75b5df215feb063662f3a7406fa140f8e57cfc9a71d4cf251ca98a601accf9d",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/quality_reference_fp32/rd_single_mcl_verified/metrics.json",
+    "bytes": 12274,
+    "sha256": "1ae20d71eec616c6dca5ae866892f7366864b206a440b5d8db60aeaec4fa83ef",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/quality_reference_fp32/rd_single_uvg_beauty/metrics.json",
+    "bytes": 12395,
+    "sha256": "600de6f09d3fdce053d89291db9d7e804f60c750fd904333d54f7a6484f716bd",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/receiver_and_checkpoint_verification.json",
+    "bytes": 171,
+    "sha256": "48be6e0d25134746fa139352f917ce2296de171279e030c7b87b973f0b11137e",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/reconstructions/independent_receiver/block_0000_k0256.pt",
+    "bytes": 12442889,
+    "sha256": "65c5ae741a6edc84bf5f5e58c62052417edce39b1b2b89108ba9f5d5fed628ed",
+    "local_tensor_excluded_from_git": true
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/reconstructions/independent_receiver/block_0000_k0512.pt",
+    "bytes": 12442889,
+    "sha256": "28be04305427dc8052e9781a2cc16b8028c1641983c233c0c4c6c33b03195d28",
+    "local_tensor_excluded_from_git": true
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/reconstructions/independent_receiver/block_0000_k1024.pt",
+    "bytes": 12442889,
+    "sha256": "87dbcfcf4954082a047fa294d1d56c00d8214b7a30a7aa4555e6cba940d1f195",
+    "local_tensor_excluded_from_git": true
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/reconstructions/independent_receiver/block_0000_k2048.pt",
+    "bytes": 12442889,
+    "sha256": "6b5e10ea720d7bf9ce4b0c25fd62ffa7a9c48642102521258584fcacdb5dc8cc",
+    "local_tensor_excluded_from_git": true
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/reconstructions/independent_receiver/block_0001_k0256.pt",
+    "bytes": 49767689,
+    "sha256": "39eff5326163528004a70762de7b58628f47affccb53c2b88f23cdb58a26514e",
+    "local_tensor_excluded_from_git": true
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/reconstructions/independent_receiver/block_0001_k0512.pt",
+    "bytes": 49767689,
+    "sha256": "bc7143cb7d92ed2342b219231d1a7dcbdca96ed0082084e212591caa0a65bc1b",
+    "local_tensor_excluded_from_git": true
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/reconstructions/independent_receiver/block_0001_k1024.pt",
+    "bytes": 49767689,
+    "sha256": "94f88bc3cff4ea79e4c5ba042258ab5288189b9ea4bddcd7726d3def2fb47544",
+    "local_tensor_excluded_from_git": true
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/reconstructions/independent_receiver/block_0001_k2048.pt",
+    "bytes": 49767689,
+    "sha256": "aa2e704665f56e2757c27fcf483bc34ee52ee681036c4b48cd026758062f2bdc",
+    "local_tensor_excluded_from_git": true
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/reconstructions/independent_receiver/block_0002_k0256.pt",
+    "bytes": 49767689,
+    "sha256": "e5c3e649b11ea7bd258624b8c3b52b37e4398b91ff6e0b9c8daa7fb99b6db27a",
+    "local_tensor_excluded_from_git": true
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/reconstructions/independent_receiver/block_0002_k0512.pt",
+    "bytes": 49767689,
+    "sha256": "366aebc7197bab45fff194e33ba7fcb50493af93d01134001e59a07c577a37c4",
+    "local_tensor_excluded_from_git": true
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/reconstructions/independent_receiver/block_0002_k1024.pt",
+    "bytes": 49767689,
+    "sha256": "739d780f1ae6f7b305d945b56a08715df481c5f0ba98f355b5bcf9150c2bd72a",
+    "local_tensor_excluded_from_git": true
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/reconstructions/independent_receiver/block_0002_k2048.pt",
+    "bytes": 49767689,
+    "sha256": "fb8bb2c7a1e79221fb490cc4ea5cd28796f14283dedd4f636da0639decf9d9d3",
+    "local_tensor_excluded_from_git": true
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/reconstructions/independent_receiver/block_0003_k0256.pt",
+    "bytes": 49767689,
+    "sha256": "4048280f59ee479559a3edc7828f0e95f28c03d468fe85780325deba3db014e3",
+    "local_tensor_excluded_from_git": true
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/reconstructions/independent_receiver/block_0003_k0512.pt",
+    "bytes": 49767689,
+    "sha256": "f0073cb3b080d0f3d13255297811d6be2353c2c72bf9f56e067703739d71e326",
+    "local_tensor_excluded_from_git": true
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/reconstructions/independent_receiver/block_0003_k1024.pt",
+    "bytes": 49767689,
+    "sha256": "1ba3cce825eaa4d9f407a9c130378cf1694896c239bb27e1ac84b7231369ff7f",
+    "local_tensor_excluded_from_git": true
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/reconstructions/independent_receiver/block_0003_k2048.pt",
+    "bytes": 49767689,
+    "sha256": "2e8c96f88fb417a10a36a8ff8d6fa17931ea42eec1a89d8e21606ff5a011877b",
+    "local_tensor_excluded_from_git": true
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/reconstructions/independent_receiver/block_0004_k0256.pt",
+    "bytes": 49767689,
+    "sha256": "4fe1098e96345b86af50ab75b14e13e1447598ce59112be1ebf2075b2b8434cf",
+    "local_tensor_excluded_from_git": true
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/reconstructions/independent_receiver/block_0004_k0512.pt",
+    "bytes": 49767689,
+    "sha256": "a5b3527210a4374505f816ef541e90d79cbf7e9c236ee2b0b89b1ecf13723a70",
+    "local_tensor_excluded_from_git": true
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/reconstructions/independent_receiver/block_0004_k1024.pt",
+    "bytes": 49767689,
+    "sha256": "e5a9e4c534c4b8541533d227a4afbea597e490a2ba1a5ee888de58cf00185216",
+    "local_tensor_excluded_from_git": true
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/reconstructions/independent_receiver/block_0004_k2048.pt",
+    "bytes": 49767689,
+    "sha256": "7f3a826f064ba1ef3d9814ab920a32505b87e8b1ee36044e00425367add6c6f7",
+    "local_tensor_excluded_from_git": true
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/reconstructions/independent_receiver/input_access_audit.json",
+    "bytes": 272,
+    "sha256": "c311f2ab01b9fdcc0cebc199070c07fdcac5e7b5baded856f36216aa5fb855ac",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/reconstructions/independent_receiver/received_ids.pt",
+    "bytes": 43193,
+    "sha256": "b6f74db3729f71ecc3cec3c3ff4e11b35bf9b3bf61fad0b9930a2e70546e6650",
+    "local_tensor_excluded_from_git": true
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/reconstructions/independent_receiver/receiver.json",
+    "bytes": 5921,
+    "sha256": "c191b55bf4e89528726997ef1d84e038dc0ae9e8db3bae432583998049e5dba1",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/reconstructions/independent_receiver/reconstruction.pt",
+    "bytes": 211508479,
+    "sha256": "dabcf9c6b7d331081ea2f881a14edf56ef892968e1f08e0fa7dd4c567c2de361",
+    "local_tensor_excluded_from_git": true
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/reconstructions/rd_morton_mcl/comparison.png",
+    "bytes": 825334,
+    "sha256": "ed1ba07c2941afacf076971ef880384ec69f3872013f6b0254fabdb442d0b231",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/reconstructions/rd_morton_mcl/comparison_1024_native.png",
+    "bytes": 755492,
+    "sha256": "7a82601076e86ee1ac66943583539ef26e15cd8d141e97f3d104a8b0bd499ea2",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/reconstructions/rd_morton_mcl/comparison_2048_native.png",
+    "bytes": 695448,
+    "sha256": "4c6d449277ddf256883dcd45272d65b35f69524330073f685bb3a7c554faab0a",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/reconstructions/rd_morton_mcl/comparison_256_native.png",
+    "bytes": 778127,
+    "sha256": "7347c60ab405cc9131804d5990feb27d991dbc8f0b93b2770d081a3d7ff66eee",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/reconstructions/rd_morton_mcl/comparison_512_native.png",
+    "bytes": 715022,
+    "sha256": "87d7d1f222469d7323c318136acb79a1281958bbc82e502f164da51308666b7f",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/reconstructions/rd_morton_mcl/comparison_Original_native.png",
+    "bytes": 2390779,
+    "sha256": "3c1617fccfb213083d8654139abb73e86628529e2cb05f926fd3da298e9cc4ed",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/reconstructions/rd_morton_mcl/metrics.json",
+    "bytes": 11224,
+    "sha256": "c35da507732668c00fc2b0820daa0a52b0ee04edf9ca7dee3c36f328c5278b46",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/reconstructions/rd_morton_mcl/native_k1024.mp4",
+    "bytes": 67656,
+    "sha256": "9da9d4a52b521853d64540d92ee9ffddd9a82bc7953d052b6d77d3f61122ba0d",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/reconstructions/rd_morton_mcl/native_k2048.mp4",
+    "bytes": 84135,
+    "sha256": "2df511fd66b71b98b477836d26c5b052fe2f26548748aad322bca4cc9f066de2",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/reconstructions/rd_morton_mcl/native_k256.mp4",
+    "bytes": 68024,
+    "sha256": "183385134f6110aeb3b7f1657f088b4d259e3a1adc64c9ba3f5ca99d9ffe3d58",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/reconstructions/rd_morton_mcl/native_k512.mp4",
+    "bytes": 70549,
+    "sha256": "a94e301a2f48d97ec668dbec691e691ec0d322b58144eb66442981ee28953d71",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/reconstructions/rd_morton_mcl/reconstruction_k1024.pt",
+    "bytes": 211508509,
+    "sha256": "9cb78c35b301ff564016e0bdf2128473bafec706f2cf3536a69e75fa5c4434d7",
+    "local_tensor_excluded_from_git": true
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/reconstructions/rd_morton_mcl/reconstruction_k2048.pt",
+    "bytes": 211508509,
+    "sha256": "6b17ffdf3dea180cf735dbfa576257922db87557c8d2dd2016dcd89438e72164",
+    "local_tensor_excluded_from_git": true
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/reconstructions/rd_morton_mcl/reconstruction_k256.pt",
+    "bytes": 211508504,
+    "sha256": "0617e879161d6e869e6ddf2ace1f7f0ca5d1c7a3346c77db4031b20721eb2364",
+    "local_tensor_excluded_from_git": true
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/reconstructions/rd_morton_mcl/reconstruction_k512.pt",
+    "bytes": 211508504,
+    "sha256": "cead83cce895e637adcc4dcd8c5359c640b3d929f240f9d9969617c21f0f5e6b",
+    "local_tensor_excluded_from_git": true
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/reconstructions/rd_morton_mcl/summary.csv",
+    "bytes": 1766,
+    "sha256": "0fc8b941cdce32e13273e5c1786cc00639aa0597d75acbae33a5f22b720138a9",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/reconstructions/rd_morton_mcl/token_ids.pt",
+    "bytes": 42150,
+    "sha256": "7d9cc1b646c9e2e16f29dcbd4b247fb8b0a59425a0c08b282e863769bee89351",
+    "local_tensor_excluded_from_git": true
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/reconstructions/rd_multi_basketball/comparison.png",
+    "bytes": 865251,
+    "sha256": "8b97d6ada0afd1ed4ad71c3262a9fed0b4643fe447b6abba47284656a46ee8d5",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/reconstructions/rd_multi_basketball/comparison_1024_native.png",
+    "bytes": 786755,
+    "sha256": "4712ce9d9bab69566143be0b718612631bd14f91bfae323d27cc097d32e7872f",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/reconstructions/rd_multi_basketball/comparison_2048_native.png",
+    "bytes": 763761,
+    "sha256": "a45cdc62fd35bbf2e246acc5016ef0573e44250e7bf51e098d935d644a44360f",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/reconstructions/rd_multi_basketball/comparison_256_native.png",
+    "bytes": 850922,
+    "sha256": "de7b790768163fdad003ffa5dedb8927351a455c366a5f4b7759217c02093853",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/reconstructions/rd_multi_basketball/comparison_512_native.png",
+    "bytes": 830513,
+    "sha256": "5d323a8688edc2f9f68f414be0a637b98964ca80b80b99b1410579edf8017251",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/reconstructions/rd_multi_basketball/comparison_Original_native.png",
+    "bytes": 2998369,
+    "sha256": "4576bc44844bfa2ca77c64dd583b801274d324d07854caaed32b4d630440c745",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/reconstructions/rd_multi_basketball/metrics.json",
+    "bytes": 11225,
+    "sha256": "4db3f666f82cd79633abc8bdfbfee14ee01d8afd2b6231b341019e4d431b0d21",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/reconstructions/rd_multi_basketball/native_k1024.mp4",
+    "bytes": 50479,
+    "sha256": "13f6131a115d6ace236233a216357311f6cba5f6549fbaf6ef484b3ab174af73",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/reconstructions/rd_multi_basketball/native_k2048.mp4",
+    "bytes": 53812,
+    "sha256": "7ffc5abf1b4f4eb1904195ab910ea7523a38e6fe5edf31d7cf6f174399b6f342",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/reconstructions/rd_multi_basketball/native_k256.mp4",
+    "bytes": 43372,
+    "sha256": "28cd8dd1aad155e9ff3f4f0b41bb00037fb22deceb94951452601ba853586260",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/reconstructions/rd_multi_basketball/native_k512.mp4",
+    "bytes": 60109,
+    "sha256": "693a5459d39b86eb844426c74d0c7fc6cf48061eb025b46e2e26806b43828bd6",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/reconstructions/rd_multi_basketball/reconstruction_k1024.pt",
+    "bytes": 211508509,
+    "sha256": "fbe252614ee91ea0ce9fd9ee6a80272214aaa5e5e9e9f21ac1ac7e030a535c47",
+    "local_tensor_excluded_from_git": true
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/reconstructions/rd_multi_basketball/reconstruction_k2048.pt",
+    "bytes": 211508509,
+    "sha256": "929db9fd8f74a600bcf9d0f9a3cc2284f35cd6454cae89e347af08fb95285408",
+    "local_tensor_excluded_from_git": true
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/reconstructions/rd_multi_basketball/reconstruction_k256.pt",
+    "bytes": 211508504,
+    "sha256": "eef60a5e57feb4d382f6854c095cedad67b6dcfc55d5b8caf1e2cef3ef831d8a",
+    "local_tensor_excluded_from_git": true
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/reconstructions/rd_multi_basketball/reconstruction_k512.pt",
+    "bytes": 211508504,
+    "sha256": "7c7ec7cfe6cceb9ea9e43415538ad90c152fad8fcb086bb6f24ff65ffc81c6bb",
+    "local_tensor_excluded_from_git": true
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/reconstructions/rd_multi_basketball/summary.csv",
+    "bytes": 1763,
+    "sha256": "57b63fb64dde364193c800c94af145032709fd0d56a4a6bab4ed712a86d58fc1",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/reconstructions/rd_multi_basketball/token_ids.pt",
+    "bytes": 42150,
+    "sha256": "c21e7e7dc60364da98a124d3f6260885025b7c42d8f219c87b48ed79e400e130",
+    "local_tensor_excluded_from_git": true
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/reconstructions/rd_multi_mcl_verified/comparison.png",
+    "bytes": 836007,
+    "sha256": "e35f0eb4c4b4ca03276dcbd5a1f1982126a32bce50a8031e04cc4bc374242fd8",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/reconstructions/rd_multi_mcl_verified/comparison_1024_native.png",
+    "bytes": 764310,
+    "sha256": "f5fea4221750f660d0bd2fa06fec0eb0d5bce97cc66898d937a6b4e78a14ac62",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/reconstructions/rd_multi_mcl_verified/comparison_2048_native.png",
+    "bytes": 721618,
+    "sha256": "5cbdf213292a2787d93c81332a095e4502c585e1918d27fec2ec70102c8aa98e",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/reconstructions/rd_multi_mcl_verified/comparison_256_native.png",
+    "bytes": 783448,
+    "sha256": "f48d06e2356eefdffc56da08448663e7a2db3755e859b799dc24d66a6b810fc3",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/reconstructions/rd_multi_mcl_verified/comparison_512_native.png",
+    "bytes": 712397,
+    "sha256": "8ac10d8a722e6cc88001ae09b01bfbeccdd6adb33484e623f81224da94b0d962",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/reconstructions/rd_multi_mcl_verified/comparison_Original_native.png",
+    "bytes": 2390779,
+    "sha256": "3c1617fccfb213083d8654139abb73e86628529e2cb05f926fd3da298e9cc4ed",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/reconstructions/rd_multi_mcl_verified/history_intervention.json",
+    "bytes": 10551,
+    "sha256": "4f1bbc32ad166cdb984602f7095681fd73a065bb65cda23206ab49312bd1a78b",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/reconstructions/rd_multi_mcl_verified/metrics.json",
+    "bytes": 11111,
+    "sha256": "6cdf919c5c4be9cb975b72324ff1fec83b14ec24300816d42e7255f95ba5619e",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/reconstructions/rd_multi_mcl_verified/native_k1024.mp4",
+    "bytes": 70793,
+    "sha256": "89be6131e412096c7ba63648b014b64dbfc045de23a49feb30d8c92d799e3ee9",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/reconstructions/rd_multi_mcl_verified/native_k2048.mp4",
+    "bytes": 84762,
+    "sha256": "870bf4f6b6b0994ca7c145f3237c7c0ae1b2120026e695ac8a222248b7dd7db0",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/reconstructions/rd_multi_mcl_verified/native_k256.mp4",
+    "bytes": 71034,
+    "sha256": "3f9fe9d2cead07214d03066e9ff07052c849a7772abadeb652ccb06e1a7da704",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/reconstructions/rd_multi_mcl_verified/native_k512.mp4",
+    "bytes": 71466,
+    "sha256": "215d05da9b439960fc968c48ce235a70b9b48a45d15d14f9532901f978435fae",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/reconstructions/rd_multi_mcl_verified/reconstruction_k1024.pt",
+    "bytes": 211508509,
+    "sha256": "2c3d04266fdd2c9a1c39dd8c7c55439c5f4ce853cbfb079cc3f2b13b3f44a64c",
+    "local_tensor_excluded_from_git": true
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/reconstructions/rd_multi_mcl_verified/reconstruction_k2048.pt",
+    "bytes": 211508509,
+    "sha256": "78df2ce36becf92d7f413b81cd44aad35e14267eadae901a23fcba69977c7a63",
+    "local_tensor_excluded_from_git": true
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/reconstructions/rd_multi_mcl_verified/reconstruction_k256.pt",
+    "bytes": 211508504,
+    "sha256": "cb2f17d97ae058bbda37b1b8ce7c72430912498e8cdf61d74e52f952d5e6cfa7",
+    "local_tensor_excluded_from_git": true
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/reconstructions/rd_multi_mcl_verified/reconstruction_k512.pt",
+    "bytes": 211508504,
+    "sha256": "554dccc38d1de579e135d35e892a11330e36ef552119c23541f90b8e72e09925",
+    "local_tensor_excluded_from_git": true
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/reconstructions/rd_multi_mcl_verified/summary.csv",
+    "bytes": 1734,
+    "sha256": "e1d7233c5f98ea7d0eafcd280b696ba78d7350179d396eaf07c96aa6b19834a1",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/reconstructions/rd_multi_mcl_verified/token_ids.pt",
+    "bytes": 42150,
+    "sha256": "9f0964d8e715a7b3f35661c944c3f82f8f9b7c3aeef1dedd24f7df4d42ed84ef",
+    "local_tensor_excluded_from_git": true
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/reconstructions/rd_multi_uvg_beauty/comparison.png",
+    "bytes": 888531,
+    "sha256": "60e3874723c2ebb91ec76bc04651727c34cb70ea6587be2d9235b13fbe09f552",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/reconstructions/rd_multi_uvg_beauty/comparison_1024_native.png",
+    "bytes": 795683,
+    "sha256": "97029833059854a10951edf6359cc434f52b04652c8a4dafe3a360d91675c605",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/reconstructions/rd_multi_uvg_beauty/comparison_2048_native.png",
+    "bytes": 714275,
+    "sha256": "c9f940362cca57d1ae75696419144d439f9075de9caab51216276c0b3a4633a0",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/reconstructions/rd_multi_uvg_beauty/comparison_256_native.png",
+    "bytes": 783655,
+    "sha256": "e7c6bc0176e7bf778b65bdbabea300d0af1d8b5194951bbf9a5b0ed7547bcf3b",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/reconstructions/rd_multi_uvg_beauty/comparison_512_native.png",
+    "bytes": 698094,
+    "sha256": "56c9524f238529413514a1f117d7e9f940dca616d94804fd7418c9350964e2b4",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/reconstructions/rd_multi_uvg_beauty/comparison_Original_native.png",
+    "bytes": 2899084,
+    "sha256": "90596dfc07dae52440a81088558a67462d54d288cd3b33b3b7b8e42c82ec7451",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/reconstructions/rd_multi_uvg_beauty/metrics.json",
+    "bytes": 11229,
+    "sha256": "899094eec1922a0461752005b60a2794250ce03cb40c2426e8231deb24cb7de7",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/reconstructions/rd_multi_uvg_beauty/native_k1024.mp4",
+    "bytes": 52091,
+    "sha256": "bc9a3a384ae2f6137072d5cfed8eb2e2481d718f4c47bca234a77f77b2c4affd",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/reconstructions/rd_multi_uvg_beauty/native_k2048.mp4",
+    "bytes": 62411,
+    "sha256": "36e9bb5b216ffe8ae4d5d6eceaf1b68f49e8894f43c572f95dd4ceb7ac66fb27",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/reconstructions/rd_multi_uvg_beauty/native_k256.mp4",
+    "bytes": 56880,
+    "sha256": "6a51fee334c1b1679f0e95411b76098741ae56378d187041a7f994fd7dcc3711",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/reconstructions/rd_multi_uvg_beauty/native_k512.mp4",
+    "bytes": 59867,
+    "sha256": "c1bf1c17deac9be2cda1f168ab33aa42e5180c9830a04ae388376d26772ee179",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/reconstructions/rd_multi_uvg_beauty/reconstruction_k1024.pt",
+    "bytes": 211508509,
+    "sha256": "7b806102abb6f5756e7e5d405919d98355a472da5306cf7228d3dabfac2c6804",
+    "local_tensor_excluded_from_git": true
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/reconstructions/rd_multi_uvg_beauty/reconstruction_k2048.pt",
+    "bytes": 211508509,
+    "sha256": "48c83711182b0e067d12a60330ee7bdbd437b4e51d1824667ba1fe4df69bdb0d",
+    "local_tensor_excluded_from_git": true
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/reconstructions/rd_multi_uvg_beauty/reconstruction_k256.pt",
+    "bytes": 211508504,
+    "sha256": "378d17748950954f6e7fb1c65f2dce89863a7ea98321aec574adf5581e77c5d6",
+    "local_tensor_excluded_from_git": true
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/reconstructions/rd_multi_uvg_beauty/reconstruction_k512.pt",
+    "bytes": 211508504,
+    "sha256": "d0e369e8d88a4a565b7ecf899a882c93abc2c1b9f95d3ee12cfcef4fabb5ce66",
+    "local_tensor_excluded_from_git": true
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/reconstructions/rd_multi_uvg_beauty/summary.csv",
+    "bytes": 1766,
+    "sha256": "0b80f208cae5f256830eb6bac646a0ca89176c6df2bc42449894b6898b0ee9e4",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/reconstructions/rd_multi_uvg_beauty/token_ids.pt",
+    "bytes": 42150,
+    "sha256": "7207ff9783f2b1bec51c041ade915fd28e49a714ad59064e05346d79f3a2b9be",
+    "local_tensor_excluded_from_git": true
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/reconstructions/rd_single_basketball/comparison.png",
+    "bytes": 997394,
+    "sha256": "df6fa1216defa832493ba5c7e830604081e53ee5e963fbf8409729e11dd23bcc",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/reconstructions/rd_single_basketball/comparison_1024_native.png",
+    "bytes": 1123585,
+    "sha256": "53096291a191c0d6e43a7ad5b506c9c80cbd6be375581a636577803e4ce6843c",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/reconstructions/rd_single_basketball/comparison_2048_native.png",
+    "bytes": 1052484,
+    "sha256": "eeca4d0bc5296e269fddfcf73d6547237ce583bbecd4017c70ca231e9b5636a6",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/reconstructions/rd_single_basketball/comparison_256_native.png",
+    "bytes": 1214475,
+    "sha256": "5ed51414ed1ea721c5a572cf571263c5405ca2abce9d1f8229782f9568574148",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/reconstructions/rd_single_basketball/comparison_512_native.png",
+    "bytes": 1233063,
+    "sha256": "1e732cc2f8ea4b5e775cc0185909c07e9db2aaf11e206b2cb46f3fa2c5617c29",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/reconstructions/rd_single_basketball/comparison_Original_native.png",
+    "bytes": 2998369,
+    "sha256": "4576bc44844bfa2ca77c64dd583b801274d324d07854caaed32b4d630440c745",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/reconstructions/rd_single_basketball/metrics.json",
+    "bytes": 11252,
+    "sha256": "a5675f218fc0fb6c9cfd7d85cf67e928bd1f4725dd0800a26560aba2ff1afe0a",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/reconstructions/rd_single_basketball/native_k1024.mp4",
+    "bytes": 116384,
+    "sha256": "b5cd47e57141e51b94239b8acb2aa9fb195b40ab37607c776db202e364e663d3",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/reconstructions/rd_single_basketball/native_k2048.mp4",
+    "bytes": 111294,
+    "sha256": "620132cdd6b3e7fbe0e3e4fdddb7ab6cbf1b1ec0860cf5c2c7718928b45725a5",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/reconstructions/rd_single_basketball/native_k256.mp4",
+    "bytes": 75145,
+    "sha256": "968abce039e434ae4b66180c18eff9367c7a8638fb32e6fab5d54c17b944260f",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/reconstructions/rd_single_basketball/native_k512.mp4",
+    "bytes": 88221,
+    "sha256": "35f419e789df76590a39734648f6dc6d999b9db1c3e0d5b8a53d44b51d864ac6",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/reconstructions/rd_single_basketball/reconstruction_k1024.pt",
+    "bytes": 211508509,
+    "sha256": "9310aa28f48dcf3106b95d5e3523d1c206ea166c84a140b0b030fcbd09e2d327",
+    "local_tensor_excluded_from_git": true
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/reconstructions/rd_single_basketball/reconstruction_k2048.pt",
+    "bytes": 211508509,
+    "sha256": "d61682a3bece538a146fa8f36a0afdca77b7369b131d7aeba39a39b183606ca3",
+    "local_tensor_excluded_from_git": true
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/reconstructions/rd_single_basketball/reconstruction_k256.pt",
+    "bytes": 211508504,
+    "sha256": "28c968f6427283b30501a4b6746d43ab2b8f3669d157b109b9293d2849d67f04",
+    "local_tensor_excluded_from_git": true
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/reconstructions/rd_single_basketball/reconstruction_k512.pt",
+    "bytes": 211508504,
+    "sha256": "fa07c244fb3c8cf0a300375500d76d40c1c3767913c36f991937d0ef8ac307e0",
+    "local_tensor_excluded_from_git": true
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/reconstructions/rd_single_basketball/summary.csv",
+    "bytes": 1774,
+    "sha256": "9e85f19dea3292d4dba09a3c21a6401f9408855e22a0a41dd6b45167576a347a",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/reconstructions/rd_single_basketball/token_ids.pt",
+    "bytes": 42150,
+    "sha256": "a6168c76e36f19c27f2936acae8b8a8b3f89e915e146f88d96b88ffe4145df1b",
+    "local_tensor_excluded_from_git": true
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/reconstructions/rd_single_mcl/reconstruction_k256.pt",
+    "bytes": 211508504,
+    "sha256": "dfd517f3c28514657f1de8cd687285478666c4c78ac298751fa4f7c94ab3f777",
+    "local_tensor_excluded_from_git": true
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/reconstructions/rd_single_mcl/token_ids.pt",
+    "bytes": 42150,
+    "sha256": "21864c030d28865964098074c9d3aa50b70074c2526acc37b5db42bf21e926e0",
+    "local_tensor_excluded_from_git": true
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/reconstructions/rd_single_mcl_verified/comparison.png",
+    "bytes": 904292,
+    "sha256": "511d47d39e800c1faaba54870088ecb4d389a0bb60dfbea3b6126eb01c1f1c88",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/reconstructions/rd_single_mcl_verified/comparison_1024_native.png",
+    "bytes": 970299,
+    "sha256": "4a6b119f99d29dd0a57c03604d355f8ce690a9ef6068511ee9918cd085ca6dab",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/reconstructions/rd_single_mcl_verified/comparison_2048_native.png",
+    "bytes": 980712,
+    "sha256": "5a3b2f6550bbf4876b2cb5ed81325dc1544a753be9a0256a15f5165c433c12a6",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/reconstructions/rd_single_mcl_verified/comparison_256_native.png",
+    "bytes": 849923,
+    "sha256": "56659a27091566826f657f412b9c63b8b4a301ec592038e9ee06922d79a39ef9",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/reconstructions/rd_single_mcl_verified/comparison_512_native.png",
+    "bytes": 847757,
+    "sha256": "3a236a3d39b8c985ef4b7dcfc3d07aa401ecd123445b6feb610a89ed1d92735f",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/reconstructions/rd_single_mcl_verified/comparison_Original_native.png",
+    "bytes": 2390779,
+    "sha256": "3c1617fccfb213083d8654139abb73e86628529e2cb05f926fd3da298e9cc4ed",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/reconstructions/rd_single_mcl_verified/metrics.json",
+    "bytes": 11112,
+    "sha256": "7de6fd2cd59be39594cf3a867e8d73d0cbf20e8fe2be1a6f56a14d4bc140faee",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/reconstructions/rd_single_mcl_verified/native_k1024.mp4",
+    "bytes": 78087,
+    "sha256": "6f2520e5f9a9bb5d1f5e840ce919439b8a68b93a316f16a5b743176a679d2739",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/reconstructions/rd_single_mcl_verified/native_k2048.mp4",
+    "bytes": 113918,
+    "sha256": "34b67d2916e382e6db20ad69e127d06e6b36dbd2cd69e76f32ce462a76d79361",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/reconstructions/rd_single_mcl_verified/native_k256.mp4",
+    "bytes": 62875,
+    "sha256": "ac6f14aae87de5444cae597b3c386749c1040f3332401e778c2fb5b9bab66f14",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/reconstructions/rd_single_mcl_verified/native_k512.mp4",
+    "bytes": 67951,
+    "sha256": "dc985657ebf8fd0b476eea9304173523e490981eafaabacc4c1aeb2c62b0fbbe",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/reconstructions/rd_single_mcl_verified/reconstruction_k1024.pt",
+    "bytes": 211508509,
+    "sha256": "4d4fb751705dc7b441811c1aafc091813613b80b3a7ab1b4234528771a265b8a",
+    "local_tensor_excluded_from_git": true
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/reconstructions/rd_single_mcl_verified/reconstruction_k2048.pt",
+    "bytes": 211508509,
+    "sha256": "cca56894089ea058c31257e88d6d0a421b67f7aa4fa79ad829d3c7be8f58ec97",
+    "local_tensor_excluded_from_git": true
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/reconstructions/rd_single_mcl_verified/reconstruction_k256.pt",
+    "bytes": 211508504,
+    "sha256": "dfd517f3c28514657f1de8cd687285478666c4c78ac298751fa4f7c94ab3f777",
+    "local_tensor_excluded_from_git": true
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/reconstructions/rd_single_mcl_verified/reconstruction_k512.pt",
+    "bytes": 211508504,
+    "sha256": "4d33a31f6b2b4cf047afcd859538b0e073017f65158a9e095f14f175cb3f7438",
+    "local_tensor_excluded_from_git": true
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/reconstructions/rd_single_mcl_verified/summary.csv",
+    "bytes": 1740,
+    "sha256": "5bfbeeece920d71bfb507365885205858f551f612c74265deb7e370ab638b8b9",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/reconstructions/rd_single_mcl_verified/token_ids.pt",
+    "bytes": 42150,
+    "sha256": "21864c030d28865964098074c9d3aa50b70074c2526acc37b5db42bf21e926e0",
+    "local_tensor_excluded_from_git": true
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/reconstructions/rd_single_uvg_beauty/comparison.png",
+    "bytes": 968792,
+    "sha256": "317aacc210ac7861e2ab1808f92bb78afc814ee4ffa7773e9356651754c36067",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/reconstructions/rd_single_uvg_beauty/comparison_1024_native.png",
+    "bytes": 837002,
+    "sha256": "3c8cb9a9c4969508064cb9c4039a5d0e0d944fede2e70c8a6ffb719fced58b1f",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/reconstructions/rd_single_uvg_beauty/comparison_2048_native.png",
+    "bytes": 884569,
+    "sha256": "ff8cd92a47f06e04a2bbd8adea20bff74f2a5b62494f3dbdeb507a01db72e73c",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/reconstructions/rd_single_uvg_beauty/comparison_256_native.png",
+    "bytes": 829741,
+    "sha256": "6e70ba81ea8caed08df302e1bee1f65a32194f5be6302fa9c33c080d48072b7c",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/reconstructions/rd_single_uvg_beauty/comparison_512_native.png",
+    "bytes": 843608,
+    "sha256": "979b3f83c14fdf59a42720e28045362acbbd80fdd277b8e944c480e21b00853f",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/reconstructions/rd_single_uvg_beauty/comparison_Original_native.png",
+    "bytes": 2899084,
+    "sha256": "90596dfc07dae52440a81088558a67462d54d288cd3b33b3b7b8e42c82ec7451",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/reconstructions/rd_single_uvg_beauty/metrics.json",
+    "bytes": 11228,
+    "sha256": "f0dab9de9147e33cbc6c59f9ff7077b7a4f038c36ed8a3950efd3c8e7e46feb3",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/reconstructions/rd_single_uvg_beauty/native_k1024.mp4",
+    "bytes": 80597,
+    "sha256": "ada5573f6f9f6eca5235a11ac6db0e6c96d372586fe453348f7f1b7341eb801e",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/reconstructions/rd_single_uvg_beauty/native_k2048.mp4",
+    "bytes": 97559,
+    "sha256": "c0a2c19a4edb311e525187ca63b7510bad52a2a0038d00a6c8afbbfdd522f817",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/reconstructions/rd_single_uvg_beauty/native_k256.mp4",
+    "bytes": 62293,
+    "sha256": "c0df2d91cfefe5841bc6d485dbc47a578b596d0f905caee940d8912b10488fd6",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/reconstructions/rd_single_uvg_beauty/native_k512.mp4",
+    "bytes": 67863,
+    "sha256": "5c73237ebf4ff92496820d9b406bb1984e88a738b4d9d5d97541d1ca9fb524b7",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/reconstructions/rd_single_uvg_beauty/reconstruction_k1024.pt",
+    "bytes": 211508509,
+    "sha256": "ad59c1c345378aee074449d833947e2e6e6ca2526f6264aba2b6789537ce3da9",
+    "local_tensor_excluded_from_git": true
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/reconstructions/rd_single_uvg_beauty/reconstruction_k2048.pt",
+    "bytes": 211508509,
+    "sha256": "0107449bc444c0d6e344d27213ba6f15c9c7457ce94695f8682252a329250735",
+    "local_tensor_excluded_from_git": true
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/reconstructions/rd_single_uvg_beauty/reconstruction_k256.pt",
+    "bytes": 211508504,
+    "sha256": "eb58bc6d0b3e7800f785156cac5329b0981d0298ea48fb4d7d05d3d4528530ce",
+    "local_tensor_excluded_from_git": true
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/reconstructions/rd_single_uvg_beauty/reconstruction_k512.pt",
+    "bytes": 211508504,
+    "sha256": "f779619f1ebfd722a3f2149ccfa5730393e28906c90086b66ea0f488822d5a3f",
+    "local_tensor_excluded_from_git": true
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/reconstructions/rd_single_uvg_beauty/summary.csv",
+    "bytes": 1769,
+    "sha256": "c2cc701507a2d650616c800ce2af0626a184b32b2d0e82718b57a8d94f0797d1",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/reconstructions/rd_single_uvg_beauty/token_ids.pt",
+    "bytes": 42150,
+    "sha256": "5b2c957c14d4d01852c361345091feb62e941c25bd9ea1383c98dd7cd2389d16",
+    "local_tensor_excluded_from_git": true
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/region_metrics.json",
+    "bytes": 113235,
+    "sha256": "d51d9afafab660c5696f98682f9b33991ead678acd964eb7be7b5a96f1060a93",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/regions.json",
+    "bytes": 530,
+    "sha256": "3183202890701b54577a1707fd401a4f0f004988a724779f57c44566831bd71b",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/report.md",
+    "bytes": 35160,
+    "sha256": "606667d6497d1eb233f9602b0f65bbc784c3abfbf429a29a6493e7042b6c7f0c",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/single_native1080_geometry.json",
+    "bytes": 3230,
+    "sha256": "ad3df331e8d374b41d204e0c5c4dcf2c4d1791c98a1f0d913bf4b2a77841502d",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/single_native1080_geometry_k1024.pt",
+    "bytes": 49767833,
+    "sha256": "57a7a3a0842a612f8db8b591beca13988c7581f64a8e71f52413059ca2f17c35",
+    "local_tensor_excluded_from_git": true
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/single_native1080_geometry_k2048.pt",
+    "bytes": 49767833,
+    "sha256": "5234e3c1b5f752e4c3fe139be10b0e01231c82845c356f504c7b405c1c0797a9",
+    "local_tensor_excluded_from_git": true
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/single_native1080_geometry_k256.pt",
+    "bytes": 49767828,
+    "sha256": "3f11ceb7d6901adba5f33bdc91520bcbea17e5b9dc01c1718320dc08fe45893b",
+    "local_tensor_excluded_from_git": true
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/single_native1080_geometry_k512.pt",
+    "bytes": 49767828,
+    "sha256": "46525b2d4936fc2f5ccfc7b941c6bc373fed4f299d06c30701f6b9f30ea06714",
+    "local_tensor_excluded_from_git": true
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/source_hashes.json",
+    "bytes": 5827,
+    "sha256": "88b8df38c5fba9def0bb29ab9b5049d2fd780f06189b12f0a54badf51da0f315",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/stream_dependency_graph.json",
+    "bytes": 37256,
+    "sha256": "bc42cc5ffb408793feb46f85131e99dee5e7d468dfc112f3ae9f322bc66c9441",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/summary.csv",
+    "bytes": 15811,
+    "sha256": "646d0e5e14b8d177a44e3a9e4df15f6cfa05417281513038a089b43dad3c7c89",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/summary_bf16_reference_superseded.csv",
+    "bytes": 11088,
+    "sha256": "e437b721e5a73358da2abb0d74a55f8c4bdb38e388c0040f0b7f4e80adac98b8",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/tcp_incremental_v2/packets.csv",
+    "bytes": 1278,
+    "sha256": "728300bdc0b491b783f9343625adc29f9d823bea0a5089285b7fbaee37f21353",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/tcp_incremental_v2/receiver/block_0000_k0256.pt",
+    "bytes": 12442889,
+    "sha256": "65c5ae741a6edc84bf5f5e58c62052417edce39b1b2b89108ba9f5d5fed628ed",
+    "local_tensor_excluded_from_git": true
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/tcp_incremental_v2/receiver/block_0000_k0512.pt",
+    "bytes": 12442889,
+    "sha256": "28be04305427dc8052e9781a2cc16b8028c1641983c233c0c4c6c33b03195d28",
+    "local_tensor_excluded_from_git": true
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/tcp_incremental_v2/receiver/block_0000_k1024.pt",
+    "bytes": 12442889,
+    "sha256": "87dbcfcf4954082a047fa294d1d56c00d8214b7a30a7aa4555e6cba940d1f195",
+    "local_tensor_excluded_from_git": true
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/tcp_incremental_v2/receiver/block_0000_k2048.pt",
+    "bytes": 12442889,
+    "sha256": "6b5e10ea720d7bf9ce4b0c25fd62ffa7a9c48642102521258584fcacdb5dc8cc",
+    "local_tensor_excluded_from_git": true
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/tcp_incremental_v2/receiver/block_0001_k0256.pt",
+    "bytes": 49767689,
+    "sha256": "39eff5326163528004a70762de7b58628f47affccb53c2b88f23cdb58a26514e",
+    "local_tensor_excluded_from_git": true
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/tcp_incremental_v2/receiver/block_0001_k0512.pt",
+    "bytes": 49767689,
+    "sha256": "bc7143cb7d92ed2342b219231d1a7dcbdca96ed0082084e212591caa0a65bc1b",
+    "local_tensor_excluded_from_git": true
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/tcp_incremental_v2/receiver/block_0001_k1024.pt",
+    "bytes": 49767689,
+    "sha256": "94f88bc3cff4ea79e4c5ba042258ab5288189b9ea4bddcd7726d3def2fb47544",
+    "local_tensor_excluded_from_git": true
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/tcp_incremental_v2/receiver/block_0001_k2048.pt",
+    "bytes": 49767689,
+    "sha256": "aa2e704665f56e2757c27fcf483bc34ee52ee681036c4b48cd026758062f2bdc",
+    "local_tensor_excluded_from_git": true
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/tcp_incremental_v2/receiver/block_0002_k0256.pt",
+    "bytes": 49767689,
+    "sha256": "e5c3e649b11ea7bd258624b8c3b52b37e4398b91ff6e0b9c8daa7fb99b6db27a",
+    "local_tensor_excluded_from_git": true
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/tcp_incremental_v2/receiver/block_0002_k0512.pt",
+    "bytes": 49767689,
+    "sha256": "366aebc7197bab45fff194e33ba7fcb50493af93d01134001e59a07c577a37c4",
+    "local_tensor_excluded_from_git": true
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/tcp_incremental_v2/receiver/block_0002_k1024.pt",
+    "bytes": 49767689,
+    "sha256": "739d780f1ae6f7b305d945b56a08715df481c5f0ba98f355b5bcf9150c2bd72a",
+    "local_tensor_excluded_from_git": true
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/tcp_incremental_v2/receiver/block_0002_k2048.pt",
+    "bytes": 49767689,
+    "sha256": "fb8bb2c7a1e79221fb490cc4ea5cd28796f14283dedd4f636da0639decf9d9d3",
+    "local_tensor_excluded_from_git": true
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/tcp_incremental_v2/receiver/block_0003_k0256.pt",
+    "bytes": 49767689,
+    "sha256": "4048280f59ee479559a3edc7828f0e95f28c03d468fe85780325deba3db014e3",
+    "local_tensor_excluded_from_git": true
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/tcp_incremental_v2/receiver/block_0003_k0512.pt",
+    "bytes": 49767689,
+    "sha256": "f0073cb3b080d0f3d13255297811d6be2353c2c72bf9f56e067703739d71e326",
+    "local_tensor_excluded_from_git": true
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/tcp_incremental_v2/receiver/block_0003_k1024.pt",
+    "bytes": 49767689,
+    "sha256": "1ba3cce825eaa4d9f407a9c130378cf1694896c239bb27e1ac84b7231369ff7f",
+    "local_tensor_excluded_from_git": true
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/tcp_incremental_v2/receiver/block_0003_k2048.pt",
+    "bytes": 49767689,
+    "sha256": "2e8c96f88fb417a10a36a8ff8d6fa17931ea42eec1a89d8e21606ff5a011877b",
+    "local_tensor_excluded_from_git": true
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/tcp_incremental_v2/receiver/block_0004_k0256.pt",
+    "bytes": 49767689,
+    "sha256": "4fe1098e96345b86af50ab75b14e13e1447598ce59112be1ebf2075b2b8434cf",
+    "local_tensor_excluded_from_git": true
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/tcp_incremental_v2/receiver/block_0004_k0512.pt",
+    "bytes": 49767689,
+    "sha256": "a5b3527210a4374505f816ef541e90d79cbf7e9c236ee2b0b89b1ecf13723a70",
+    "local_tensor_excluded_from_git": true
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/tcp_incremental_v2/receiver/block_0004_k1024.pt",
+    "bytes": 49767689,
+    "sha256": "e5a9e4c534c4b8541533d227a4afbea597e490a2ba1a5ee888de58cf00185216",
+    "local_tensor_excluded_from_git": true
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/tcp_incremental_v2/receiver/block_0004_k2048.pt",
+    "bytes": 49767689,
+    "sha256": "7f3a826f064ba1ef3d9814ab920a32505b87e8b1ee36044e00425367add6c6f7",
+    "local_tensor_excluded_from_git": true
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/tcp_incremental_v2/receiver/input_access_audit.json",
+    "bytes": 200,
+    "sha256": "b8499417a24a15a4ce555048882be75e9f556041da40ed71cfb8c6e54f0a51c8",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/tcp_incremental_v2/receiver/received_ids.pt",
+    "bytes": 43193,
+    "sha256": "b6f74db3729f71ecc3cec3c3ff4e11b35bf9b3bf61fad0b9930a2e70546e6650",
+    "local_tensor_excluded_from_git": true
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/tcp_incremental_v2/receiver/receiver.json",
+    "bytes": 6966,
+    "sha256": "8ff90bd7289ee841d46fc4fb8e2cf5cfa4bb34f5aa89a4b205f8713281b79d8d",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/tcp_incremental_v2/receiver/reconstruction.pt",
+    "bytes": 211508479,
+    "sha256": "dabcf9c6b7d331081ea2f881a14edf56ef892968e1f08e0fa7dd4c567c2de361",
+    "local_tensor_excluded_from_git": true
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/tcp_incremental_v2/receiver.log",
+    "bytes": 1932,
+    "sha256": "2b419346b73041cbc19380a2b1b5725355e43b0f72781c17ba38e73a37b946c8",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/tcp_incremental_v2/result.json",
+    "bytes": 5818,
+    "sha256": "dcefaea9a2f52ee5819aea93a034517adda8da5656a3ce9c3ee53b2a03ce42c0",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/tcp_incremental_v2/sender.log",
+    "bytes": 1932,
+    "sha256": "6d8045f67de8d78888419b93354905e253df96f719f1f22f7e0cff3749c0e9c5",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/tcp_incremental_v2/transmission.sender.json",
+    "bytes": 5798,
+    "sha256": "8ba3f78a25ce0d257c67b4f371b9acb8eb99019114cf8d87d767a8799278b9ed",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/tcp_incremental_v2/transmission.sender_ids.pt",
+    "bytes": 42284,
+    "sha256": "1e565bc821cb0d64dd133fc94441fe597763941b68f87105b91568d84500c1c5",
+    "local_tensor_excluded_from_git": true
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/tcp_mixed_v2/packets.csv",
+    "bytes": 735,
+    "sha256": "2819dc35ed80fcdff9697a63552c3b707eb2de88cd1a87a3ecf7b3a399850c9c",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/tcp_mixed_v2/receiver/block_0000_k0256.pt",
+    "bytes": 12442889,
+    "sha256": "65c5ae741a6edc84bf5f5e58c62052417edce39b1b2b89108ba9f5d5fed628ed",
+    "local_tensor_excluded_from_git": true
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/tcp_mixed_v2/receiver/block_0001_k0256.pt",
+    "bytes": 49767689,
+    "sha256": "205c73f81748d77239486b22ce40063aba6d11eb4d475e828a1e6aa4cd42e00b",
+    "local_tensor_excluded_from_git": true
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/tcp_mixed_v2/receiver/block_0001_k0512.pt",
+    "bytes": 49767689,
+    "sha256": "63134f649809eafe90572e00bed0970501f40c88a5481d404210b40dbd68ebe8",
+    "local_tensor_excluded_from_git": true
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/tcp_mixed_v2/receiver/block_0002_k0256.pt",
+    "bytes": 49767689,
+    "sha256": "1709eaa0aa1b3f74a280f3731410d692d3752b3f1ab0e0eef40388c9ebe696ab",
+    "local_tensor_excluded_from_git": true
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/tcp_mixed_v2/receiver/block_0002_k0512.pt",
+    "bytes": 49767689,
+    "sha256": "436be6a790a2fa1b5227b934b5fd1e872f6ba1380155f46e587e794462ced271",
+    "local_tensor_excluded_from_git": true
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/tcp_mixed_v2/receiver/block_0002_k1024.pt",
+    "bytes": 49767689,
+    "sha256": "42106c59ef8446062e158d74fd0ed8d462d9f53916ca3f7678d5c8f23479de94",
+    "local_tensor_excluded_from_git": true
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/tcp_mixed_v2/receiver/block_0003_k0256.pt",
+    "bytes": 49767689,
+    "sha256": "d3b625f43c2071d90472d1c9008a77ef4fefb1cb5898a197e5b8188695e585a8",
+    "local_tensor_excluded_from_git": true
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/tcp_mixed_v2/receiver/block_0003_k0512.pt",
+    "bytes": 49767689,
+    "sha256": "38ed4a9dd8d88ab40b505d6d47ea5e7a4bca8dbc49003875fbacb93581f0578e",
+    "local_tensor_excluded_from_git": true
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/tcp_mixed_v2/receiver/block_0003_k1024.pt",
+    "bytes": 49767689,
+    "sha256": "a91dbbe4467fb6a031b10a4b5c6864ebbb4408c4959aeeee1115c51760cae880",
+    "local_tensor_excluded_from_git": true
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/tcp_mixed_v2/receiver/block_0003_k2048.pt",
+    "bytes": 49767689,
+    "sha256": "325e4ba3cb32a2bac653e970e8557077438c4bd8a099b59fcf9ef86a6643aacd",
+    "local_tensor_excluded_from_git": true
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/tcp_mixed_v2/receiver/block_0004_k0256.pt",
+    "bytes": 49767689,
+    "sha256": "70d42355a3894a6bd6cdda3478acc185a05d8ebcbbad21cc312200c929c30653",
+    "local_tensor_excluded_from_git": true
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/tcp_mixed_v2/receiver/input_access_audit.json",
+    "bytes": 200,
+    "sha256": "63e90da6cb225c2282c0a58ee2edda7663429191fa3e7b44809297236caa9f67",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/tcp_mixed_v2/receiver/received_ids.pt",
+    "bytes": 18617,
+    "sha256": "e2ffc76f02afdc82c2abd13013e677069de03b8eb3c0929996c6e04ea6bd5168",
+    "local_tensor_excluded_from_git": true
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/tcp_mixed_v2/receiver/receiver.json",
+    "bytes": 3976,
+    "sha256": "d1423cd5789bce7636efe1c1cff52d5ff01ce1d021bc59747fe6b2179002c2ae",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/tcp_mixed_v2/receiver/reconstruction.pt",
+    "bytes": 211508479,
+    "sha256": "dcb6159c1312c3c6ea078bd7c80d1570854f949b3d175cf1bd28d941559ee8bf",
+    "local_tensor_excluded_from_git": true
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/tcp_mixed_v2/receiver.log",
+    "bytes": 1932,
+    "sha256": "c3fbdd409acfc8b85ccfd8347764b805049c810a402d1ceab4e0f92fa32192ca",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/tcp_mixed_v2/result.json",
+    "bytes": 3808,
+    "sha256": "93a6c579fc8a8704f54d88bdaf4ec2cffe34c921e7411d3922078a5dbd281d5a",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/tcp_mixed_v2/sender.log",
+    "bytes": 1932,
+    "sha256": "a9f7d673a07f4efe9bd42d6ad67d007a01c713b6515675894421fe15bc58c2dc",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/tcp_mixed_v2/transmission.sender.json",
+    "bytes": 3286,
+    "sha256": "663936117adb618a5ea99ca7b9ec005faeccd2b565e10f6ac20641a697c787fc",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/tcp_mixed_v2/transmission.sender_ids.pt",
+    "bytes": 42284,
+    "sha256": "1e565bc821cb0d64dd133fc94441fe597763941b68f87105b91568d84500c1c5",
+    "local_tensor_excluded_from_git": true
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/tests_delivery.xml",
+    "bytes": 11796,
+    "sha256": "42d5b22617b0ba222c7314723eb41bdf124a04a91f3de0ad2a1e768a68a5134b",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/tests_delivery_final.xml",
+    "bytes": 11938,
+    "sha256": "6a06a225f670007abc02417a60cc9dbc1744d22566452d8dc615a323ed967e6c",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/tests_final.xml",
+    "bytes": 10500,
+    "sha256": "847d7086f53d974245fe5d4d7725a1ad9ae9340f910f6fc8e8e8354e6cb8e29f",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/tests_gpu.xml",
+    "bytes": 10105,
+    "sha256": "a21de63b994a368c65fa198fda642a369790b0fdcb2c733b5a4c4885df7371bb",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/tests_gpu_final.xml",
+    "bytes": 10264,
+    "sha256": "2cc005d9e58af8c0dbecd63c73dcb404eb1d6114306a43295f8b0f29b9f5c645",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/tool_metrics/coverage_summary.json",
+    "bytes": 471,
+    "sha256": "d1a3abb13e8273d17769806282a2285eeea6317000ac2b6c35f249005dc3d9f2",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/tool_metrics/crap.edn",
+    "bytes": 16473,
+    "sha256": "ba1bd977c0e8100b9b00e13ef76392d3fed1e6c5a252f92b1471e49f25bbbcbf",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/tool_metrics/dry.edn",
+    "bytes": 17,
+    "sha256": "d4096cccbc2108ff3f8dca9d20dbc6ebf313423ad28abf5b50a196ce923a91d5",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/tool_metrics/quantizer_mutation.edn",
+    "bytes": 1875,
+    "sha256": "241df822d8e5bbd46b110b297cf07ecd6392506c47f4d943cf3f19743bffd76b",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/training/config_validation/config.yaml",
+    "bytes": 6948,
+    "sha256": "6f6eeb00564f050fea1a7ee71442be93c54b6fbee55b88b2035485d980950240",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/training/morton_debug/config.yaml",
+    "bytes": 7001,
+    "sha256": "9a5cb4c5db69927aa0a4161d49fd2185d3d4b60a579611acef9a33059b6342a4",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/training/morton_debug/steps.jsonl",
+    "bytes": 14625,
+    "sha256": "0e189bcd04ea25baef3227dac84febf5995657c75e4c61c6fb8e3eaa9f97c8cb",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/training/morton_native/config.yaml",
+    "bytes": 7070,
+    "sha256": "efc0560ca362ba82ee1b5099e0726459e44166418034b1467e85ddb6ced31ced",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/training/morton_native/steps.jsonl",
+    "bytes": 743,
+    "sha256": "625702a13fa9756fdb7c348b853f88201a8e2a9eac0d122a1f9a06e2aa8ada1a",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/training/multi_backbone_finetune/config.yaml",
+    "bytes": 7109,
+    "sha256": "c4add705d19b9574bad496a84c472f7eb1eebb79c8cfb8a84f178f60e941da8c",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/training/multi_backbone_finetune/steps.jsonl",
+    "bytes": 1036,
+    "sha256": "23b2b59070457fa7436a38455076779e4d95751476bcb0c56d850944dc9d5dc9",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/training/multi_debug/config.yaml",
+    "bytes": 7000,
+    "sha256": "1f77870203079d06c0fef07e031bd3eeeff80acd46b050e95b228bb206028839",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/training/multi_debug/steps.jsonl",
+    "bytes": 13524,
+    "sha256": "95ec35f9cb4773e8e3078bd615c991d60335bbca0c8765fe8f9a31077b93ebb9",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/training/multi_native/config.yaml",
+    "bytes": 7068,
+    "sha256": "a84e30ff82a14119423587a531b990527c42688516f62ab5dd1851eb2dea280f",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/training/multi_native/steps.jsonl",
+    "bytes": 680,
+    "sha256": "e24f6e43723fa1a8de48781234c4a3fc592577976cbac1063e599e7c398720d9",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/training/multi_native17/config.yaml",
+    "bytes": 7073,
+    "sha256": "af8c2fe293b34a32291efd842953d29bae628ec37edcfd4ac088582732a7f3b3",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/training/multi_native17_sampled/config.yaml",
+    "bytes": 7111,
+    "sha256": "216eb2460ffa50bb48d0061eedcbeab2b1cb0ad0d130b3362df8b691a4d342bf",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/training/multi_native17_sampled/steps.jsonl",
+    "bytes": 1110,
+    "sha256": "1b8c52d6b862477f02c0c7b8d8fbcc355be0bf2e28c470124c579ad97a579e78",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/training/single_debug/config.yaml",
+    "bytes": 7002,
+    "sha256": "38d3ca32fe2593a8fd853a595b5e42b7089ccf69dc9e3159ad3f036844ec7c0c",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/training/single_native/config.yaml",
+    "bytes": 7071,
+    "sha256": "9b771ca19ee3b86f3dff8d14e6d5a838ec83c11bd9f1e11077f2d1639a7e3353",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/training/single_native/steps.jsonl",
+    "bytes": 682,
+    "sha256": "9cfeb367ad63349d29a31e4d95ed18dd918121e6dbe7750fe71652905d064071",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/upstream_256.json",
+    "bytes": 1194,
+    "sha256": "e10b4464eccd0d486ac28cada54fa75f74ebd9af3609b2e9b4d5272bea05f601",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/upstream_256_pass.json",
+    "bytes": 3444,
+    "sha256": "4c33d0cbd7940ee1dd7ad65b5a4ab0e92288619378332b93444486558791874c",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/upstream_256_verified.json",
+    "bytes": 1176,
+    "sha256": "bf35f9f398a773bd05a4f6cc6f084ffc1a360641d628bf012a54f95fda3102b1",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/upstream_cli_verified/mcl_jcv01.mp4",
+    "bytes": 23897,
+    "sha256": "c63c612d9682a129055f5629264b6980ee120703852489c2b2aa0be46ea6c67c",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/upstream_reproduced.json",
+    "bytes": 867,
+    "sha256": "6dbd372340437ad565977188e77a60e0130e623341a0283e5d5692c5c86e9ae2",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/upstream_reproduced.reconstruction.pt",
+    "bytes": 23763363,
+    "sha256": "f98fd971d9ff986a94aa57d7a2e916ac1798341a8a540a67303c4d0a31d7f170",
+    "local_tensor_excluded_from_git": true
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/video_exports.json",
+    "bytes": 12031,
+    "sha256": "2a55513d26e83ef910f41bf776a63f52ea84f20dda8192073735d8aa119f117d",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/video_integrity.json",
+    "bytes": 5677,
+    "sha256": "edffe7034636c3b561fbb993ff717661179c19b1888c50fa3b6b1f152807063b",
+    "local_tensor_excluded_from_git": false
+  },
+  {
+    "path": "/home/whisperliang/InfoTok/results/chp_vtok/work_log.md",
+    "bytes": 8209,
+    "sha256": "b7be7815ef403450a4330e19a69080c0dd0e942522f92a70671804a42dfaba3a",
+    "local_tensor_excluded_from_git": false
+  }
+]

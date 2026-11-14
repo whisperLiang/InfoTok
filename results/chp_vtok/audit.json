@@ -1,0 +1,189 @@
+{
+  "generated_utc": "2026-11-14T14:33:56.414539+00:00",
+  "code": {
+    "implementation_commit": "d9a43cae426c9a7be3abc5ef49f31154b153ac0a",
+    "upstream_commit": "042fc5815717ee34d7281e7eb2971ad9c9d76421",
+    "branch": "chp-vtok",
+    "remotes": "origin\thttps://github.com/YWolfeee/InfoTok (fetch)\norigin\thttps://github.com/YWolfeee/InfoTok (push)\nupstream\thttps://github.com/YWolfeee/InfoTok (fetch)\nupstream\thttps://github.com/YWolfeee/InfoTok (push)",
+    "source_files_sha256": "3655b4bdfedf6428447fa0655579815506147c229fe5338efa3b6ec76b0a486e",
+    "changed_paths": [
+      ".gitignore",
+      "README_CHP_VTOK.md",
+      "cosmos_predict1/tokenizer/modules/layers3d.py",
+      "cosmos_predict1/tokenizer/networks/ours_discrete_video.py",
+      "cosmos_predict1/tokenizer/progressive/__init__.py",
+      "cosmos_predict1/tokenizer/progressive/anchors.py",
+      "cosmos_predict1/tokenizer/progressive/causal_state.py",
+      "cosmos_predict1/tokenizer/progressive/checkpoint.py",
+      "cosmos_predict1/tokenizer/progressive/cli.py",
+      "cosmos_predict1/tokenizer/progressive/config.py",
+      "cosmos_predict1/tokenizer/progressive/feature_pyramid.py",
+      "cosmos_predict1/tokenizer/progressive/latent_decoder.py",
+      "cosmos_predict1/tokenizer/progressive/model.py",
+      "cosmos_predict1/tokenizer/progressive/protocol.py",
+      "cosmos_predict1/tokenizer/progressive/quantizer.py",
+      "cosmos_predict1/tokenizer/progressive/slot_compressor.py",
+      "cosmos_predict1/tokenizer/progressive/stream.py",
+      "cosmos_predict1/tokenizer/progressive/transport.py",
+      "cosmos_predict1/tokenizer/training/chp_losses.py",
+      "cosmos_predict1/tokenizer/training/chp_model.py",
+      "cosmos_predict1/tokenizer/training/configs/chp_vtok.py",
+      "cosmos_predict1/tokenizer/training/datasets/chp_video.py",
+      "exp_scripts/chp_vtok_train.sh",
+      "scripts/chp_anchor_report.py",
+      "scripts/chp_checkpoint_memory.py",
+      "scripts/chp_consistency.py",
+      "scripts/chp_evaluate.py",
+      "scripts/chp_export_videos.py",
+      "scripts/chp_extra_evaluations.sh",
+      "scripts/chp_isolated_receiver.py",
+      "scripts/chp_manifest.py",
+      "scripts/chp_numerics.py",
+      "scripts/chp_plot_results.py",
+      "scripts/chp_prepare_data.py",
+      "scripts/chp_regions.py",
+      "scripts/chp_remeasure_quality.py",
+      "scripts/chp_run.py",
+      "scripts/chp_tcp_experiment.py",
+      "scripts/chp_validate.py",
+      "tests/conftest.py",
+      "tests/test_chp_attention.py",
+      "tests/test_chp_checkpoint.py",
+      "tests/test_chp_cli.py",
+      "tests/test_chp_conv_chunking.py",
+      "tests/test_chp_dataset_config.py",
+      "tests/test_chp_full_decoder_checkpoint.py",
+      "tests/test_chp_perceptual_crop.py",
+      "tests/test_chp_progressive.py",
+      "tests/test_chp_protocol_edges.py",
+      "tests/test_chp_receiver_boundary.py",
+      "tests/test_chp_state.py",
+      "tests/test_chp_training_framework.py",
+      "tests/test_chp_transport.py"
+    ],
+    "provenance_limit": "Earlier commands honestly recorded dirty=true. Their HEAD is not claimed to be an exact source snapshot; the final implementation diff and source hashes are archived here."
+  },
+  "device": {
+    "name": "NVIDIA H100 PCIe",
+    "total_memory_bytes": 85017493504,
+    "torch": "2.6.0+cu124",
+    "cuda": "12.4",
+    "python": "3.10.12",
+    "driver": "580.159.03",
+    "cuda_devices": 1
+  },
+  "official_checkpoint": {
+    "path": "/home/whisperliang/InfoTok/checkpoints/infotok-flex/infotok_mse.pt",
+    "sha256": "bd69629a8f8fcfc4808d29eec5bed68177e22aa14e3b9b799599791e26af935a",
+    "bytes": 1725353482,
+    "source": "https://huggingface.co/qyoo/infotok-flex/resolve/7b9f0d4d5b7ce128e7de0d4252f34199b9ac25f5/infotok_mse.pt",
+    "revision": "7b9f0d4d5b7ce128e7de0d4252f34199b9ac25f5",
+    "architecture": "OURS4x8x8-mse-256p-88",
+    "published_temporal_window": 81,
+    "published_spatial_training_profile": "varied, non-square; no verified 1080p training claim"
+  },
+  "licenses": {
+    "repository": "Apache-2.0",
+    "model_card": "Apache-2.0",
+    "inconsistent_legacy_headers": [
+      "cosmos_predict1/tokenizer/networks/ours_discrete_video.py"
+    ]
+  },
+  "upstream_findings": {
+    "A_model": "OursDiscreteVideoTokenizer and official config retained. Checkpoint loads all learned parameters; omitted fixed FSQ/patch buffers are not treated as missing learned weights.",
+    "B_backbone": "Factorized 4x8x8 causal convolution encoder and decoder are reused as objects. CHP replaces their spatial attention with bounded 16x16 windows; this is an architecture change.",
+    "C_vit": "vit_encode/vit_decode keep dense time/space organization and global block-causal attention. The old ViT path is excluded only from the separately configured CHP model, not deleted upstream.",
+    "D_masks": "adaptive_tokenize/mask_tokens zero continuous dense positions. MSE ordering requires position metadata. These masked latents are not the CHP integer prefix stream.",
+    "E_FSQ": "Exact upstream FSQuantizer with 64000 symbols and bidirectional index/code mapping; no 8192/13-bit assumption.",
+    "F_latents": "Original reshaped dense 2D latents differ from new fixed learned 1D slots. Missing slots have an independent mask/embedding; slot order is deterministic geometry, with no full ordering table on the wire.",
+    "G_attention": "Original block mask marks future blocks as forbidden. SDPA boolean masks mark allowed positions True. The optimized temporal block uses causal SDPA; cache offset masking is explicit.",
+    "H_checkpoint": "Flex model card reports 81-frame windows at varied non-square resolutions. Config label 256p is not evidence of native 1080p training. Original ViT spatial rotary tables are 96x96 and temporal embeddings have 49 positions.",
+    "I_gradients": "Frozen encoder may use no_grad. Frozen decoder does not: RGB gradients reach new latent recovery modules. Native checkpoint on/off gradient equality is measured; finite nonzero training gradients are logged.",
+    "J_streaming": "Original video_lib/video_cli use window execution and overlap; ViT cache implementation is commented out. CHP implements actual per-module convolution/phase/bootstrap/pooling/upsample/KV state. Recomputed history and reused caches have independent measurements.",
+    "normalization": "Actual factorized backbone CausalNormalize uses num_groups=1 and time2batch GroupNorm. Its implementation and pretrained normalization semantics are unchanged."
+  },
+  "quantizer": {
+    "type": "upstream FSQ",
+    "levels": [
+      8,
+      8,
+      8,
+      5,
+      5,
+      5
+    ],
+    "symbols": 64000,
+    "bits_per_id": 16,
+    "zero_is_a_valid_symbol": true,
+    "exhaustive_roundtrip_ids": 64000
+  },
+  "geometry": {
+    "source": [
+      1,
+      3,
+      17,
+      1080,
+      1920
+    ],
+    "padded": [
+      1,
+      3,
+      17,
+      1088,
+      1920
+    ],
+    "latent": [
+      1,
+      256,
+      5,
+      136,
+      240
+    ],
+    "temporal_protocol": "one bootstrap + four 4-frame blocks; explicit EOS valid tail"
+  },
+  "feature_acceptance": {
+    "native_1080_geometry": "passed on trained smoke checkpoints",
+    "temporal_causality": "passed encoder and decoder interventions",
+    "variable_length": "passed mixed 256/512/1024/2048; 4096/8192 unit-only",
+    "strict_prefix": "passed same maximum encoding, incremental uint16 IDs, independent receiver",
+    "streaming_fp32": "native 17-frame IDs equal; RGB max error 1.0132789611816406e-6",
+    "streaming_bfloat16": "not integer-equivalent; native ID difference fraction 0.0027343749534338713",
+    "realtime_30fps": "failed; measured seconds per block"
+  },
+  "training": {
+    "status": "engineering smoke only; no convergence/generalization claim",
+    "single_steps": 42,
+    "multi_steps": 42,
+    "multi_native17_resume_step": 44,
+    "morton_steps": 42,
+    "optional_finetune_steps": 2,
+    "held_out_evaluation": false,
+    "native17_perceptual": "uniform real 256x256 source-pixel crop, full RGB/temporal losses",
+    "dataloader_replay_bit_exact": false
+  },
+  "evidence": {
+    "final_tests": "tests_delivery_final.xml",
+    "rd_observations": 28,
+    "quality_rows": "summary.csv",
+    "quality_reference_dtype": "float32",
+    "quality_record_directory": "quality_reference_fp32",
+    "native_display_exports": 28,
+    "receiver_protocol": "CHP2/CHPB",
+    "final_tcp": "tcp_incremental_v2/result.json",
+    "mixed_tcp": "tcp_mixed_v2/result.json",
+    "full_fp32_consistency": "consistency_multi_1080_fp32.json",
+    "full_bf16_consistency": "consistency_multi_1080_bounded_serial.json",
+    "old_chp1_status": "superseded; not final causality proof",
+    "dependency_freeze": "dependencies.txt"
+  },
+  "limitations": [
+    "No converged model or held-out benchmark",
+    "BF16 full-window versus cache discrete IDs differ",
+    "Not real-time",
+    "No controlled global-vs-local attention quality ablation",
+    "Only ordered blocks; no late enhancement replay or WAN impairment test",
+    "Unlimited temporal attention KV grows with session duration",
+    "FP16 native full-graph equivalence and extended budgets not GPU-qualified",
+    "Some early experiments ran from dirty trees; see recorded command provenance"
+  ]
+}

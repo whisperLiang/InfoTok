@@ -1,0 +1,8 @@
+{
+  "permitted_repository_inputs": [
+    "/home/whisperliang/InfoTok/checkpoints/chp_vtok/multi_decoder.pt"
+  ],
+  "raw_video_access": false,
+  "sender_latent_access": false,
+  "process_id": 371642
+}

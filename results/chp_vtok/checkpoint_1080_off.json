@@ -1,0 +1,21 @@
+{
+  "protection": "off",
+  "geometry": [
+    1,
+    3,
+    5,
+    1080,
+    1920
+  ],
+  "loss": 0.09166824072599411,
+  "latent_gradient_norm": 0.007870069704949856,
+  "finite": true,
+  "decoder_parameter_gradients": false,
+  "performance": {
+    "seconds": 2.311916777995066,
+    "peak_allocated_bytes": 57451794944,
+    "peak_reserved_bytes": 66156756992,
+    "baseline_bytes": 361960448,
+    "incremental_peak_bytes": 57089834496
+  }
+}

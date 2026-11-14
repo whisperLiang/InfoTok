@@ -1,0 +1,18 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+____________ test_upstream_positional_to_preserves_quantizer_dtype _____________
+tests/test_chp_attention.py:85: in test_upstream_positional_to_preserves_quantizer_dtype
+    assert codes.dtype == torch.float32
+E   assert torch.bfloat16 == torch.float32
+E    +  where torch.bfloat16 = tensor([[[[[-0.2500, -0.2500, -0.2500, -0.2500, -0.2500, -0.2500, -0.2500,\n             0.0000],\n           [-0.2500, ...        [ 0.0000, -0.5000, -0.5000, -0.5000, -0.5000, -0.5000,  0.0000,\n             0.0000]]]]], dtype=torch.bfloat16).dtype
+E    +  and   torch.float32 = torch.float32
+----------------------------- Captured stderr call -----------------------------
+2026-11-14 21:05:50.480 | INFO     | cosmos_predict1.tokenizer.modules.layers3d:__init__:843 - Working with z of shape (1, 16, 128, 128) = 262144 dimensions.
+2026-11-14 21:05:51.043 | INFO     | cosmos_predict1.tokenizer.networks.ours_discrete_video:__init__:64 - OURS based on FSQ-VAE, with {'name': 'OURS', 'attn_resolutions': [], 'channels': 8, 'channels_mult': [1, 2, 2], 'dropout': 0.0, 'in_channels': 3, 'num_res_blocks': 1, 'out_channels': 3, 'resolution': 1024, 'patch_size': 2, 'patch_method': 'haar', 'num_groups': 1, 'legacy_mode': False, 'spatial_compression': 8, 'temporal_compression': 4, 'quantizer': 'FSQ', 'levels': [8, 8, 8, 5, 5, 5], 'encoder': 'FACTORIZED', 'decoder': 'FACTORIZED', 'rate_strategy': 'elbo', 'use_vit': False, 'freeze_original': False, 'vit_config': {'hidden_size': 256, 'intermediate_size': 512, 'num_encoder_layers': 8, 'num_decoder_layers': 8, 'num_attention_heads': 32, 'theta': 10000.0, 'rms_norm_eps': 1e-05, 'initializer_range': 0.02, 'max_num_video_frames': 49, 'switch_rotary_to_1d': 1.0, 'max_sequence_length': 96, 'max_sequence_length_1d': 8192, 'concat_decode_2d': False, 'special_attn': False, 'method': 'mse'}}.
+2026-11-14 21:05:51.044 | INFO     | cosmos_predict1.tokenizer.networks.ours_discrete_video:__init__:67 - model=OURS, num_parameters=93,030
+2026-11-14 21:05:51.044 | INFO     | cosmos_predict1.tokenizer.networks.ours_discrete_video:__init__:68 - z_channels=16, embedding_dim=6.
+2026-11-14 21:05:51.044 | INFO     | cosmos_predict1.tokenizer.networks.ours_discrete_video:init_adaptive_token:169 - Adaptive token initialized with shape torch.Size([128]) and value 0.0.
+2026-11-14 21:05:51.045 | INFO     | cosmos_predict1.tokenizer.networks.ours_discrete_video:__init__:122 - model=OURS, num_parameters=93,030
+=========================== short test summary info ============================
+FAILED tests/test_chp_attention.py::test_upstream_positional_to_preserves_quantizer_dtype
+1 failed, 9 deselected in 0.91s

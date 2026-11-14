@@ -1,0 +1,25 @@
+{
+  "status": "failed",
+  "error": "RuntimeError",
+  "message": "Input type (c10::BFloat16) and bias type (float) should be the same",
+  "traceback": "Traceback (most recent call last):\n  File \"/home/whisperliang/InfoTok/scripts/chp_validate.py\", line 228, in main\n    result = globals()[args.mode](args)\n  File \"/home/whisperliang/InfoTok/.venv/lib/python3.10/site-packages/torch/utils/_contextlib.py\", line 116, in decorate_context\n    return func(*args, **kwargs)\n  File \"/home/whisperliang/InfoTok/scripts/chp_validate.py\", line 72, in upstream\n    ((rgb, ratios), perf) = measured(\n  File \"/home/whisperliang/InfoTok/scripts/chp_validate.py\", line 30, in measured\n    value = fn()\n  File \"/home/whisperliang/InfoTok/scripts/chp_validate.py\", line 73, in <lambda>\n    lambda: model.autoencode(x, strategy=\"static\", avg_rate=1.0)\n  File \"/home/whisperliang/InfoTok/.venv/lib/python3.10/site-packages/torch/utils/_contextlib.py\", line 116, in decorate_context\n    return func(*args, **kwargs)\n  File \"/home/whisperliang/InfoTok/cosmos_predict1/tokenizer/inference/video_lib.py\", line 112, in autoencode\n    chunk_loss = self.compute_chunk_loss(hidden_tensor, input_tensor)\n  File \"/home/whisperliang/InfoTok/.venv/lib/python3.10/site-packages/torch/utils/_contextlib.py\", line 116, in decorate_context\n    return func(*args, **kwargs)\n  File \"/home/whisperliang/InfoTok/cosmos_predict1/tokenizer/inference/video_lib.py\", line 88, in compute_chunk_loss\n    recon_full = self._full_model.decode(hidden_tensor)\n  File \"/home/whisperliang/InfoTok/cosmos_predict1/tokenizer/networks/ours_discrete_video.py\", line 461, in decode\n    z = self.post_quant_conv(quant) # input is [B, n_quan, t, h, w], continuous\n  File \"/home/whisperliang/InfoTok/.venv/lib/python3.10/site-packages/torch/nn/modules/module.py\", line 1739, in _wrapped_call_impl\n    return self._call_impl(*args, **kwargs)\n  File \"/home/whisperliang/InfoTok/.venv/lib/python3.10/site-packages/torch/nn/modules/module.py\", line 1750, in _call_impl\n    return forward_call(*args, **kwargs)\n  File \"/home/whisperliang/InfoTok/cosmos_predict1/tokenizer/modules/layers3d.py\", line 97, in forward\n    return self.conv3d(x)\n  File \"/home/whisperliang/InfoTok/.venv/lib/python3.10/site-packages/torch/nn/modules/module.py\", line 1739, in _wrapped_call_impl\n    return self._call_impl(*args, **kwargs)\n  File \"/home/whisperliang/InfoTok/.venv/lib/python3.10/site-packages/torch/nn/modules/module.py\", line 1750, in _call_impl\n    return forward_call(*args, **kwargs)\n  File \"/home/whisperliang/InfoTok/.venv/lib/python3.10/site-packages/torch/nn/modules/conv.py\", line 725, in forward\n    return self._conv_forward(input, self.weight, self.bias)\n  File \"/home/whisperliang/InfoTok/.venv/lib/python3.10/site-packages/torch/nn/modules/conv.py\", line 720, in _conv_forward\n    return F.conv3d(\nRuntimeError: Input type (c10::BFloat16) and bias type (float) should be the same\n",
+  "argv": [
+    "scripts/chp_validate.py",
+    "upstream",
+    "--video",
+    "data/chp_vtok/mcl_jcv01.mp4",
+    "--height",
+    "256",
+    "--frames",
+    "17",
+    "--dtype",
+    "float32",
+    "--output",
+    "results/chp_vtok/upstream_256_pass.json"
+  ],
+  "device": "NVIDIA H100 PCIe",
+  "torch": "2.6.0+cu124",
+  "cuda": "12.4",
+  "dtype": "float32",
+  "backbone_sha256": "bd69629a8f8fcfc4808d29eec5bed68177e22aa14e3b9b799599791e26af935a"
+}

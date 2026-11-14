@@ -1,0 +1,220 @@
+2026-11-14 21:53:14.838 | INFO     | cosmos_predict1.tokenizer.modules.layers3d:__init__:843 - Working with z of shape (1, 256, 128, 128) = 4194304 dimensions.
+2026-11-14 21:53:15.454 | INFO     | cosmos_predict1.tokenizer.networks.ours_discrete_video:__init__:64 - OURS based on FSQ-VAE, with {'name': 'OURS', 'attn_resolutions': [32], 'channels': 128, 'channels_mult': [2, 4, 4], 'dropout': 0.0, 'in_channels': 3, 'num_res_blocks': 2, 'out_channels': 3, 'resolution': 1024, 'patch_size': 2, 'patch_method': 'haar', 'num_groups': 1, 'legacy_mode': False, 'spatial_compression': 8, 'temporal_compression': 4, 'quantizer': 'FSQ', 'levels': [8, 8, 8, 5, 5, 5], 'encoder': 'FACTORIZED', 'decoder': 'FACTORIZED', 'rate_strategy': 'elbo', 'use_vit': True, 'freeze_original': False, 'vit_config': {'hidden_size': 256, 'intermediate_size': 512, 'num_encoder_layers': 8, 'num_decoder_layers': 8, 'num_attention_heads': 32, 'theta': 10000.0, 'rms_norm_eps': 1e-05, 'initializer_range': 0.02, 'max_num_video_frames': 49, 'switch_rotary_to_1d': 1.0, 'max_sequence_length': 96, 'max_sequence_length_1d': 8192, 'concat_decode_2d': False, 'special_attn': False, 'method': 'mse'}}.
+2026-11-14 21:53:15.456 | INFO     | cosmos_predict1.tokenizer.networks.ours_discrete_video:__init__:67 - model=OURS, num_parameters=112,619,766
+2026-11-14 21:53:15.456 | INFO     | cosmos_predict1.tokenizer.networks.ours_discrete_video:__init__:68 - z_channels=256, embedding_dim=6.
+2026-11-14 21:53:15.456 | INFO     | cosmos_predict1.tokenizer.networks.ours_discrete_video:__init__:87 - Not freezing original model parameters.
+2026-11-14 21:53:15.595 | INFO     | cosmos_predict1.tokenizer.networks.ours_discrete_video:init_adaptive_token:172 - Adaptive token initialized with shape torch.Size([128]) and value 0.0.
+2026-11-14 21:53:15.596 | INFO     | cosmos_predict1.tokenizer.networks.ours_discrete_video:__init__:122 - model=OURS, num_parameters=123,142,646
+2026-11-14 21:53:20.818 | INFO     | cosmos_predict1.tokenizer.modules.layers3d:__init__:843 - Working with z of shape (1, 256, 128, 128) = 4194304 dimensions.
+2026-11-14 21:53:21.216 | INFO     | cosmos_predict1.tokenizer.networks.ours_discrete_video:__init__:64 - OURS based on FSQ-VAE, with {'name': 'OURS', 'attn_resolutions': [32], 'channels': 128, 'channels_mult': [2, 4, 4], 'dropout': 0.0, 'in_channels': 3, 'num_res_blocks': 2, 'out_channels': 3, 'resolution': 1024, 'patch_size': 2, 'patch_method': 'haar', 'num_groups': 1, 'legacy_mode': False, 'spatial_compression': 8, 'temporal_compression': 4, 'quantizer': 'FSQ', 'levels': [8, 8, 8, 5, 5, 5], 'encoder': 'FACTORIZED', 'decoder': 'FACTORIZED', 'rate_strategy': 'elbo', 'use_vit': True, 'freeze_original': False, 'vit_config': {'hidden_size': 256, 'intermediate_size': 512, 'num_encoder_layers': 8, 'num_decoder_layers': 8, 'num_attention_heads': 32, 'theta': 10000.0, 'rms_norm_eps': 1e-05, 'initializer_range': 0.02, 'max_num_video_frames': 49, 'switch_rotary_to_1d': 1.0, 'max_sequence_length': 96, 'max_sequence_length_1d': 8192, 'concat_decode_2d': False, 'special_attn': False, 'method': 'mse'}}.
+2026-11-14 21:53:21.217 | INFO     | cosmos_predict1.tokenizer.networks.ours_discrete_video:__init__:67 - model=OURS, num_parameters=112,619,766
+2026-11-14 21:53:21.217 | INFO     | cosmos_predict1.tokenizer.networks.ours_discrete_video:__init__:68 - z_channels=256, embedding_dim=6.
+2026-11-14 21:53:21.217 | INFO     | cosmos_predict1.tokenizer.networks.ours_discrete_video:__init__:87 - Not freezing original model parameters.
+2026-11-14 21:53:21.352 | INFO     | cosmos_predict1.tokenizer.networks.ours_discrete_video:init_adaptive_token:172 - Adaptive token initialized with shape torch.Size([128]) and value 0.0.
+2026-11-14 21:53:21.353 | INFO     | cosmos_predict1.tokenizer.networks.ours_discrete_video:__init__:122 - model=OURS, num_parameters=123,142,646
+{
+  "attention": [
+    {
+      "dtype": "torch.float32",
+      "class_name": "CausalAttnBlock",
+      "sdpa": {
+        "seconds": 0.0015548669907730073,
+        "peak_allocated_bytes": 52520448,
+        "peak_reserved_bytes": 71303168,
+        "baseline_bytes": 36050944,
+        "incremental_peak_bytes": 16469504
+      },
+      "explicit": {
+        "seconds": 0.0014439660008065403,
+        "peak_allocated_bytes": 64561152,
+        "peak_reserved_bytes": 79691776,
+        "baseline_bytes": 47848448,
+        "incremental_peak_bytes": 16712704
+      },
+      "forward_max_abs": 2.384185791015625e-07,
+      "input_gradient_max_abs": 5.4569682106375694e-12,
+      "parameter_gradient_max_abs": 2.3283064365386963e-10
+    },
+    {
+      "dtype": "torch.float32",
+      "class_name": "CausalTemporalAttnBlock",
+      "sdpa": {
+        "seconds": 0.0012650739954551682,
+        "peak_allocated_bytes": 81972224,
+        "peak_reserved_bytes": 115343360,
+        "baseline_bytes": 70135808,
+        "incremental_peak_bytes": 11836416
+      },
+      "explicit": {
+        "seconds": 0.0009641889919294044,
+        "peak_allocated_bytes": 89914880,
+        "peak_reserved_bytes": 115343360,
+        "baseline_bytes": 79022592,
+        "incremental_peak_bytes": 10892288
+      },
+      "forward_max_abs": 4.76837158203125e-07,
+      "input_gradient_max_abs": 7.275957614183426e-12,
+      "parameter_gradient_max_abs": 5.820766091346741e-10
+    },
+    {
+      "dtype": "torch.float16",
+      "class_name": "CausalAttnBlock",
+      "sdpa": {
+        "seconds": 0.0010154219926334918,
+        "peak_allocated_bytes": 84907520,
+        "peak_reserved_bytes": 115343360,
+        "baseline_bytes": 69421056,
+        "incremental_peak_bytes": 15486464
+      },
+      "explicit": {
+        "seconds": 0.0007808890077285469,
+        "peak_allocated_bytes": 86626304,
+        "peak_reserved_bytes": 115343360,
+        "baseline_bytes": 78269440,
+        "incremental_peak_bytes": 8356864
+      },
+      "forward_max_abs": 0.001953125,
+      "input_gradient_max_abs": 7.152557373046875e-07,
+      "parameter_gradient_max_abs": 9.870529174804688e-05
+    },
+    {
+      "dtype": "torch.float16",
+      "class_name": "CausalTemporalAttnBlock",
+      "sdpa": {
+        "seconds": 0.0010740060097305104,
+        "peak_allocated_bytes": 80562176,
+        "peak_reserved_bytes": 115343360,
+        "baseline_bytes": 69689344,
+        "incremental_peak_bytes": 10872832
+      },
+      "explicit": {
+        "seconds": 0.0010040400084108114,
+        "peak_allocated_bytes": 80275968,
+        "peak_reserved_bytes": 115343360,
+        "baseline_bytes": 74828288,
+        "incremental_peak_bytes": 5447680
+      },
+      "forward_max_abs": 0.001953125,
+      "input_gradient_max_abs": 2.384185791015625e-07,
+      "parameter_gradient_max_abs": 5.7220458984375e-06
+    },
+    {
+      "dtype": "torch.bfloat16",
+      "class_name": "CausalAttnBlock",
+      "sdpa": {
+        "seconds": 0.0010034380102297291,
+        "peak_allocated_bytes": 84645376,
+        "peak_reserved_bytes": 115343360,
+        "baseline_bytes": 69158912,
+        "incremental_peak_bytes": 15486464
+      },
+      "explicit": {
+        "seconds": 0.0008120529964799061,
+        "peak_allocated_bytes": 86364160,
+        "peak_reserved_bytes": 115343360,
+        "baseline_bytes": 78007296,
+        "incremental_peak_bytes": 8356864
+      },
+      "forward_max_abs": 0.015625,
+      "input_gradient_max_abs": 2.384185791015625e-07,
+      "parameter_gradient_max_abs": 7.62939453125e-06
+    },
+    {
+      "dtype": "torch.bfloat16",
+      "class_name": "CausalTemporalAttnBlock",
+      "sdpa": {
+        "seconds": 0.0010930510034086183,
+        "peak_allocated_bytes": 80300032,
+        "peak_reserved_bytes": 115343360,
+        "baseline_bytes": 69427200,
+        "incremental_peak_bytes": 10872832
+      },
+      "explicit": {
+        "seconds": 0.0008642299944767728,
+        "peak_allocated_bytes": 80812544,
+        "peak_reserved_bytes": 115343360,
+        "baseline_bytes": 75364864,
+        "incremental_peak_bytes": 5447680
+      },
+      "forward_max_abs": 0.015625,
+      "input_gradient_max_abs": 3.5762786865234375e-07,
+      "parameter_gradient_max_abs": 1.52587890625e-05
+    }
+  ],
+  "checkpoint": [
+    {
+      "dtype": "torch.float32",
+      "id_difference_fraction": 0.0,
+      "final_reconstruction_max_abs": 1.4901161193847656e-06,
+      "final_reconstruction_mean_abs": 9.585866678207822e-08,
+      "sdpa_encode": {
+        "seconds": 0.142102691999753,
+        "peak_allocated_bytes": 1293262848,
+        "peak_reserved_bytes": 2642411520,
+        "baseline_bytes": 575578112,
+        "incremental_peak_bytes": 717684736
+      },
+      "sdpa_decode": {
+        "seconds": 0.2431216060067527,
+        "peak_allocated_bytes": 1428964864,
+        "peak_reserved_bytes": 2642411520,
+        "baseline_bytes": 575686144,
+        "incremental_peak_bytes": 853278720
+      },
+      "explicit_encode": {
+        "seconds": 0.14239047600131016,
+        "peak_allocated_bytes": 1302217728,
+        "peak_reserved_bytes": 2642411520,
+        "baseline_bytes": 584532992,
+        "incremental_peak_bytes": 717684736
+      },
+      "explicit_decode": {
+        "seconds": 0.24412123698857613,
+        "peak_allocated_bytes": 1437919744,
+        "peak_reserved_bytes": 2642411520,
+        "baseline_bytes": 584641024,
+        "incremental_peak_bytes": 853278720
+      },
+      "total_params": 123142646,
+      "encoder_params": 46645760,
+      "decoder_params": 65970672
+    },
+    {
+      "dtype": "torch.bfloat16",
+      "id_difference_fraction": 0.44296878576278687,
+      "final_reconstruction_max_abs": 0.322265625,
+      "final_reconstruction_mean_abs": 0.0084228515625,
+      "sdpa_encode": {
+        "seconds": 0.06880571600049734,
+        "peak_allocated_bytes": 762993152,
+        "peak_reserved_bytes": 1514143744,
+        "baseline_bytes": 341366784,
+        "incremental_peak_bytes": 421626368
+      },
+      "sdpa_decode": {
+        "seconds": 0.11455702700186521,
+        "peak_allocated_bytes": 840248320,
+        "peak_reserved_bytes": 1514143744,
+        "baseline_bytes": 341428736,
+        "incremental_peak_bytes": 498819584
+      },
+      "explicit_encode": {
+        "seconds": 0.06799675300135277,
+        "peak_allocated_bytes": 767478272,
+        "peak_reserved_bytes": 1514143744,
+        "baseline_bytes": 345851904,
+        "incremental_peak_bytes": 421626368
+      },
+      "explicit_decode": {
+        "seconds": 0.11418579700693954,
+        "peak_allocated_bytes": 844733440,
+        "peak_reserved_bytes": 1514143744,
+        "baseline_bytes": 345913856,
+        "incremental_peak_bytes": 498819584
+      },
+      "total_params": 123142646,
+      "encoder_params": 46645760,
+      "decoder_params": 65970672
+    }
+  ]
+}

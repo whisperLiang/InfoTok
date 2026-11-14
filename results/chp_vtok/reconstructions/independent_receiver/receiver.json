@@ -1,0 +1,311 @@
+{
+  "packets": [
+    {
+      "block_id": 0,
+      "budget": 256,
+      "decode_seconds": 2.1016349220008124,
+      "received_bytes": 1044,
+      "reference_cache_bytes": 0,
+      "committed": false,
+      "shape": [
+        1,
+        3,
+        1,
+        1080,
+        1920
+      ]
+    },
+    {
+      "block_id": 0,
+      "budget": 512,
+      "decode_seconds": 1.7415845079958672,
+      "received_bytes": 1587,
+      "reference_cache_bytes": 0,
+      "committed": false,
+      "shape": [
+        1,
+        3,
+        1,
+        1080,
+        1920
+      ]
+    },
+    {
+      "block_id": 0,
+      "budget": 1024,
+      "decode_seconds": 1.5413159199961228,
+      "received_bytes": 2642,
+      "reference_cache_bytes": 0,
+      "committed": false,
+      "shape": [
+        1,
+        3,
+        1,
+        1080,
+        1920
+      ]
+    },
+    {
+      "block_id": 0,
+      "budget": 2048,
+      "decode_seconds": 4.044286796997767,
+      "received_bytes": 4721,
+      "reference_cache_bytes": 5932646400,
+      "committed": true,
+      "shape": [
+        1,
+        3,
+        1,
+        1080,
+        1920
+      ]
+    },
+    {
+      "block_id": 1,
+      "budget": 256,
+      "decode_seconds": 1.6259799209947232,
+      "received_bytes": 5264,
+      "reference_cache_bytes": 5932646400,
+      "committed": false,
+      "shape": [
+        1,
+        3,
+        4,
+        1080,
+        1920
+      ]
+    },
+    {
+      "block_id": 1,
+      "budget": 512,
+      "decode_seconds": 1.6298035679938039,
+      "received_bytes": 5807,
+      "reference_cache_bytes": 5932646400,
+      "committed": false,
+      "shape": [
+        1,
+        3,
+        4,
+        1080,
+        1920
+      ]
+    },
+    {
+      "block_id": 1,
+      "budget": 1024,
+      "decode_seconds": 1.628819764999207,
+      "received_bytes": 6862,
+      "reference_cache_bytes": 5932646400,
+      "committed": false,
+      "shape": [
+        1,
+        3,
+        4,
+        1080,
+        1920
+      ]
+    },
+    {
+      "block_id": 1,
+      "budget": 2048,
+      "decode_seconds": 3.2684853639948415,
+      "received_bytes": 8941,
+      "reference_cache_bytes": 5999493120,
+      "committed": true,
+      "shape": [
+        1,
+        3,
+        4,
+        1080,
+        1920
+      ]
+    },
+    {
+      "block_id": 2,
+      "budget": 256,
+      "decode_seconds": 1.6254893220029771,
+      "received_bytes": 9484,
+      "reference_cache_bytes": 5999493120,
+      "committed": false,
+      "shape": [
+        1,
+        3,
+        4,
+        1080,
+        1920
+      ]
+    },
+    {
+      "block_id": 2,
+      "budget": 512,
+      "decode_seconds": 1.62979806799558,
+      "received_bytes": 10027,
+      "reference_cache_bytes": 5999493120,
+      "committed": false,
+      "shape": [
+        1,
+        3,
+        4,
+        1080,
+        1920
+      ]
+    },
+    {
+      "block_id": 2,
+      "budget": 1024,
+      "decode_seconds": 1.629394574003527,
+      "received_bytes": 11082,
+      "reference_cache_bytes": 5999493120,
+      "committed": false,
+      "shape": [
+        1,
+        3,
+        4,
+        1080,
+        1920
+      ]
+    },
+    {
+      "block_id": 2,
+      "budget": 2048,
+      "decode_seconds": 3.2692206939973403,
+      "received_bytes": 13161,
+      "reference_cache_bytes": 6066339840,
+      "committed": true,
+      "shape": [
+        1,
+        3,
+        4,
+        1080,
+        1920
+      ]
+    },
+    {
+      "block_id": 3,
+      "budget": 256,
+      "decode_seconds": 1.6264453460025834,
+      "received_bytes": 13704,
+      "reference_cache_bytes": 6066339840,
+      "committed": false,
+      "shape": [
+        1,
+        3,
+        4,
+        1080,
+        1920
+      ]
+    },
+    {
+      "block_id": 3,
+      "budget": 512,
+      "decode_seconds": 1.630663496995112,
+      "received_bytes": 14247,
+      "reference_cache_bytes": 6066339840,
+      "committed": false,
+      "shape": [
+        1,
+        3,
+        4,
+        1080,
+        1920
+      ]
+    },
+    {
+      "block_id": 3,
+      "budget": 1024,
+      "decode_seconds": 1.629555927007459,
+      "received_bytes": 15302,
+      "reference_cache_bytes": 6066339840,
+      "committed": false,
+      "shape": [
+        1,
+        3,
+        4,
+        1080,
+        1920
+      ]
+    },
+    {
+      "block_id": 3,
+      "budget": 2048,
+      "decode_seconds": 3.269705298007466,
+      "received_bytes": 17381,
+      "reference_cache_bytes": 6133186560,
+      "committed": true,
+      "shape": [
+        1,
+        3,
+        4,
+        1080,
+        1920
+      ]
+    },
+    {
+      "block_id": 4,
+      "budget": 256,
+      "decode_seconds": 1.6280329860019265,
+      "received_bytes": 17924,
+      "reference_cache_bytes": 6133186560,
+      "committed": false,
+      "shape": [
+        1,
+        3,
+        4,
+        1080,
+        1920
+      ]
+    },
+    {
+      "block_id": 4,
+      "budget": 512,
+      "decode_seconds": 1.6309576960047707,
+      "received_bytes": 18467,
+      "reference_cache_bytes": 6133186560,
+      "committed": false,
+      "shape": [
+        1,
+        3,
+        4,
+        1080,
+        1920
+      ]
+    },
+    {
+      "block_id": 4,
+      "budget": 1024,
+      "decode_seconds": 1.6305275579943554,
+      "received_bytes": 19522,
+      "reference_cache_bytes": 6133186560,
+      "committed": false,
+      "shape": [
+        1,
+        3,
+        4,
+        1080,
+        1920
+      ]
+    },
+    {
+      "block_id": 4,
+      "budget": 2048,
+      "decode_seconds": 3.2713458340003854,
+      "received_bytes": 21601,
+      "reference_cache_bytes": 6200033280,
+      "committed": true,
+      "shape": [
+        1,
+        3,
+        4,
+        1080,
+        1920
+      ]
+    }
+  ],
+  "actual_bytes": 21601,
+  "elapsed_seconds": 43.553423256991664,
+  "independent_process": true,
+  "inputs": [
+    "/home/whisperliang/InfoTok/checkpoints/chp_vtok/multi_decoder.pt",
+    "/home/whisperliang/InfoTok/results/chp_vtok/incremental_1080.chp"
+  ]
+}

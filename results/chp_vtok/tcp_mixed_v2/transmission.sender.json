@@ -1,0 +1,131 @@
+{
+  "packets": [
+    {
+      "block_id": 0,
+      "budget": 256,
+      "offset": 0,
+      "new_ids": 256,
+      "packet_bytes": 543,
+      "encode_seconds": 3.126504102,
+      "cache_bytes": 4177920000,
+      "encode_start_ns": 108262843688040,
+      "packet_sent_ns": 108265970737243
+    },
+    {
+      "block_id": 1,
+      "budget": 256,
+      "offset": 0,
+      "new_ids": 256,
+      "packet_bytes": 543,
+      "encode_seconds": 1.278577193,
+      "cache_bytes": 4244766720,
+      "encode_start_ns": 108265970796899,
+      "packet_sent_ns": 108267249695489
+    },
+    {
+      "block_id": 1,
+      "budget": 512,
+      "offset": 256,
+      "new_ids": 256,
+      "packet_bytes": 543,
+      "encode_seconds": 1.278577193,
+      "cache_bytes": 4244766720,
+      "encode_start_ns": 108265970796899,
+      "packet_sent_ns": 108267249836982
+    },
+    {
+      "block_id": 2,
+      "budget": 256,
+      "offset": 0,
+      "new_ids": 256,
+      "packet_bytes": 543,
+      "encode_seconds": 1.923408025,
+      "cache_bytes": 4311613440,
+      "encode_start_ns": 108267249872635,
+      "packet_sent_ns": 108269173581389
+    },
+    {
+      "block_id": 2,
+      "budget": 512,
+      "offset": 256,
+      "new_ids": 256,
+      "packet_bytes": 543,
+      "encode_seconds": 1.923408025,
+      "cache_bytes": 4311613440,
+      "encode_start_ns": 108267249872635,
+      "packet_sent_ns": 108269173708113
+    },
+    {
+      "block_id": 2,
+      "budget": 1024,
+      "offset": 512,
+      "new_ids": 512,
+      "packet_bytes": 1055,
+      "encode_seconds": 1.923408025,
+      "cache_bytes": 4311613440,
+      "encode_start_ns": 108267249872635,
+      "packet_sent_ns": 108269173875342
+    },
+    {
+      "block_id": 3,
+      "budget": 256,
+      "offset": 0,
+      "new_ids": 256,
+      "packet_bytes": 543,
+      "encode_seconds": 1.804811659,
+      "cache_bytes": 4378460160,
+      "encode_start_ns": 108269173913587,
+      "packet_sent_ns": 108270978958671
+    },
+    {
+      "block_id": 3,
+      "budget": 512,
+      "offset": 256,
+      "new_ids": 256,
+      "packet_bytes": 543,
+      "encode_seconds": 1.804811659,
+      "cache_bytes": 4378460160,
+      "encode_start_ns": 108269173913587,
+      "packet_sent_ns": 108270979088765
+    },
+    {
+      "block_id": 3,
+      "budget": 1024,
+      "offset": 512,
+      "new_ids": 512,
+      "packet_bytes": 1055,
+      "encode_seconds": 1.804811659,
+      "cache_bytes": 4378460160,
+      "encode_start_ns": 108269173913587,
+      "packet_sent_ns": 108270979243713
+    },
+    {
+      "block_id": 3,
+      "budget": 2048,
+      "offset": 1024,
+      "new_ids": 1024,
+      "packet_bytes": 2079,
+      "encode_seconds": 1.804811659,
+      "cache_bytes": 4378460160,
+      "encode_start_ns": 108269173913587,
+      "packet_sent_ns": 108270979519972
+    },
+    {
+      "block_id": 4,
+      "budget": 256,
+      "offset": 0,
+      "new_ids": 256,
+      "packet_bytes": 543,
+      "encode_seconds": 1.92421096,
+      "cache_bytes": 4445306880,
+      "encode_start_ns": 108270979555694,
+      "packet_sent_ns": 108272904018784
+    }
+  ],
+  "elapsed_seconds": 10.063421615006519,
+  "actual_bytes": 9034,
+  "protocol_version": 2,
+  "transport": "tcp",
+  "peak_allocated_bytes": 11108839936,
+  "source": "/home/whisperliang/InfoTok/data/chp_vtok/mcl_jcv01.mp4"
+}

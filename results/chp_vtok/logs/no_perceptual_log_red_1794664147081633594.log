@@ -1,0 +1,33 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+________ test_debug_loss_without_perceptual_still_records_training_step ________
+tests/test_chp_training_framework.py:106: in test_debug_loss_without_perceptual_still_records_training_step
+    cb.on_training_step_end(
+cosmos_predict1/tokenizer/training/chp_model.py:126: in on_training_step_end
+    perceptual = model.loss.loss_modules["perceptual"]
+E   KeyError: 'perceptual'
+=============================== warnings summary ===============================
+.venv/lib/python3.10/site-packages/megatron/core/tensor_parallel/random.py:10
+  /home/whisperliang/InfoTok/.venv/lib/python3.10/site-packages/megatron/core/tensor_parallel/random.py:10: DeprecationWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html
+    from pkg_resources import packaging
+
+.venv/lib/python3.10/site-packages/megatron/core/tensor_parallel/layers.py:265
+  /home/whisperliang/InfoTok/.venv/lib/python3.10/site-packages/megatron/core/tensor_parallel/layers.py:265: FutureWarning: `torch.cuda.amp.custom_fwd(args...)` is deprecated. Please use `torch.amp.custom_fwd(args..., device_type='cuda')` instead.
+    def forward(
+
+.venv/lib/python3.10/site-packages/megatron/core/tensor_parallel/layers.py:277
+  /home/whisperliang/InfoTok/.venv/lib/python3.10/site-packages/megatron/core/tensor_parallel/layers.py:277: FutureWarning: `torch.cuda.amp.custom_bwd(args...)` is deprecated. Please use `torch.amp.custom_bwd(args..., device_type='cuda')` instead.
+    def backward(ctx, grad_output):
+
+.venv/lib/python3.10/site-packages/megatron/core/tensor_parallel/layers.py:364
+  /home/whisperliang/InfoTok/.venv/lib/python3.10/site-packages/megatron/core/tensor_parallel/layers.py:364: FutureWarning: `torch.cuda.amp.custom_fwd(args...)` is deprecated. Please use `torch.amp.custom_fwd(args..., device_type='cuda')` instead.
+    def forward(
+
+.venv/lib/python3.10/site-packages/megatron/core/tensor_parallel/layers.py:401
+  /home/whisperliang/InfoTok/.venv/lib/python3.10/site-packages/megatron/core/tensor_parallel/layers.py:401: FutureWarning: `torch.cuda.amp.custom_bwd(args...)` is deprecated. Please use `torch.amp.custom_bwd(args..., device_type='cuda')` instead.
+    def backward(ctx, grad_output):
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+FAILED tests/test_chp_training_framework.py::test_debug_loss_without_perceptual_still_records_training_step
+1 failed, 5 warnings in 3.63s

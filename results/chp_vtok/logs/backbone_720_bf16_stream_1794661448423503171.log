@@ -1,0 +1,84 @@
+2026-11-14 21:04:10.298 | INFO     | cosmos_predict1.tokenizer.modules.layers3d:__init__:843 - Working with z of shape (1, 256, 128, 128) = 4194304 dimensions.
+2026-11-14 21:04:11.264 | INFO     | cosmos_predict1.tokenizer.networks.ours_discrete_video:__init__:64 - OURS based on FSQ-VAE, with {'name': 'OURS', 'attn_resolutions': [32], 'channels': 128, 'channels_mult': [2, 4, 4], 'dropout': 0.0, 'in_channels': 3, 'num_res_blocks': 2, 'out_channels': 3, 'resolution': 1024, 'patch_size': 2, 'patch_method': 'haar', 'num_groups': 1, 'legacy_mode': False, 'spatial_compression': 8, 'temporal_compression': 4, 'quantizer': 'FSQ', 'levels': [8, 8, 8, 5, 5, 5], 'encoder': 'FACTORIZED', 'decoder': 'FACTORIZED', 'rate_strategy': 'elbo', 'use_vit': True, 'freeze_original': False, 'vit_config': {'hidden_size': 256, 'intermediate_size': 512, 'num_encoder_layers': 8, 'num_decoder_layers': 8, 'num_attention_heads': 32, 'theta': 10000.0, 'rms_norm_eps': 1e-05, 'initializer_range': 0.02, 'max_num_video_frames': 49, 'switch_rotary_to_1d': 1.0, 'max_sequence_length': 96, 'max_sequence_length_1d': 8192, 'concat_decode_2d': False, 'special_attn': False, 'method': 'mse'}}.
+2026-11-14 21:04:11.265 | INFO     | cosmos_predict1.tokenizer.networks.ours_discrete_video:__init__:67 - model=OURS, num_parameters=112,619,766
+2026-11-14 21:04:11.265 | INFO     | cosmos_predict1.tokenizer.networks.ours_discrete_video:__init__:68 - z_channels=256, embedding_dim=6.
+2026-11-14 21:04:11.265 | INFO     | cosmos_predict1.tokenizer.networks.ours_discrete_video:__init__:87 - Not freezing original model parameters.
+2026-11-14 21:04:11.403 | INFO     | cosmos_predict1.tokenizer.networks.ours_discrete_video:init_adaptive_token:169 - Adaptive token initialized with shape torch.Size([128]) and value 0.0.
+2026-11-14 21:04:11.405 | INFO     | cosmos_predict1.tokenizer.networks.ours_discrete_video:__init__:122 - model=OURS, num_parameters=123,142,646
+{
+  "mode": "backbone",
+  "architecture": "local-window-change",
+  "window": 16,
+  "params": 112616432,
+  "input_shape": [
+    1,
+    3,
+    5,
+    736,
+    1280
+  ],
+  "latent_shape": [
+    1,
+    256,
+    2,
+    92,
+    160
+  ],
+  "output_shape": [
+    1,
+    3,
+    5,
+    720,
+    1280
+  ],
+  "encode": {
+    "seconds": 0.7195738019945566,
+    "peak_allocated_bytes": 3511851520,
+    "peak_reserved_bytes": 5735710720,
+    "baseline_bytes": 282007552
+  },
+  "decode": {
+    "seconds": 0.8621573849959532,
+    "peak_allocated_bytes": 4086024704,
+    "peak_reserved_bytes": 9019850752,
+    "baseline_bytes": 330635264
+  },
+  "pretrained": true,
+  "roundtrip_is_lossy": false,
+  "note": "continuous backbone geometry test; no discrete tokenizer quality claim",
+  "stream": {
+    "seconds": 2.132886988998507,
+    "peak_allocated_bytes": 8147048960,
+    "peak_reserved_bytes": 9995026432,
+    "baseline_bytes": 364550144
+  },
+  "encoder_max_error": 0.03125,
+  "decoder_max_error": 0.03125,
+  "token_difference_fraction": 0.00023777173191774637,
+  "encoder_cache_bytes": 1914306560,
+  "decoder_cache_bytes": 2705653760,
+  "cache_entries": 119,
+  "status": "completed",
+  "argv": [
+    "scripts/chp_validate.py",
+    "backbone",
+    "--video",
+    "data/chp_vtok/mcl_jcv01.mp4",
+    "--height",
+    "720",
+    "--frames",
+    "5",
+    "--dtype",
+    "bfloat16",
+    "--window",
+    "16",
+    "--stream",
+    "--output",
+    "results/chp_vtok/backbone_720_bf16.json"
+  ],
+  "device": "NVIDIA H100 PCIe",
+  "torch": "2.6.0+cu124",
+  "cuda": "12.4",
+  "dtype": "bfloat16",
+  "backbone_sha256": "bd69629a8f8fcfc4808d29eec5bed68177e22aa14e3b9b799599791e26af935a"
+}

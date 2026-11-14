@@ -1,0 +1,147 @@
+{
+  "transport": "tcp-loopback",
+  "protocol_version": 2,
+  "sender_command": [
+    "/home/whisperliang/InfoTok/.venv/bin/python",
+    "-m",
+    "cosmos_predict1.tokenizer.progressive.cli",
+    "send",
+    "--checkpoint",
+    "checkpoints/chp_vtok/tokenizer/multi_native/checkpoints/iter_000000042.pt",
+    "--stream",
+    "tcp://127.0.0.1:33685",
+    "--video",
+    "data/chp_vtok/mcl_jcv01.mp4",
+    "--frames",
+    "17",
+    "--log-prefix",
+    "results/chp_vtok/tcp_mixed_v2/transmission",
+    "--block-budgets",
+    "256,512,1024,2048,256"
+  ],
+  "receiver_command": [
+    "/home/whisperliang/InfoTok/.venv/bin/python",
+    "scripts/chp_isolated_receiver.py",
+    "--checkpoint",
+    "checkpoints/chp_vtok/multi_decoder.pt",
+    "--stream",
+    "tcp://127.0.0.1:33685",
+    "--output",
+    "results/chp_vtok/tcp_mixed_v2/receiver"
+  ],
+  "actual_bytes": 9034,
+  "all_received_ids_equal": true,
+  "actual_budgets": [
+    256,
+    512,
+    1024,
+    2048,
+    256
+  ],
+  "elapsed_including_startup_seconds": 42.238270734,
+  "peak_sender_bytes": 11108839936,
+  "peak_receiver_bytes": 19691047936,
+  "end_to_end_definition": "same-host monotonic clock: block encode start to RGB ready, including queueing",
+  "source_pacing": "17 file frames available at sender before encode; not live 30fps capture",
+  "packets": [
+    {
+      "block_id": 0,
+      "budget": 256,
+      "new_ids": 256,
+      "packet_bytes": 543,
+      "encode_seconds": 3.126504102,
+      "decode_seconds": 7.11414284100465,
+      "end_to_end_seconds": 10.244198953
+    },
+    {
+      "block_id": 1,
+      "budget": 256,
+      "new_ids": 256,
+      "packet_bytes": 543,
+      "encode_seconds": 1.278577193,
+      "decode_seconds": 1.6360989819950191,
+      "end_to_end_seconds": 8.783522126
+    },
+    {
+      "block_id": 1,
+      "budget": 512,
+      "new_ids": 256,
+      "packet_bytes": 543,
+      "encode_seconds": 1.278577193,
+      "decode_seconds": 3.5998043099971255,
+      "end_to_end_seconds": 12.460000919
+    },
+    {
+      "block_id": 2,
+      "budget": 256,
+      "new_ids": 256,
+      "packet_bytes": 543,
+      "encode_seconds": 1.923408025,
+      "decode_seconds": 1.632300198005396,
+      "end_to_end_seconds": 12.920763059
+    },
+    {
+      "block_id": 2,
+      "budget": 512,
+      "new_ids": 256,
+      "packet_bytes": 543,
+      "encode_seconds": 1.923408025,
+      "decode_seconds": 1.6347565300093265,
+      "end_to_end_seconds": 14.631304639
+    },
+    {
+      "block_id": 2,
+      "budget": 1024,
+      "new_ids": 512,
+      "packet_bytes": 1055,
+      "encode_seconds": 1.923408025,
+      "decode_seconds": 3.2684245679993182,
+      "end_to_end_seconds": 17.977224567
+    },
+    {
+      "block_id": 3,
+      "budget": 256,
+      "new_ids": 256,
+      "packet_bytes": 543,
+      "encode_seconds": 1.804811659,
+      "decode_seconds": 1.632505427012802,
+      "end_to_end_seconds": 17.793486291
+    },
+    {
+      "block_id": 3,
+      "budget": 512,
+      "new_ids": 256,
+      "packet_bytes": 543,
+      "encode_seconds": 1.804811659,
+      "decode_seconds": 1.6360750220046612,
+      "end_to_end_seconds": 19.506949001
+    },
+    {
+      "block_id": 3,
+      "budget": 1024,
+      "new_ids": 512,
+      "packet_bytes": 1055,
+      "encode_seconds": 1.804811659,
+      "decode_seconds": 1.6362130460038316,
+      "end_to_end_seconds": 21.218958868
+    },
+    {
+      "block_id": 3,
+      "budget": 2048,
+      "new_ids": 1024,
+      "packet_bytes": 2079,
+      "encode_seconds": 1.804811659,
+      "decode_seconds": 4.753984469993156,
+      "end_to_end_seconds": 26.049469856
+    },
+    {
+      "block_id": 4,
+      "budget": 256,
+      "new_ids": 256,
+      "packet_bytes": 543,
+      "encode_seconds": 1.92421096,
+      "decode_seconds": 3.265781459995196,
+      "end_to_end_seconds": 27.593661171
+    }
+  ]
+}

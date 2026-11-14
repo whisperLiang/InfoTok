@@ -1,0 +1,338 @@
+[
+  {
+    "source_tensor": "results/chp_vtok/reconstructions/rd_morton_mcl/reconstruction_k256.pt",
+    "mp4": "results/chp_vtok/reconstructions/rd_morton_mcl/native_k256.mp4",
+    "sha256": "183385134f6110aeb3b7f1657f088b4d259e3a1adc64c9ba3f5ca99d9ffe3d58",
+    "geometry": [
+      17,
+      1080,
+      1920
+    ],
+    "fps": 30.0,
+    "scientific_metrics_source": "RGB tensor before display-only MP4 encoding"
+  },
+  {
+    "source_tensor": "results/chp_vtok/reconstructions/rd_morton_mcl/reconstruction_k512.pt",
+    "mp4": "results/chp_vtok/reconstructions/rd_morton_mcl/native_k512.mp4",
+    "sha256": "a94e301a2f48d97ec668dbec691e691ec0d322b58144eb66442981ee28953d71",
+    "geometry": [
+      17,
+      1080,
+      1920
+    ],
+    "fps": 30.0,
+    "scientific_metrics_source": "RGB tensor before display-only MP4 encoding"
+  },
+  {
+    "source_tensor": "results/chp_vtok/reconstructions/rd_morton_mcl/reconstruction_k1024.pt",
+    "mp4": "results/chp_vtok/reconstructions/rd_morton_mcl/native_k1024.mp4",
+    "sha256": "9da9d4a52b521853d64540d92ee9ffddd9a82bc7953d052b6d77d3f61122ba0d",
+    "geometry": [
+      17,
+      1080,
+      1920
+    ],
+    "fps": 30.0,
+    "scientific_metrics_source": "RGB tensor before display-only MP4 encoding"
+  },
+  {
+    "source_tensor": "results/chp_vtok/reconstructions/rd_morton_mcl/reconstruction_k2048.pt",
+    "mp4": "results/chp_vtok/reconstructions/rd_morton_mcl/native_k2048.mp4",
+    "sha256": "2df511fd66b71b98b477836d26c5b052fe2f26548748aad322bca4cc9f066de2",
+    "geometry": [
+      17,
+      1080,
+      1920
+    ],
+    "fps": 30.0,
+    "scientific_metrics_source": "RGB tensor before display-only MP4 encoding"
+  },
+  {
+    "source_tensor": "results/chp_vtok/reconstructions/rd_multi_basketball/reconstruction_k256.pt",
+    "mp4": "results/chp_vtok/reconstructions/rd_multi_basketball/native_k256.mp4",
+    "sha256": "28cd8dd1aad155e9ff3f4f0b41bb00037fb22deceb94951452601ba853586260",
+    "geometry": [
+      17,
+      1080,
+      1920
+    ],
+    "fps": 50.0,
+    "scientific_metrics_source": "RGB tensor before display-only MP4 encoding"
+  },
+  {
+    "source_tensor": "results/chp_vtok/reconstructions/rd_multi_basketball/reconstruction_k512.pt",
+    "mp4": "results/chp_vtok/reconstructions/rd_multi_basketball/native_k512.mp4",
+    "sha256": "693a5459d39b86eb844426c74d0c7fc6cf48061eb025b46e2e26806b43828bd6",
+    "geometry": [
+      17,
+      1080,
+      1920
+    ],
+    "fps": 50.0,
+    "scientific_metrics_source": "RGB tensor before display-only MP4 encoding"
+  },
+  {
+    "source_tensor": "results/chp_vtok/reconstructions/rd_multi_basketball/reconstruction_k1024.pt",
+    "mp4": "results/chp_vtok/reconstructions/rd_multi_basketball/native_k1024.mp4",
+    "sha256": "13f6131a115d6ace236233a216357311f6cba5f6549fbaf6ef484b3ab174af73",
+    "geometry": [
+      17,
+      1080,
+      1920
+    ],
+    "fps": 50.0,
+    "scientific_metrics_source": "RGB tensor before display-only MP4 encoding"
+  },
+  {
+    "source_tensor": "results/chp_vtok/reconstructions/rd_multi_basketball/reconstruction_k2048.pt",
+    "mp4": "results/chp_vtok/reconstructions/rd_multi_basketball/native_k2048.mp4",
+    "sha256": "7ffc5abf1b4f4eb1904195ab910ea7523a38e6fe5edf31d7cf6f174399b6f342",
+    "geometry": [
+      17,
+      1080,
+      1920
+    ],
+    "fps": 50.0,
+    "scientific_metrics_source": "RGB tensor before display-only MP4 encoding"
+  },
+  {
+    "source_tensor": "results/chp_vtok/reconstructions/rd_multi_mcl_verified/reconstruction_k256.pt",
+    "mp4": "results/chp_vtok/reconstructions/rd_multi_mcl_verified/native_k256.mp4",
+    "sha256": "3f9fe9d2cead07214d03066e9ff07052c849a7772abadeb652ccb06e1a7da704",
+    "geometry": [
+      17,
+      1080,
+      1920
+    ],
+    "fps": 30.0,
+    "scientific_metrics_source": "RGB tensor before display-only MP4 encoding"
+  },
+  {
+    "source_tensor": "results/chp_vtok/reconstructions/rd_multi_mcl_verified/reconstruction_k512.pt",
+    "mp4": "results/chp_vtok/reconstructions/rd_multi_mcl_verified/native_k512.mp4",
+    "sha256": "215d05da9b439960fc968c48ce235a70b9b48a45d15d14f9532901f978435fae",
+    "geometry": [
+      17,
+      1080,
+      1920
+    ],
+    "fps": 30.0,
+    "scientific_metrics_source": "RGB tensor before display-only MP4 encoding"
+  },
+  {
+    "source_tensor": "results/chp_vtok/reconstructions/rd_multi_mcl_verified/reconstruction_k1024.pt",
+    "mp4": "results/chp_vtok/reconstructions/rd_multi_mcl_verified/native_k1024.mp4",
+    "sha256": "89be6131e412096c7ba63648b014b64dbfc045de23a49feb30d8c92d799e3ee9",
+    "geometry": [
+      17,
+      1080,
+      1920
+    ],
+    "fps": 30.0,
+    "scientific_metrics_source": "RGB tensor before display-only MP4 encoding"
+  },
+  {
+    "source_tensor": "results/chp_vtok/reconstructions/rd_multi_mcl_verified/reconstruction_k2048.pt",
+    "mp4": "results/chp_vtok/reconstructions/rd_multi_mcl_verified/native_k2048.mp4",
+    "sha256": "870bf4f6b6b0994ca7c145f3237c7c0ae1b2120026e695ac8a222248b7dd7db0",
+    "geometry": [
+      17,
+      1080,
+      1920
+    ],
+    "fps": 30.0,
+    "scientific_metrics_source": "RGB tensor before display-only MP4 encoding"
+  },
+  {
+    "source_tensor": "results/chp_vtok/reconstructions/rd_multi_uvg_beauty/reconstruction_k256.pt",
+    "mp4": "results/chp_vtok/reconstructions/rd_multi_uvg_beauty/native_k256.mp4",
+    "sha256": "6a51fee334c1b1679f0e95411b76098741ae56378d187041a7f994fd7dcc3711",
+    "geometry": [
+      17,
+      1080,
+      1920
+    ],
+    "fps": 120.0,
+    "scientific_metrics_source": "RGB tensor before display-only MP4 encoding"
+  },
+  {
+    "source_tensor": "results/chp_vtok/reconstructions/rd_multi_uvg_beauty/reconstruction_k512.pt",
+    "mp4": "results/chp_vtok/reconstructions/rd_multi_uvg_beauty/native_k512.mp4",
+    "sha256": "c1bf1c17deac9be2cda1f168ab33aa42e5180c9830a04ae388376d26772ee179",
+    "geometry": [
+      17,
+      1080,
+      1920
+    ],
+    "fps": 120.0,
+    "scientific_metrics_source": "RGB tensor before display-only MP4 encoding"
+  },
+  {
+    "source_tensor": "results/chp_vtok/reconstructions/rd_multi_uvg_beauty/reconstruction_k1024.pt",
+    "mp4": "results/chp_vtok/reconstructions/rd_multi_uvg_beauty/native_k1024.mp4",
+    "sha256": "bc9a3a384ae2f6137072d5cfed8eb2e2481d718f4c47bca234a77f77b2c4affd",
+    "geometry": [
+      17,
+      1080,
+      1920
+    ],
+    "fps": 120.0,
+    "scientific_metrics_source": "RGB tensor before display-only MP4 encoding"
+  },
+  {
+    "source_tensor": "results/chp_vtok/reconstructions/rd_multi_uvg_beauty/reconstruction_k2048.pt",
+    "mp4": "results/chp_vtok/reconstructions/rd_multi_uvg_beauty/native_k2048.mp4",
+    "sha256": "36e9bb5b216ffe8ae4d5d6eceaf1b68f49e8894f43c572f95dd4ceb7ac66fb27",
+    "geometry": [
+      17,
+      1080,
+      1920
+    ],
+    "fps": 120.0,
+    "scientific_metrics_source": "RGB tensor before display-only MP4 encoding"
+  },
+  {
+    "source_tensor": "results/chp_vtok/reconstructions/rd_single_basketball/reconstruction_k256.pt",
+    "mp4": "results/chp_vtok/reconstructions/rd_single_basketball/native_k256.mp4",
+    "sha256": "968abce039e434ae4b66180c18eff9367c7a8638fb32e6fab5d54c17b944260f",
+    "geometry": [
+      17,
+      1080,
+      1920
+    ],
+    "fps": 50.0,
+    "scientific_metrics_source": "RGB tensor before display-only MP4 encoding"
+  },
+  {
+    "source_tensor": "results/chp_vtok/reconstructions/rd_single_basketball/reconstruction_k512.pt",
+    "mp4": "results/chp_vtok/reconstructions/rd_single_basketball/native_k512.mp4",
+    "sha256": "35f419e789df76590a39734648f6dc6d999b9db1c3e0d5b8a53d44b51d864ac6",
+    "geometry": [
+      17,
+      1080,
+      1920
+    ],
+    "fps": 50.0,
+    "scientific_metrics_source": "RGB tensor before display-only MP4 encoding"
+  },
+  {
+    "source_tensor": "results/chp_vtok/reconstructions/rd_single_basketball/reconstruction_k1024.pt",
+    "mp4": "results/chp_vtok/reconstructions/rd_single_basketball/native_k1024.mp4",
+    "sha256": "b5cd47e57141e51b94239b8acb2aa9fb195b40ab37607c776db202e364e663d3",
+    "geometry": [
+      17,
+      1080,
+      1920
+    ],
+    "fps": 50.0,
+    "scientific_metrics_source": "RGB tensor before display-only MP4 encoding"
+  },
+  {
+    "source_tensor": "results/chp_vtok/reconstructions/rd_single_basketball/reconstruction_k2048.pt",
+    "mp4": "results/chp_vtok/reconstructions/rd_single_basketball/native_k2048.mp4",
+    "sha256": "620132cdd6b3e7fbe0e3e4fdddb7ab6cbf1b1ec0860cf5c2c7718928b45725a5",
+    "geometry": [
+      17,
+      1080,
+      1920
+    ],
+    "fps": 50.0,
+    "scientific_metrics_source": "RGB tensor before display-only MP4 encoding"
+  },
+  {
+    "source_tensor": "results/chp_vtok/reconstructions/rd_single_mcl_verified/reconstruction_k256.pt",
+    "mp4": "results/chp_vtok/reconstructions/rd_single_mcl_verified/native_k256.mp4",
+    "sha256": "ac6f14aae87de5444cae597b3c386749c1040f3332401e778c2fb5b9bab66f14",
+    "geometry": [
+      17,
+      1080,
+      1920
+    ],
+    "fps": 30.0,
+    "scientific_metrics_source": "RGB tensor before display-only MP4 encoding"
+  },
+  {
+    "source_tensor": "results/chp_vtok/reconstructions/rd_single_mcl_verified/reconstruction_k512.pt",
+    "mp4": "results/chp_vtok/reconstructions/rd_single_mcl_verified/native_k512.mp4",
+    "sha256": "dc985657ebf8fd0b476eea9304173523e490981eafaabacc4c1aeb2c62b0fbbe",
+    "geometry": [
+      17,
+      1080,
+      1920
+    ],
+    "fps": 30.0,
+    "scientific_metrics_source": "RGB tensor before display-only MP4 encoding"
+  },
+  {
+    "source_tensor": "results/chp_vtok/reconstructions/rd_single_mcl_verified/reconstruction_k1024.pt",
+    "mp4": "results/chp_vtok/reconstructions/rd_single_mcl_verified/native_k1024.mp4",
+    "sha256": "6f2520e5f9a9bb5d1f5e840ce919439b8a68b93a316f16a5b743176a679d2739",
+    "geometry": [
+      17,
+      1080,
+      1920
+    ],
+    "fps": 30.0,
+    "scientific_metrics_source": "RGB tensor before display-only MP4 encoding"
+  },
+  {
+    "source_tensor": "results/chp_vtok/reconstructions/rd_single_mcl_verified/reconstruction_k2048.pt",
+    "mp4": "results/chp_vtok/reconstructions/rd_single_mcl_verified/native_k2048.mp4",
+    "sha256": "34b67d2916e382e6db20ad69e127d06e6b36dbd2cd69e76f32ce462a76d79361",
+    "geometry": [
+      17,
+      1080,
+      1920
+    ],
+    "fps": 30.0,
+    "scientific_metrics_source": "RGB tensor before display-only MP4 encoding"
+  },
+  {
+    "source_tensor": "results/chp_vtok/reconstructions/rd_single_uvg_beauty/reconstruction_k256.pt",
+    "mp4": "results/chp_vtok/reconstructions/rd_single_uvg_beauty/native_k256.mp4",
+    "sha256": "c0df2d91cfefe5841bc6d485dbc47a578b596d0f905caee940d8912b10488fd6",
+    "geometry": [
+      17,
+      1080,
+      1920
+    ],
+    "fps": 120.0,
+    "scientific_metrics_source": "RGB tensor before display-only MP4 encoding"
+  },
+  {
+    "source_tensor": "results/chp_vtok/reconstructions/rd_single_uvg_beauty/reconstruction_k512.pt",
+    "mp4": "results/chp_vtok/reconstructions/rd_single_uvg_beauty/native_k512.mp4",
+    "sha256": "5c73237ebf4ff92496820d9b406bb1984e88a738b4d9d5d97541d1ca9fb524b7",
+    "geometry": [
+      17,
+      1080,
+      1920
+    ],
+    "fps": 120.0,
+    "scientific_metrics_source": "RGB tensor before display-only MP4 encoding"
+  },
+  {
+    "source_tensor": "results/chp_vtok/reconstructions/rd_single_uvg_beauty/reconstruction_k1024.pt",
+    "mp4": "results/chp_vtok/reconstructions/rd_single_uvg_beauty/native_k1024.mp4",
+    "sha256": "ada5573f6f9f6eca5235a11ac6db0e6c96d372586fe453348f7f1b7341eb801e",
+    "geometry": [
+      17,
+      1080,
+      1920
+    ],
+    "fps": 120.0,
+    "scientific_metrics_source": "RGB tensor before display-only MP4 encoding"
+  },
+  {
+    "source_tensor": "results/chp_vtok/reconstructions/rd_single_uvg_beauty/reconstruction_k2048.pt",
+    "mp4": "results/chp_vtok/reconstructions/rd_single_uvg_beauty/native_k2048.mp4",
+    "sha256": "c0a2c19a4edb311e525187ca63b7510bad52a2a0038d00a6c8afbbfdd522f817",
+    "geometry": [
+      17,
+      1080,
+      1920
+    ],
+    "fps": 120.0,
+    "scientific_metrics_source": "RGB tensor before display-only MP4 encoding"
+  }
+]

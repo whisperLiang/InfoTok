@@ -1,0 +1,35 @@
+/home/whisperliang/InfoTok/.venv/lib/python3.10/site-packages/megatron/core/tensor_parallel/layers.py:265: FutureWarning: `torch.cuda.amp.custom_fwd(args...)` is deprecated. Please use `torch.amp.custom_fwd(args..., device_type='cuda')` instead.
+  def forward(
+/home/whisperliang/InfoTok/.venv/lib/python3.10/site-packages/megatron/core/tensor_parallel/layers.py:277: FutureWarning: `torch.cuda.amp.custom_bwd(args...)` is deprecated. Please use `torch.amp.custom_bwd(args..., device_type='cuda')` instead.
+  def backward(ctx, grad_output):
+/home/whisperliang/InfoTok/.venv/lib/python3.10/site-packages/megatron/core/tensor_parallel/layers.py:364: FutureWarning: `torch.cuda.amp.custom_fwd(args...)` is deprecated. Please use `torch.amp.custom_fwd(args..., device_type='cuda')` instead.
+  def forward(
+/home/whisperliang/InfoTok/.venv/lib/python3.10/site-packages/megatron/core/tensor_parallel/layers.py:401: FutureWarning: `torch.cuda.amp.custom_bwd(args...)` is deprecated. Please use `torch.amp.custom_bwd(args..., device_type='cuda')` instead.
+  def backward(ctx, grad_output):
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "/home/whisperliang/InfoTok/cosmos_predict1/tokenizer/training/configs/chp_vtok.py", line 9, in <module>
+    from cosmos_predict1.utils.config import Config, JobConfig, EMAConfig
+  File "/home/whisperliang/InfoTok/cosmos_predict1/utils/config.py", line 249, in <module>
+    class TrainerConfig:
+  File "/home/whisperliang/InfoTok/cosmos_predict1/utils/config.py", line 250, in TrainerConfig
+    from cosmos_predict1.utils.trainer import Trainer
+  File "/home/whisperliang/InfoTok/cosmos_predict1/utils/trainer.py", line 26, in <module>
+    import wandb
+  File "/home/whisperliang/InfoTok/.venv/lib/python3.10/site-packages/wandb/__init__.py", line 22, in <module>
+    from wandb.sdk.lib import wb_logging as _wb_logging
+  File "/home/whisperliang/InfoTok/.venv/lib/python3.10/site-packages/wandb/sdk/__init__.py", line 24, in <module>
+    from . import wandb_helper as helper
+  File "/home/whisperliang/InfoTok/.venv/lib/python3.10/site-packages/wandb/sdk/wandb_helper.py", line 6, in <module>
+    from .lib import config_util
+  File "/home/whisperliang/InfoTok/.venv/lib/python3.10/site-packages/wandb/sdk/lib/config_util.py", line 12, in <module>
+    from . import filesystem
+  File "/home/whisperliang/InfoTok/.venv/lib/python3.10/site-packages/wandb/sdk/lib/filesystem.py", line 19, in <module>
+    from wandb.sdk.wandb_settings import Settings
+  File "/home/whisperliang/InfoTok/.venv/lib/python3.10/site-packages/wandb/sdk/wandb_settings.py", line 33, in <module>
+    from wandb.sdk.lib import deprecation, settings_file, urls
+  File "/home/whisperliang/InfoTok/.venv/lib/python3.10/site-packages/wandb/sdk/lib/deprecation.py", line 6, in <module>
+    from wandb.sdk.lib import telemetry
+  File "/home/whisperliang/InfoTok/.venv/lib/python3.10/site-packages/wandb/sdk/lib/telemetry.py", line 10, in <module>
+    from wandb.proto.wandb_telemetry_pb2 import Imports as TelemetryImports
+ImportError: cannot import name 'Imports' from 'wandb.proto.wandb_telemetry_pb2' (/home/whisperliang/InfoTok/.venv/lib/python3.10/site-packages/wandb/proto/wandb_telemetry_pb2.py)
