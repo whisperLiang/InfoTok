@@ -128,8 +128,11 @@ class OursDiscreteVideoTokenizer(nn.Module):
         return self
 
     def to(self, *args, **kwargs):
-        setattr(self.quantizer, "dtype", kwargs.get("dtype", torch.bfloat16))
-        return super(OursDiscreteVideoTokenizer, self).to(*args, **kwargs)
+        result = super(OursDiscreteVideoTokenizer, self).to(*args, **kwargs)
+        # nn.Module.to accepts dtype positionally too (the official inference
+        # loader uses that form). Keep FSQ output aligned with decoder weights.
+        self.quantizer.dtype = self.quant_conv.conv3d.weight.dtype
+        return result
 
     def encoder_jit(self):
         return nn.Sequential(

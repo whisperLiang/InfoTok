@@ -10,3 +10,13 @@ davis_240p/
 infotok_tokenbench_240p/
 infotok_davis_240p/
 TokenBench/
+.venv/
+.pytest_cache/
+
+data/chp_vtok/
+
+.metrics/
+.coverage*
+target/
+results/chp_vtok/**/*.pt
+results/chp_vtok/*.pt

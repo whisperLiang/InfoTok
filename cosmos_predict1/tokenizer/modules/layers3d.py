@@ -367,16 +367,13 @@ class CausalAttnBlock(nn.Module):
         b, c, h, w = q.shape
         q = q.reshape(b, c, h * w)
         q = q.permute(0, 2, 1)
-        k = k.reshape(b, c, h * w)
-        w_ = torch.bmm(q, k)
-        w_ = w_ * (int(c) ** (-0.5))
-        w_ = F.softmax(w_, dim=2)
-
-        # attend to values
-        v = v.reshape(b, c, h * w)
-        w_ = w_.permute(0, 2, 1)
-        h_ = torch.bmm(v, w_)
-        h_ = h_.reshape(b, c, h, w)
+        k = k.reshape(b, c, h * w).transpose(1, 2)
+        v = v.reshape(b, c, h * w).transpose(1, 2)
+        # One head, exactly the original channel scaling. No temporal mixing.
+        h_ = F.scaled_dot_product_attention(
+            q.unsqueeze(1), k.unsqueeze(1), v.unsqueeze(1), dropout_p=0.0,
+            scale=int(c) ** -0.5,
+        ).squeeze(1).transpose(1, 2).reshape(b, c, h, w)
 
         h_ = batch2time(h_, batch_size)
         h_ = self.proj_out(h_)
@@ -410,16 +407,12 @@ class CausalTemporalAttnBlock(nn.Module):
         k = k.permute(0, 2, 1)  # (bhw, t, c)
         v = v.permute(0, 2, 1)  # (bhw, t, c)
 
-        w_ = torch.bmm(q, k.permute(0, 2, 1))  # (bhw, t, t)
-        w_ = w_ * (int(c) ** (-0.5))
-
-        # Apply causal mask
-        mask = torch.tril(torch.ones_like(w_))
-        w_ = w_.masked_fill(mask == 0, float("-inf"))
-        w_ = F.softmax(w_, dim=2)
-
-        # attend to values
-        h_ = torch.bmm(w_, v)  # (bhw, t, c)
+        # is_causal uses a lower-triangular *allowed* mask in SDPA. The
+        # upstream implementation has no attention dropout, including in train.
+        h_ = F.scaled_dot_product_attention(
+            q.unsqueeze(1), k.unsqueeze(1), v.unsqueeze(1), is_causal=True,
+            dropout_p=0.0, scale=int(c) ** -0.5,
+        ).squeeze(1)
         h_ = h_.permute(0, 2, 1).reshape(bhw, c, t)  # (bhw, c, t)
 
         h_ = batch2space(h_, batch_size, height)
