@@ -1,0 +1,144 @@
+{
+  "captured_utc": "2026-11-14T16:15:43.754096+00:00",
+  "completed_steps": [
+    {
+      "iteration": 45,
+      "loss": 0.6128156781196594,
+      "budgets": [
+        [
+          512.0,
+          256.0,
+          1024.0,
+          256.0,
+          2048.0
+        ]
+      ],
+      "components": {
+        "color": 0.2216796875,
+        "lpips": 0.1279296875,
+        "latent": 0.2519147992134094,
+        "temporal": 0.11279296875,
+        "quant": 0.0
+      },
+      "seconds": 38.37882733499282,
+      "shape": [
+        1,
+        3,
+        17,
+        1080,
+        1920
+      ],
+      "peak_allocated_bytes": 64074098688,
+      "peak_reserved_bytes": 82231427072,
+      "perceptual_region": {
+        "y": 340,
+        "x": 1407,
+        "height": 256,
+        "width": 256,
+        "source_height": 1080,
+        "source_width": 1920,
+        "strategy": "uniform source pixels; shared across time; no resize"
+      }
+    },
+    {
+      "iteration": 46,
+      "loss": 0.49310803413391113,
+      "budgets": [
+        [
+          2048.0,
+          256.0,
+          1024.0,
+          512.0,
+          512.0
+        ]
+      ],
+      "components": {
+        "color": 0.1533203125,
+        "lpips": 0.07568359375,
+        "latent": 0.26120495796203613,
+        "temporal": 0.033935546875,
+        "quant": 0.0
+      },
+      "seconds": 36.4718013380043,
+      "shape": [
+        1,
+        3,
+        17,
+        1080,
+        1920
+      ],
+      "peak_allocated_bytes": 64355734528,
+      "peak_reserved_bytes": 82418073600,
+      "perceptual_region": {
+        "y": 240,
+        "x": 562,
+        "height": 256,
+        "width": 256,
+        "source_height": 1080,
+        "source_width": 1920,
+        "strategy": "uniform source pixels; shared across time; no resize"
+      }
+    },
+    {
+      "iteration": 47,
+      "loss": 0.46909254789352417,
+      "budgets": [
+        [
+          2048.0,
+          512.0,
+          2048.0,
+          512.0,
+          2048.0
+        ]
+      ],
+      "components": {
+        "color": 0.140625,
+        "lpips": 0.07275390625,
+        "latent": 0.25022047758102417,
+        "temporal": 0.059814453125,
+        "quant": 0.0
+      },
+      "seconds": 36.60278807800205,
+      "shape": [
+        1,
+        3,
+        17,
+        1080,
+        1920
+      ],
+      "peak_allocated_bytes": 64964318720,
+      "peak_reserved_bytes": 82778783744,
+      "perceptual_region": {
+        "y": 361,
+        "x": 1256,
+        "height": 256,
+        "width": 256,
+        "source_height": 1080,
+        "source_width": 1920,
+        "strategy": "uniform source pixels; shared across time; no resize"
+      }
+    }
+  ],
+  "gradients": [
+    {
+      "iteration": 44,
+      "norm": 1.6884093509056088,
+      "latent_decoder_norm": 1.3180517880687164
+    },
+    {
+      "iteration": 45,
+      "norm": 0.632390057257345,
+      "latent_decoder_norm": 0.4364584713455084
+    },
+    {
+      "iteration": 46,
+      "norm": 0.9606530971029525,
+      "latent_decoder_norm": 0.7166059932641056
+    }
+  ],
+  "gpu": "name, memory.used [MiB], memory.total [MiB], utilization.gpu [%]\nNVIDIA H100 PCIe, 80327 MiB, 81559 MiB, 100 %\n",
+  "gpu_processes": "pid, process_name, used_gpu_memory [MiB]\n428267, /home/whisperliang/InfoTok/.venv/bin/python, 80304 MiB\n",
+  "training_config_path": "checkpoints/chp_vtok/tokenizer/multi_native17_long_20261115_000518/config.yaml",
+  "training_config_sha256": "ddf80588d3e4efd57bb999a1228bfa7de2ef5264aabe64ab044f42752bc923e3",
+  "note": "Start verification only. Does not claim training has converged or later phases have finished."
+}

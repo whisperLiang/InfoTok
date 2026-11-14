@@ -1,0 +1,19 @@
+{
+  "wrapper_pid": 428242,
+  "start_utc": "2026-11-14T16:13:23.184231+00:00",
+  "start_asia_shanghai": "2026-11-15T00:13:23.184368+08:00",
+  "argv": [
+    ".venv/bin/python",
+    "scripts/chp_run.py",
+    "--gpu",
+    "--name",
+    "native17_long_20261115_000518",
+    "--",
+    ".venv/bin/python",
+    "results/chp_vtok/long_train_20261115_000518/run_training.py"
+  ],
+  "cwd": "/home/whisperliang/InfoTok",
+  "source_commit": "127d41aecc96c2e308c3723e3f0a247f984efecb",
+  "job": "multi_native17_long_20261115_000518",
+  "target_step": 1044
+}

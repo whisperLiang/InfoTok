@@ -23,7 +23,9 @@
     "CHP_VIDEOS": "data/chp_vtok/long_train_20261115_000518/train/*.mp4",
     "WANDB_MODE": "offline",
     "OMP_NUM_THREADS": "8",
-    "OPENBLAS_NUM_THREADS": "8"
+    "OPENBLAS_NUM_THREADS": "8",
+    "OUTPUT_ROOT": "checkpoints",
+    "CHP_BACKBONE": "checkpoints/infotok-flex/infotok_mse.pt"
   },
   "tasks": [
     {
