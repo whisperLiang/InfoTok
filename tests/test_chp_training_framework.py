@@ -56,7 +56,10 @@ def test_framework_losses_optimizer_gradients_and_rng_resume(tmp_path, monkeypat
     monkeypatch.setattr(torch.cuda, "set_rng_state_all", lambda state: None)
     (tmp_path / "config.yaml").write_text("training: test\n")
     cb = CHPCheckpointMetadata()
-    cb.config = SimpleNamespace(job=SimpleNamespace(path_local=str(tmp_path)))
+    cb.config = SimpleNamespace(
+        job=SimpleNamespace(path_local=str(tmp_path)),
+        checkpoint=SimpleNamespace(load_training_state=True),
+    )
     cb.on_after_backward(model, iteration=1)
     state = {"iteration": 1}
     cb.on_save_checkpoint(model, state)
@@ -129,3 +132,26 @@ def test_optional_backbone_finetuning_receives_rgb_gradients():
         gradients = [p.grad for p in backbone.parameters() if p.grad is not None]
         assert gradients and sum(g.abs().sum() for g in gradients) > 0
         assert all(torch.isfinite(g).all() for g in gradients)
+
+
+def test_finetuning_initialization_requires_weights_only_and_identical_architecture():
+    from dataclasses import replace
+
+    source = CHPConfig(debug_backbone=True)
+    target = replace(source, freeze_backbone=False)
+    cb = CHPCheckpointMetadata()
+    cb.config = SimpleNamespace(checkpoint=SimpleNamespace(load_training_state=False))
+    model = SimpleNamespace(network=SimpleNamespace(config=target))
+    saved = {"chp_config": source.to_dict(), "config_sha256": source.sha256}
+    # A weights-only initialization starts a new optimizer run. No source RNG is
+    # needed or read; regular resumes still demand the complete saved RNG state.
+    before = torch.get_rng_state()
+    cb.on_load_checkpoint(model, saved)
+    assert torch.equal(before, torch.get_rng_state())
+    cb.config.checkpoint.load_training_state = True
+    with pytest.raises(ValueError, match="hash"):
+        cb.on_load_checkpoint(model, saved)
+    cb.config.checkpoint.load_training_state = False
+    model.network.config = replace(target, anchor_order="morton")
+    with pytest.raises(ValueError, match="hash"):
+        cb.on_load_checkpoint(model, saved)

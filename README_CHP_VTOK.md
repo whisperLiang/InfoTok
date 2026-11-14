@@ -50,7 +50,16 @@ CHP_STAGE=B bash exp_scripts/chp_vtok_train.sh job.name=resume_multi \
 
 Checkpoints contain network, optimizer, scheduler, scaler, Python/NumPy/CPU/CUDA RNG states, global step, model config hash, full training config hash, plus a checkpoint SHA sidecar. Resume restores optimization and RNG; changing the dataset/curriculum is intentional, and arbitrary dataloader mid-epoch replay is not claimed bit-identical.
 
-Frozen Decoder parameters stay frozen while gradients flow from RGB loss to the new latent decoder. Non-reentrant activation checkpointing does not run stateful inference caches. Stage D is optional and is not a completed experimental result.
+Frozen Decoder parameters stay frozen while gradients flow from RGB loss to the new latent decoder. Non-reentrant activation checkpointing does not run stateful inference caches. A two-step Stage D initialization was also checked on real 512×512 source-pixel crops at learning rate 1e-5. It is a training-path check, not a full-frame quality result. Stage D currently unfreezes the complete convolutional backbone.
+
+To initialize Stage D from the trained frozen-backbone model, use a new job name and `checkpoint.load_training_state=False`; the optimizer parameter groups change. Only this freeze-policy change is accepted by the CHP initialization boundary. A normal resume still requires the identical model config and restores all training states.
+
+```bash
+CHP_STAGE=D CHP_NATIVE_CROP=512 CHP_LPIPS_CROP=256 \
+  bash exp_scripts/chp_vtok_train.sh job.name=new_finetune_run \
+  checkpoint.load_path=checkpoints/chp_vtok/tokenizer/multi_native/checkpoints/iter_000000042.pt \
+  checkpoint.load_training_state=False trainer.max_iter=1000
+```
 
 ## Stateful inference
 

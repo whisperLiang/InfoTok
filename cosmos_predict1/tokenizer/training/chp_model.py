@@ -3,12 +3,14 @@
 import json
 import random
 import time
+from dataclasses import replace
 from pathlib import Path
 
 import numpy as np
 import torch
 
 from cosmos_predict1.tokenizer.progressive.model import file_sha256
+from cosmos_predict1.tokenizer.progressive.config import CHPConfig
 from cosmos_predict1.tokenizer.training.model import PREDICTION, TokenizerModel
 from cosmos_predict1.utils.callback import Callback
 
@@ -85,12 +87,27 @@ class CHPCheckpointMetadata(Callback):
                 "CHP resume requires a CHP checkpoint; initialize the backbone in network.config"
             )
         if state_dict["config_sha256"] != model.network.config.sha256:
-            raise ValueError("resume config hash mismatch")
+            self._validate_finetune_initialization(model.network.config, state_dict)
+            return
         rng = state_dict["rng"]
         random.setstate(rng["python"])
         np.random.set_state(rng["numpy"])
         torch.set_rng_state(rng["torch"])
         torch.cuda.set_rng_state_all(rng["cuda"])
+
+    def _validate_finetune_initialization(self, target, state_dict):
+        # Switching to unfrozen weights requires a new optimizer, not loading
+        # the old frozen-parameter optimizer groups. All architecture fields
+        # and token semantics must match; the new checkpoint gets a new SHA.
+        source = CHPConfig(**state_dict["chp_config"])
+        expected = replace(source, freeze_backbone=False)
+        if (
+            self.config.checkpoint.load_training_state
+            or not source.freeze_backbone
+            or target.freeze_backbone
+            or target.sha256 != expected.sha256
+        ):
+            raise ValueError("resume config hash mismatch")
 
     def on_save_checkpoint_success(self, iteration=0):
         path = (

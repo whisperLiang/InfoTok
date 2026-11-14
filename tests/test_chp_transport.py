@@ -45,3 +45,33 @@ def test_file_transport_refuses_overwrite(tmp_path):
     with pytest.raises(FileExistsError):
         with open_transport(str(target), "xb"):
             pass
+
+
+def test_sender_waits_for_delayed_receiver_start():
+    with socket.socket() as reservation:
+        reservation.bind(("127.0.0.1", 0))
+        port = reservation.getsockname()[1]
+    endpoint = f"tcp://127.0.0.1:{port}"
+    received = []
+
+    def delayed_receiver():
+        threading.Event().wait(0.06)
+        with open_transport(endpoint, "rb", timeout=2) as source:
+            received.append(source.read(5))
+
+    thread = threading.Thread(target=delayed_receiver)
+    thread.start()
+    with open_transport(endpoint, "xb", timeout=2) as target:
+        target.write(b"CHP2!")
+    thread.join(timeout=3)
+    assert not thread.is_alive() and received == [b"CHP2!"]
+
+
+def test_sender_connection_refusal_has_a_finite_deadline():
+    # A bound, non-listening port cannot be taken by another local process.
+    with socket.socket() as reservation:
+        reservation.bind(("127.0.0.1", 0))
+        endpoint = f"tcp://127.0.0.1:{reservation.getsockname()[1]}"
+        with pytest.raises(ConnectionRefusedError):
+            with open_transport(endpoint, "xb", timeout=0.02):
+                pass
