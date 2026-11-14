@@ -38,10 +38,14 @@ def load_checkpoint(path, *, decoder_only=False, device="cpu", dtype=torch.float
         raise ValueError(
             f"CHP checkpoint mismatch: {missing}, {result.unexpected_keys}"
         )
-    if raw["config_sha256"] != config.sha256:
-        raise ValueError("checkpoint config identity mismatch")
+    _validate_identity(raw, config)
     identity = raw.get("source_checkpoint_sha256", file_sha256(path))
     return model.to(device=device, dtype=dtype).eval(), identity
+
+
+def _validate_identity(raw, config):
+    if raw["config_sha256"] != config.sha256:
+        raise ValueError("checkpoint config identity mismatch")
 
 
 def export_decoder(checkpoint_path, destination):

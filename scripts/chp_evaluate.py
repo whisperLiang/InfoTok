@@ -45,9 +45,12 @@ class Metrics:
             mse = (x - y).square().mean() / 4
             psnr.append(float(-10 * torch.log10(mse)))
             a, b = [z[0].permute(1, 2, 0).cpu().numpy() / 2 + 0.5 for z in (x, y)]
-            ssim.append(float(structural_similarity(a, b, channel_axis=2, data_range=1.0)))
+            ssim.append(
+                float(structural_similarity(a, b, channel_axis=2, data_range=1.0))
+            )
             lp.append(float(self.lpips(x, y)))
-            # DISTS defaults to internal resampling to 256px; disable it for full-frame evaluation.
+            # DISTS.forward receives the full native tensor. Its optional PIL
+            # prepare_image(resize=True) preprocessing is deliberately not used.
             di.append(
                 float(
                     self.dists(
@@ -174,7 +177,9 @@ def main():
         byte_count = wire_bytes(session, tokens, budgets)
         result = dict(
             video=Path(args.video).stem,
-            model="multi" if model.config.multiscale else "single",
+            model="morton"
+            if model.config.anchor_order == "morton"
+            else ("multi" if model.config.multiscale else "single"),
             checkpoint_sha256=identity,
             config_sha256=model.config.sha256,
             budget=k,

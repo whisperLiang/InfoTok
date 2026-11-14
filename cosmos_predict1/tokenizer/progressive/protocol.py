@@ -119,23 +119,30 @@ class Packet:
     ids: tuple[int, ...]
     eos: bool = False
     block_end: bool = False
+    tail: bool = False
 
     def __post_init__(self):
         if self.eos:
             object.__setattr__(self, "block_end", True)
-        if not 0 <= self.block_id < 2**32 or not 0 <= self.frame_start < 2**64:
-            raise ValueError("invalid timestamp/block")
-        if (
-            not 1 <= self.frame_count <= 4
-            or not 0 <= self.prefix_offset < 8192
-            or not 1 <= len(self.ids) <= 8192
-        ):
-            raise ValueError("invalid packet counts")
+        self._validate_frame_flags()
+        self._validate_counts()
         if any(
             not isinstance(i, (int, np.integer)) or not 0 <= i < CODEBOOK_SIZE
             for i in self.ids
         ):
             raise ValueError("invalid FSQ symbol")
+
+    def _validate_frame_flags(self):
+        if self.tail and (self.block_id == 0 or self.frame_count == 4):
+            raise ValueError("tail flag requires a partial final temporal block")
+        if not 0 <= self.block_id < 2**32 or not 0 <= self.frame_start < 2**64:
+            raise ValueError("invalid timestamp/block")
+
+    def _validate_counts(self):
+        if not 1 <= self.frame_count <= 4:
+            raise ValueError("invalid frame count")
+        if not 0 <= self.prefix_offset < 8192 or not 1 <= len(self.ids) <= 8192:
+            raise ValueError("invalid packet counts")
 
     def to_bytes(self):
         payload = np.asarray(self.ids, dtype=">u2").tobytes()
@@ -147,7 +154,7 @@ class Packet:
             self.prefix_offset,
             len(self.ids),
             len(payload),
-            int(self.eos) | (int(self.block_end) << 1),
+            int(self.eos) | (int(self.block_end) << 1) | (int(self.tail) << 2),
         )
         return header + payload + CRC.pack(zlib.crc32(header + payload))
 
@@ -163,7 +170,7 @@ class Packet:
             magic != b"CHPB"
             or size > 8192
             or length != size * 2
-            or flags not in (0, 1, 2, 3)
+            or flags not in range(8)
         ):
             raise ValueError("invalid packet header")
         payload = exact(source, length)
@@ -177,6 +184,7 @@ class Packet:
             tuple(np.frombuffer(payload, dtype=">u2").tolist()),
             bool(flags & 1),
             bool(flags & 2),
+            bool(flags & 4),
         )
 
 
@@ -199,26 +207,39 @@ class PrefixReceiver:
             raise ValueError("tokens after EOS")
         if packet.block_id > len(self.blocks) or packet.block_id < len(self.blocks) - 1:
             raise ValueError("out-of-order or late block")
+        self._validate_prefix_count(packet)
+        self._validate_frame_metadata(packet)
+
+    def _validate_prefix_count(self, packet):
         end = packet.prefix_offset + len(packet.ids)
         if end > self.session.kmax:
             raise ValueError("prefix exceeds Kmax")
         if packet.block_end and end < 256:
             raise ValueError("block end/EOS requires a base prefix")
+        if packet.tail and packet.block_end and not packet.eos:
+            raise ValueError("a partial tail must finish with explicit EOS")
 
     def _validate_new_block(self, packet):
         if self.blocks and len(self.blocks[-1]) < 256:
             raise ValueError("cannot advance without base prefix")
         if self.blocks and not self.block_closed:
             raise ValueError("previous block must be explicitly closed")
+        if packet.prefix_offset != 0:
+            raise ValueError("missing necessary prefix")
+
+    @staticmethod
+    def _validate_frame_metadata(packet):
         expected = 0 if packet.block_id == 0 else 1 + 4 * (packet.block_id - 1)
         if packet.frame_start != expected:
             raise ValueError("frame alignment error")
         if packet.block_id == 0 and packet.frame_count != 1:
             raise ValueError("bootstrap frame count error")
-        if packet.block_id > 0 and packet.frame_count != 4 and not packet.eos:
+        if (
+            packet.block_id > 0
+            and packet.frame_count != 4
+            and not (packet.eos or packet.tail)
+        ):
             raise ValueError("partial tail needs EOS")
-        if packet.prefix_offset != 0:
-            raise ValueError("missing necessary prefix")
 
     def _validate_existing_block(self, packet):
         if self.block_closed:

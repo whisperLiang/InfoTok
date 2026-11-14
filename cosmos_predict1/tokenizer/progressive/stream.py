@@ -107,16 +107,22 @@ class ProgressiveDecoder:
         if state.owner != id(self.model) or state.eos:
             raise ValueError("decoder identity mismatch or EOS")
         validate_ids(prefix)
-        if state.next_block == 0 and frame_count != 1:
-            raise ValueError("bootstrap is required")
-        if state.next_block > 0 and not (
-            frame_count == 4 or (eos and 1 <= frame_count < 4)
-        ):
-            raise ValueError("invalid EOS/frame count")
+        self._validate_frame_count(state.next_block, frame_count, eos)
         if commit and prefix.shape[1] < 256:
             raise ValueError(
                 "the base prefix must arrive before advancing to the next block"
             )
+
+    @staticmethod
+    def _validate_frame_count(block, frame_count, eos):
+        if block == 0:
+            if frame_count != 1:
+                raise ValueError("bootstrap is required")
+            return
+        if frame_count == 4:
+            return
+        if not eos or not 1 <= frame_count < 4:
+            raise ValueError("invalid EOS/frame count")
 
     @torch.no_grad()
     def decode_block(

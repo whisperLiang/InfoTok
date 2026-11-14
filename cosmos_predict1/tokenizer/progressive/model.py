@@ -12,6 +12,7 @@ from dataclasses import dataclass
 import torch
 import torch.nn.functional as F
 from torch import nn
+from torch.utils.checkpoint import checkpoint
 
 from cosmos_predict1.tokenizer.networks.configs import ours_discrete_video_4x8x8_256p_88
 from cosmos_predict1.tokenizer.networks.ours_discrete_video import (
@@ -260,9 +261,24 @@ class CHPVTokenizer(nn.Module):
         frames = []
         for t, current in enumerate(dense):
             latent = torch.stack(bases[:t] + [current], 2)
-            decoded = geometry.crop(self.decoder(latent))
-            frames.append(decoded if t == 0 else decoded[:, :, -4:])
+            if (
+                self.config.checkpoint_decoder
+                and torch.is_grad_enabled()
+                and latent.requires_grad
+            ):
+                # The repeated full-prefix reference graph otherwise retains
+                # multiple high-resolution decoder graphs simultaneously.
+                frame = checkpoint(
+                    self._decode_current, latent, geometry, t, use_reentrant=False
+                )
+            else:
+                frame = self._decode_current(latent, geometry, t)
+            frames.append(frame)
         return torch.cat(frames, 2)
+
+    def _decode_current(self, latent, geometry, block):
+        decoded = geometry.crop(self.decoder(latent))
+        return decoded if block == 0 else decoded[:, :, -4:]
 
     def forward(self, video, budgets=None):
         if (video.shape[2] - 1) % 4:

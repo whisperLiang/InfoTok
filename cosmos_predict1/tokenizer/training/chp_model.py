@@ -123,6 +123,12 @@ class CHPCheckpointMetadata(Callback):
             peak_allocated_bytes=torch.cuda.max_memory_allocated(),
             peak_reserved_bytes=torch.cuda.max_memory_reserved(),
         )
+        perceptual = (
+            model.loss.loss_modules["perceptual"]
+            if "perceptual" in model.loss.loss_modules
+            else None
+        )
+        row["perceptual_region"] = getattr(perceptual, "last_region", None)
         with (Path(self.config.job.path_local) / "steps.jsonl").open("a") as f:
             f.write(json.dumps(row) + "\n")
         print("CHP_TRAIN_STEP " + json.dumps(row), flush=True)

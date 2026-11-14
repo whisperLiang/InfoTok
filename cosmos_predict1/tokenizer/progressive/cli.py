@@ -39,18 +39,12 @@ def synchronize(device):
         torch.cuda.synchronize()
 
 
-@torch.no_grad()
-def send(args):
+def _send_session(args, model, identity, video, fps):
     from fractions import Fraction
 
-    model, identity = load_checkpoint(
-        args.checkpoint, device=args.device, dtype=getattr(torch, args.dtype)
-    )
-    video, fps = read_rgb(args.video, args.frames)
     geometry = Geometry.from_video(video)
-    video = video.to(args.device, dtype=getattr(torch, args.dtype))
     rate = Fraction(fps).limit_denominator(1001)
-    session = Session(
+    return Session(
         args.model_id,
         identity,
         model.config.sha256,
@@ -64,100 +58,142 @@ def send(args):
         timebase_num=rate.denominator,
         timebase_den=rate.numerator,
     )
+
+
+def _transmission_plan(args, kmax, nblocks):
     budgets = [int(k) for k in args.budgets.split(",")]
-    if (
-        budgets != sorted(set(budgets))
-        or budgets[0] < 256
-        or budgets[-1] > model.config.kmax
-    ):
-        raise ValueError("increments must be unique and increasing, within [256,Kmax]")
-    log_prefix = getattr(args, "log_prefix", None) or args.stream
-    if log_prefix.startswith("tcp://"):
-        raise ValueError("TCP sender requires --log-prefix for local measurements")
-    block_limits = getattr(args, "block_budgets", None)
-    block_limits = [int(k) for k in block_limits.split(",")] if block_limits else None
-    sender, state, records, all_ids = ProgressiveEncoder(model), None, [], []
-    nblocks = 1 + (video.shape[2] - 1 + 3) // 4
-    if block_limits is not None and len(block_limits) != nblocks:
+    if budgets != sorted(set(budgets)):
+        raise ValueError("increments must be unique and increasing")
+    if budgets[0] < 256 or budgets[-1] > kmax:
+        raise ValueError("increments outside [256,Kmax]")
+    text = getattr(args, "block_budgets", None)
+    limits = [int(k) for k in text.split(",")] if text else [budgets[-1]] * nblocks
+    if len(limits) != nblocks:
         raise ValueError(
             "one block budget per bootstrap and temporal block is required"
         )
-    start = time.perf_counter()
-    if str(args.device).startswith("cuda"):
+    if any(k < 256 or k > kmax for k in limits):
+        raise ValueError("invalid per-block budget")
+    return [
+        sorted(set([k for k in budgets if k < limit] + [limit])) for limit in limits
+    ]
+
+
+def _sender_output_prefix(args):
+    prefix = getattr(args, "log_prefix", None) or args.stream
+    if prefix.startswith("tcp://"):
+        raise ValueError("TCP sender requires --log-prefix for local measurements")
+    return prefix
+
+
+def _reset_peak(device):
+    if str(device).startswith("cuda"):
         torch.cuda.reset_peak_memory_stats()
-    actual_bytes = len(session.to_bytes())
+
+
+def _peak_bytes(device):
+    return torch.cuda.max_memory_allocated() if str(device).startswith("cuda") else 0
+
+
+def _encode_time_block(sender, video, block, state, device):
+    position = 0 if block == 0 else 1 + 4 * (block - 1)
+    count = 1 if block == 0 else min(4, video.shape[2] - position)
+    synchronize(device)
+    start = time.monotonic_ns()
+    if block == 0:
+        ids, state = sender.encode_bootstrap(video[:, :, :1])
+    else:
+        ids = sender.encode_block(
+            video[:, :, position : position + count],
+            state,
+            eos=position + count == video.shape[2],
+        )
+    synchronize(device)
+    return ids, state, position, count, start, (time.monotonic_ns() - start) / 1e9
+
+
+def _write_increments(
+    target, ids, state, block, position, count, start, latency, increments, last
+):
+    records, offset = [], 0
+    for k in increments:
+        packet = Packet(
+            block,
+            position,
+            count,
+            offset,
+            tuple(ids[0, offset:k].cpu().tolist()),
+            eos=last and k == increments[-1],
+            block_end=k == increments[-1],
+            tail=last and block > 0 and count < 4,
+        )
+        wire = packet.to_bytes()
+        target.write(wire)
+        target.flush()
+        records.append(
+            dict(
+                block_id=block,
+                budget=k,
+                offset=offset,
+                new_ids=k - offset,
+                packet_bytes=len(wire),
+                encode_seconds=latency,
+                cache_bytes=state.backbone.bytes,
+                encode_start_ns=start,
+                packet_sent_ns=time.monotonic_ns(),
+            )
+        )
+        offset = k
+    return records
+
+
+@torch.no_grad()
+def send(args):
+    model, identity = load_checkpoint(
+        args.checkpoint, device=args.device, dtype=getattr(torch, args.dtype)
+    )
+    video, fps = read_rgb(args.video, args.frames)
+    session = _send_session(args, model, identity, video, fps)
+    video = video.to(args.device, dtype=getattr(torch, args.dtype))
+    nblocks = 1 + (video.shape[2] - 1 + 3) // 4
+    plans = _transmission_plan(args, model.config.kmax, nblocks)
+    log_prefix = _sender_output_prefix(args)
+    sender, state, records, all_ids = ProgressiveEncoder(model), None, [], []
+    begin = time.perf_counter()
+    _reset_peak(args.device)
     with open_transport(args.stream, "xb") as target:
         target.write(session.to_bytes())
         target.flush()
-        for block in range(nblocks):
-            position = 0 if block == 0 else 1 + 4 * (block - 1)
-            count = 1 if block == 0 else min(4, video.shape[2] - position)
-            synchronize(args.device)
-            t0 = time.perf_counter()
-            encode_start_ns = time.monotonic_ns()
-            if block == 0:
-                ids, state = sender.encode_bootstrap(video[:, :, :1])
-            else:
-                ids = sender.encode_block(
-                    video[:, :, position : position + count],
-                    state,
-                    eos=block == nblocks - 1,
-                )
-            synchronize(args.device)
-            latency = time.perf_counter() - t0
+        for block, increments in enumerate(plans):
+            ids, state, position, count, start, latency = _encode_time_block(
+                sender, video, block, state, args.device
+            )
             all_ids.append(ids.cpu())
-            offset = 0
-            increments = budgets
-            if block_limits is not None:
-                limit = block_limits[block]
-                if not 256 <= limit <= model.config.kmax:
-                    raise ValueError("invalid per-block budget")
-                increments = sorted(set([k for k in budgets if k < limit] + [limit]))
-            for k in increments:
-                packet = Packet(
+            records.extend(
+                _write_increments(
+                    target,
+                    ids,
+                    state,
                     block,
                     position,
                     count,
-                    offset,
-                    tuple(ids[0, offset:k].cpu().tolist()),
-                    eos=block == nblocks - 1 and k == increments[-1],
-                    block_end=k == increments[-1],
+                    start,
+                    latency,
+                    increments,
+                    block == nblocks - 1,
                 )
-                wire = packet.to_bytes()
-                target.write(wire)
-                target.flush()
-                actual_bytes += len(wire)
-                records.append(
-                    dict(
-                        block_id=block,
-                        budget=k,
-                        offset=offset,
-                        new_ids=k - offset,
-                        packet_bytes=len(wire),
-                        encode_seconds=latency,
-                        cache_bytes=state.backbone.bytes,
-                        encode_start_ns=encode_start_ns,
-                        packet_sent_ns=time.monotonic_ns(),
-                    )
-                )
-                offset = k
+            )
     torch.save(torch.stack(all_ids, 1), log_prefix + ".sender_ids.pt")
-    Path(log_prefix + ".sender.json").write_text(
-        json.dumps(
-            dict(
-                packets=records,
-                elapsed_seconds=time.perf_counter() - start,
-                actual_bytes=actual_bytes,
-                protocol_version=session.protocol_version,
-                transport="tcp" if args.stream.startswith("tcp://") else "file",
-                peak_allocated_bytes=torch.cuda.max_memory_allocated()
-                if str(args.device).startswith("cuda")
-                else 0,
-                source=str(Path(args.video).resolve()),
-            ),
-            indent=2,
-        )
+    metadata = dict(
+        packets=records,
+        elapsed_seconds=time.perf_counter() - begin,
+        actual_bytes=len(session.to_bytes()) + sum(p["packet_bytes"] for p in records),
+        protocol_version=session.protocol_version,
+        transport="tcp" if args.stream.startswith("tcp://") else "file",
+        peak_allocated_bytes=_peak_bytes(args.device),
+        source=str(Path(args.video).resolve()),
     )
+    Path(log_prefix + ".sender.json").write_text(json.dumps(metadata, indent=2))
 
 
 @torch.no_grad()
@@ -178,8 +214,7 @@ def receive(args):
     state, records, received, frames = DecoderState(), [], [], []
     synchronize(args.device)
     begin = time.perf_counter()
-    if str(args.device).startswith("cuda"):
-        torch.cuda.reset_peak_memory_stats()
+    _reset_peak(args.device)
     with open_transport(args.stream, "rb") as source:
         session = Session.read(source)
         receiver = PrefixReceiver(
@@ -202,7 +237,7 @@ def receive(args):
                 state,
                 frame_count=packet.frame_count,
                 commit=commit,
-                eos=packet.eos,
+                eos=packet.eos or packet.tail,
             )
             synchronize(args.device)
             latency = time.perf_counter() - t0
@@ -239,9 +274,7 @@ def receive(args):
                 independent_process=True,
                 protocol_version=session.protocol_version,
                 transport="tcp" if args.stream.startswith("tcp://") else "file",
-                peak_allocated_bytes=torch.cuda.max_memory_allocated()
-                if str(args.device).startswith("cuda")
-                else 0,
+                peak_allocated_bytes=_peak_bytes(args.device),
                 inputs=[
                     str(Path(args.checkpoint).resolve()),
                     args.stream

@@ -40,6 +40,8 @@ A=single-scale frozen backbone, B=multi-scale frozen backbone, C=multi-scale his
 
 `CHP_DEBUG_HEIGHT=256` explicitly enables a debug resize, never a final-resolution result. `CHP_NATIVE_CROP=512` samples true source pixels without resizing; crop geometry must be reported. Omit both for full native inputs. `CHP_LPIPS=0` explicitly disables perceptual loss for dependency/debug checks. The default uses the upstream perceptual loss, RGB, temporal differences and latent MSE; FSQ returns its native zero auxiliary quantization loss.
 
+For the 17-frame native curriculum, full-frame perceptual training exceeded 80 GB. `CHP_LPIPS_CROP=256` instead evaluates the upstream perceptual training objective on a uniform 256×256 source-pixel region shared across frames, with its coordinates recorded at every step. The RGB output, RGB loss, temporal loss and final evaluation remain complete 1920×1080. This patch objective is not described as full-frame LPIPS training. Non-reentrant checkpointing also covers each stateless repeated-prefix RGB decoder call; inference cache mutation is never replayed during backward.
+
 ```bash
 CHP_STAGE=B bash exp_scripts/chp_vtok_train.sh job.name=resume_multi \
   checkpoint.load_path=checkpoints/chp_vtok/tokenizer/multi_native/checkpoints/iter_000000042.pt \
@@ -60,7 +62,7 @@ The full graph, legal-history recomputation and cache reuse have separate measur
 
 ## Independent receiver and incremental packets
 
-CHP2 sessions and CHPB packets are independent of upstream inference formats. They include model/checkpoint/config identities, geometry, timing, FSQ levels, uint16 IDs, frame counts, offsets, payload lengths and CRC32. A `block_end` flag finalizes the current prefix without reading a future packet. EOS is explicit. Late, duplicated, skipped and mixed-identity tokens are rejected.
+CHP2 sessions and CHPB packets are independent of upstream inference formats. They include model/checkpoint/config identities, geometry, timing, FSQ levels, uint16 IDs, frame counts, offsets, payload lengths and CRC32. A `block_end` flag finalizes the current prefix without reading a future packet. EOS is explicit. Partial tail increments carry a `tail` flag and their actual frame count; only the final increment sets EOS. Late, duplicated, skipped and mixed-identity tokens are rejected.
 
 ```bash
 .venv/bin/python -m cosmos_predict1.tokenizer.progressive.cli export-decoder \

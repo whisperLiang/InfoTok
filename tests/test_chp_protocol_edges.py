@@ -79,3 +79,22 @@ def test_rejected_packet_does_not_mutate_receiver_state():
     with pytest.raises(ValueError):
         r.append_tokens(Packet(1, 1, 4, 0, (0,) * 4096))
     assert (r.actual_bytes, r.blocks, r.metadata) == before
+
+
+@pytest.mark.parametrize(
+    "block,start,count,tail",
+    [(0, 0, 1, True), (1, 1, 4, True), (-1, 0, 1, False), (0, -1, 1, False)],
+)
+def test_invalid_tail_or_timestamp_rejected_before_serialization(
+    block, start, count, tail
+):
+    with pytest.raises(ValueError):
+        Packet(block, start, count, 0, (0,) * 256, tail=tail)
+
+
+def test_frame_alignment_errors_do_not_create_receiver_blocks():
+    r = fresh()
+    for packet in (Packet(0, 1, 1, 0, (0,) * 256), Packet(0, 0, 4, 0, (0,) * 256)):
+        with pytest.raises(ValueError, match="frame"):
+            r.append_tokens(packet)
+        assert not r.blocks

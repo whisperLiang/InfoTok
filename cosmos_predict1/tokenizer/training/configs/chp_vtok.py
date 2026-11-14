@@ -30,6 +30,7 @@ from cosmos_predict1.tokenizer.training.losses.continuous import (
     TokenizerLoss,
 )
 from cosmos_predict1.tokenizer.training.metrics import TokenizerMetric
+from cosmos_predict1.tokenizer.training.chp_losses import NativeCropPerceptualLoss
 from cosmos_predict1.tokenizer.training.trainer import TokenizerTrainer
 from cosmos_predict1.utils.callback import LowPrecisionCallback, ProgressBarCallback
 from cosmos_predict1.utils.config import Config, EMAConfig, JobConfig
@@ -66,6 +67,16 @@ def make_config():
                 lpips_boundaries=[0],
                 lpips_values=[0.1],
             )
+        )
+    if os.environ.get("CHP_LPIPS_CROP"):
+        loss_config.perceptual = L(NativeCropPerceptualLoss)(
+            config=PerceptualConfig(
+                gram_enabled=False,
+                checkpoint_activations=True,
+                lpips_boundaries=[0],
+                lpips_values=[0.1],
+            ),
+            crop_size=int(os.environ["CHP_LPIPS_CROP"]),
         )
     model = L(CHPTrainingModel)(
         config=CHPModelConfig(
