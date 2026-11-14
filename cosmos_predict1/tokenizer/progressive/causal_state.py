@@ -35,6 +35,34 @@ from cosmos_predict1.tokenizer.modules.utils import (
 _ACTIVE = ContextVar("chp_stream", default=None)
 
 
+def _convolve_buffer(module, buffer, temporal_outputs=4):
+    """Bound the temporal cuDNN workspace without approximating the convolution.
+
+    Every slice starts at output_index * stride and includes the exact dilated
+    receptive interval. This changes kernel scheduling, not temporal padding,
+    weights, spatial geometry, or the mathematical dependency graph.
+    """
+    conv = module.conv3d
+    receptive = conv.dilation[0] * (conv.kernel_size[0] - 1) + 1
+    count = (buffer.shape[2] - receptive) // conv.stride[0] + 1
+    outputs = []
+    for start in range(0, count, temporal_outputs):
+        stop = min(count, start + temporal_outputs)
+        part = buffer[
+            :, :, start * conv.stride[0] : (stop - 1) * conv.stride[0] + receptive
+        ]
+        part = F.pad(part, module.spatial_pad + (0, 0), mode=module.pad_mode, value=0.0)
+        outputs.append(conv(part))
+    return torch.cat(outputs, 2) if len(outputs) > 1 else outputs[0]
+
+
+def bounded_convolution(module, x, temporal_outputs=4):
+    if module.time_pad:
+        initial = x[:, :, :1].expand(-1, -1, module.time_pad, -1, -1)
+        x = torch.cat((initial, x), 2)
+    return _convolve_buffer(module, x, temporal_outputs)
+
+
 @dataclass
 class StreamState:
     cache: dict = field(default_factory=dict)
@@ -90,9 +118,7 @@ class StreamState:
             raise ValueError(
                 f"chunk too short at {name}; supply aligned bootstrap/4-frame chunks"
             )
-        out = m.conv3d(
-            F.pad(buffer, m.spatial_pad + (0, 0), mode=m.pad_mode, value=0.0)
-        )
+        out = _convolve_buffer(m, buffer)
         self.cache[name] = buffer[:, :, count * stride :].detach().clone()
         return out
 
@@ -250,6 +276,8 @@ def _bind_forward(name, method, original, local, protect, window):
             return getattr(state, method)(name, self, x)
 
         def compute(value):
+            if method == "conv":
+                return bounded_convolution(self, value)
             return window_attention(self, value, window) if local else original(value)
 
         if protect and state is None and torch.is_grad_enabled() and x.requires_grad:

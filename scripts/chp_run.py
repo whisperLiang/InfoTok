@@ -3,6 +3,7 @@
 
 import argparse
 import datetime as dt
+import fcntl
 import json
 import subprocess
 import sys
@@ -12,11 +13,16 @@ from pathlib import Path
 p = argparse.ArgumentParser()
 p.add_argument("--name", required=True)
 p.add_argument("--root", default="results/chp_vtok")
+p.add_argument("--gpu", action="store_true", help="serialize GPU experiments on this checkout")
 p.add_argument("command", nargs=argparse.REMAINDER)
 a = p.parse_args()
 command = a.command[1:] if a.command[:1] == ["--"] else a.command
 root = Path(a.root)
 (root / "logs").mkdir(parents=True, exist_ok=True)
+gpu_lock = None
+if a.gpu:
+    gpu_lock = (root / ".gpu.lock").open("a")
+    fcntl.flock(gpu_lock, fcntl.LOCK_EX)
 start = dt.datetime.now(dt.timezone.utc).isoformat()
 stamp = time.time_ns()
 log = root / "logs" / f"{a.name}_{stamp}.log"
@@ -42,4 +48,7 @@ with log.open("w") as f:
 record["seconds"] = time.perf_counter() - t0
 with (root / "commands.jsonl").open("a") as f:
     f.write(json.dumps(record) + "\n")
+if gpu_lock is not None:
+    fcntl.flock(gpu_lock, fcntl.LOCK_UN)
+    gpu_lock.close()
 sys.exit(record["exit_code"])

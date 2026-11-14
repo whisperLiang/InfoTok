@@ -79,6 +79,7 @@ def test_group_one_normalization_has_no_future_statistics():
 
 def test_upstream_positional_to_preserves_quantizer_dtype():
     from cosmos_predict1.tokenizer.progressive.model import official_backbone
+
     model = official_backbone(debug=True).to(torch.float32).eval()
     with torch.no_grad():
         ids, codes, _ = model.encode(torch.randn(1, 3, 5, 32, 64))

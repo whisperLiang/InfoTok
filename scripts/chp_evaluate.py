@@ -45,7 +45,7 @@ class Metrics:
             mse = (x - y).square().mean() / 4
             psnr.append(float(-10 * torch.log10(mse)))
             a, b = [z[0].permute(1, 2, 0).cpu().numpy() / 2 + 0.5 for z in (x, y)]
-            ssim.append(structural_similarity(a, b, channel_axis=2, data_range=1.0))
+            ssim.append(float(structural_similarity(a, b, channel_axis=2, data_range=1.0)))
             lp.append(float(self.lpips(x, y)))
             # DISTS defaults to internal resampling to 256px; disable it for full-frame evaluation.
             di.append(
@@ -74,6 +74,7 @@ def wire_bytes(session, tokens, budgets):
             0,
             tuple(tokens[0, i, :k].cpu().tolist()),
             eos=i == len(budgets) - 1,
+            block_end=True,
         )
         packets.append(packet)
     return len(session.to_bytes()) + sum(len(p.to_bytes()) for p in packets)
@@ -177,6 +178,7 @@ def main():
             checkpoint_sha256=identity,
             config_sha256=model.config.sha256,
             budget=k,
+            protocol_version=session.protocol_version,
             actual_bytes=byte_count,
             bpp=byte_count * 8 / (geometry.width * geometry.height * x.shape[2]),
             mbps=byte_count * 8 * fps / x.shape[2] / 1e6,

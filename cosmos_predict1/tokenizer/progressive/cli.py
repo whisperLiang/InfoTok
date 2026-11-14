@@ -12,6 +12,7 @@ from .checkpoint import export_decoder, load_checkpoint
 from .model import Geometry
 from .protocol import Packet, PrefixReceiver, Session
 from .stream import DecoderState, ProgressiveDecoder, ProgressiveEncoder
+from .transport import open_transport
 
 
 def read_rgb(path, max_frames=None):
@@ -70,16 +71,30 @@ def send(args):
         or budgets[-1] > model.config.kmax
     ):
         raise ValueError("increments must be unique and increasing, within [256,Kmax]")
+    log_prefix = getattr(args, "log_prefix", None) or args.stream
+    if log_prefix.startswith("tcp://"):
+        raise ValueError("TCP sender requires --log-prefix for local measurements")
+    block_limits = getattr(args, "block_budgets", None)
+    block_limits = [int(k) for k in block_limits.split(",")] if block_limits else None
     sender, state, records, all_ids = ProgressiveEncoder(model), None, [], []
     nblocks = 1 + (video.shape[2] - 1 + 3) // 4
+    if block_limits is not None and len(block_limits) != nblocks:
+        raise ValueError(
+            "one block budget per bootstrap and temporal block is required"
+        )
     start = time.perf_counter()
-    with open(args.stream, "xb") as target:
+    if str(args.device).startswith("cuda"):
+        torch.cuda.reset_peak_memory_stats()
+    actual_bytes = len(session.to_bytes())
+    with open_transport(args.stream, "xb") as target:
         target.write(session.to_bytes())
+        target.flush()
         for block in range(nblocks):
             position = 0 if block == 0 else 1 + 4 * (block - 1)
             count = 1 if block == 0 else min(4, video.shape[2] - position)
             synchronize(args.device)
             t0 = time.perf_counter()
+            encode_start_ns = time.monotonic_ns()
             if block == 0:
                 ids, state = sender.encode_bootstrap(video[:, :, :1])
             else:
@@ -92,17 +107,26 @@ def send(args):
             latency = time.perf_counter() - t0
             all_ids.append(ids.cpu())
             offset = 0
-            for k in budgets:
+            increments = budgets
+            if block_limits is not None:
+                limit = block_limits[block]
+                if not 256 <= limit <= model.config.kmax:
+                    raise ValueError("invalid per-block budget")
+                increments = sorted(set([k for k in budgets if k < limit] + [limit]))
+            for k in increments:
                 packet = Packet(
                     block,
                     position,
                     count,
                     offset,
                     tuple(ids[0, offset:k].cpu().tolist()),
-                    eos=block == nblocks - 1 and k == budgets[-1],
+                    eos=block == nblocks - 1 and k == increments[-1],
+                    block_end=k == increments[-1],
                 )
                 wire = packet.to_bytes()
                 target.write(wire)
+                target.flush()
+                actual_bytes += len(wire)
                 records.append(
                     dict(
                         block_id=block,
@@ -112,16 +136,23 @@ def send(args):
                         packet_bytes=len(wire),
                         encode_seconds=latency,
                         cache_bytes=state.backbone.bytes,
+                        encode_start_ns=encode_start_ns,
+                        packet_sent_ns=time.monotonic_ns(),
                     )
                 )
                 offset = k
-    torch.save(torch.stack(all_ids, 1), args.stream + ".sender_ids.pt")
-    Path(args.stream + ".sender.json").write_text(
+    torch.save(torch.stack(all_ids, 1), log_prefix + ".sender_ids.pt")
+    Path(log_prefix + ".sender.json").write_text(
         json.dumps(
             dict(
                 packets=records,
                 elapsed_seconds=time.perf_counter() - start,
-                actual_bytes=Path(args.stream).stat().st_size,
+                actual_bytes=actual_bytes,
+                protocol_version=session.protocol_version,
+                transport="tcp" if args.stream.startswith("tcp://") else "file",
+                peak_allocated_bytes=torch.cuda.max_memory_allocated()
+                if str(args.device).startswith("cuda")
+                else 0,
                 source=str(Path(args.video).resolve()),
             ),
             indent=2,
@@ -147,7 +178,9 @@ def receive(args):
     state, records, received, frames = DecoderState(), [], [], []
     synchronize(args.device)
     begin = time.perf_counter()
-    with open(args.stream, "rb") as source:
+    if str(args.device).startswith("cuda"):
+        torch.cuda.reset_peak_memory_stats()
+    with open_transport(args.stream, "rb") as source:
         session = Session.read(source)
         receiver = PrefixReceiver(
             session,
@@ -158,8 +191,7 @@ def receive(args):
         decoder = ProgressiveDecoder(model, session.geometry)
         packet = receiver.read_packet(source)
         while packet is not None:
-            next_packet = Packet.read(source)
-            commit = next_packet is None or next_packet.block_id != packet.block_id
+            commit = packet.block_end
             prefix = torch.tensor(
                 [receiver.blocks[-1]], dtype=torch.int32, device=args.device
             )
@@ -174,6 +206,7 @@ def receive(args):
             )
             synchronize(args.device)
             latency = time.perf_counter() - t0
+            ready_ns = time.monotonic_ns()
             # Save exact tensor, not a lossy video, so independent reconstruction can be checked.
             torch.save(
                 rgb.cpu(),
@@ -187,19 +220,14 @@ def receive(args):
                     received_bytes=receiver.actual_bytes,
                     reference_cache_bytes=state.reference.backbone.bytes,
                     committed=commit,
+                    reconstruction_ready_ns=ready_ns,
                     shape=list(rgb.shape),
                 )
             )
             if commit:
                 frames.append(rgb.cpu())
                 received.append(prefix.cpu())
-            if next_packet is None:
-                if not receiver.finished:
-                    raise ValueError("missing explicit EOS")
-                packet = None
-            else:
-                receiver.append_tokens(next_packet)
-                packet = next_packet
+            packet = receiver.read_packet(source)
     torch.save(torch.cat(frames, 2), output / "reconstruction.pt")
     torch.save(received, output / "received_ids.pt")
     Path(output / "receiver.json").write_text(
@@ -209,9 +237,16 @@ def receive(args):
                 actual_bytes=receiver.actual_bytes,
                 elapsed_seconds=time.perf_counter() - begin,
                 independent_process=True,
+                protocol_version=session.protocol_version,
+                transport="tcp" if args.stream.startswith("tcp://") else "file",
+                peak_allocated_bytes=torch.cuda.max_memory_allocated()
+                if str(args.device).startswith("cuda")
+                else 0,
                 inputs=[
                     str(Path(args.checkpoint).resolve()),
-                    str(Path(args.stream).resolve()),
+                    args.stream
+                    if args.stream.startswith("tcp://")
+                    else str(Path(args.stream).resolve()),
                 ],
             ),
             indent=2,
@@ -235,6 +270,12 @@ def main():
             p.add_argument("--video", required=True)
             p.add_argument("--frames", type=int, default=17)
             p.add_argument("--budgets", default="256,512,1024,2048")
+            p.add_argument(
+                "--block-budgets", help="one final budget per bootstrap/block"
+            )
+            p.add_argument(
+                "--log-prefix", help="local measurement path for a TCP stream"
+            )
         else:
             p.add_argument("--output", required=True)
     export = sub.add_parser("export-decoder")
@@ -242,7 +283,10 @@ def main():
     export.add_argument("--output", required=True)
     args = parser.parse_args()
     torch.manual_seed(0)
+    torch.set_num_threads(4)
     torch.backends.cudnn.benchmark = False
+    torch.backends.cudnn.deterministic = True
+    torch.backends.cudnn.allow_tf32 = False
     torch.backends.cuda.matmul.allow_tf32 = False
     if args.mode == "export-decoder":
         export_decoder(args.checkpoint, args.output)

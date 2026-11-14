@@ -26,7 +26,7 @@ def test_rejects_late_skipped_unfinished_and_malformed_packets():
     r.append_tokens(Packet(0, 0, 1, 0, (0,) * 128))
     with pytest.raises(ValueError, match="base"):
         r.append_tokens(Packet(1, 1, 4, 0, (0,) * 256))
-    r.append_tokens(Packet(0, 0, 1, 128, (0,) * 128))
+    r.append_tokens(Packet(0, 0, 1, 128, (0,) * 128, block_end=True))
     r.append_tokens(Packet(1, 1, 4, 0, (0,) * 256))
     with pytest.raises(ValueError, match="late"):
         r.append_tokens(Packet(0, 0, 1, 256, (0,) * 256))
@@ -57,7 +57,7 @@ def test_rejects_late_skipped_unfinished_and_malformed_packets():
 
 def test_explicit_eos_and_actual_tail_count():
     r = fresh()
-    r.append_tokens(Packet(0, 0, 1, 0, (0,) * 256))
+    r.append_tokens(Packet(0, 0, 1, 0, (0,) * 256, block_end=True))
     with pytest.raises(ValueError, match="EOS"):
         r.append_tokens(Packet(1, 1, 3, 0, (0,) * 256))
     r.append_tokens(Packet(1, 1, 3, 0, (0,) * 256, True))
@@ -74,7 +74,7 @@ def test_wire_out_of_range_ids_even_with_valid_crc_are_rejected():
 
 def test_rejected_packet_does_not_mutate_receiver_state():
     r = fresh()
-    r.append_tokens(Packet(0, 0, 1, 0, (0,) * 256))
+    r.append_tokens(Packet(0, 0, 1, 0, (0,) * 256, block_end=True))
     before = (r.actual_bytes, list(map(list, r.blocks)), list(r.metadata))
     with pytest.raises(ValueError):
         r.append_tokens(Packet(1, 1, 4, 0, (0,) * 4096))

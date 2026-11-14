@@ -20,3 +20,5 @@ data/chp_vtok/
 target/
 results/chp_vtok/**/*.pt
 results/chp_vtok/*.pt
+
+results/chp_vtok/.gpu.lock

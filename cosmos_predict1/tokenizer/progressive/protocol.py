@@ -1,8 +1,8 @@
-"""CHP1 session / CHPB packets, network-endian uint16 IDs, CRC32, explicit EOS.
+"""CHP2 session / CHPB packets, network-endian uint16 IDs, CRC32, explicit EOS.
 
 All bytes count, including the bootstrap, session, and every incremental header.
-The v1 transport is ordered within and across blocks. A later block finalizes the
-previous one; late historical enhancements and mixed checkpoint IDs are rejected.
+The v2 transport is ordered within and across blocks. Each final block prefix
+explicitly closes the block, without looking at a future packet.
 """
 
 import json
@@ -34,7 +34,7 @@ class Session:
     kmax: int = 2048
     fps_num: int = 30
     fps_den: int = 1
-    protocol_version: int = 1
+    protocol_version: int = 2
     temporal_block_size: int = 4
     bootstrap_mode: str = "one-discrete-frame"
     quantizer_type: str = "FSQ"
@@ -59,7 +59,7 @@ class Session:
             self.quantizer_type,
             self.bootstrap_mode,
         )
-        if settings != (1, 4, 16, FSQ_LEVELS, "FSQ", "one-discrete-frame"):
+        if settings != (2, 4, 16, FSQ_LEVELS, "FSQ", "one-discrete-frame"):
             raise ValueError("unsupported CHP session")
         if self.kmax not in (2048, 4096, 8192):
             raise ValueError("unsupported Kmax")
@@ -68,7 +68,7 @@ class Session:
         if min(self.fps_num, self.fps_den, self.timebase_num, self.timebase_den) <= 0:
             raise ValueError("invalid timing")
         if self.timebase_num * self.fps_num != self.timebase_den * self.fps_den:
-            raise ValueError("v1 timebase must be inverse fps")
+            raise ValueError("v2 timebase must be inverse fps")
 
     def _validate_identity(self):
         for sha in (self.checkpoint_sha256, self.config_sha256):
@@ -85,15 +85,15 @@ class Session:
         payload = json.dumps(
             asdict(self), sort_keys=True, separators=(",", ":")
         ).encode()
-        header = SESSION.pack(b"CHP1", len(payload)) + payload
+        header = SESSION.pack(b"CHP2", len(payload)) + payload
         return header + CRC.pack(zlib.crc32(header))
 
     @classmethod
     def read(cls, source):
         header = exact(source, SESSION.size)
         magic, size = SESSION.unpack(header)
-        if magic != b"CHP1" or size > MAX_HEADER:
-            raise ValueError("invalid CHP1 header")
+        if magic != b"CHP2" or size > MAX_HEADER:
+            raise ValueError("invalid CHP2 header")
         payload = exact(source, size)
         if CRC.unpack(exact(source, CRC.size))[0] != zlib.crc32(header + payload):
             raise ValueError("session CRC32 mismatch")
@@ -118,8 +118,11 @@ class Packet:
     prefix_offset: int
     ids: tuple[int, ...]
     eos: bool = False
+    block_end: bool = False
 
     def __post_init__(self):
+        if self.eos:
+            object.__setattr__(self, "block_end", True)
         if not 0 <= self.block_id < 2**32 or not 0 <= self.frame_start < 2**64:
             raise ValueError("invalid timestamp/block")
         if (
@@ -144,7 +147,7 @@ class Packet:
             self.prefix_offset,
             len(self.ids),
             len(payload),
-            int(self.eos),
+            int(self.eos) | (int(self.block_end) << 1),
         )
         return header + payload + CRC.pack(zlib.crc32(header + payload))
 
@@ -156,7 +159,12 @@ class Packet:
         if len(header) != PACKET.size:
             raise ValueError("truncated packet header")
         magic, block, start, count, offset, size, length, flags = PACKET.unpack(header)
-        if magic != b"CHPB" or size > 8192 or length != size * 2 or flags not in (0, 1):
+        if (
+            magic != b"CHPB"
+            or size > 8192
+            or length != size * 2
+            or flags not in (0, 1, 2, 3)
+        ):
             raise ValueError("invalid packet header")
         payload = exact(source, length)
         if CRC.unpack(exact(source, CRC.size))[0] != zlib.crc32(header + payload):
@@ -167,7 +175,8 @@ class Packet:
             count,
             offset,
             tuple(np.frombuffer(payload, dtype=">u2").tolist()),
-            bool(flags),
+            bool(flags & 1),
+            bool(flags & 2),
         )
 
 
@@ -183,6 +192,7 @@ class PrefixReceiver:
         self.blocks, self.metadata = [], []
         self.actual_bytes = len(session.to_bytes())
         self.finished = False
+        self.block_closed = False
 
     def _validate_position(self, packet):
         if self.finished:
@@ -192,12 +202,14 @@ class PrefixReceiver:
         end = packet.prefix_offset + len(packet.ids)
         if end > self.session.kmax:
             raise ValueError("prefix exceeds Kmax")
-        if packet.eos and end < 256:
-            raise ValueError("EOS requires a base prefix")
+        if packet.block_end and end < 256:
+            raise ValueError("block end/EOS requires a base prefix")
 
     def _validate_new_block(self, packet):
         if self.blocks and len(self.blocks[-1]) < 256:
             raise ValueError("cannot advance without base prefix")
+        if self.blocks and not self.block_closed:
+            raise ValueError("previous block must be explicitly closed")
         expected = 0 if packet.block_id == 0 else 1 + 4 * (packet.block_id - 1)
         if packet.frame_start != expected:
             raise ValueError("frame alignment error")
@@ -209,6 +221,8 @@ class PrefixReceiver:
             raise ValueError("missing necessary prefix")
 
     def _validate_existing_block(self, packet):
+        if self.block_closed:
+            raise ValueError("block already closed")
         if self.metadata[packet.block_id] != (packet.frame_start, packet.frame_count):
             raise ValueError("block geometry changed")
         if packet.prefix_offset != len(self.blocks[packet.block_id]):
@@ -228,6 +242,7 @@ class PrefixReceiver:
         self.blocks[packet.block_id].extend(packet.ids)
         self.actual_bytes += len(packet.to_bytes())
         self.finished = packet.eos
+        self.block_closed = packet.block_end
         return torch.tensor([self.blocks[packet.block_id]], dtype=torch.int32)
 
     def read_packet(self, source):

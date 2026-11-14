@@ -138,7 +138,7 @@ def test_gradient_survives_frozen_rgb_decoder(model):
     model.train()
     x = torch.randn(1, 3, 5, 32, 64)
     output = model(x, budgets=[256, 512])
-    loss = (output["reconstructions"] - x).square().mean() 
+    loss = (output["reconstructions"] - x).square().mean()
     loss.backward()
     assert all(p.grad is None for p in model.decoder.parameters())
     grads = [p.grad for p in model.latent_decoders.parameters() if p.grad is not None]

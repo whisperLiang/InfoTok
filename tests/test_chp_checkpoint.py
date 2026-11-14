@@ -40,7 +40,7 @@ def make_test_checkpoint(path, config=None):
 @torch.no_grad()
 def test_public_decoder_export_matches_sender_and_contains_no_private_modules(tmp_path):
     source = tmp_path / "model.pt"
-    model = make_test_checkpoint(source)
+    make_test_checkpoint(source)
     public = tmp_path / "decoder.pt"
     export_decoder(source, public)
     sender, identity = load_checkpoint(source)
@@ -109,3 +109,25 @@ def test_tail_initialization_and_ownership_guards(tmp_path):
         encoder.encode_block(x, state)
     with pytest.raises(ValueError, match="EOS"):
         decoder.decode_block(tail, ds)
+
+
+@pytest.mark.parametrize("kmax", [4096, 8192])
+@torch.no_grad()
+def test_extended_kmax_keeps_all_ids_discrete_and_prefixes_decodable(kmax, tmp_path):
+    model = make_test_checkpoint(
+        tmp_path / "extended.pt",
+        CHPConfig(
+            debug_backbone=True,
+            hidden_dim=8,
+            heads=2,
+            kmax=kmax,
+            budgets=(256, 512, 1024, 2048, kmax),
+            checkpoint_decoder=False,
+            multiscale=True,
+        ),
+    )
+    ids, _ = model.encode(torch.randn(1, 3, 1, 32, 64))
+    assert ids.shape == (1, 1, kmax)
+    assert int(ids.min()) >= 0 and int(ids.max()) < 64000
+    for k in (256, 512, 1024, 2048, kmax):
+        assert model.dense_from_ids(ids[:, 0, :k], (4, 8)).shape == (1, 16, 4, 8)

@@ -40,6 +40,14 @@ def audit(event, arguments):
 
 sys.addaudithook(audit)
 from cosmos_predict1.tokenizer.progressive.cli import receive
+import torch
+
+torch.set_num_threads(4)
+torch.manual_seed(0)
+torch.backends.cudnn.benchmark = False
+torch.backends.cudnn.deterministic = True
+torch.backends.cudnn.allow_tf32 = False
+torch.backends.cuda.matmul.allow_tf32 = False
 
 receive(SimpleNamespace(**vars(a), model_id="CHP-VTok-v1"))
 Path(a.output, "input_access_audit.json").write_text(
