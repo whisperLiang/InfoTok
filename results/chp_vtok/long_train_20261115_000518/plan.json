@@ -1,0 +1,303 @@
+{
+  "job": "multi_native17_long_20261115_000518",
+  "initial_step": 44,
+  "target_step": 1044,
+  "additional_training_steps": 1000,
+  "initial_checkpoint": "checkpoints/chp_vtok/tokenizer/multi_native17_sampled/checkpoints/iter_000000044.pt",
+  "initial_checkpoint_sha256": "c2e2680f0f016059ec883dc98574c0a30de7c6b87f195b165fc5142e0ff6902f",
+  "source_commit": "f481cb6f6ecf3db8ae87d7d49224795e263d0d43",
+  "checkpoint_directory": "checkpoints/chp_vtok/tokenizer/multi_native17_long_20261115_000518/checkpoints",
+  "training_geometry": [
+    1,
+    3,
+    17,
+    1080,
+    1920
+  ],
+  "loss_policy": "full native RGB and temporal; perceptual uses a genuine 256x256 pixel region without resize",
+  "validation": "three disjoint temporal clips in the same three source scenes, all four budgets, exact FP32 RGB reference; not a cross-video test",
+  "environment": {
+    "PYTHONPATH": ".",
+    "CHP_STAGE": "C",
+    "CHP_LPIPS_CROP": "256",
+    "CHP_VIDEOS": "data/chp_vtok/long_train_20261115_000518/train/*.mp4",
+    "WANDB_MODE": "offline",
+    "OMP_NUM_THREADS": "8",
+    "OPENBLAS_NUM_THREADS": "8"
+  },
+  "tasks": [
+    {
+      "name": "train_to_100",
+      "argv": [
+        "bash",
+        "exp_scripts/chp_vtok_train.sh",
+        "job.name=multi_native17_long_20261115_000518",
+        "checkpoint.load_path=checkpoints/chp_vtok/tokenizer/multi_native17_sampled/checkpoints/iter_000000044.pt",
+        "checkpoint.load_training_state=True",
+        "trainer.max_iter=100",
+        "checkpoint.save_iter=50"
+      ]
+    },
+    {
+      "name": "holdout_baseline44_mcl_jcv01",
+      "argv": [
+        ".venv/bin/python",
+        "scripts/chp_evaluate.py",
+        "--checkpoint",
+        "checkpoints/chp_vtok/tokenizer/multi_native17_sampled/checkpoints/iter_000000044.pt",
+        "--video",
+        "data/chp_vtok/long_train_20261115_000518/validation/mcl_jcv01.mp4",
+        "--frames",
+        "17",
+        "--output",
+        "results/chp_vtok/long_train_20261115_000518/validation/baseline44/mcl_jcv01"
+      ]
+    },
+    {
+      "name": "holdout_baseline44_uvg_beauty",
+      "argv": [
+        ".venv/bin/python",
+        "scripts/chp_evaluate.py",
+        "--checkpoint",
+        "checkpoints/chp_vtok/tokenizer/multi_native17_sampled/checkpoints/iter_000000044.pt",
+        "--video",
+        "data/chp_vtok/long_train_20261115_000518/validation/uvg_beauty.mp4",
+        "--frames",
+        "17",
+        "--output",
+        "results/chp_vtok/long_train_20261115_000518/validation/baseline44/uvg_beauty"
+      ]
+    },
+    {
+      "name": "holdout_baseline44_basketball",
+      "argv": [
+        ".venv/bin/python",
+        "scripts/chp_evaluate.py",
+        "--checkpoint",
+        "checkpoints/chp_vtok/tokenizer/multi_native17_sampled/checkpoints/iter_000000044.pt",
+        "--video",
+        "data/chp_vtok/long_train_20261115_000518/validation/basketball.mp4",
+        "--frames",
+        "17",
+        "--output",
+        "results/chp_vtok/long_train_20261115_000518/validation/baseline44/basketball"
+      ]
+    },
+    {
+      "name": "holdout_step100_mcl_jcv01",
+      "argv": [
+        ".venv/bin/python",
+        "scripts/chp_evaluate.py",
+        "--checkpoint",
+        "checkpoints/chp_vtok/tokenizer/multi_native17_long_20261115_000518/checkpoints/iter_000000100.pt",
+        "--video",
+        "data/chp_vtok/long_train_20261115_000518/validation/mcl_jcv01.mp4",
+        "--frames",
+        "17",
+        "--output",
+        "results/chp_vtok/long_train_20261115_000518/validation/step100/mcl_jcv01"
+      ]
+    },
+    {
+      "name": "holdout_step100_uvg_beauty",
+      "argv": [
+        ".venv/bin/python",
+        "scripts/chp_evaluate.py",
+        "--checkpoint",
+        "checkpoints/chp_vtok/tokenizer/multi_native17_long_20261115_000518/checkpoints/iter_000000100.pt",
+        "--video",
+        "data/chp_vtok/long_train_20261115_000518/validation/uvg_beauty.mp4",
+        "--frames",
+        "17",
+        "--output",
+        "results/chp_vtok/long_train_20261115_000518/validation/step100/uvg_beauty"
+      ]
+    },
+    {
+      "name": "holdout_step100_basketball",
+      "argv": [
+        ".venv/bin/python",
+        "scripts/chp_evaluate.py",
+        "--checkpoint",
+        "checkpoints/chp_vtok/tokenizer/multi_native17_long_20261115_000518/checkpoints/iter_000000100.pt",
+        "--video",
+        "data/chp_vtok/long_train_20261115_000518/validation/basketball.mp4",
+        "--frames",
+        "17",
+        "--output",
+        "results/chp_vtok/long_train_20261115_000518/validation/step100/basketball"
+      ]
+    },
+    {
+      "name": "train_to_300",
+      "argv": [
+        "bash",
+        "exp_scripts/chp_vtok_train.sh",
+        "job.name=multi_native17_long_20261115_000518",
+        "checkpoint.load_path=checkpoints/chp_vtok/tokenizer/multi_native17_long_20261115_000518/checkpoints/iter_000000100.pt",
+        "checkpoint.load_training_state=True",
+        "trainer.max_iter=300",
+        "checkpoint.save_iter=50"
+      ]
+    },
+    {
+      "name": "holdout_step300_mcl_jcv01",
+      "argv": [
+        ".venv/bin/python",
+        "scripts/chp_evaluate.py",
+        "--checkpoint",
+        "checkpoints/chp_vtok/tokenizer/multi_native17_long_20261115_000518/checkpoints/iter_000000300.pt",
+        "--video",
+        "data/chp_vtok/long_train_20261115_000518/validation/mcl_jcv01.mp4",
+        "--frames",
+        "17",
+        "--output",
+        "results/chp_vtok/long_train_20261115_000518/validation/step300/mcl_jcv01"
+      ]
+    },
+    {
+      "name": "holdout_step300_uvg_beauty",
+      "argv": [
+        ".venv/bin/python",
+        "scripts/chp_evaluate.py",
+        "--checkpoint",
+        "checkpoints/chp_vtok/tokenizer/multi_native17_long_20261115_000518/checkpoints/iter_000000300.pt",
+        "--video",
+        "data/chp_vtok/long_train_20261115_000518/validation/uvg_beauty.mp4",
+        "--frames",
+        "17",
+        "--output",
+        "results/chp_vtok/long_train_20261115_000518/validation/step300/uvg_beauty"
+      ]
+    },
+    {
+      "name": "holdout_step300_basketball",
+      "argv": [
+        ".venv/bin/python",
+        "scripts/chp_evaluate.py",
+        "--checkpoint",
+        "checkpoints/chp_vtok/tokenizer/multi_native17_long_20261115_000518/checkpoints/iter_000000300.pt",
+        "--video",
+        "data/chp_vtok/long_train_20261115_000518/validation/basketball.mp4",
+        "--frames",
+        "17",
+        "--output",
+        "results/chp_vtok/long_train_20261115_000518/validation/step300/basketball"
+      ]
+    },
+    {
+      "name": "train_to_600",
+      "argv": [
+        "bash",
+        "exp_scripts/chp_vtok_train.sh",
+        "job.name=multi_native17_long_20261115_000518",
+        "checkpoint.load_path=checkpoints/chp_vtok/tokenizer/multi_native17_long_20261115_000518/checkpoints/iter_000000300.pt",
+        "checkpoint.load_training_state=True",
+        "trainer.max_iter=600",
+        "checkpoint.save_iter=50"
+      ]
+    },
+    {
+      "name": "holdout_step600_mcl_jcv01",
+      "argv": [
+        ".venv/bin/python",
+        "scripts/chp_evaluate.py",
+        "--checkpoint",
+        "checkpoints/chp_vtok/tokenizer/multi_native17_long_20261115_000518/checkpoints/iter_000000600.pt",
+        "--video",
+        "data/chp_vtok/long_train_20261115_000518/validation/mcl_jcv01.mp4",
+        "--frames",
+        "17",
+        "--output",
+        "results/chp_vtok/long_train_20261115_000518/validation/step600/mcl_jcv01"
+      ]
+    },
+    {
+      "name": "holdout_step600_uvg_beauty",
+      "argv": [
+        ".venv/bin/python",
+        "scripts/chp_evaluate.py",
+        "--checkpoint",
+        "checkpoints/chp_vtok/tokenizer/multi_native17_long_20261115_000518/checkpoints/iter_000000600.pt",
+        "--video",
+        "data/chp_vtok/long_train_20261115_000518/validation/uvg_beauty.mp4",
+        "--frames",
+        "17",
+        "--output",
+        "results/chp_vtok/long_train_20261115_000518/validation/step600/uvg_beauty"
+      ]
+    },
+    {
+      "name": "holdout_step600_basketball",
+      "argv": [
+        ".venv/bin/python",
+        "scripts/chp_evaluate.py",
+        "--checkpoint",
+        "checkpoints/chp_vtok/tokenizer/multi_native17_long_20261115_000518/checkpoints/iter_000000600.pt",
+        "--video",
+        "data/chp_vtok/long_train_20261115_000518/validation/basketball.mp4",
+        "--frames",
+        "17",
+        "--output",
+        "results/chp_vtok/long_train_20261115_000518/validation/step600/basketball"
+      ]
+    },
+    {
+      "name": "train_to_1044",
+      "argv": [
+        "bash",
+        "exp_scripts/chp_vtok_train.sh",
+        "job.name=multi_native17_long_20261115_000518",
+        "checkpoint.load_path=checkpoints/chp_vtok/tokenizer/multi_native17_long_20261115_000518/checkpoints/iter_000000600.pt",
+        "checkpoint.load_training_state=True",
+        "trainer.max_iter=1044",
+        "checkpoint.save_iter=50"
+      ]
+    },
+    {
+      "name": "holdout_step1044_mcl_jcv01",
+      "argv": [
+        ".venv/bin/python",
+        "scripts/chp_evaluate.py",
+        "--checkpoint",
+        "checkpoints/chp_vtok/tokenizer/multi_native17_long_20261115_000518/checkpoints/iter_000001044.pt",
+        "--video",
+        "data/chp_vtok/long_train_20261115_000518/validation/mcl_jcv01.mp4",
+        "--frames",
+        "17",
+        "--output",
+        "results/chp_vtok/long_train_20261115_000518/validation/step1044/mcl_jcv01"
+      ]
+    },
+    {
+      "name": "holdout_step1044_uvg_beauty",
+      "argv": [
+        ".venv/bin/python",
+        "scripts/chp_evaluate.py",
+        "--checkpoint",
+        "checkpoints/chp_vtok/tokenizer/multi_native17_long_20261115_000518/checkpoints/iter_000001044.pt",
+        "--video",
+        "data/chp_vtok/long_train_20261115_000518/validation/uvg_beauty.mp4",
+        "--frames",
+        "17",
+        "--output",
+        "results/chp_vtok/long_train_20261115_000518/validation/step1044/uvg_beauty"
+      ]
+    },
+    {
+      "name": "holdout_step1044_basketball",
+      "argv": [
+        ".venv/bin/python",
+        "scripts/chp_evaluate.py",
+        "--checkpoint",
+        "checkpoints/chp_vtok/tokenizer/multi_native17_long_20261115_000518/checkpoints/iter_000001044.pt",
+        "--video",
+        "data/chp_vtok/long_train_20261115_000518/validation/basketball.mp4",
+        "--frames",
+        "17",
+        "--output",
+        "results/chp_vtok/long_train_20261115_000518/validation/step1044/basketball"
+      ]
+    }
+  ]
+}
