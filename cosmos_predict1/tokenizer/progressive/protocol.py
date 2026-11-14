@@ -88,6 +88,12 @@ class Session:
         header = SESSION.pack(b"CHP2", len(payload)) + payload
         return header + CRC.pack(zlib.crc32(header))
 
+    @property
+    def received_bytes(self):
+        # A legal peer may use a different JSON layout. Byte accounting must
+        # preserve its received representation, not reserialize a shorter one.
+        return getattr(self, "_received_bytes", len(self.to_bytes()))
+
     @classmethod
     def read(cls, source):
         header = exact(source, SESSION.size)
@@ -98,9 +104,11 @@ class Session:
         if CRC.unpack(exact(source, CRC.size))[0] != zlib.crc32(header + payload):
             raise ValueError("session CRC32 mismatch")
         try:
-            return cls(**json.loads(payload))
+            session = cls(**json.loads(payload))
         except (TypeError, json.JSONDecodeError) as e:
             raise ValueError("invalid session metadata") from e
+        object.__setattr__(session, "_received_bytes", SESSION.size + size + CRC.size)
+        return session
 
 
 def exact(source, count):
@@ -198,7 +206,7 @@ class PrefixReceiver:
             raise ValueError("model/checkpoint/config identity mismatch")
         self.session = session
         self.blocks, self.metadata = [], []
-        self.actual_bytes = len(session.to_bytes())
+        self.actual_bytes = session.received_bytes
         self.finished = False
         self.block_closed = False
 

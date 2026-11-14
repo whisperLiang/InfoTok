@@ -270,7 +270,7 @@ def main():
             dataloader_replay_bit_exact=False,
         ),
         evidence=dict(
-            final_tests="tests_final.xml",
+            final_tests="tests_delivery_final.xml",
             rd_observations=len(quality_rows),
             quality_rows="summary.csv",
             quality_reference_dtype="float32",

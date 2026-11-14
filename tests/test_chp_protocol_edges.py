@@ -1,11 +1,14 @@
 import io
+import json
 import struct
 import zlib
+from dataclasses import asdict
 
 import pytest
 
 from cosmos_predict1.tokenizer.progressive.protocol import (
     PACKET,
+    SESSION,
     Packet,
     PrefixReceiver,
     Session,
@@ -98,3 +101,17 @@ def test_frame_alignment_errors_do_not_create_receiver_blocks():
         with pytest.raises(ValueError, match="frame"):
             r.append_tokens(packet)
         assert not r.blocks
+
+
+def test_receiver_counts_actual_session_bytes_including_json_whitespace():
+    metadata = asdict(fresh().session)
+    payload = json.dumps(metadata, indent=2).encode()
+    body = SESSION.pack(b"CHP2", len(payload)) + payload
+    session_wire = body + struct.pack(">I", zlib.crc32(body))
+    parsed = Session.read(io.BytesIO(session_wire))
+    r = PrefixReceiver(
+        parsed, model_id="m", checkpoint_sha256="a" * 64, config_sha256="b" * 64
+    )
+    packet = Packet(0, 0, 1, 0, (0,) * 256, eos=True)
+    r.read_packet(io.BytesIO(packet.to_bytes()))
+    assert r.actual_bytes == len(session_wire) + len(packet.to_bytes())
