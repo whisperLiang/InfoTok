@@ -1,0 +1,67 @@
+{
+  "checkpoint_sha256": "44a3473ac65581a1c3a70c52e8d8e0a993eb95d0b90905fda73dc1cecd2483a1",
+  "dtype": "bfloat16",
+  "shape": [
+    1,
+    3,
+    17,
+    1080,
+    1920
+  ],
+  "budgets": [
+    256,
+    512,
+    1024,
+    2048,
+    256
+  ],
+  "encoder_future_past_ids_equal": true,
+  "decoder_future_past_max_abs": 0.0,
+  "full_vs_recompute_ids_equal": true,
+  "full_vs_stream_ids_equal": false,
+  "full_vs_recompute_id_fraction": 0.0,
+  "full_vs_stream_id_fraction": 0.005664062686264515,
+  "full_vs_stream_rgb_max_abs": 0.03125,
+  "full_vs_stream_rgb_mean_abs": 0.0008087158203125,
+  "full_encode": {
+    "seconds": 3.5591555460123345,
+    "peak_allocated_bytes": 18667966976,
+    "peak_reserved_bytes": 25400705024,
+    "baseline_bytes": 444682240,
+    "incremental_peak_bytes": 18223284736
+  },
+  "repeated_encode": {
+    "seconds": 5.597838842018973,
+    "peak_allocated_bytes": 18701283840,
+    "peak_reserved_bytes": 25400705024,
+    "baseline_bytes": 478277632,
+    "incremental_peak_bytes": 18223006208
+  },
+  "cached_encode": {
+    "seconds": 4.355950119992485,
+    "peak_allocated_bytes": 11109470720,
+    "peak_reserved_bytes": 25400705024,
+    "baseline_bytes": 478318592,
+    "incremental_peak_bytes": 10631152128
+  },
+  "full_decode": {
+    "seconds": 10.117157985980157,
+    "peak_allocated_bytes": 26969911808,
+    "peak_reserved_bytes": 63956844544,
+    "baseline_bytes": 4924715008,
+    "incremental_peak_bytes": 22045196800
+  },
+  "cached_decode": {
+    "seconds": 16.15460824398906,
+    "peak_allocated_bytes": 24784701952,
+    "peak_reserved_bytes": 63956844544,
+    "baseline_bytes": 5136222208,
+    "incremental_peak_bytes": 19648479744
+  },
+  "encoder_cache_bytes": 4445306880,
+  "decoder_cache_bytes": 6200033280,
+  "encoder_cache_entries": 54,
+  "decoder_cache_entries": 65,
+  "actual_new_frames": 17,
+  "history_convolutions_reused": true
+}

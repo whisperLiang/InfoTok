@@ -1,0 +1,26 @@
+{
+  "checkpoint_sha256": "44a3473ac65581a1c3a70c52e8d8e0a993eb95d0b90905fda73dc1cecd2483a1",
+  "validation_video": "mcl_jcv01 same-scene temporal holdout",
+  "shape": [
+    1,
+    3,
+    17,
+    1080,
+    1920
+  ],
+  "fp32_causality_passed": true,
+  "fp32_full_recompute_stream_ids_equal": true,
+  "fp32_stream_rgb_max_abs": 1.6689300537109375e-06,
+  "fp32_allocator": "expandable_segments:True",
+  "first_fp32_attempt": "OOM at second full-window decoder intervention; log retained",
+  "bf16_causality_passed": true,
+  "bf16_full_stream_ids_equal": false,
+  "bf16_id_change_fraction": 0.005664062686264515,
+  "tcp_incremental_bytes": 21601,
+  "tcp_incremental_seconds": 56.740641827,
+  "tcp_mixed_bytes": 9034,
+  "tcp_mixed_seconds": 42.004041108,
+  "receiver_ids_equal": true,
+  "not_realtime": true,
+  "scope": "One native 17-frame video for post-training causality/cache/network integration; not a universal numerical equivalence proof."
+}

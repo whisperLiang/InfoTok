@@ -2,7 +2,9 @@
 
 This is an isolated experimental model in the InfoTok repository. It reuses the official factorized causal convolutional encoder/decoder, FSQ, losses, Trainer, AdamW/scheduler construction, and checkpoint manager. The pretrained ViT bottleneck is replaced with new learned modules; this is **not a numerically equivalent conversion of InfoTok-Flex**. Upstream models and configuration names remain available.
 
-The current checkpoints are engineering smoke training on three short public clips, including native 1920×1080 optimization steps. They are not converged production or benchmark checkpoints. See [the measured technical report](results/chp_vtok/report.md) and its gate table before interpreting quality or performance.
+The initial checkpoints used engineering smoke training on three public clips. A subsequent native 1920×1080, 17-frame continuation completed 1,000 additional optimization steps (44→1044), with all four budgets evaluated on fixed temporal holdouts. These are still only three source scenes, with no convergence or cross-video generalization claim. See [the completed native training report](results/chp_vtok/long_train_20261115_000518/final_report.md), its matched-byte results, and the [original engineering audit](results/chp_vtok/report.md).
+
+The step-1044 checkpoint passed a native FP32 causal/cache integration check after an allocator-fragmentation OOM retry. BF16 full/cache execution still changes 0.5664% of IDs on that sample. New public Decoder weights passed independent TCP incremental and mixed-budget transmission; neither precision is real time. Exact weights, commands, failure logs and scope are recorded in the new report.
 
 ## Model and geometry
 

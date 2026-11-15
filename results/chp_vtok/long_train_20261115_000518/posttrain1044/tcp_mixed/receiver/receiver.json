@@ -1,0 +1,190 @@
+{
+  "packets": [
+    {
+      "block_id": 0,
+      "budget": 256,
+      "decode_seconds": 7.100125600001775,
+      "received_bytes": 1044,
+      "reference_cache_bytes": 5932646400,
+      "committed": true,
+      "reconstruction_ready_ns": 162478772256878,
+      "shape": [
+        1,
+        3,
+        1,
+        1080,
+        1920
+      ]
+    },
+    {
+      "block_id": 1,
+      "budget": 256,
+      "decode_seconds": 1.633931162999943,
+      "received_bytes": 1587,
+      "reference_cache_bytes": 5932646400,
+      "committed": false,
+      "reconstruction_ready_ns": 162480435657514,
+      "shape": [
+        1,
+        3,
+        4,
+        1080,
+        1920
+      ]
+    },
+    {
+      "block_id": 1,
+      "budget": 512,
+      "decode_seconds": 3.546235291985795,
+      "received_bytes": 2130,
+      "reference_cache_bytes": 5999493120,
+      "committed": true,
+      "reconstruction_ready_ns": 162484059679961,
+      "shape": [
+        1,
+        3,
+        4,
+        1080,
+        1920
+      ]
+    },
+    {
+      "block_id": 2,
+      "budget": 256,
+      "decode_seconds": 1.627822714013746,
+      "received_bytes": 2673,
+      "reference_cache_bytes": 5999493120,
+      "committed": false,
+      "reconstruction_ready_ns": 162485767895138,
+      "shape": [
+        1,
+        3,
+        4,
+        1080,
+        1920
+      ]
+    },
+    {
+      "block_id": 2,
+      "budget": 512,
+      "decode_seconds": 1.6316005109983962,
+      "received_bytes": 3216,
+      "reference_cache_bytes": 5999493120,
+      "committed": false,
+      "reconstruction_ready_ns": 162487474506931,
+      "shape": [
+        1,
+        3,
+        4,
+        1080,
+        1920
+      ]
+    },
+    {
+      "block_id": 2,
+      "budget": 1024,
+      "decode_seconds": 3.258449009998003,
+      "received_bytes": 4271,
+      "reference_cache_bytes": 6066339840,
+      "committed": true,
+      "reconstruction_ready_ns": 162490808153199,
+      "shape": [
+        1,
+        3,
+        4,
+        1080,
+        1920
+      ]
+    },
+    {
+      "block_id": 3,
+      "budget": 256,
+      "decode_seconds": 1.6270553820068017,
+      "received_bytes": 4814,
+      "reference_cache_bytes": 6066339840,
+      "committed": false,
+      "reconstruction_ready_ns": 162492540960862,
+      "shape": [
+        1,
+        3,
+        4,
+        1080,
+        1920
+      ]
+    },
+    {
+      "block_id": 3,
+      "budget": 512,
+      "decode_seconds": 1.6303781299793627,
+      "received_bytes": 5357,
+      "reference_cache_bytes": 6066339840,
+      "committed": false,
+      "reconstruction_ready_ns": 162494246363507,
+      "shape": [
+        1,
+        3,
+        4,
+        1080,
+        1920
+      ]
+    },
+    {
+      "block_id": 3,
+      "budget": 1024,
+      "decode_seconds": 1.6313482629775535,
+      "received_bytes": 6412,
+      "reference_cache_bytes": 6066339840,
+      "committed": false,
+      "reconstruction_ready_ns": 162495952884118,
+      "shape": [
+        1,
+        3,
+        4,
+        1080,
+        1920
+      ]
+    },
+    {
+      "block_id": 3,
+      "budget": 2048,
+      "decode_seconds": 4.699364255997352,
+      "received_bytes": 8491,
+      "reference_cache_bytes": 6133186560,
+      "committed": true,
+      "reconstruction_ready_ns": 162500727661962,
+      "shape": [
+        1,
+        3,
+        4,
+        1080,
+        1920
+      ]
+    },
+    {
+      "block_id": 4,
+      "budget": 256,
+      "decode_seconds": 3.255246657994576,
+      "received_bytes": 9034,
+      "reference_cache_bytes": 6200033280,
+      "committed": true,
+      "reconstruction_ready_ns": 162504087119517,
+      "shape": [
+        1,
+        3,
+        4,
+        1080,
+        1920
+      ]
+    }
+  ],
+  "actual_bytes": 9034,
+  "elapsed_seconds": 37.13207582800533,
+  "independent_process": true,
+  "protocol_version": 2,
+  "transport": "tcp",
+  "peak_allocated_bytes": 19691047936,
+  "inputs": [
+    "/home/whisperliang/InfoTok/checkpoints/chp_vtok/tokenizer/multi_native17_long_20261115_000518/decoder_step1044.pt",
+    "tcp://127.0.0.1:52779"
+  ]
+}

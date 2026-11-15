@@ -1,0 +1,37 @@
+2026-11-15 12:41:13.315 | INFO     | cosmos_predict1.tokenizer.modules.layers3d:__init__:843 - Working with z of shape (1, 256, 128, 128) = 4194304 dimensions.
+2026-11-15 12:41:14.323 | INFO     | cosmos_predict1.tokenizer.networks.ours_discrete_video:__init__:64 - OURS based on FSQ-VAE, with {'name': 'OURS', 'attn_resolutions': [32], 'channels': 128, 'channels_mult': [2, 4, 4], 'dropout': 0.0, 'in_channels': 3, 'num_res_blocks': 2, 'out_channels': 3, 'resolution': 1024, 'patch_size': 2, 'patch_method': 'haar', 'num_groups': 1, 'legacy_mode': False, 'spatial_compression': 8, 'temporal_compression': 4, 'quantizer': 'FSQ', 'levels': [8, 8, 8, 5, 5, 5], 'encoder': 'FACTORIZED', 'decoder': 'FACTORIZED', 'rate_strategy': 'elbo', 'use_vit': True, 'freeze_original': False, 'vit_config': {'hidden_size': 256, 'intermediate_size': 512, 'num_encoder_layers': 8, 'num_decoder_layers': 8, 'num_attention_heads': 32, 'theta': 10000.0, 'rms_norm_eps': 1e-05, 'initializer_range': 0.02, 'max_num_video_frames': 49, 'switch_rotary_to_1d': 1.0, 'max_sequence_length': 96, 'max_sequence_length_1d': 8192, 'concat_decode_2d': False, 'special_attn': False, 'method': 'mse'}}.
+2026-11-15 12:41:14.324 | INFO     | cosmos_predict1.tokenizer.networks.ours_discrete_video:__init__:67 - model=OURS, num_parameters=112,619,766
+2026-11-15 12:41:14.325 | INFO     | cosmos_predict1.tokenizer.networks.ours_discrete_video:__init__:68 - z_channels=256, embedding_dim=6.
+2026-11-15 12:41:14.325 | INFO     | cosmos_predict1.tokenizer.networks.ours_discrete_video:__init__:87 - Not freezing original model parameters.
+2026-11-15 12:41:14.464 | INFO     | cosmos_predict1.tokenizer.networks.ours_discrete_video:init_adaptive_token:172 - Adaptive token initialized with shape torch.Size([128]) and value 0.0.
+2026-11-15 12:41:14.466 | INFO     | cosmos_predict1.tokenizer.networks.ours_discrete_video:__init__:122 - model=OURS, num_parameters=123,142,646
+Traceback (most recent call last):
+  File "/home/whisperliang/InfoTok/scripts/chp_consistency.py", line 123, in <module>
+    main()
+  File "/home/whisperliang/InfoTok/.venv/lib/python3.10/site-packages/torch/utils/_contextlib.py", line 116, in decorate_context
+    return func(*args, **kwargs)
+  File "/home/whisperliang/InfoTok/scripts/chp_consistency.py", line 90, in main
+    changed_rgb = model.decode(future, geometry, budgets)
+  File "/home/whisperliang/InfoTok/cosmos_predict1/tokenizer/progressive/model.py", line 255, in decode
+    return self.decode_latent_sequence(dense, bases, geometry)
+  File "/home/whisperliang/InfoTok/cosmos_predict1/tokenizer/progressive/model.py", line 275, in decode_latent_sequence
+    frame = self._decode_current(latent, geometry, t)
+  File "/home/whisperliang/InfoTok/cosmos_predict1/tokenizer/progressive/model.py", line 280, in _decode_current
+    decoded = geometry.crop(self.decoder(latent))
+  File "/home/whisperliang/InfoTok/.venv/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1739, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/whisperliang/InfoTok/.venv/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1750, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/whisperliang/InfoTok/cosmos_predict1/tokenizer/modules/layers3d.py", line 936, in forward
+    h = self.up[i_level].upsample(h)
+  File "/home/whisperliang/InfoTok/.venv/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1739, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/whisperliang/InfoTok/.venv/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1750, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/whisperliang/InfoTok/cosmos_predict1/tokenizer/progressive/causal_state.py", line 285, in forward
+    return compute(x)
+  File "/home/whisperliang/InfoTok/cosmos_predict1/tokenizer/progressive/causal_state.py", line 281, in compute
+    return window_attention(self, value, window) if local else original(value)
+  File "/home/whisperliang/InfoTok/cosmos_predict1/tokenizer/modules/layers3d.py", line 178, in forward
+    x = self.conv2(x) + x
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 8.96 GiB. GPU 0 has a total capacity of 79.18 GiB of which 7.10 GiB is free. Including non-PyTorch memory, this process has 72.05 GiB memory in use. Of the allocated memory 42.32 GiB is allocated by PyTorch, and 29.14 GiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)

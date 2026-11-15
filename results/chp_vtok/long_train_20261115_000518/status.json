@@ -1,0 +1,84 @@
+{
+  "start_utc": "2026-11-14T16:13:23.261750+00:00",
+  "tasks": [
+    {
+      "name": "train_to_100",
+      "exit_code": 0
+    },
+    {
+      "name": "holdout_baseline44_mcl_jcv01",
+      "exit_code": 0
+    },
+    {
+      "name": "holdout_baseline44_uvg_beauty",
+      "exit_code": 0
+    },
+    {
+      "name": "holdout_baseline44_basketball",
+      "exit_code": 0
+    },
+    {
+      "name": "holdout_step100_mcl_jcv01",
+      "exit_code": 0
+    },
+    {
+      "name": "holdout_step100_uvg_beauty",
+      "exit_code": 0
+    },
+    {
+      "name": "holdout_step100_basketball",
+      "exit_code": 0
+    },
+    {
+      "name": "train_to_300",
+      "exit_code": 0
+    },
+    {
+      "name": "holdout_step300_mcl_jcv01",
+      "exit_code": 0
+    },
+    {
+      "name": "holdout_step300_uvg_beauty",
+      "exit_code": 0
+    },
+    {
+      "name": "holdout_step300_basketball",
+      "exit_code": 0
+    },
+    {
+      "name": "train_to_600",
+      "exit_code": 0
+    },
+    {
+      "name": "holdout_step600_mcl_jcv01",
+      "exit_code": 0
+    },
+    {
+      "name": "holdout_step600_uvg_beauty",
+      "exit_code": 0
+    },
+    {
+      "name": "holdout_step600_basketball",
+      "exit_code": 0
+    },
+    {
+      "name": "train_to_1044",
+      "exit_code": 0
+    },
+    {
+      "name": "holdout_step1044_mcl_jcv01",
+      "exit_code": 0
+    },
+    {
+      "name": "holdout_step1044_uvg_beauty",
+      "exit_code": 0
+    },
+    {
+      "name": "holdout_step1044_basketball",
+      "exit_code": 0
+    }
+  ],
+  "active": null,
+  "state": "completed",
+  "end_utc": "2026-11-15T03:53:52.276113+00:00"
+}

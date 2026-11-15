@@ -1,0 +1,350 @@
+/home/whisperliang/InfoTok/.venv/lib/python3.10/site-packages/megatron/core/tensor_parallel/layers.py:265: FutureWarning: `torch.cuda.amp.custom_fwd(args...)` is deprecated. Please use `torch.amp.custom_fwd(args..., device_type='cuda')` instead.
+  def forward(
+/home/whisperliang/InfoTok/.venv/lib/python3.10/site-packages/megatron/core/tensor_parallel/layers.py:277: FutureWarning: `torch.cuda.amp.custom_bwd(args...)` is deprecated. Please use `torch.amp.custom_bwd(args..., device_type='cuda')` instead.
+  def backward(ctx, grad_output):
+/home/whisperliang/InfoTok/.venv/lib/python3.10/site-packages/megatron/core/tensor_parallel/layers.py:364: FutureWarning: `torch.cuda.amp.custom_fwd(args...)` is deprecated. Please use `torch.amp.custom_fwd(args..., device_type='cuda')` instead.
+  def forward(
+/home/whisperliang/InfoTok/.venv/lib/python3.10/site-packages/megatron/core/tensor_parallel/layers.py:401: FutureWarning: `torch.cuda.amp.custom_bwd(args...)` is deprecated. Please use `torch.amp.custom_bwd(args..., device_type='cuda')` instead.
+  def backward(ctx, grad_output):
+[11-15 00:13:29|CRITICAL|cosmos_predict1/utils/distributed.py:68:init] [RANK 0] Initialized distributed program with local rank 0 with timeout 1800
+[11-15 00:13:29|INFO|cosmos_predict1/utils/distributed.py:78:init] Running with 1 GPUs.
+Config is saved using pickle at checkpoints/chp_vtok/tokenizer/multi_native17_long_20261115_000518/config.pkl.
+Config is saved using omegaconf at checkpoints/chp_vtok/tokenizer/multi_native17_long_20261115_000518/config.yaml.
+[rank0]:[W1115 00:13:29.597530929 ProcessGroupNCCL.cpp:4561] [PG ID 0 PG GUID 0 Rank 0]  using GPU 0 to perform barrier as devices used by this process are currently unknown. This can potentially cause a hang if this rank to GPU mapping is incorrect. Specify device_ids in barrier() to force use of a particular device, or call init_process_group() with a device_id.
+[11-15 00:13:29|INFO|cosmos_predict1/utils/trainer.py:94:__init__] Config:
+* model: {'config': {'network': {'config': {'kmax': 2048, 'budgets': [256, 512, 1024, 2048], 'multiscale': True, 'base_tokens': 256, 'structure_tokens': 768, 'hidden_dim': 128, 'heads': 4, 'local_radius': 2, 'spatial_window': 16, 'anchor_order': 'halton', 'decoder_neighbors': 8, 'checkpoint_decoder': True, 'freeze_backbone': True, 'backbone_checkpoint': 'checkpoints/infotok-flex/infotok_mse.pt', 'debug_backbone': False}, '_target_': <class 'cosmos_predict1.tokenizer.progressive.model.CHPVTokenizer'>}, 'loss': {'config': {'color': {'config': {'norm': 'L1', 'boundaries': [0], 'values': [1.0]}, '_target_': <class 'cosmos_predict1.tokenizer.training.losses.continuous.ColorLoss'>}, 'reduce': 'MEAN', 'perceptual': {'config': {'lpips_boundaries': [0], 'lpips_values': [0.1], 'layer_weights': [0.3846153846153846, 0.20833333333333334, 0.27027027027027023, 0.17857142857142858, 6.666666666666667], 'gram_enabled': False, 'gram_boundaries': [500000], 'gram_values': [0.0, 0.062], 'corr_enabled': False, 'corr_boundaries': [0], 'corr_values': [0.0], 'checkpoint_activations': True}, 'crop_size': 256, '_target_': <class 'cosmos_predict1.tokenizer.training.chp_losses.NativeCropPerceptualLoss'>}}, '_target_': <class 'cosmos_predict1.tokenizer.training.losses.continuous.TokenizerLoss'>}, 'metric': {'config': {}, '_target_': <class 'cosmos_predict1.tokenizer.training.metrics.TokenizerMetric'>}, 'ema': {'enabled': False, 'beta': 0.9999, 'torch_compile_buffer_renaming': False}, 'precision': 'bfloat16', 'torch_compile': False, 'disc': None, 'disc_optimizer': None, 'disc_scheduler': None, 'latent_weight': 1.0, 'temporal_weight': 0.1}, '_target_': <class 'cosmos_predict1.tokenizer.training.chp_model.CHPTrainingModel'>}
+* optimizer: {'lr': 0.0001, 'betas': [0.9, 0.999], 'eps': 1e-08, 'weight_decay': 0.01, 'amsgrad': False, 'maximize': False, 'foreach': None, 'capturable': False, 'differentiable': False, 'fused': None, 'params': None, '_target_': <class 'torch.optim.adamw.AdamW'>}
+* scheduler: {'last_epoch': -1, 'optimizer': None, 'warmup_iters': 5, 'lr_decay_iters': 10000, 'min_lr': 1e-06, '_target_': <class 'cosmos_predict1.utils.scheduler.WarmupCosineLR'>}
+* dataloader_train: {'batch_size': 1, 'shuffle': False, 'sampler': None, 'batch_sampler': None, 'num_workers': 0, 'collate_fn': None, 'pin_memory': False, 'drop_last': False, 'timeout': 0, 'worker_init_fn': None, 'multiprocessing_context': None, 'generator': None, 'prefetch_factor': None, 'persistent_workers': False, 'pin_memory_device': '', 'in_order': True, 'dataset': {'num_video_frames': 17, 'debug_height': None, 'crop_size': None, 'video_pattern': 'data/chp_vtok/long_train_20261115_000518/train/*.mp4', '_target_': <class 'cosmos_predict1.tokenizer.training.datasets.chp_video.CHPVideoDataset'>}, '_target_': <class 'torch.utils.data.dataloader.DataLoader'>}
+* dataloader_val: {'batch_size': 1, 'shuffle': False, 'sampler': None, 'batch_sampler': None, 'num_workers': 0, 'collate_fn': None, 'pin_memory': False, 'drop_last': False, 'timeout': 0, 'worker_init_fn': None, 'multiprocessing_context': None, 'generator': None, 'prefetch_factor': None, 'persistent_workers': False, 'pin_memory_device': '', 'in_order': True, 'dataset': {'num_video_frames': 17, 'debug_height': None, 'crop_size': None, 'video_pattern': 'data/chp_vtok/long_train_20261115_000518/train/*.mp4', '_target_': <class 'cosmos_predict1.tokenizer.training.datasets.chp_video.CHPVideoDataset'>}, '_target_': <class 'torch.utils.data.dataloader.DataLoader'>}
+* job:
+   * project: chp_vtok
+   * group: tokenizer
+   * name: multi_native17_long_20261115_000518
+* trainer:
+   * type: <class 'cosmos_predict1.tokenizer.training.trainer.TokenizerTrainer'>
+   * callbacks: {'low_precision': {'config': None, 'trainer': None, 'update_iter': 1, '_target_': <class 'cosmos_predict1.utils.callback.LowPrecisionCallback'>}, 'grad_clip': {'grad_clip_norm': 1, 'config': None, 'trainer': None, 'verbose': False, '_target_': <class 'cosmos_predict1.tokenizer.training.callbacks.GradClipCallback'>}, 'progress': {'config': None, 'trainer': None, '_target_': <class 'cosmos_predict1.utils.callback.ProgressBarCallback'>}, 'chp_metadata': {'config': None, 'trainer': None, '_target_': <class 'cosmos_predict1.tokenizer.training.chp_model.CHPCheckpointMetadata'>}}
+   * distributed_parallelism: ddp
+   * ddp:
+      * find_unused_parameters: True
+      * static_graph: False
+      * broadcast_buffers: True
+   * cudnn:
+      * deterministic: True
+      * benchmark: False
+   * seed: 0
+   * grad_scaler_args: {'enabled': False}
+   * max_iter: 100
+   * max_val_iter: None
+   * logging_iter: 1
+   * run_validation: False
+   * validation_iter: 999999999
+   * timeout_period: 999999999
+   * memory_format: torch.preserve_format
+   * grad_accum_iter: 1
+* model_parallel: ModelParallelConfig(tensor_model_parallel_size=1, pipeline_model_parallel_size=1, virtual_pipeline_model_parallel_size=None, sequence_parallel=False, context_parallel_size=1, expert_model_parallel_size=1, moe_extended_tp=False, perform_initialization=True, use_cpu_initialization=False, fp16=False, bf16=False, params_dtype=torch.float32, timers=None, finalize_model_grads_func=None, grad_scale_func=None, no_sync_func=None, grad_sync_func=None, param_sync_func=None, enable_autocast=False, autocast_dtype=torch.float32, num_microbatches_with_partial_activation_checkpoints=None, gradient_accumulation_fusion=False, async_tensor_model_parallel_allreduce=False, use_te_rng_tracker=False, tp_comm_overlap=False, tp_comm_bulk_wgrad=True, tp_comm_bulk_dgrad=True, tp_comm_overlap_ag=True, tp_comm_overlap_rs=True, tp_comm_overlap_rs_dgrad=False, tp_comm_split_ag=True, tp_comm_atomic_ag=False, tp_comm_split_rs=True, tp_comm_atomic_rs=False, pipeline_dtype=None, variable_seq_lengths=False, overlap_p2p_comm=False, batch_p2p_comm=True, batch_p2p_sync=True, use_ring_exchange_p2p=False, deallocate_pipeline_outputs=False, defer_embedding_wgrad_compute=False, pipeline_model_parallel_split_rank=None, cpu_offloading=False, cpu_offloading_num_layers=0, _cpu_offloading_context=None, cpu_offloading_activations=True, cpu_offloading_weights=True, barrier_with_L1_time=True)
+* checkpoint:
+   * type: None
+   * dcp_async_mode_enabled: False
+   * save_iter: 50
+   * load_path: checkpoints/chp_vtok/tokenizer/multi_native17_sampled/checkpoints/iter_000000044.pt
+   * load_training_state: True
+   * only_load_scheduler_state: False
+   * strict_resume: True
+   * verbose: True
+   * jit:
+      * enabled: False
+      * input_shape: None
+      * device: cuda
+      * dtype: bfloat16
+      * strict: True
+   * keys_not_to_resume: []
+   * broadcast_via_filesystem: False
+   * load_ema_to_reg: False
+[11-15 00:13:29|WARNING|cosmos_predict1/utils/misc.py:115:print_environ_variables] Environment variable TORCH_HOME not set!
+[11-15 00:13:29|INFO|cosmos_predict1/utils/misc.py:113:print_environ_variables] Environment variable OUTPUT_ROOT: checkpoints
+[11-15 00:13:29|INFO|cosmos_predict1/utils/misc.py:127:set_random_seed] Using random seed 0.
+[11-15 00:13:29|CRITICAL|cosmos_predict1/utils/callback.py:72:__init__] Instantiating callback low_precision: {'config': None, 'trainer': None, 'update_iter': 1, '_target_': <class 'cosmos_predict1.utils.callback.LowPrecisionCallback'>}
+[11-15 00:13:29|CRITICAL|cosmos_predict1/utils/callback.py:72:__init__] Instantiating callback grad_clip: {'grad_clip_norm': 1, 'config': None, 'trainer': None, 'verbose': False, '_target_': <class 'cosmos_predict1.tokenizer.training.callbacks.GradClipCallback'>}
+[11-15 00:13:29|CRITICAL|cosmos_predict1/utils/callback.py:72:__init__] Instantiating callback progress: {'config': None, 'trainer': None, '_target_': <class 'cosmos_predict1.utils.callback.ProgressBarCallback'>}
+[11-15 00:13:30|CRITICAL|cosmos_predict1/utils/callback.py:72:__init__] Instantiating callback chp_metadata: {'config': None, 'trainer': None, '_target_': <class 'cosmos_predict1.tokenizer.training.chp_model.CHPCheckpointMetadata'>}
+2026-11-15 00:13:30.306 | INFO     | cosmos_predict1.tokenizer.modules.layers3d:__init__:843 - Working with z of shape (1, 256, 128, 128) = 4194304 dimensions.
+2026-11-15 00:13:30.740 | INFO     | cosmos_predict1.tokenizer.networks.ours_discrete_video:__init__:64 - OURS based on FSQ-VAE, with {'name': 'OURS', 'attn_resolutions': [32], 'channels': 128, 'channels_mult': [2, 4, 4], 'dropout': 0.0, 'in_channels': 3, 'num_res_blocks': 2, 'out_channels': 3, 'resolution': 1024, 'patch_size': 2, 'patch_method': 'haar', 'num_groups': 1, 'legacy_mode': False, 'spatial_compression': 8, 'temporal_compression': 4, 'quantizer': 'FSQ', 'levels': [8, 8, 8, 5, 5, 5], 'encoder': 'FACTORIZED', 'decoder': 'FACTORIZED', 'rate_strategy': 'elbo', 'use_vit': True, 'freeze_original': False, 'vit_config': {'hidden_size': 256, 'intermediate_size': 512, 'num_encoder_layers': 8, 'num_decoder_layers': 8, 'num_attention_heads': 32, 'theta': 10000.0, 'rms_norm_eps': 1e-05, 'initializer_range': 0.02, 'max_num_video_frames': 49, 'switch_rotary_to_1d': 1.0, 'max_sequence_length': 96, 'max_sequence_length_1d': 8192, 'concat_decode_2d': False, 'special_attn': False, 'method': 'mse'}}.
+2026-11-15 00:13:30.741 | INFO     | cosmos_predict1.tokenizer.networks.ours_discrete_video:__init__:67 - model=OURS, num_parameters=112,619,766
+2026-11-15 00:13:30.741 | INFO     | cosmos_predict1.tokenizer.networks.ours_discrete_video:__init__:68 - z_channels=256, embedding_dim=6.
+2026-11-15 00:13:30.741 | INFO     | cosmos_predict1.tokenizer.networks.ours_discrete_video:__init__:87 - Not freezing original model parameters.
+2026-11-15 00:13:30.875 | INFO     | cosmos_predict1.tokenizer.networks.ours_discrete_video:init_adaptive_token:172 - Adaptive token initialized with shape torch.Size([128]) and value 0.0.
+2026-11-15 00:13:30.876 | INFO     | cosmos_predict1.tokenizer.networks.ours_discrete_video:__init__:122 - model=OURS, num_parameters=123,142,646
+/home/whisperliang/InfoTok/.venv/lib/python3.10/site-packages/torchvision/models/_utils.py:208: UserWarning: The parameter 'pretrained' is deprecated since 0.13 and may be removed in the future, please use 'weights' instead.
+  warnings.warn(
+/home/whisperliang/InfoTok/.venv/lib/python3.10/site-packages/torchvision/models/_utils.py:223: UserWarning: Arguments other than a weight enum or `None` for 'weights' are deprecated since 0.13 and may be removed in the future. The current behavior is equivalent to passing `weights=VGG16_Weights.IMAGENET1K_V1`. You can also use `weights=VGG16_Weights.DEFAULT` to get the most up-to-date weights.
+  warnings.warn(msg)
+2026-11-15 00:13:33.199 | INFO     | cosmos_predict1.tokenizer.training.losses.lpips:load_from_pretrained:90 - Loaded pretrained LPIPS loss from /home/whisperliang/.cache/torch/hub/checkpoints/vgg.pth
+Config(model={'config': {'network': {'config': {'kmax': 2048, 'budgets': [256, 512, 1024, 2048], 'multiscale': True, 'base_tokens': 256, 'structure_tokens': 768, 'hidden_dim': 128, 'heads': 4, 'local_radius': 2, 'spatial_window': 16, 'anchor_order': 'halton', 'decoder_neighbors': 8, 'checkpoint_decoder': True, 'freeze_backbone': True, 'backbone_checkpoint': 'checkpoints/infotok-flex/infotok_mse.pt', 'debug_backbone': False}, '_target_': <class 'cosmos_predict1.tokenizer.progressive.model.CHPVTokenizer'>}, 'loss': {'config': {'color': {'config': {'norm': 'L1', 'boundaries': [0], 'values': [1.0]}, '_target_': <class 'cosmos_predict1.tokenizer.training.losses.continuous.ColorLoss'>}, 'reduce': 'MEAN', 'perceptual': {'config': {'lpips_boundaries': [0], 'lpips_values': [0.1], 'layer_weights': [0.3846153846153846, 0.20833333333333334, 0.27027027027027023, 0.17857142857142858, 6.666666666666667], 'gram_enabled': False, 'gram_boundaries': [500000], 'gram_values': [0.0, 0.062], 'corr_enabled': False, 'corr_boundaries': [0], 'corr_values': [0.0], 'checkpoint_activations': True}, 'crop_size': 256, '_target_': <class 'cosmos_predict1.tokenizer.training.chp_losses.NativeCropPerceptualLoss'>}}, '_target_': <class 'cosmos_predict1.tokenizer.training.losses.continuous.TokenizerLoss'>}, 'metric': {'config': {}, '_target_': <class 'cosmos_predict1.tokenizer.training.metrics.TokenizerMetric'>}, 'ema': {'enabled': False, 'beta': 0.9999, 'torch_compile_buffer_renaming': False}, 'precision': 'bfloat16', 'torch_compile': False, 'disc': None, 'disc_optimizer': None, 'disc_scheduler': None, 'latent_weight': 1.0, 'temporal_weight': 0.1}, '_target_': <class 'cosmos_predict1.tokenizer.training.chp_model.CHPTrainingModel'>}, optimizer={'lr': 0.0001, 'betas': [0.9, 0.999], 'eps': 1e-08, 'weight_decay': 0.01, 'amsgrad': False, 'maximize': False, 'foreach': None, 'capturable': False, 'differentiable': False, 'fused': None, 'params': None, '_target_': <class 'torch.optim.adamw.AdamW'>}, scheduler={'last_epoch': -1, 'optimizer': None, 'warmup_iters': 5, 'lr_decay_iters': 10000, 'min_lr': 1e-06, '_target_': <class 'cosmos_predict1.utils.scheduler.WarmupCosineLR'>}, dataloader_train={'batch_size': 1, 'shuffle': False, 'sampler': None, 'batch_sampler': None, 'num_workers': 0, 'collate_fn': None, 'pin_memory': False, 'drop_last': False, 'timeout': 0, 'worker_init_fn': None, 'multiprocessing_context': None, 'generator': None, 'prefetch_factor': None, 'persistent_workers': False, 'pin_memory_device': '', 'in_order': True, 'dataset': {'num_video_frames': 17, 'debug_height': None, 'crop_size': None, 'video_pattern': 'data/chp_vtok/long_train_20261115_000518/train/*.mp4', '_target_': <class 'cosmos_predict1.tokenizer.training.datasets.chp_video.CHPVideoDataset'>}, '_target_': <class 'torch.utils.data.dataloader.DataLoader'>}, dataloader_val={'batch_size': 1, 'shuffle': False, 'sampler': None, 'batch_sampler': None, 'num_workers': 0, 'collate_fn': None, 'pin_memory': False, 'drop_last': False, 'timeout': 0, 'worker_init_fn': None, 'multiprocessing_context': None, 'generator': None, 'prefetch_factor': None, 'persistent_workers': False, 'pin_memory_device': '', 'in_order': True, 'dataset': {'num_video_frames': 17, 'debug_height': None, 'crop_size': None, 'video_pattern': 'data/chp_vtok/long_train_20261115_000518/train/*.mp4', '_target_': <class 'cosmos_predict1.tokenizer.training.datasets.chp_video.CHPVideoDataset'>}, '_target_': <class 'torch.utils.data.dataloader.DataLoader'>}, job=JobConfig(project='chp_vtok', group='tokenizer', name='multi_native17_long_20261115_000518'), trainer=TrainerConfig(type=<class 'cosmos_predict1.tokenizer.training.trainer.TokenizerTrainer'>, callbacks={'low_precision': {'config': None, 'trainer': None, 'update_iter': 1, '_target_': <class 'cosmos_predict1.utils.callback.LowPrecisionCallback'>}, 'grad_clip': {'grad_clip_norm': 1, 'config': None, 'trainer': None, 'verbose': False, '_target_': <class 'cosmos_predict1.tokenizer.training.callbacks.GradClipCallback'>}, 'progress': {'config': None, 'trainer': None, '_target_': <class 'cosmos_predict1.utils.callback.ProgressBarCallback'>}, 'chp_metadata': {'config': None, 'trainer': None, '_target_': <class 'cosmos_predict1.tokenizer.training.chp_model.CHPCheckpointMetadata'>}}, distributed_parallelism='ddp', ddp=DDPConfig(find_unused_parameters=True, static_graph=False, broadcast_buffers=True), cudnn=CuDNNConfig(deterministic=True, benchmark=False), seed=0, grad_scaler_args={'enabled': False}, max_iter=100, max_val_iter=None, logging_iter=1, run_validation=False, validation_iter=999999999, timeout_period=999999999, memory_format=torch.preserve_format, grad_accum_iter=1), model_parallel=ModelParallelConfig(tensor_model_parallel_size=1, pipeline_model_parallel_size=1, virtual_pipeline_model_parallel_size=None, sequence_parallel=False, context_parallel_size=1, expert_model_parallel_size=1, moe_extended_tp=False, perform_initialization=True, use_cpu_initialization=False, fp16=False, bf16=False, params_dtype=torch.float32, timers=None, finalize_model_grads_func=None, grad_scale_func=None, no_sync_func=None, grad_sync_func=None, param_sync_func=None, enable_autocast=False, autocast_dtype=torch.float32, num_microbatches_with_partial_activation_checkpoints=None, gradient_accumulation_fusion=False, async_tensor_model_parallel_allreduce=False, use_te_rng_tracker=False, tp_comm_overlap=False, tp_comm_bulk_wgrad=True, tp_comm_bulk_dgrad=True, tp_comm_overlap_ag=True, tp_comm_overlap_rs=True, tp_comm_overlap_rs_dgrad=False, tp_comm_split_ag=True, tp_comm_atomic_ag=False, tp_comm_split_rs=True, tp_comm_atomic_rs=False, pipeline_dtype=None, variable_seq_lengths=False, overlap_p2p_comm=False, batch_p2p_comm=True, batch_p2p_sync=True, use_ring_exchange_p2p=False, deallocate_pipeline_outputs=False, defer_embedding_wgrad_compute=False, pipeline_model_parallel_split_rank=None, cpu_offloading=False, cpu_offloading_num_layers=0, _cpu_offloading_context=None, cpu_offloading_activations=True, cpu_offloading_weights=True, barrier_with_L1_time=True), checkpoint=CheckpointConfig(type=None, dcp_async_mode_enabled=False, save_iter=50, load_path='checkpoints/chp_vtok/tokenizer/multi_native17_sampled/checkpoints/iter_000000044.pt', load_training_state=True, only_load_scheduler_state=False, strict_resume=True, verbose=True, jit=JITConfig(enabled=False, input_shape=None, device='cuda', dtype='bfloat16', strict=True), keys_not_to_resume=[], broadcast_via_filesystem=False, load_ema_to_reg=False))
+wandb: Using wandb-core as the SDK backend.  Please refer to https://wandb.me/wandb-core for more information.
+wandb: Tracking run with wandb version 0.19.8
+wandb: W&B syncing is set to `offline` in this directory.  
+wandb: Run `wandb online` or set WANDB_MODE=online to enable cloud syncing.
+[11-15 00:13:33|INFO|cosmos_predict1/utils/checkpointer.py:165:load] Loading checkpoint (local): checkpoints/chp_vtok/tokenizer/multi_native17_sampled/checkpoints/iter_000000044.pt
+[11-15 00:13:33|SUCCESS|cosmos_predict1/utils/checkpointer.py:168:load] Complete loading checkpoint (local): checkpoints/chp_vtok/tokenizer/multi_native17_sampled/checkpoints/iter_000000044.pt
+[11-15 00:13:33|INFO|cosmos_predict1/utils/checkpointer.py:171:load] - Loading the model...
+/home/whisperliang/InfoTok/cosmos_predict1/tokenizer/training/model.py:89: FutureWarning: Positional args are being deprecated, use kwargs instead. Refer to https://pytorch.org/docs/main/generated/torch.nn.Module.html#torch.nn.Module.state_dict for details.
+  original_state_dict = super(TokenizerModel, self).state_dict(destination, prefix, keep_vars)
+[11-15 00:13:33|INFO|cosmos_predict1/utils/checkpointer.py:179:load] - Loading the scheduler...
+[11-15 00:13:33|INFO|cosmos_predict1/utils/checkpointer.py:186:load] - Loading the optimizer...
+[11-15 00:13:33|INFO|cosmos_predict1/utils/checkpointer.py:188:load] - Loading the gradient scaler...
+[11-15 00:13:33|SUCCESS|cosmos_predict1/utils/checkpointer.py:190:load] Done with loading the checkpoint (iteration 44).
+[11-15 00:13:33|CRITICAL|cosmos_predict1/utils/trainer.py:152:train] Distributed parallelism mode: ddp
+[11-15 00:13:33|INFO|cosmos_predict1/utils/trainer.py:160:train] Starting training...
+
+Training:  44%|████▍     | 44/100 [00:00<?, ?it/s][rank0]:[W1115 00:13:50.820674766 reducer.cpp:1400] Warning: find_unused_parameters=True was specified in DDP constructor, but did not find any unused parameters in the forward pass. This flag results in an extra traversal of the autograd graph every iteration,  which can adversely affect performance. If your model indeed never has any unused parameters in the forward pass, consider turning this flag off. Note that this warning may be a false positive if your model has flow control causing later iterations to have unused parameters. (function operator())
+CHP_GRADIENTS {"iteration": 44, "norm": 1.6884093509056088, "latent_decoder_norm": 1.3180517880687164}
+Iteration=    44, loss=0.6128
+
+Training:  45%|████▌     | 45/100 [00:42<38:32, 42.05s/it]CHP_TRAIN_STEP {"iteration": 45, "loss": 0.6128156781196594, "budgets": [[512.0, 256.0, 1024.0, 256.0, 2048.0]], "components": {"color": 0.2216796875, "lpips": 0.1279296875, "latent": 0.2519147992134094, "temporal": 0.11279296875, "quant": 0.0}, "seconds": 38.37882733499282, "shape": [1, 3, 17, 1080, 1920], "peak_allocated_bytes": 64074098688, "peak_reserved_bytes": 82231427072, "perceptual_region": {"y": 340, "x": 1407, "height": 256, "width": 256, "source_height": 1080, "source_width": 1920, "strategy": "uniform source pixels; shared across time; no resize"}}
+CHP_GRADIENTS {"iteration": 45, "norm": 0.632390057257345, "latent_decoder_norm": 0.4364584713455084}
+Iteration=    45, loss=0.4931
+
+Training:  46%|████▌     | 46/100 [01:20<36:08, 40.16s/it]CHP_TRAIN_STEP {"iteration": 46, "loss": 0.49310803413391113, "budgets": [[2048.0, 256.0, 1024.0, 512.0, 512.0]], "components": {"color": 0.1533203125, "lpips": 0.07568359375, "latent": 0.26120495796203613, "temporal": 0.033935546875, "quant": 0.0}, "seconds": 36.4718013380043, "shape": [1, 3, 17, 1080, 1920], "peak_allocated_bytes": 64355734528, "peak_reserved_bytes": 82418073600, "perceptual_region": {"y": 240, "x": 562, "height": 256, "width": 256, "source_height": 1080, "source_width": 1920, "strategy": "uniform source pixels; shared across time; no resize"}}
+CHP_GRADIENTS {"iteration": 46, "norm": 0.9606530971029525, "latent_decoder_norm": 0.7166059932641056}
+Iteration=    46, loss=0.4691
+
+Training:  47%|████▋     | 47/100 [02:02<36:01, 40.78s/it]CHP_TRAIN_STEP {"iteration": 47, "loss": 0.46909254789352417, "budgets": [[2048.0, 512.0, 2048.0, 512.0, 2048.0]], "components": {"color": 0.140625, "lpips": 0.07275390625, "latent": 0.25022047758102417, "temporal": 0.059814453125, "quant": 0.0}, "seconds": 36.60278807800205, "shape": [1, 3, 17, 1080, 1920], "peak_allocated_bytes": 64964318720, "peak_reserved_bytes": 82778783744, "perceptual_region": {"y": 361, "x": 1256, "height": 256, "width": 256, "source_height": 1080, "source_width": 1920, "strategy": "uniform source pixels; shared across time; no resize"}}
+CHP_GRADIENTS {"iteration": 47, "norm": 1.490476524698949, "latent_decoder_norm": 1.1841726141392928}
+Iteration=    47, loss=0.5724
+
+Training:  48%|████▊     | 48/100 [02:41<34:47, 40.15s/it]CHP_TRAIN_STEP {"iteration": 48, "loss": 0.5723770260810852, "budgets": [[512.0, 256.0, 2048.0, 256.0, 1024.0]], "components": {"color": 0.197265625, "lpips": 0.1064453125, "latent": 0.2563980221748352, "temporal": 0.11279296875, "quant": 0.0}, "seconds": 36.482026790996315, "shape": [1, 3, 17, 1080, 1920], "peak_allocated_bytes": 64286934528, "peak_reserved_bytes": 82778783744, "perceptual_region": {"y": 148, "x": 1043, "height": 256, "width": 256, "source_height": 1080, "source_width": 1920, "strategy": "uniform source pixels; shared across time; no resize"}}
+CHP_GRADIENTS {"iteration": 48, "norm": 0.6131282384774561, "latent_decoder_norm": 0.4436979480950401}
+Iteration=    48, loss=0.5002
+
+Training:  49%|████▉     | 49/100 [03:20<33:49, 39.79s/it]CHP_TRAIN_STEP {"iteration": 49, "loss": 0.5001575350761414, "budgets": [[256.0, 512.0, 2048.0, 512.0, 1024.0]], "components": {"color": 0.150390625, "lpips": 0.087890625, "latent": 0.25848883390426636, "temporal": 0.033935546875, "quant": 0.0}, "seconds": 36.53221787499206, "shape": [1, 3, 17, 1080, 1920], "peak_allocated_bytes": 64357026816, "peak_reserved_bytes": 82778783744, "perceptual_region": {"y": 150, "x": 1191, "height": 256, "width": 256, "source_height": 1080, "source_width": 1920, "strategy": "uniform source pixels; shared across time; no resize"}}
+CHP_GRADIENTS {"iteration": 49, "norm": 1.0540922979955945, "latent_decoder_norm": 0.7832651580057363}
+Iteration=    49, loss=0.4628
+
+Training:  50%|█████     | 50/100 [04:01<33:27, 40.15s/it]CHP_TRAIN_STEP {"iteration": 50, "loss": 0.4628278613090515, "budgets": [[256.0, 256.0, 512.0, 512.0, 1024.0]], "components": {"color": 0.1357421875, "lpips": 0.0888671875, "latent": 0.2324201464653015, "temporal": 0.05810546875, "quant": 0.0}, "seconds": 36.53971213000477, "shape": [1, 3, 17, 1080, 1920], "peak_allocated_bytes": 64017368064, "peak_reserved_bytes": 82778783744, "perceptual_region": {"y": 379, "x": 806, "height": 256, "width": 256, "source_height": 1080, "source_width": 1920, "strategy": "uniform source pixels; shared across time; no resize"}}
+
+                                                          
+[11-15 00:17:35|SUCCESS|cosmos_predict1/tokenizer/training/checkpointer.py:116:_save_worker_local] Saved checkpoint (local): checkpoints/chp_vtok/tokenizer/multi_native17_long_20261115_000518/checkpoints/iter_000000050.pt
+
+Training:  50%|█████     | 50/100 [04:01<33:27, 40.15s/it]CHP_GRADIENTS {"iteration": 50, "norm": 1.2983645441754694, "latent_decoder_norm": 1.0052088755674504}
+Iteration=    50, loss=0.5665
+
+Training:  51%|█████     | 51/100 [04:41<32:40, 40.00s/it]CHP_TRAIN_STEP {"iteration": 51, "loss": 0.566511869430542, "budgets": [[1024.0, 256.0, 256.0, 1024.0, 256.0]], "components": {"color": 0.1884765625, "lpips": 0.11376953125, "latent": 0.2531574070453644, "temporal": 0.10595703125, "quant": 0.0}, "seconds": 36.4759533359902, "shape": [1, 3, 17, 1080, 1920], "peak_allocated_bytes": 63949827584, "peak_reserved_bytes": 82778783744, "perceptual_region": {"y": 327, "x": 489, "height": 256, "width": 256, "source_height": 1080, "source_width": 1920, "strategy": "uniform source pixels; shared across time; no resize"}}
+CHP_GRADIENTS {"iteration": 51, "norm": 0.5142621370200932, "latent_decoder_norm": 0.39708218977095594}
+Iteration=    51, loss=0.4661
+
+Training:  52%|█████▏    | 52/100 [05:21<31:59, 40.00s/it]CHP_TRAIN_STEP {"iteration": 52, "loss": 0.46606019139289856, "budgets": [[1024.0, 2048.0, 1024.0, 512.0, 1024.0]], "components": {"color": 0.1455078125, "lpips": 0.052734375, "latent": 0.26464417576789856, "temporal": 0.03173828125, "quant": 0.0}, "seconds": 36.54388128800201, "shape": [1, 3, 17, 1080, 1920], "peak_allocated_bytes": 64422175232, "peak_reserved_bytes": 82778783744, "perceptual_region": {"y": 384, "x": 1216, "height": 256, "width": 256, "source_height": 1080, "source_width": 1920, "strategy": "uniform source pixels; shared across time; no resize"}}
+CHP_GRADIENTS {"iteration": 52, "norm": 0.7669001913497366, "latent_decoder_norm": 0.5599737765470233}
+Iteration=    52, loss=0.4352
+
+Training:  53%|█████▎    | 53/100 [06:03<31:51, 40.67s/it]CHP_TRAIN_STEP {"iteration": 53, "loss": 0.43524956703186035, "budgets": [[256.0, 256.0, 256.0, 512.0, 512.0]], "components": {"color": 0.13671875, "lpips": 0.06298828125, "latent": 0.22953057289123535, "temporal": 0.06494140625, "quant": 0.0}, "seconds": 36.47093479199975, "shape": [1, 3, 17, 1080, 1920], "peak_allocated_bytes": 63953479168, "peak_reserved_bytes": 82778783744, "perceptual_region": {"y": 752, "x": 1022, "height": 256, "width": 256, "source_height": 1080, "source_width": 1920, "strategy": "uniform source pixels; shared across time; no resize"}}
+CHP_GRADIENTS {"iteration": 53, "norm": 0.8196885037496691, "latent_decoder_norm": 0.5888618614970073}
+Iteration=    53, loss=0.5777
+
+Training:  54%|█████▍    | 54/100 [06:43<31:04, 40.54s/it]CHP_TRAIN_STEP {"iteration": 54, "loss": 0.577726423740387, "budgets": [[2048.0, 1024.0, 512.0, 256.0, 2048.0]], "components": {"color": 0.2109375, "lpips": 0.10498046875, "latent": 0.24947935342788696, "temporal": 0.11865234375, "quant": 0.0}, "seconds": 36.59083531599026, "shape": [1, 3, 17, 1080, 1920], "peak_allocated_bytes": 64626734592, "peak_reserved_bytes": 82778783744, "perceptual_region": {"y": 228, "x": 138, "height": 256, "width": 256, "source_height": 1080, "source_width": 1920, "strategy": "uniform source pixels; shared across time; no resize"}}
+CHP_GRADIENTS {"iteration": 54, "norm": 1.1108899504400398, "latent_decoder_norm": 0.728818826604653}
+Iteration=    54, loss=0.4684
+
+Training:  55%|█████▌    | 55/100 [07:23<30:09, 40.21s/it]CHP_TRAIN_STEP {"iteration": 55, "loss": 0.4683624804019928, "budgets": [[256.0, 256.0, 1024.0, 2048.0, 2048.0]], "components": {"color": 0.1474609375, "lpips": 0.05810546875, "latent": 0.2601868212223053, "temporal": 0.031005859375, "quant": 0.0}, "seconds": 36.62095005001174, "shape": [1, 3, 17, 1080, 1920], "peak_allocated_bytes": 64559204352, "peak_reserved_bytes": 82778783744, "perceptual_region": {"y": 735, "x": 1049, "height": 256, "width": 256, "source_height": 1080, "source_width": 1920, "strategy": "uniform source pixels; shared across time; no resize"}}
+CHP_GRADIENTS {"iteration": 55, "norm": 0.7509143410719834, "latent_decoder_norm": 0.5809282182618762}
+Iteration=    55, loss=0.4337
+
+Training:  56%|█████▌    | 56/100 [08:05<29:57, 40.85s/it]CHP_TRAIN_STEP {"iteration": 56, "loss": 0.433663547039032, "budgets": [[2048.0, 512.0, 1024.0, 2048.0, 256.0]], "components": {"color": 0.12060546875, "lpips": 0.06689453125, "latent": 0.24012106657028198, "temporal": 0.060302734375, "quant": 0.0}, "seconds": 36.62820172200736, "shape": [1, 3, 17, 1080, 1920], "peak_allocated_bytes": 64624922112, "peak_reserved_bytes": 82778783744, "perceptual_region": {"y": 364, "x": 517, "height": 256, "width": 256, "source_height": 1080, "source_width": 1920, "strategy": "uniform source pixels; shared across time; no resize"}}
+CHP_GRADIENTS {"iteration": 56, "norm": 0.8074888240625276, "latent_decoder_norm": 0.5944032062926566}
+Iteration=    56, loss=0.5382
+
+Training:  57%|█████▋    | 57/100 [08:45<29:08, 40.66s/it]CHP_TRAIN_STEP {"iteration": 57, "loss": 0.5381916165351868, "budgets": [[1024.0, 512.0, 512.0, 1024.0, 2048.0]], "components": {"color": 0.2001953125, "lpips": 0.0791015625, "latent": 0.24748115241527557, "temporal": 0.1142578125, "quant": 0.0}, "seconds": 36.55826823700045, "shape": [1, 3, 17, 1080, 1920], "peak_allocated_bytes": 64425486848, "peak_reserved_bytes": 82778783744, "perceptual_region": {"y": 418, "x": 990, "height": 256, "width": 256, "source_height": 1080, "source_width": 1920, "strategy": "uniform source pixels; shared across time; no resize"}}
+CHP_GRADIENTS {"iteration": 57, "norm": 0.9179796846739747, "latent_decoder_norm": 0.7286246904881384}
+Iteration=    57, loss=0.4658
+
+Training:  58%|█████▊    | 58/100 [09:25<28:18, 40.45s/it]CHP_TRAIN_STEP {"iteration": 58, "loss": 0.46584048867225647, "budgets": [[512.0, 2048.0, 1024.0, 512.0, 1024.0]], "components": {"color": 0.1455078125, "lpips": 0.059326171875, "latent": 0.25725284218788147, "temporal": 0.03515625, "quant": 0.0}, "seconds": 36.57060666900361, "shape": [1, 3, 17, 1080, 1920], "peak_allocated_bytes": 64422373888, "peak_reserved_bytes": 82778783744, "perceptual_region": {"y": 1, "x": 788, "height": 256, "width": 256, "source_height": 1080, "source_width": 1920, "strategy": "uniform source pixels; shared across time; no resize"}}
+CHP_GRADIENTS {"iteration": 58, "norm": 0.8771095763333402, "latent_decoder_norm": 0.6365887689356357}
+Iteration=    58, loss=0.4503
+
+Training:  59%|█████▉    | 59/100 [10:07<27:59, 40.96s/it]CHP_TRAIN_STEP {"iteration": 59, "loss": 0.4502711892127991, "budgets": [[2048.0, 512.0, 1024.0, 1024.0, 2048.0]], "components": {"color": 0.119140625, "lpips": 0.08544921875, "latent": 0.23924215137958527, "temporal": 0.0595703125, "quant": 0.0}, "seconds": 36.61214206900331, "shape": [1, 3, 17, 1080, 1920], "peak_allocated_bytes": 64692464640, "peak_reserved_bytes": 82778783744, "perceptual_region": {"y": 322, "x": 743, "height": 256, "width": 256, "source_height": 1080, "source_width": 1920, "strategy": "uniform source pixels; shared across time; no resize"}}
+CHP_GRADIENTS {"iteration": 59, "norm": 2.049046712079486, "latent_decoder_norm": 1.4332517031540701}
+Iteration=    59, loss=0.6024
+
+Training:  60%|██████    | 60/100 [10:47<27:09, 40.74s/it]CHP_TRAIN_STEP {"iteration": 60, "loss": 0.6023564338684082, "budgets": [[2048.0, 512.0, 256.0, 256.0, 256.0]], "components": {"color": 0.2041015625, "lpips": 0.142578125, "latent": 0.2431645542383194, "temporal": 0.115234375, "quant": 0.0}, "seconds": 36.541006529005244, "shape": [1, 3, 17, 1080, 1920], "peak_allocated_bytes": 64221216768, "peak_reserved_bytes": 82778783744, "perceptual_region": {"y": 404, "x": 274, "height": 256, "width": 256, "source_height": 1080, "source_width": 1920, "strategy": "uniform source pixels; shared across time; no resize"}}
+CHP_GRADIENTS {"iteration": 60, "norm": 0.8152805649398374, "latent_decoder_norm": 0.649216741672528}
+Iteration=    60, loss=0.4906
+
+Training:  61%|██████    | 61/100 [11:27<26:18, 40.46s/it]CHP_TRAIN_STEP {"iteration": 61, "loss": 0.4906103014945984, "budgets": [[512.0, 1024.0, 256.0, 512.0, 512.0]], "components": {"color": 0.150390625, "lpips": 0.083984375, "latent": 0.2529851794242859, "temporal": 0.032470703125, "quant": 0.0}, "seconds": 36.51242230799107, "shape": [1, 3, 17, 1080, 1920], "peak_allocated_bytes": 64086346240, "peak_reserved_bytes": 82778783744, "perceptual_region": {"y": 253, "x": 210, "height": 256, "width": 256, "source_height": 1080, "source_width": 1920, "strategy": "uniform source pixels; shared across time; no resize"}}
+CHP_GRADIENTS {"iteration": 61, "norm": 0.5379376621310702, "latent_decoder_norm": 0.45870641370558096}
+Iteration=    61, loss=0.4072
+
+Training:  62%|██████▏   | 62/100 [12:07<25:32, 40.32s/it]CHP_TRAIN_STEP {"iteration": 62, "loss": 0.4072210192680359, "budgets": [[1024.0, 256.0, 256.0, 512.0, 256.0]], "components": {"color": 0.1240234375, "lpips": 0.055908203125, "latent": 0.2219793051481247, "temporal": 0.055419921875, "quant": 0.0}, "seconds": 36.47221212100703, "shape": [1, 3, 17, 1080, 1920], "peak_allocated_bytes": 63951420928, "peak_reserved_bytes": 82778783744, "perceptual_region": {"y": 451, "x": 1076, "height": 256, "width": 256, "source_height": 1080, "source_width": 1920, "strategy": "uniform source pixels; shared across time; no resize"}}
+CHP_GRADIENTS {"iteration": 62, "norm": 0.6425986316482827, "latent_decoder_norm": 0.5385485832837735}
+Iteration=    62, loss=0.5652
+
+Training:  63%|██████▎   | 63/100 [12:47<24:50, 40.28s/it]CHP_TRAIN_STEP {"iteration": 63, "loss": 0.5651897192001343, "budgets": [[1024.0, 512.0, 2048.0, 2048.0, 2048.0]], "components": {"color": 0.1884765625, "lpips": 0.11474609375, "latent": 0.2512859106063843, "temporal": 0.11181640625, "quant": 0.0}, "seconds": 36.65230889999657, "shape": [1, 3, 17, 1080, 1920], "peak_allocated_bytes": 64963706368, "peak_reserved_bytes": 82778783744, "perceptual_region": {"y": 448, "x": 1136, "height": 256, "width": 256, "source_height": 1080, "source_width": 1920, "strategy": "uniform source pixels; shared across time; no resize"}}
+CHP_GRADIENTS {"iteration": 63, "norm": 0.717035420069323, "latent_decoder_norm": 0.526756145145005}
+Iteration=    63, loss=0.4736
+
+Training:  64%|██████▍   | 64/100 [13:27<24:01, 40.04s/it]CHP_TRAIN_STEP {"iteration": 64, "loss": 0.4736163914203644, "budgets": [[2048.0, 256.0, 2048.0, 1024.0, 1024.0]], "components": {"color": 0.1435546875, "lpips": 0.0703125, "latent": 0.2565753757953644, "temporal": 0.03173828125, "quant": 0.0}, "seconds": 36.600375766007346, "shape": [1, 3, 17, 1080, 1920], "peak_allocated_bytes": 64625688064, "peak_reserved_bytes": 82778783744, "perceptual_region": {"y": 444, "x": 392, "height": 256, "width": 256, "source_height": 1080, "source_width": 1920, "strategy": "uniform source pixels; shared across time; no resize"}}
+CHP_GRADIENTS {"iteration": 64, "norm": 0.5004621320987651, "latent_decoder_norm": 0.3950820263173326}
+Iteration=    64, loss=0.4341
+
+Training:  65%|██████▌   | 65/100 [14:08<23:29, 40.27s/it]CHP_TRAIN_STEP {"iteration": 65, "loss": 0.434102326631546, "budgets": [[2048.0, 1024.0, 512.0, 256.0, 2048.0]], "components": {"color": 0.12890625, "lpips": 0.06396484375, "latent": 0.23454788327217102, "temporal": 0.06201171875, "quant": 0.0}, "seconds": 36.599580378999235, "shape": [1, 3, 17, 1080, 1920], "peak_allocated_bytes": 64626734592, "peak_reserved_bytes": 82778783744, "perceptual_region": {"y": 261, "x": 490, "height": 256, "width": 256, "source_height": 1080, "source_width": 1920, "strategy": "uniform source pixels; shared across time; no resize"}}
+CHP_GRADIENTS {"iteration": 65, "norm": 1.6800705093453965, "latent_decoder_norm": 1.2758164733508932}
+Iteration=    65, loss=0.5754
+
+Training:  66%|██████▌   | 66/100 [14:48<22:49, 40.27s/it]CHP_TRAIN_STEP {"iteration": 66, "loss": 0.5753747820854187, "budgets": [[1024.0, 2048.0, 2048.0, 1024.0, 256.0]], "components": {"color": 0.201171875, "lpips": 0.11767578125, "latent": 0.2454187273979187, "temporal": 0.1162109375, "quant": 0.0}, "seconds": 36.58313527000428, "shape": [1, 3, 17, 1080, 1920], "peak_allocated_bytes": 64627097088, "peak_reserved_bytes": 82778783744, "perceptual_region": {"y": 32, "x": 227, "height": 256, "width": 256, "source_height": 1080, "source_width": 1920, "strategy": "uniform source pixels; shared across time; no resize"}}
+CHP_GRADIENTS {"iteration": 66, "norm": 0.6115145288573758, "latent_decoder_norm": 0.4662134902260133}
+Iteration=    66, loss=0.4755
+
+Training:  67%|██████▋   | 67/100 [15:27<21:53, 39.81s/it]CHP_TRAIN_STEP {"iteration": 67, "loss": 0.47553750872612, "budgets": [[1024.0, 256.0, 2048.0, 512.0, 256.0]], "components": {"color": 0.142578125, "lpips": 0.0810546875, "latent": 0.248883455991745, "temporal": 0.0301513671875, "quant": 0.0}, "seconds": 36.53843947099813, "shape": [1, 3, 17, 1080, 1920], "peak_allocated_bytes": 64289551872, "peak_reserved_bytes": 82778783744, "perceptual_region": {"y": 87, "x": 7, "height": 256, "width": 256, "source_height": 1080, "source_width": 1920, "strategy": "uniform source pixels; shared across time; no resize"}}
+CHP_GRADIENTS {"iteration": 67, "norm": 0.47111851669024923, "latent_decoder_norm": 0.394007917652242}
+Iteration=    67, loss=0.4096
+
+Training:  68%|██████▊   | 68/100 [16:08<21:24, 40.13s/it]CHP_TRAIN_STEP {"iteration": 68, "loss": 0.40959426760673523, "budgets": [[1024.0, 1024.0, 256.0, 512.0, 2048.0]], "components": {"color": 0.12109375, "lpips": 0.056640625, "latent": 0.22630569338798523, "temporal": 0.0556640625, "quant": 0.0}, "seconds": 36.555627124995226, "shape": [1, 3, 17, 1080, 1920], "peak_allocated_bytes": 64356590592, "peak_reserved_bytes": 82778783744, "perceptual_region": {"y": 570, "x": 455, "height": 256, "width": 256, "source_height": 1080, "source_width": 1920, "strategy": "uniform source pixels; shared across time; no resize"}}
+CHP_GRADIENTS {"iteration": 68, "norm": 1.2610630962039022, "latent_decoder_norm": 1.0008464972513305}
+Iteration=    68, loss=0.6315
+
+Training:  69%|██████▉   | 69/100 [16:48<20:45, 40.17s/it]CHP_TRAIN_STEP {"iteration": 69, "loss": 0.6315047144889832, "budgets": [[512.0, 1024.0, 512.0, 256.0, 2048.0]], "components": {"color": 0.203125, "lpips": 0.1767578125, "latent": 0.24057453870773315, "temporal": 0.1201171875, "quant": 0.0}, "seconds": 36.55332890700083, "shape": [1, 3, 17, 1080, 1920], "peak_allocated_bytes": 64355339264, "peak_reserved_bytes": 82778783744, "perceptual_region": {"y": 538, "x": 725, "height": 256, "width": 256, "source_height": 1080, "source_width": 1920, "strategy": "uniform source pixels; shared across time; no resize"}}
+CHP_GRADIENTS {"iteration": 69, "norm": 0.6591574383384787, "latent_decoder_norm": 0.523898500282453}
+Iteration=    69, loss=0.4560
+
+Training:  70%|███████   | 70/100 [17:28<20:01, 40.05s/it]CHP_TRAIN_STEP {"iteration": 70, "loss": 0.4560142457485199, "budgets": [[256.0, 2048.0, 512.0, 512.0, 256.0]], "components": {"color": 0.14453125, "lpips": 0.05517578125, "latent": 0.2536216676235199, "temporal": 0.03173828125, "quant": 0.0}, "seconds": 36.57005810500414, "shape": [1, 3, 17, 1080, 1920], "peak_allocated_bytes": 64290172416, "peak_reserved_bytes": 82778783744, "perceptual_region": {"y": 693, "x": 434, "height": 256, "width": 256, "source_height": 1080, "source_width": 1920, "strategy": "uniform source pixels; shared across time; no resize"}}
+CHP_GRADIENTS {"iteration": 70, "norm": 0.7154220796313788, "latent_decoder_norm": 0.5319350891918351}
+Iteration=    70, loss=0.4115
+
+Training:  71%|███████   | 71/100 [18:08<19:22, 40.09s/it]CHP_TRAIN_STEP {"iteration": 71, "loss": 0.41153138875961304, "budgets": [[1024.0, 2048.0, 512.0, 512.0, 1024.0]], "components": {"color": 0.123046875, "lpips": 0.05615234375, "latent": 0.22616763412952423, "temporal": 0.056640625, "quant": 0.0}, "seconds": 36.568992651999, "shape": [1, 3, 17, 1080, 1920], "peak_allocated_bytes": 64422169088, "peak_reserved_bytes": 82778783744, "perceptual_region": {"y": 485, "x": 264, "height": 256, "width": 256, "source_height": 1080, "source_width": 1920, "strategy": "uniform source pixels; shared across time; no resize"}}
+CHP_GRADIENTS {"iteration": 71, "norm": 0.862743135033993, "latent_decoder_norm": 0.7320134991490482}
+Iteration=    71, loss=0.5835
+
+Training:  72%|███████▏  | 72/100 [18:48<18:43, 40.12s/it]CHP_TRAIN_STEP {"iteration": 72, "loss": 0.5834658145904541, "budgets": [[256.0, 256.0, 512.0, 512.0, 512.0]], "components": {"color": 0.205078125, "lpips": 0.1318359375, "latent": 0.2356264740228653, "temporal": 0.119140625, "quant": 0.0}, "seconds": 36.49251324099896, "shape": [1, 3, 17, 1080, 1920], "peak_allocated_bytes": 64019049472, "peak_reserved_bytes": 82778783744, "perceptual_region": {"y": 289, "x": 1484, "height": 256, "width": 256, "source_height": 1080, "source_width": 1920, "strategy": "uniform source pixels; shared across time; no resize"}}
+CHP_GRADIENTS {"iteration": 72, "norm": 0.7020800288746346, "latent_decoder_norm": 0.5916180168986092}
+Iteration=    72, loss=0.4476
+
+Training:  73%|███████▎  | 73/100 [19:28<18:01, 40.05s/it]CHP_TRAIN_STEP {"iteration": 73, "loss": 0.447559654712677, "budgets": [[2048.0, 2048.0, 2048.0, 512.0, 2048.0]], "components": {"color": 0.1376953125, "lpips": 0.0478515625, "latent": 0.258961021900177, "temporal": 0.030517578125, "quant": 0.0}, "seconds": 36.702247688997886, "shape": [1, 3, 17, 1080, 1920], "peak_allocated_bytes": 65233862656, "peak_reserved_bytes": 82994790400, "perceptual_region": {"y": 786, "x": 1302, "height": 256, "width": 256, "source_height": 1080, "source_width": 1920, "strategy": "uniform source pixels; shared across time; no resize"}}
+CHP_GRADIENTS {"iteration": 73, "norm": 0.5403956498883845, "latent_decoder_norm": 0.4293158325655696}
+Iteration=    73, loss=0.4319
+
+Training:  74%|███████▍  | 74/100 [20:09<17:29, 40.35s/it]CHP_TRAIN_STEP {"iteration": 74, "loss": 0.43191593885421753, "budgets": [[1024.0, 1024.0, 512.0, 512.0, 1024.0]], "components": {"color": 0.1220703125, "lpips": 0.08056640625, "latent": 0.22335879504680634, "temporal": 0.054443359375, "quant": 0.0}, "seconds": 36.51752790399769, "shape": [1, 3, 17, 1080, 1920], "peak_allocated_bytes": 64154959872, "peak_reserved_bytes": 82994790400, "perceptual_region": {"y": 237, "x": 836, "height": 256, "width": 256, "source_height": 1080, "source_width": 1920, "strategy": "uniform source pixels; shared across time; no resize"}}
+CHP_GRADIENTS {"iteration": 74, "norm": 0.8507553753886419, "latent_decoder_norm": 0.6072326072396251}
+Iteration=    74, loss=0.5902
+
+Training:  75%|███████▌  | 75/100 [20:49<16:45, 40.22s/it]CHP_TRAIN_STEP {"iteration": 75, "loss": 0.5902379751205444, "budgets": [[1024.0, 512.0, 512.0, 512.0, 2048.0]], "components": {"color": 0.1767578125, "lpips": 0.1572265625, "latent": 0.24538937211036682, "temporal": 0.1083984375, "quant": 0.0}, "seconds": 36.56113731999358, "shape": [1, 3, 17, 1080, 1920], "peak_allocated_bytes": 64424022528, "peak_reserved_bytes": 82994790400, "perceptual_region": {"y": 584, "x": 492, "height": 256, "width": 256, "source_height": 1080, "source_width": 1920, "strategy": "uniform source pixels; shared across time; no resize"}}
+CHP_GRADIENTS {"iteration": 75, "norm": 0.640254840051136, "latent_decoder_norm": 0.5433722896951388}
+Iteration=    75, loss=0.4430
+
+Training:  76%|███████▌  | 76/100 [21:29<16:03, 40.14s/it]CHP_TRAIN_STEP {"iteration": 76, "loss": 0.44301965832710266, "budgets": [[256.0, 512.0, 2048.0, 512.0, 512.0]], "components": {"color": 0.140625, "lpips": 0.05078125, "latent": 0.24840906262397766, "temporal": 0.031982421875, "quant": 0.0}, "seconds": 36.55834653299826, "shape": [1, 3, 17, 1080, 1920], "peak_allocated_bytes": 64355978240, "peak_reserved_bytes": 82994790400, "perceptual_region": {"y": 159, "x": 1509, "height": 256, "width": 256, "source_height": 1080, "source_width": 1920, "strategy": "uniform source pixels; shared across time; no resize"}}
+CHP_GRADIENTS {"iteration": 76, "norm": 0.7091370623776607, "latent_decoder_norm": 0.4755949282310003}
+Iteration=    76, loss=0.4302
+
+Training:  77%|███████▋  | 77/100 [22:09<15:23, 40.14s/it]CHP_TRAIN_STEP {"iteration": 77, "loss": 0.4301655888557434, "budgets": [[2048.0, 512.0, 2048.0, 256.0, 256.0]], "components": {"color": 0.1201171875, "lpips": 0.08349609375, "latent": 0.2214863896369934, "temporal": 0.055419921875, "quant": 0.0}, "seconds": 36.58285158200306, "shape": [1, 3, 17, 1080, 1920], "peak_allocated_bytes": 64556828672, "peak_reserved_bytes": 82994790400, "perceptual_region": {"y": 230, "x": 649, "height": 256, "width": 256, "source_height": 1080, "source_width": 1920, "strategy": "uniform source pixels; shared across time; no resize"}}
+CHP_GRADIENTS {"iteration": 77, "norm": 1.2058286688423616, "latent_decoder_norm": 0.9657743683964329}
+Iteration=    77, loss=0.4996
+
+Training:  78%|███████▊  | 78/100 [22:48<14:37, 39.89s/it]CHP_TRAIN_STEP {"iteration": 78, "loss": 0.49959760904312134, "budgets": [[1024.0, 512.0, 256.0, 2048.0, 512.0]], "components": {"color": 0.1767578125, "lpips": 0.06689453125, "latent": 0.24440960586071014, "temporal": 0.1103515625, "quant": 0.0}, "seconds": 36.55409996501112, "shape": [1, 3, 17, 1080, 1920], "peak_allocated_bytes": 64355509248, "peak_reserved_bytes": 82994790400, "perceptual_region": {"y": 442, "x": 1514, "height": 256, "width": 256, "source_height": 1080, "source_width": 1920, "strategy": "uniform source pixels; shared across time; no resize"}}
+CHP_GRADIENTS {"iteration": 78, "norm": 0.407081982142401, "latent_decoder_norm": 0.33618357022388445}
+Iteration=    78, loss=0.4590
+
+Training:  79%|███████▉  | 79/100 [23:28<13:53, 39.71s/it]CHP_TRAIN_STEP {"iteration": 79, "loss": 0.4589962363243103, "budgets": [[1024.0, 1024.0, 512.0, 256.0, 1024.0]], "components": {"color": 0.1396484375, "lpips": 0.07373046875, "latent": 0.2432217001914978, "temporal": 0.02880859375, "quant": 0.0}, "seconds": 36.531478996999795, "shape": [1, 3, 17, 1080, 1920], "peak_allocated_bytes": 64083487232, "peak_reserved_bytes": 82994790400, "perceptual_region": {"y": 153, "x": 348, "height": 256, "width": 256, "source_height": 1080, "source_width": 1920, "strategy": "uniform source pixels; shared across time; no resize"}}
+CHP_GRADIENTS {"iteration": 79, "norm": 0.9785038769506563, "latent_decoder_norm": 0.700894509164624}
+Iteration=    79, loss=0.4302
+
+Training:  80%|████████  | 80/100 [24:09<13:26, 40.32s/it]CHP_TRAIN_STEP {"iteration": 80, "loss": 0.43021970987319946, "budgets": [[2048.0, 1024.0, 1024.0, 2048.0, 2048.0]], "components": {"color": 0.11767578125, "lpips": 0.07958984375, "latent": 0.22739990055561066, "temporal": 0.0556640625, "quant": 0.0}, "seconds": 36.72433635601192, "shape": [1, 3, 17, 1080, 1920], "peak_allocated_bytes": 64963511808, "peak_reserved_bytes": 82994790400, "perceptual_region": {"y": 767, "x": 698, "height": 256, "width": 256, "source_height": 1080, "source_width": 1920, "strategy": "uniform source pixels; shared across time; no resize"}}
+CHP_GRADIENTS {"iteration": 80, "norm": 1.4741102968758015, "latent_decoder_norm": 1.1323489538512443}
+Iteration=    80, loss=0.5362
+
+Training:  81%|████████  | 81/100 [24:49<12:42, 40.14s/it]CHP_TRAIN_STEP {"iteration": 81, "loss": 0.536227285861969, "budgets": [[256.0, 512.0, 256.0, 1024.0, 2048.0]], "components": {"color": 0.1767578125, "lpips": 0.10498046875, "latent": 0.2437468320131302, "temporal": 0.1123046875, "quant": 0.0}, "seconds": 36.57258690100571, "shape": [1, 3, 17, 1080, 1920], "peak_allocated_bytes": 64286705152, "peak_reserved_bytes": 82994790400, "perceptual_region": {"y": 74, "x": 1119, "height": 256, "width": 256, "source_height": 1080, "source_width": 1920, "strategy": "uniform source pixels; shared across time; no resize"}}
+CHP_GRADIENTS {"iteration": 81, "norm": 0.5631469493593869, "latent_decoder_norm": 0.4761402625626534}
+Iteration=    81, loss=0.4621
+
+Training:  82%|████████▏ | 82/100 [25:28<11:57, 39.85s/it]CHP_TRAIN_STEP {"iteration": 82, "loss": 0.4620509743690491, "budgets": [[1024.0, 2048.0, 256.0, 1024.0, 1024.0]], "components": {"color": 0.13671875, "lpips": 0.07763671875, "latent": 0.24433857202529907, "temporal": 0.0286865234375, "quant": 0.0}, "seconds": 36.569812921996345, "shape": [1, 3, 17, 1080, 1920], "peak_allocated_bytes": 64354980864, "peak_reserved_bytes": 82994790400, "perceptual_region": {"y": 196, "x": 537, "height": 256, "width": 256, "source_height": 1080, "source_width": 1920, "strategy": "uniform source pixels; shared across time; no resize"}}
+CHP_GRADIENTS {"iteration": 82, "norm": 0.5741545843861717, "latent_decoder_norm": 0.46705429123855285}
+Iteration=    82, loss=0.4229
+
+Training:  83%|████████▎ | 83/100 [26:09<11:23, 40.21s/it]CHP_TRAIN_STEP {"iteration": 83, "loss": 0.4228665828704834, "budgets": [[1024.0, 1024.0, 2048.0, 512.0, 1024.0]], "components": {"color": 0.12109375, "lpips": 0.0751953125, "latent": 0.2212674468755722, "temporal": 0.05322265625, "quant": 0.0}, "seconds": 36.590334477994475, "shape": [1, 3, 17, 1080, 1920], "peak_allocated_bytes": 64422322688, "peak_reserved_bytes": 82994790400, "perceptual_region": {"y": 194, "x": 882, "height": 256, "width": 256, "source_height": 1080, "source_width": 1920, "strategy": "uniform source pixels; shared across time; no resize"}}
+CHP_GRADIENTS {"iteration": 83, "norm": 0.8337447164506193, "latent_decoder_norm": 0.6791235369491219}
+Iteration=    83, loss=0.5159
+
+Training:  84%|████████▍ | 84/100 [26:49<10:42, 40.13s/it]CHP_TRAIN_STEP {"iteration": 84, "loss": 0.5159168839454651, "budgets": [[1024.0, 1024.0, 2048.0, 1024.0, 1024.0]], "components": {"color": 0.173828125, "lpips": 0.08642578125, "latent": 0.2457142323255539, "temporal": 0.1044921875, "quant": 0.0}, "seconds": 36.59201189999294, "shape": [1, 3, 17, 1080, 1920], "peak_allocated_bytes": 64422328832, "peak_reserved_bytes": 82994790400, "perceptual_region": {"y": 732, "x": 1657, "height": 256, "width": 256, "source_height": 1080, "source_width": 1920, "strategy": "uniform source pixels; shared across time; no resize"}}
+CHP_GRADIENTS {"iteration": 84, "norm": 0.5961269240420477, "latent_decoder_norm": 0.4471276381492814}
+Iteration=    84, loss=0.4419
+
+Training:  85%|████████▌ | 85/100 [27:28<09:55, 39.70s/it]CHP_TRAIN_STEP {"iteration": 85, "loss": 0.44186723232269287, "budgets": [[256.0, 256.0, 2048.0, 2048.0, 256.0]], "components": {"color": 0.13671875, "lpips": 0.05859375, "latent": 0.24359454214572906, "temporal": 0.0296630859375, "quant": 0.0}, "seconds": 36.59134682000149, "shape": [1, 3, 17, 1080, 1920], "peak_allocated_bytes": 64492499456, "peak_reserved_bytes": 82994790400, "perceptual_region": {"y": 669, "x": 682, "height": 256, "width": 256, "source_height": 1080, "source_width": 1920, "strategy": "uniform source pixels; shared across time; no resize"}}
+CHP_GRADIENTS {"iteration": 85, "norm": 0.5691028162156795, "latent_decoder_norm": 0.4521385856813519}
+Iteration=    85, loss=0.4234
+
+Training:  86%|████████▌ | 86/100 [28:09<09:20, 40.05s/it]CHP_TRAIN_STEP {"iteration": 86, "loss": 0.4234139323234558, "budgets": [[512.0, 256.0, 512.0, 256.0, 2048.0]], "components": {"color": 0.1337890625, "lpips": 0.059814453125, "latent": 0.224012091755867, "temporal": 0.060546875, "quant": 0.0}, "seconds": 36.54868741099199, "shape": [1, 3, 17, 1080, 1920], "peak_allocated_bytes": 64291237376, "peak_reserved_bytes": 82994790400, "perceptual_region": {"y": 501, "x": 1628, "height": 256, "width": 256, "source_height": 1080, "source_width": 1920, "strategy": "uniform source pixels; shared across time; no resize"}}
+CHP_GRADIENTS {"iteration": 86, "norm": 0.671005695018856, "latent_decoder_norm": 0.5586108689128219}
+Iteration=    86, loss=0.5545
+
+Training:  87%|████████▋ | 87/100 [28:48<08:37, 39.82s/it]CHP_TRAIN_STEP {"iteration": 87, "loss": 0.5545321702957153, "budgets": [[2048.0, 512.0, 1024.0, 1024.0, 1024.0]], "components": {"color": 0.1708984375, "lpips": 0.12890625, "latent": 0.24288669228553772, "temporal": 0.10888671875, "quant": 0.0}, "seconds": 36.57278617400152, "shape": [1, 3, 17, 1080, 1920], "peak_allocated_bytes": 64423893504, "peak_reserved_bytes": 82994790400, "perceptual_region": {"y": 742, "x": 5, "height": 256, "width": 256, "source_height": 1080, "source_width": 1920, "strategy": "uniform source pixels; shared across time; no resize"}}
+CHP_GRADIENTS {"iteration": 87, "norm": 0.442910599355302, "latent_decoder_norm": 0.3370865750981221}
+Iteration=    87, loss=0.4582
+
+Training:  88%|████████▊ | 88/100 [29:27<07:54, 39.54s/it]CHP_TRAIN_STEP {"iteration": 88, "loss": 0.45816171169281006, "budgets": [[2048.0, 1024.0, 256.0, 256.0, 1024.0]], "components": {"color": 0.138671875, "lpips": 0.07421875, "latent": 0.24238719046115875, "temporal": 0.02880859375, "quant": 0.0}, "seconds": 36.536068578003324, "shape": [1, 3, 17, 1080, 1920], "peak_allocated_bytes": 64286801408, "peak_reserved_bytes": 82994790400, "perceptual_region": {"y": 132, "x": 43, "height": 256, "width": 256, "source_height": 1080, "source_width": 1920, "strategy": "uniform source pixels; shared across time; no resize"}}
+CHP_GRADIENTS {"iteration": 88, "norm": 0.7302551066095236, "latent_decoder_norm": 0.6321971178202643}
+Iteration=    88, loss=0.4212
+
+Training:  89%|████████▉ | 89/100 [30:09<07:22, 40.20s/it]CHP_TRAIN_STEP {"iteration": 89, "loss": 0.42118266224861145, "budgets": [[512.0, 1024.0, 2048.0, 256.0, 512.0]], "components": {"color": 0.11865234375, "lpips": 0.07763671875, "latent": 0.21888163685798645, "temporal": 0.06005859375, "quant": 0.0}, "seconds": 36.5542555229913, "shape": [1, 3, 17, 1080, 1920], "peak_allocated_bytes": 64355197952, "peak_reserved_bytes": 82994790400, "perceptual_region": {"y": 676, "x": 622, "height": 256, "width": 256, "source_height": 1080, "source_width": 1920, "strategy": "uniform source pixels; shared across time; no resize"}}
+CHP_GRADIENTS {"iteration": 89, "norm": 0.8012707249379052, "latent_decoder_norm": 0.6188773748618576}
+Iteration=    89, loss=0.5565
+
+Training:  90%|█████████ | 90/100 [30:48<06:39, 39.95s/it]CHP_TRAIN_STEP {"iteration": 90, "loss": 0.5564972162246704, "budgets": [[2048.0, 2048.0, 512.0, 512.0, 1024.0]], "components": {"color": 0.1689453125, "lpips": 0.134765625, "latent": 0.24094544351100922, "temporal": 0.1083984375, "quant": 0.0}, "seconds": 36.60800048499368, "shape": [1, 3, 17, 1080, 1920], "peak_allocated_bytes": 64693113856, "peak_reserved_bytes": 82994790400, "perceptual_region": {"y": 420, "x": 317, "height": 256, "width": 256, "source_height": 1080, "source_width": 1920, "strategy": "uniform source pixels; shared across time; no resize"}}
+CHP_GRADIENTS {"iteration": 90, "norm": 0.65130860727474, "latent_decoder_norm": 0.5596544693114915}
+Iteration=    90, loss=0.4958
+
+Training:  91%|█████████ | 91/100 [31:27<05:56, 39.58s/it]CHP_TRAIN_STEP {"iteration": 91, "loss": 0.4958186149597168, "budgets": [[512.0, 2048.0, 2048.0, 2048.0, 512.0]], "components": {"color": 0.13671875, "lpips": 0.111328125, "latent": 0.2445216178894043, "temporal": 0.032470703125, "quant": 0.0}, "seconds": 36.644562433008105, "shape": [1, 3, 17, 1080, 1920], "peak_allocated_bytes": 64965295616, "peak_reserved_bytes": 82994790400, "perceptual_region": {"y": 333, "x": 1070, "height": 256, "width": 256, "source_height": 1080, "source_width": 1920, "strategy": "uniform source pixels; shared across time; no resize"}}
+CHP_GRADIENTS {"iteration": 91, "norm": 0.4178366846647614, "latent_decoder_norm": 0.31193802229661316}
+Iteration=    91, loss=0.4315
+
+Training:  92%|█████████▏| 92/100 [32:09<05:24, 40.51s/it]CHP_TRAIN_STEP {"iteration": 92, "loss": 0.43150871992111206, "budgets": [[256.0, 2048.0, 2048.0, 512.0, 2048.0]], "components": {"color": 0.1318359375, "lpips": 0.06787109375, "latent": 0.22646111249923706, "temporal": 0.058349609375, "quant": 0.0}, "seconds": 36.65046049999364, "shape": [1, 3, 17, 1080, 1920], "peak_allocated_bytes": 64897923072, "peak_reserved_bytes": 82994790400, "perceptual_region": {"y": 36, "x": 384, "height": 256, "width": 256, "source_height": 1080, "source_width": 1920, "strategy": "uniform source pixels; shared across time; no resize"}}
+CHP_GRADIENTS {"iteration": 92, "norm": 0.8538309088771631, "latent_decoder_norm": 0.6886563617807103}
+Iteration=    92, loss=0.5473
+
+Training:  93%|█████████▎| 93/100 [32:49<04:41, 40.24s/it]CHP_TRAIN_STEP {"iteration": 93, "loss": 0.5473124980926514, "budgets": [[512.0, 512.0, 1024.0, 256.0, 256.0]], "components": {"color": 0.1708984375, "lpips": 0.1240234375, "latent": 0.24128225445747375, "temporal": 0.11083984375, "quant": 0.0}, "seconds": 36.52392861300905, "shape": [1, 3, 17, 1080, 1920], "peak_allocated_bytes": 64018045952, "peak_reserved_bytes": 82994790400, "perceptual_region": {"y": 548, "x": 563, "height": 256, "width": 256, "source_height": 1080, "source_width": 1920, "strategy": "uniform source pixels; shared across time; no resize"}}
+CHP_GRADIENTS {"iteration": 93, "norm": 0.6510311651033435, "latent_decoder_norm": 0.5382931261358943}
+Iteration=    93, loss=0.4289
+
+Training:  94%|█████████▍| 94/100 [33:28<03:58, 39.83s/it]CHP_TRAIN_STEP {"iteration": 94, "loss": 0.4289344549179077, "budgets": [[1024.0, 2048.0, 512.0, 256.0, 2048.0]], "components": {"color": 0.1357421875, "lpips": 0.04833984375, "latent": 0.2424415498971939, "temporal": 0.029052734375, "quant": 0.0}, "seconds": 36.61451447699801, "shape": [1, 3, 17, 1080, 1920], "peak_allocated_bytes": 64626669056, "peak_reserved_bytes": 82994790400, "perceptual_region": {"y": 637, "x": 812, "height": 256, "width": 256, "source_height": 1080, "source_width": 1920, "strategy": "uniform source pixels; shared across time; no resize"}}
+CHP_GRADIENTS {"iteration": 94, "norm": 0.3573121533476103, "latent_decoder_norm": 0.2672257891540068}
+Iteration=    94, loss=0.4196
+
+Training:  95%|█████████▌| 95/100 [34:09<03:21, 40.20s/it]CHP_TRAIN_STEP {"iteration": 95, "loss": 0.4196004271507263, "budgets": [[512.0, 256.0, 256.0, 512.0, 2048.0]], "components": {"color": 0.1318359375, "lpips": 0.06005859375, "latent": 0.22215169668197632, "temporal": 0.060546875, "quant": 0.0}, "seconds": 36.582637373998296, "shape": [1, 3, 17, 1080, 1920], "peak_allocated_bytes": 64288796160, "peak_reserved_bytes": 82994790400, "perceptual_region": {"y": 659, "x": 1543, "height": 256, "width": 256, "source_height": 1080, "source_width": 1920, "strategy": "uniform source pixels; shared across time; no resize"}}
+CHP_GRADIENTS {"iteration": 95, "norm": 1.0494884395035287, "latent_decoder_norm": 0.8157226381412886}
+Iteration=    95, loss=0.5481
+
+Training:  96%|█████████▌| 96/100 [34:49<02:40, 40.10s/it]CHP_TRAIN_STEP {"iteration": 96, "loss": 0.548092782497406, "budgets": [[2048.0, 256.0, 1024.0, 2048.0, 512.0]], "components": {"color": 0.171875, "lpips": 0.1240234375, "latent": 0.240597665309906, "temporal": 0.10595703125, "quant": 0.0}, "seconds": 36.59921819299052, "shape": [1, 3, 17, 1080, 1920], "peak_allocated_bytes": 64627510784, "peak_reserved_bytes": 82994790400, "perceptual_region": {"y": 293, "x": 1542, "height": 256, "width": 256, "source_height": 1080, "source_width": 1920, "strategy": "uniform source pixels; shared across time; no resize"}}
+CHP_GRADIENTS {"iteration": 96, "norm": 0.4519892706060022, "latent_decoder_norm": 0.372937529969029}
+Iteration=    96, loss=0.4416
+
+Training:  97%|█████████▋| 97/100 [35:29<02:00, 40.03s/it]CHP_TRAIN_STEP {"iteration": 97, "loss": 0.4416482150554657, "budgets": [[1024.0, 256.0, 1024.0, 1024.0, 1024.0]], "components": {"color": 0.1357421875, "lpips": 0.056640625, "latent": 0.2464883029460907, "temporal": 0.0277099609375, "quant": 0.0}, "seconds": 36.548752782997326, "shape": [1, 3, 17, 1080, 1920], "peak_allocated_bytes": 64085522944, "peak_reserved_bytes": 82994790400, "perceptual_region": {"y": 741, "x": 1597, "height": 256, "width": 256, "source_height": 1080, "source_width": 1920, "strategy": "uniform source pixels; shared across time; no resize"}}
+CHP_GRADIENTS {"iteration": 97, "norm": 0.6249521266366203, "latent_decoder_norm": 0.4323097216848752}
+Iteration=    97, loss=0.4156
+
+Training:  98%|█████████▊| 98/100 [36:09<01:20, 40.21s/it]CHP_TRAIN_STEP {"iteration": 98, "loss": 0.41561001539230347, "budgets": [[1024.0, 2048.0, 512.0, 256.0, 2048.0]], "components": {"color": 0.115234375, "lpips": 0.07421875, "latent": 0.22048063576221466, "temporal": 0.056640625, "quant": 0.0}, "seconds": 36.609636987996055, "shape": [1, 3, 17, 1080, 1920], "peak_allocated_bytes": 64626386432, "peak_reserved_bytes": 82994790400, "perceptual_region": {"y": 143, "x": 701, "height": 256, "width": 256, "source_height": 1080, "source_width": 1920, "strategy": "uniform source pixels; shared across time; no resize"}}
+CHP_GRADIENTS {"iteration": 98, "norm": 1.1567546581082964, "latent_decoder_norm": 0.8674521664670417}
+Iteration=    98, loss=0.5417
+
+Training:  99%|█████████▉| 99/100 [36:49<00:40, 40.16s/it]CHP_TRAIN_STEP {"iteration": 99, "loss": 0.541719913482666, "budgets": [[512.0, 256.0, 256.0, 2048.0, 1024.0]], "components": {"color": 0.17578125, "lpips": 0.11572265625, "latent": 0.23990105092525482, "temporal": 0.10791015625, "quant": 0.0}, "seconds": 36.57090724800946, "shape": [1, 3, 17, 1080, 1920], "peak_allocated_bytes": 64285789696, "peak_reserved_bytes": 82994790400, "perceptual_region": {"y": 410, "x": 1102, "height": 256, "width": 256, "source_height": 1080, "source_width": 1920, "strategy": "uniform source pixels; shared across time; no resize"}}
+CHP_GRADIENTS {"iteration": 99, "norm": 0.3437613215444606, "latent_decoder_norm": 0.2724328695524834}
+Iteration=    99, loss=0.4476
+
+Training: 100%|██████████| 100/100 [37:30<00:00, 40.15s/it]CHP_TRAIN_STEP {"iteration": 100, "loss": 0.4476214349269867, "budgets": [[256.0, 512.0, 2048.0, 2048.0, 1024.0]], "components": {"color": 0.1328125, "lpips": 0.06396484375, "latent": 0.2472582757472992, "temporal": 0.031005859375, "quant": 0.0}, "seconds": 36.68743315699976, "shape": [1, 3, 17, 1080, 1920], "peak_allocated_bytes": 64626724352, "peak_reserved_bytes": 82994790400, "perceptual_region": {"y": 627, "x": 1509, "height": 256, "width": 256, "source_height": 1080, "source_width": 1920, "strategy": "uniform source pixels; shared across time; no resize"}}
+
+                                                           
+[11-15 00:51:04|SUCCESS|cosmos_predict1/tokenizer/training/checkpointer.py:116:_save_worker_local] Saved checkpoint (local): checkpoints/chp_vtok/tokenizer/multi_native17_long_20261115_000518/checkpoints/iter_000000100.pt
+
+Training: 100%|██████████| 100/100 [37:30<00:00, 40.15s/it]
+                                                           
+[11-15 00:51:08|SUCCESS|cosmos_predict1/utils/trainer.py:216:train] Done with training.
+
+Training: 100%|██████████| 100/100 [37:34<00:00, 40.15s/it]
+Training: 100%|██████████| 100/100 [37:34<00:00, 40.26s/it]
+wandb:                                                                                
+wandb: 
+wandb: Run history:
+wandb: loss ▇▄▆▄▃▃▂▃▂▇▁▆▃▂▆▁█▃▁▇▂▇▂▂▄▂▅▃▁▄▂▁▆▄▅▁▅▂▁▂
+wandb: 
+wandb: Run summary:
+wandb: loss 0.44762
+wandb: 
+wandb: You can sync this run to the cloud by running:
+wandb: wandb sync /home/whisperliang/InfoTok/wandb/offline-run-20261115_001333-lxrw01ve
+wandb: Find logs at: ./wandb/offline-run-20261115_001333-lxrw01ve/logs
+[rank0]:[W1115 00:51:09.691262035 ProcessGroupNCCL.cpp:1496] Warning: WARNING: destroy_process_group() was not called before program exit, which can leak resources. For more info, please see https://pytorch.org/docs/stable/distributed.html#shutdown (function operator())

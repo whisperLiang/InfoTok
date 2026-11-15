@@ -1,0 +1,10 @@
+{
+  "pdf": "results/chp_vtok/long_train_20261115_000518/figures/training_rate_distortion.pdf",
+  "auditable": true,
+  "minimum_required_pt": 7.0,
+  "minimum_found_pt": 7.0,
+  "text_run_count": 6,
+  "below_minimum_count": 0,
+  "below_minimum": [],
+  "warnings": []
+}

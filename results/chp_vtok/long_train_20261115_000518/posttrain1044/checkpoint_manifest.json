@@ -1,0 +1,22 @@
+{
+  "source": "/home/whisperliang/InfoTok/checkpoints/chp_vtok/tokenizer/multi_native17_long_20261115_000518/checkpoints/iter_000001044.pt",
+  "source_sha256": "44a3473ac65581a1c3a70c52e8d8e0a993eb95d0b90905fda73dc1cecd2483a1",
+  "decoder": "/home/whisperliang/InfoTok/checkpoints/chp_vtok/tokenizer/multi_native17_long_20261115_000518/decoder_step1044.pt",
+  "decoder_sha256": "a7b6c19b22f4a5d3f64ded1bee46284461c5162c29f459642810f21228b97af5",
+  "global_step": 1044,
+  "checkpoint_fields_verified": [
+    "model",
+    "optimizer",
+    "scheduler",
+    "grad_scaler",
+    "iteration",
+    "rng",
+    "chp_config",
+    "config_sha256",
+    "training_status",
+    "global_step",
+    "training_config_sha256"
+  ],
+  "optimizer_state_entries": 83,
+  "scheduler_last_epoch": 1044
+}

@@ -1,0 +1,8 @@
+{
+  "permitted_repository_inputs": [
+    "/home/whisperliang/InfoTok/checkpoints/chp_vtok/tokenizer/multi_native17_long_20261115_000518/decoder_step1044.pt"
+  ],
+  "raw_video_access": false,
+  "sender_latent_access": false,
+  "process_id": 565986
+}

@@ -1,0 +1,147 @@
+{
+  "transport": "tcp-loopback",
+  "protocol_version": 2,
+  "sender_command": [
+    "/home/whisperliang/InfoTok/.venv/bin/python",
+    "-m",
+    "cosmos_predict1.tokenizer.progressive.cli",
+    "send",
+    "--checkpoint",
+    "checkpoints/chp_vtok/tokenizer/multi_native17_long_20261115_000518/checkpoints/iter_000001044.pt",
+    "--stream",
+    "tcp://127.0.0.1:52779",
+    "--video",
+    "data/chp_vtok/long_train_20261115_000518/validation/mcl_jcv01.mp4",
+    "--frames",
+    "17",
+    "--log-prefix",
+    "results/chp_vtok/long_train_20261115_000518/posttrain1044/tcp_mixed/transmission",
+    "--block-budgets",
+    "256,512,1024,2048,256"
+  ],
+  "receiver_command": [
+    "/home/whisperliang/InfoTok/.venv/bin/python",
+    "scripts/chp_isolated_receiver.py",
+    "--checkpoint",
+    "checkpoints/chp_vtok/tokenizer/multi_native17_long_20261115_000518/decoder_step1044.pt",
+    "--stream",
+    "tcp://127.0.0.1:52779",
+    "--output",
+    "results/chp_vtok/long_train_20261115_000518/posttrain1044/tcp_mixed/receiver"
+  ],
+  "actual_bytes": 9034,
+  "all_received_ids_equal": true,
+  "actual_budgets": [
+    256,
+    512,
+    1024,
+    2048,
+    256
+  ],
+  "elapsed_including_startup_seconds": 42.004041108,
+  "peak_sender_bytes": 11108839936,
+  "peak_receiver_bytes": 19691047936,
+  "end_to_end_definition": "same-host monotonic clock: block encode start to RGB ready, including queueing",
+  "source_pacing": "17 file frames available at sender before encode; not live 30fps capture",
+  "packets": [
+    {
+      "block_id": 0,
+      "budget": 256,
+      "new_ids": 256,
+      "packet_bytes": 543,
+      "encode_seconds": 3.00714094,
+      "decode_seconds": 7.100125600001775,
+      "end_to_end_seconds": 10.110642907
+    },
+    {
+      "block_id": 1,
+      "budget": 256,
+      "new_ids": 256,
+      "packet_bytes": 543,
+      "encode_seconds": 1.275632444,
+      "decode_seconds": 1.633931162999943,
+      "end_to_end_seconds": 8.766396911
+    },
+    {
+      "block_id": 1,
+      "budget": 512,
+      "new_ids": 256,
+      "packet_bytes": 543,
+      "encode_seconds": 1.275632444,
+      "decode_seconds": 3.546235291985795,
+      "end_to_end_seconds": 12.390419358
+    },
+    {
+      "block_id": 2,
+      "budget": 256,
+      "new_ids": 256,
+      "packet_bytes": 543,
+      "encode_seconds": 1.916945335,
+      "decode_seconds": 1.627822714013746,
+      "end_to_end_seconds": 12.822453292
+    },
+    {
+      "block_id": 2,
+      "budget": 512,
+      "new_ids": 256,
+      "packet_bytes": 543,
+      "encode_seconds": 1.916945335,
+      "decode_seconds": 1.6316005109983962,
+      "end_to_end_seconds": 14.529065085
+    },
+    {
+      "block_id": 2,
+      "budget": 1024,
+      "new_ids": 512,
+      "packet_bytes": 1055,
+      "encode_seconds": 1.916945335,
+      "decode_seconds": 3.258449009998003,
+      "end_to_end_seconds": 17.862711353
+    },
+    {
+      "block_id": 3,
+      "budget": 256,
+      "new_ids": 256,
+      "packet_bytes": 543,
+      "encode_seconds": 1.816302137,
+      "decode_seconds": 1.6270553820068017,
+      "end_to_end_seconds": 17.677895721
+    },
+    {
+      "block_id": 3,
+      "budget": 512,
+      "new_ids": 256,
+      "packet_bytes": 543,
+      "encode_seconds": 1.816302137,
+      "decode_seconds": 1.6303781299793627,
+      "end_to_end_seconds": 19.383298366
+    },
+    {
+      "block_id": 3,
+      "budget": 1024,
+      "new_ids": 512,
+      "packet_bytes": 1055,
+      "encode_seconds": 1.816302137,
+      "decode_seconds": 1.6313482629775535,
+      "end_to_end_seconds": 21.089818977
+    },
+    {
+      "block_id": 3,
+      "budget": 2048,
+      "new_ids": 1024,
+      "packet_bytes": 2079,
+      "encode_seconds": 1.816302137,
+      "decode_seconds": 4.699364255997352,
+      "end_to_end_seconds": 25.864596821
+    },
+    {
+      "block_id": 4,
+      "budget": 256,
+      "new_ids": 256,
+      "packet_bytes": 543,
+      "encode_seconds": 1.922928944,
+      "decode_seconds": 3.255246657994576,
+      "end_to_end_seconds": 27.406742086
+    }
+  ]
+}

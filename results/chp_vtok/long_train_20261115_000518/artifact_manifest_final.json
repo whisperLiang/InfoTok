@@ -1,0 +1,970 @@
+{
+  "scope": "All report/code/log/CSV/JSON/figure/stream artifacts in this run; ignored large tensors and checkpoints excluded; weights have a separate manifest.",
+  "files": [
+    {
+      "path": "results/chp_vtok/long_train_20261115_000518/README.md",
+      "bytes": 2124,
+      "sha256": "2abe8e63d17040dd73a07f89ad35aca71e500c256a3310aade55abcf0461d33c"
+    },
+    {
+      "path": "results/chp_vtok/long_train_20261115_000518/commands.jsonl",
+      "bytes": 14603,
+      "sha256": "15e13f3195ae81f50ac098708d723129792e5b8875c1b9ce77f1c807cfe117c2"
+    },
+    {
+      "path": "results/chp_vtok/long_train_20261115_000518/config_final.yaml",
+      "bytes": 7215,
+      "sha256": "484967ee075ce4d656954e39752cfae676d16c28477e2f0b03cf2e79954579ad"
+    },
+    {
+      "path": "results/chp_vtok/long_train_20261115_000518/config_start.yaml",
+      "bytes": 7201,
+      "sha256": "ddf80588d3e4efd57bb999a1228bfa7de2ef5264aabe64ab044f42752bc923e3"
+    },
+    {
+      "path": "results/chp_vtok/long_train_20261115_000518/data_split.json",
+      "bytes": 11499,
+      "sha256": "8b1561f1bb66a9713cc03d241e17a0a75dd67c4327435799197aaaf06cf9c915"
+    },
+    {
+      "path": "results/chp_vtok/long_train_20261115_000518/figure_contract.md",
+      "bytes": 1161,
+      "sha256": "c8577436847541cd638d5137ab34e2ff32c468402420a8defe0902bfb6b8f37c"
+    },
+    {
+      "path": "results/chp_vtok/long_train_20261115_000518/figures/collision_audit.json",
+      "bytes": 547,
+      "sha256": "79310acd3c5886e00bdbf9efe45e514376ad24fb08e610ad70f10152f65d9ddd"
+    },
+    {
+      "path": "results/chp_vtok/long_train_20261115_000518/figures/qa_notes.md",
+      "bytes": 1259,
+      "sha256": "80719d4e325e02adb159480933723f4873ab27729030a9a960c20d6b68c3889c"
+    },
+    {
+      "path": "results/chp_vtok/long_train_20261115_000518/figures/source_audit.json",
+      "bytes": 3957,
+      "sha256": "2f2c24958d11dcf770a0ea4b767e4d8ad4003732bacd4e1ae76c0c1b1117a0ca"
+    },
+    {
+      "path": "results/chp_vtok/long_train_20261115_000518/figures/source_audit_first.json",
+      "bytes": 3950,
+      "sha256": "acbcf53c737e3e49a17add58a24eafd378177214fde3facaf7b0c0d11b775d12"
+    },
+    {
+      "path": "results/chp_vtok/long_train_20261115_000518/figures/text_audit.json",
+      "bytes": 266,
+      "sha256": "c5d82869a0fde4a1a1389a8ca26671361fd685d59e20538192fe10950474b1c1"
+    },
+    {
+      "path": "results/chp_vtok/long_train_20261115_000518/figures/training_rate_distortion.alignment.json",
+      "bytes": 941,
+      "sha256": "44503cfc4a32f7efbed7b5450652cbd8682947b2a281e6929829244ca7f5b339"
+    },
+    {
+      "path": "results/chp_vtok/long_train_20261115_000518/figures/training_rate_distortion.pdf",
+      "bytes": 16594,
+      "sha256": "dc0fb526105c68c8aadf83568494ff8b6c294aa2c756311e604924adaceeb657"
+    },
+    {
+      "path": "results/chp_vtok/long_train_20261115_000518/figures/training_rate_distortion.png",
+      "bytes": 344349,
+      "sha256": "63b4f47f0e933988374ca8f51eb08a817b67aa496852ef95c2b3edc63269d5f1"
+    },
+    {
+      "path": "results/chp_vtok/long_train_20261115_000518/figures/training_rate_distortion.svg",
+      "bytes": 18193,
+      "sha256": "a0ad4bd3ebf656a0c6665abbec08103dbf5b216fc4f8ec5a367468111287e6fe"
+    },
+    {
+      "path": "results/chp_vtok/long_train_20261115_000518/final_averages.json",
+      "bytes": 5749,
+      "sha256": "4c7b6da7e6e6faaea4beb529f4cb37ec59045919b67e2530b9500ba74d577f1a"
+    },
+    {
+      "path": "results/chp_vtok/long_train_20261115_000518/final_report.md",
+      "bytes": 7078,
+      "sha256": "caaf98cad8f5be0178e0ad06a534cd3632299e0b91ff61b931b511bdb83c58ee"
+    },
+    {
+      "path": "results/chp_vtok/long_train_20261115_000518/final_summary.csv",
+      "bytes": 30288,
+      "sha256": "b31eb1673126c243554747416071c1fe0183701c88067fe640004aea2b4d1913"
+    },
+    {
+      "path": "results/chp_vtok/long_train_20261115_000518/launch.json",
+      "bytes": 544,
+      "sha256": "edb246ebd79b2ed6999da58cd7badf0d477d14d38d4c84013858dc18de88c1df"
+    },
+    {
+      "path": "results/chp_vtok/long_train_20261115_000518/launcher.log",
+      "bytes": 1058821,
+      "sha256": "6c443a6a0d74f83d0fdb8d101cfefc74754495130adfa3b943cf2679b5920552"
+    },
+    {
+      "path": "results/chp_vtok/long_train_20261115_000518/logs/holdout_baseline44_basketball_1794675316405169444.log",
+      "bytes": 11836,
+      "sha256": "a60fd76a11ecd2ed98765fbd0df0b05ba9ead094c5272e5de71022cc18a2f824"
+    },
+    {
+      "path": "results/chp_vtok/long_train_20261115_000518/logs/holdout_baseline44_mcl_jcv01_1794675072236147753.log",
+      "bytes": 11827,
+      "sha256": "f064d10af52e2e6ffa15eb8e5e52313e6eec8490170eecdcb2edd52128d137f5"
+    },
+    {
+      "path": "results/chp_vtok/long_train_20261115_000518/logs/holdout_baseline44_uvg_beauty_1794675194221264846.log",
+      "bytes": 11854,
+      "sha256": "978fdd3d8d38fedd9be9daa2d07094daa786f734707010f1813fc73439a357fb"
+    },
+    {
+      "path": "results/chp_vtok/long_train_20261115_000518/logs/holdout_step100_basketball_1794675681148348223.log",
+      "bytes": 11833,
+      "sha256": "bd1ce1c7c7855449efdb28a01ece808ff28eb12f123412c200c965d343cf1fa3"
+    },
+    {
+      "path": "results/chp_vtok/long_train_20261115_000518/logs/holdout_step100_mcl_jcv01_1794675436546800070.log",
+      "bytes": 11835,
+      "sha256": "b53da608cde6dec681b2b6eeb2e6df83fcd64fa8a763764bf594f7db73d53d84"
+    },
+    {
+      "path": "results/chp_vtok/long_train_20261115_000518/logs/holdout_step100_uvg_beauty_1794675558514856259.log",
+      "bytes": 11852,
+      "sha256": "1624cae87e4b80815065c255d2ab95495865290d4ba1e070e5acfb8f8390872e"
+    },
+    {
+      "path": "results/chp_vtok/long_train_20261115_000518/logs/holdout_step1044_basketball_1794714709617458404.log",
+      "bytes": 11837,
+      "sha256": "b24549f1074e3d45b4815eb74d075d3e38a4ae84e08320d93089d694ed656b43"
+    },
+    {
+      "path": "results/chp_vtok/long_train_20261115_000518/logs/holdout_step1044_mcl_jcv01_1794714462899338744.log",
+      "bytes": 11848,
+      "sha256": "fe71d70e06eb89d8a830d7c54cdb64ee3e37723e42193724f98a8f4b1f3a4f74"
+    },
+    {
+      "path": "results/chp_vtok/long_train_20261115_000518/logs/holdout_step1044_uvg_beauty_1794714585446738754.log",
+      "bytes": 11847,
+      "sha256": "1b7f50375f10c17c7ac85c4ddefcaa51000e772d03a02bd4f7e7773139e8bf9e"
+    },
+    {
+      "path": "results/chp_vtok/long_train_20261115_000518/logs/holdout_step300_basketball_1794684096778525449.log",
+      "bytes": 11837,
+      "sha256": "b5a4e39c4ec94292a1a5894521268e2493d69dbfeb04e3105e1b7059532d884c"
+    },
+    {
+      "path": "results/chp_vtok/long_train_20261115_000518/logs/holdout_step300_mcl_jcv01_1794683851548472908.log",
+      "bytes": 11826,
+      "sha256": "eb0bf851dabe5ee0c60ffd49540d1306cfee851c9a65410b8d8ac905ff431c1d"
+    },
+    {
+      "path": "results/chp_vtok/long_train_20261115_000518/logs/holdout_step300_uvg_beauty_1794683973951960587.log",
+      "bytes": 11842,
+      "sha256": "3b7f0c413f24a19444ba25fafc4f5a88b7afe95671479074e845b871eb302084"
+    },
+    {
+      "path": "results/chp_vtok/long_train_20261115_000518/logs/holdout_step600_basketball_1794696508558660378.log",
+      "bytes": 11840,
+      "sha256": "13add112ebe15cfc873deb5b6c62a269edd4c6dd479b759efcd23f50689553f5"
+    },
+    {
+      "path": "results/chp_vtok/long_train_20261115_000518/logs/holdout_step600_mcl_jcv01_1794696267731846142.log",
+      "bytes": 11839,
+      "sha256": "81b98c4ed263e41e5c0246b5a30b9f60fc7bd0efd75bf2488e4e64c9b2802c88"
+    },
+    {
+      "path": "results/chp_vtok/long_train_20261115_000518/logs/holdout_step600_uvg_beauty_1794696387952132498.log",
+      "bytes": 11843,
+      "sha256": "ce34f8fbfebba2d7a7c8711398dfd2582c65e1c4fa8998ba976c43280a32d618"
+    },
+    {
+      "path": "results/chp_vtok/long_train_20261115_000518/logs/prepare_native_temporal_split_1794672357165693113.log",
+      "bytes": 280,
+      "sha256": "321827e11084222fb1ab7fd1d013efeb3ff87551d4c559992a553e29c66e70ab"
+    },
+    {
+      "path": "results/chp_vtok/long_train_20261115_000518/logs/prepare_native_temporal_split_retry_1794672362784431346.log",
+      "bytes": 3352,
+      "sha256": "8e7a156a36ce99dcf4a182262a6b5489e2218274ea30456803f0fa0fa253b856"
+    },
+    {
+      "path": "results/chp_vtok/long_train_20261115_000518/logs/train_to_100_1794672803301617647.log",
+      "bytes": 66791,
+      "sha256": "bbff1a74b92a8688a46a4e645ccdd498b742e1fbb7b15f5e7e2aca503726e996"
+    },
+    {
+      "path": "results/chp_vtok/long_train_20261115_000518/logs/train_to_1044_1794696630878731560.log",
+      "bytes": 374559,
+      "sha256": "97f145f484af97afa83c58aa90929f86071b1637c516eab7dbe339fdba83f3c5"
+    },
+    {
+      "path": "results/chp_vtok/long_train_20261115_000518/logs/train_to_300_1794675801950442602.log",
+      "bytes": 180257,
+      "sha256": "30c3cfd63532c038db4d6d16e3d6f641f93e5e6ebd60049d6a7e1f22ab3ad35b"
+    },
+    {
+      "path": "results/chp_vtok/long_train_20261115_000518/logs/train_to_600_1794684220059826753.log",
+      "bytes": 259618,
+      "sha256": "35e9ac22e3486c3687f5655a0a835bc5d2f4f9ee471052cd16b6d8fc4682db39"
+    },
+    {
+      "path": "results/chp_vtok/long_train_20261115_000518/plan.json",
+      "bytes": 10533,
+      "sha256": "e4d4c689b9c99ecb5cf34408d89971af4656882ed0be46893218d2e7b2e64105"
+    },
+    {
+      "path": "results/chp_vtok/long_train_20261115_000518/plot_final_progress.py",
+      "bytes": 2655,
+      "sha256": "f9c15cf80a6ee7723648ebc41b06b26ac60402abf315a2b42a68848aa3b4f65d"
+    },
+    {
+      "path": "results/chp_vtok/long_train_20261115_000518/posttrain1044/acceptance.json",
+      "bytes": 944,
+      "sha256": "0b83e145f70343a1a7f8b6af0cc8e1d4c5e4050d89fc8833ee44f7ca42d3a6b7"
+    },
+    {
+      "path": "results/chp_vtok/long_train_20261115_000518/posttrain1044/checkpoint_manifest.json",
+      "bytes": 778,
+      "sha256": "cbe0f9f2c67dc627967e7aaaf4e0dfbd490cf85b03a3b074b76d865fb8356eb3"
+    },
+    {
+      "path": "results/chp_vtok/long_train_20261115_000518/posttrain1044/commands.jsonl",
+      "bytes": 3793,
+      "sha256": "c0af3dd9301a774a93e40b97a5be6942fe72fa640801accfbc34310986bce5e5"
+    },
+    {
+      "path": "results/chp_vtok/long_train_20261115_000518/posttrain1044/consistency_bf16.json",
+      "bytes": 1869,
+      "sha256": "9ecdb41ea6ade490b2534b1ab1c433d3ef1f106289f28efebe3dee8b9f6f8c11"
+    },
+    {
+      "path": "results/chp_vtok/long_train_20261115_000518/posttrain1044/consistency_fp32_expandable.json",
+      "bytes": 1872,
+      "sha256": "6e986168d99db8374c5876b75194b8543b67b565e691dd41297da3e8ae2ca2c8"
+    },
+    {
+      "path": "results/chp_vtok/long_train_20261115_000518/posttrain1044/logs/final1044_bf16_consistency_1794717813461047571.log",
+      "bytes": 3801,
+      "sha256": "7579191d8b423f676792c314014ab3ad27bbec14700b556fc14876a63a457d59"
+    },
+    {
+      "path": "results/chp_vtok/long_train_20261115_000518/posttrain1044/logs/final1044_fp32_consistency_1794717671023250697.log",
+      "bytes": 4714,
+      "sha256": "62b835ad365cff6264eb4fba655a9eeac1b9e172bc3e96c04e8f865fb34cae29"
+    },
+    {
+      "path": "results/chp_vtok/long_train_20261115_000518/posttrain1044/logs/final1044_fp32_expandable_retry_1794717973505513107.log",
+      "bytes": 3804,
+      "sha256": "4f18eeeecf9783cfa2331f70eabdd8e071a27d72e7dfdfdea011f404d0a4c481"
+    },
+    {
+      "path": "results/chp_vtok/long_train_20261115_000518/posttrain1044/logs/final1044_tcp_incremental_1794717871414808794.log",
+      "bytes": 6012,
+      "sha256": "eda510f7087e4b6f522501e2a92da1fafac84e27d222945da2c8a279d5a9f994"
+    },
+    {
+      "path": "results/chp_vtok/long_train_20261115_000518/posttrain1044/logs/final1044_tcp_mixed_1794717929810399184.log",
+      "bytes": 3993,
+      "sha256": "b273ac32fbc932562c14c7d35e646ec862aef520f5a17a72173a49d6e3c1fc0d"
+    },
+    {
+      "path": "results/chp_vtok/long_train_20261115_000518/posttrain1044/tcp_incremental/receiver/input_access_audit.json",
+      "bytes": 249,
+      "sha256": "2d8136a1cf71f3ebf880225799b10090de22df452926f57c75057bbe3f3405f4"
+    },
+    {
+      "path": "results/chp_vtok/long_train_20261115_000518/posttrain1044/tcp_incremental/receiver/receiver.json",
+      "bytes": 7018,
+      "sha256": "cb31b7bc4febe3d6d7a1eb02fb09f465d8e7eed87f018398a83b36e4e779cf70"
+    },
+    {
+      "path": "results/chp_vtok/long_train_20261115_000518/posttrain1044/tcp_incremental/receiver.log",
+      "bytes": 1932,
+      "sha256": "64076a56a7a6f91163f27747018b6d81b83826dbcec60af108ffe15a32df1f44"
+    },
+    {
+      "path": "results/chp_vtok/long_train_20261115_000518/posttrain1044/tcp_incremental/result.json",
+      "bytes": 6012,
+      "sha256": "eda510f7087e4b6f522501e2a92da1fafac84e27d222945da2c8a279d5a9f994"
+    },
+    {
+      "path": "results/chp_vtok/long_train_20261115_000518/posttrain1044/tcp_incremental/sender.log",
+      "bytes": 1932,
+      "sha256": "f2fb0a84c5588bacd621255d3bea057b649e1e03ca0c920fbe1646cc6d370913"
+    },
+    {
+      "path": "results/chp_vtok/long_train_20261115_000518/posttrain1044/tcp_incremental/transmission.sender.json",
+      "bytes": 5840,
+      "sha256": "c20baa2be35df3f1359ac6fac788474acd9c2d304fa5670d10b3f3fb0ce39420"
+    },
+    {
+      "path": "results/chp_vtok/long_train_20261115_000518/posttrain1044/tcp_mixed/receiver/input_access_audit.json",
+      "bytes": 249,
+      "sha256": "f9c685ba5c429a71b68e4a17ba40017236beafdbd182ea0af3d93cb330ad7021"
+    },
+    {
+      "path": "results/chp_vtok/long_train_20261115_000518/posttrain1044/tcp_mixed/receiver/receiver.json",
+      "bytes": 4024,
+      "sha256": "524ad438ef2a3f2e4a6928d999e5fe469f71d83d28866f30a0180a4391d1f918"
+    },
+    {
+      "path": "results/chp_vtok/long_train_20261115_000518/posttrain1044/tcp_mixed/receiver.log",
+      "bytes": 1932,
+      "sha256": "0c64e8bbc64b0960878487fd4810cb0b249b1a594c9b7833d5ffe2ebb2c62f11"
+    },
+    {
+      "path": "results/chp_vtok/long_train_20261115_000518/posttrain1044/tcp_mixed/result.json",
+      "bytes": 3993,
+      "sha256": "b273ac32fbc932562c14c7d35e646ec862aef520f5a17a72173a49d6e3c1fc0d"
+    },
+    {
+      "path": "results/chp_vtok/long_train_20261115_000518/posttrain1044/tcp_mixed/sender.log",
+      "bytes": 1932,
+      "sha256": "adb5b3351cc8524a10b10ab4fff02a0e42c7c4e6678d911c73140d627e74f3f0"
+    },
+    {
+      "path": "results/chp_vtok/long_train_20261115_000518/posttrain1044/tcp_mixed/transmission.sender.json",
+      "bytes": 3323,
+      "sha256": "06e4cdb470b463e8bd99a02db7657738d4c4b7d399abd68b518a11cca37cfc71"
+    },
+    {
+      "path": "results/chp_vtok/long_train_20261115_000518/prepare_data.py",
+      "bytes": 3847,
+      "sha256": "802dd2e791faccd6eb8352169ce92d1cf3092cecd54b439fa28d288bdfebb509"
+    },
+    {
+      "path": "results/chp_vtok/long_train_20261115_000518/progress_20261115_095925.csv",
+      "bytes": 24270,
+      "sha256": "7f5bc2aecb142f10cbaccce5f2fcd43bcb94f6daf36e69a76141385700efa3c3"
+    },
+    {
+      "path": "results/chp_vtok/long_train_20261115_000518/progress_20261115_095925.json",
+      "bytes": 8785,
+      "sha256": "83e8abdb28983c50047967568263e40598aa9ca25e03c66704d8503734fc4413"
+    },
+    {
+      "path": "results/chp_vtok/long_train_20261115_000518/progress_20261115_095925.md",
+      "bytes": 1614,
+      "sha256": "cbbb8669b36def42d77b9714306dc2c0fdafd43a70a707bca74848526324af03"
+    },
+    {
+      "path": "results/chp_vtok/long_train_20261115_000518/run_training.py",
+      "bytes": 1262,
+      "sha256": "9eeeed941ff696af536881c049c6d0acc153b668c14b52109032e8820b3f194d"
+    },
+    {
+      "path": "results/chp_vtok/long_train_20261115_000518/start_verified.json",
+      "bytes": 3589,
+      "sha256": "4797cb5499b757a350d3869a502a09e237e6c1552a329942a0b31b94f78b0889"
+    },
+    {
+      "path": "results/chp_vtok/long_train_20261115_000518/status.json",
+      "bytes": 1596,
+      "sha256": "d79712363f6e495c38cb1abf99211f653f00b11b2506b0b7db5d49aaa597d47f"
+    },
+    {
+      "path": "results/chp_vtok/long_train_20261115_000518/training_steps.jsonl",
+      "bytes": 554510,
+      "sha256": "2160e11e210f598849738cc6be6600c019e8dd39c78c83d1e1ed9a095b8dadd3"
+    },
+    {
+      "path": "results/chp_vtok/long_train_20261115_000518/validation/baseline44/basketball/comparison.png",
+      "bytes": 913567,
+      "sha256": "444d5f0eef424f0a62d945a06149c5788ef954457475b7007675bac1d0a43cbd"
+    },
+    {
+      "path": "results/chp_vtok/long_train_20261115_000518/validation/baseline44/basketball/comparison_1024_native.png",
+      "bytes": 856845,
+      "sha256": "38d6d865c3abdbdc082d27eb6a6303e2a8bcf61ac90699fae863527a0f3d8a07"
+    },
+    {
+      "path": "results/chp_vtok/long_train_20261115_000518/validation/baseline44/basketball/comparison_2048_native.png",
+      "bytes": 808290,
+      "sha256": "ebc457a5f90973315abe7c431394fa4a8fcf26db7a03700d95ad4902b4c2cb8b"
+    },
+    {
+      "path": "results/chp_vtok/long_train_20261115_000518/validation/baseline44/basketball/comparison_256_native.png",
+      "bytes": 966703,
+      "sha256": "8d15508f1865c35fd6965748a3654e5da8f74a11150acfcd5f519f7d35b2dbfb"
+    },
+    {
+      "path": "results/chp_vtok/long_train_20261115_000518/validation/baseline44/basketball/comparison_512_native.png",
+      "bytes": 882382,
+      "sha256": "e538ecfc7cf34d3eed140d8bb82c49fa110aef6e1437f3ab0d6484f9b05f3cc7"
+    },
+    {
+      "path": "results/chp_vtok/long_train_20261115_000518/validation/baseline44/basketball/comparison_Original_native.png",
+      "bytes": 3127899,
+      "sha256": "649ab80a3c21f9946274c2567e3ae4069fcdd98de72ea96d12329af241763a56"
+    },
+    {
+      "path": "results/chp_vtok/long_train_20261115_000518/validation/baseline44/basketball/metrics.json",
+      "bytes": 11493,
+      "sha256": "aa27dcee01994bcfe6cd787e8fde667f978f906841fa59649163fb38f919214c"
+    },
+    {
+      "path": "results/chp_vtok/long_train_20261115_000518/validation/baseline44/basketball/summary.csv",
+      "bytes": 1864,
+      "sha256": "f8ce8f5cf3a6554e2e792708f4f6404e18ef7507b732b9e3e4320068d5a0202a"
+    },
+    {
+      "path": "results/chp_vtok/long_train_20261115_000518/validation/baseline44/mcl_jcv01/comparison.png",
+      "bytes": 811492,
+      "sha256": "48ae5395b9fcef3a4fc0db8ab741357ef0126ff2c60e5d11e53f1467793ba294"
+    },
+    {
+      "path": "results/chp_vtok/long_train_20261115_000518/validation/baseline44/mcl_jcv01/comparison_1024_native.png",
+      "bytes": 736635,
+      "sha256": "6f2619c42a6eb809707c033063a16333c96c9aac0e656c3b97a3cebd12e8a994"
+    },
+    {
+      "path": "results/chp_vtok/long_train_20261115_000518/validation/baseline44/mcl_jcv01/comparison_2048_native.png",
+      "bytes": 712329,
+      "sha256": "7143b0d6c36885750f0817e7e452ce4bacb22dd1c90071e3e01d69131963e645"
+    },
+    {
+      "path": "results/chp_vtok/long_train_20261115_000518/validation/baseline44/mcl_jcv01/comparison_256_native.png",
+      "bytes": 777295,
+      "sha256": "ed902ef6e5dcddeb9f670d0df2449cc589b2dcd74ac0b5caea2deee0f816d81a"
+    },
+    {
+      "path": "results/chp_vtok/long_train_20261115_000518/validation/baseline44/mcl_jcv01/comparison_512_native.png",
+      "bytes": 716547,
+      "sha256": "2e4e07d0f272ad72eba28f6a426888980b44aca72f4d9746290d8e58b52a6c4d"
+    },
+    {
+      "path": "results/chp_vtok/long_train_20261115_000518/validation/baseline44/mcl_jcv01/comparison_Original_native.png",
+      "bytes": 2350885,
+      "sha256": "35ac7720e29058ad4311e9ed096b2a9e6b8440754970b3b0964f12040f0eba9e"
+    },
+    {
+      "path": "results/chp_vtok/long_train_20261115_000518/validation/baseline44/mcl_jcv01/metrics.json",
+      "bytes": 11484,
+      "sha256": "deafd394b8373f0e9b4ac42303dd8e89598263485d9cce91efd3b5ae4900ebee"
+    },
+    {
+      "path": "results/chp_vtok/long_train_20261115_000518/validation/baseline44/mcl_jcv01/summary.csv",
+      "bytes": 1860,
+      "sha256": "34439ec8bb559b3f6ead2ffa0a07a87218e5aa4f76bc7138f4b87c329b9fc8de"
+    },
+    {
+      "path": "results/chp_vtok/long_train_20261115_000518/validation/baseline44/uvg_beauty/comparison.png",
+      "bytes": 906507,
+      "sha256": "54c232930d0776747fbe2e8426cf3bec631b6d0d76b115eff89b1ac5b4dcd039"
+    },
+    {
+      "path": "results/chp_vtok/long_train_20261115_000518/validation/baseline44/uvg_beauty/comparison_1024_native.png",
+      "bytes": 805806,
+      "sha256": "fca88a0007b2b9a8f11978a6f845ddadd089fa09e91c7566fa7efe9200171317"
+    },
+    {
+      "path": "results/chp_vtok/long_train_20261115_000518/validation/baseline44/uvg_beauty/comparison_2048_native.png",
+      "bytes": 731807,
+      "sha256": "b1826e965b3c6bd0058b4e70a78bd7695010742ba973f18ad8607c78449b9838"
+    },
+    {
+      "path": "results/chp_vtok/long_train_20261115_000518/validation/baseline44/uvg_beauty/comparison_256_native.png",
+      "bytes": 814414,
+      "sha256": "997cbc691d9d3bfbb61ad5689940c5df34ecd709f9d6ccb3095312859ca31554"
+    },
+    {
+      "path": "results/chp_vtok/long_train_20261115_000518/validation/baseline44/uvg_beauty/comparison_512_native.png",
+      "bytes": 717428,
+      "sha256": "53619164cc7477421c90f601e3aacc9537d2987de21ce3a0db6bb84dcd32ac74"
+    },
+    {
+      "path": "results/chp_vtok/long_train_20261115_000518/validation/baseline44/uvg_beauty/comparison_Original_native.png",
+      "bytes": 2929756,
+      "sha256": "f47a66e42f728b260870ad21a1e33674e5b65382be01987a2d61db92b2ab2c59"
+    },
+    {
+      "path": "results/chp_vtok/long_train_20261115_000518/validation/baseline44/uvg_beauty/metrics.json",
+      "bytes": 11511,
+      "sha256": "ba98b39cf4e23d616e31b1cc574263fb0187784189a4bf5afe33540dc4d354f3"
+    },
+    {
+      "path": "results/chp_vtok/long_train_20261115_000518/validation/baseline44/uvg_beauty/summary.csv",
+      "bytes": 1867,
+      "sha256": "5f377ae244aba4d8522de9db2eee499233b972e1e05256d313e6a761694b10ca"
+    },
+    {
+      "path": "results/chp_vtok/long_train_20261115_000518/validation/step100/basketball/comparison.png",
+      "bytes": 931268,
+      "sha256": "c4d0c202005065d6f5c14a1a3742e89c4f40bea12ab9e1c82bfd507c1161844e"
+    },
+    {
+      "path": "results/chp_vtok/long_train_20261115_000518/validation/step100/basketball/comparison_1024_native.png",
+      "bytes": 920866,
+      "sha256": "7b4c004c6eb20e8127c65a05c009682f60027e91fc0dcd154a8ef06dbc77c2f4"
+    },
+    {
+      "path": "results/chp_vtok/long_train_20261115_000518/validation/step100/basketball/comparison_2048_native.png",
+      "bytes": 892683,
+      "sha256": "38dc05ad29ed85aae3735f662c3279718a8f831af9fcb0edb40c5b9c7f9ae350"
+    },
+    {
+      "path": "results/chp_vtok/long_train_20261115_000518/validation/step100/basketball/comparison_256_native.png",
+      "bytes": 953613,
+      "sha256": "611fc818583baadae148b95de9ae7943f0ba402d40df4d3397ae382d0ef73fcd"
+    },
+    {
+      "path": "results/chp_vtok/long_train_20261115_000518/validation/step100/basketball/comparison_512_native.png",
+      "bytes": 914750,
+      "sha256": "15754d3fa1d183c01af29dc580e5663436744b369a605f7ae6f87752693d749b"
+    },
+    {
+      "path": "results/chp_vtok/long_train_20261115_000518/validation/step100/basketball/comparison_Original_native.png",
+      "bytes": 3127899,
+      "sha256": "649ab80a3c21f9946274c2567e3ae4069fcdd98de72ea96d12329af241763a56"
+    },
+    {
+      "path": "results/chp_vtok/long_train_20261115_000518/validation/step100/basketball/metrics.json",
+      "bytes": 11490,
+      "sha256": "151981fbd82ee3bd8daa3dac17b7a359beb0c2cb913f62360954dcb9e3a04665"
+    },
+    {
+      "path": "results/chp_vtok/long_train_20261115_000518/validation/step100/basketball/summary.csv",
+      "bytes": 1862,
+      "sha256": "8a7f956138591816dc26e1c2ff998b95811728bd4b27d14b08c6b58f409826e5"
+    },
+    {
+      "path": "results/chp_vtok/long_train_20261115_000518/validation/step100/mcl_jcv01/comparison.png",
+      "bytes": 829210,
+      "sha256": "d1ce6146f944f82fe30041ad711879945b63da7fe5cb9cee7bfb10c4f4ec3df2"
+    },
+    {
+      "path": "results/chp_vtok/long_train_20261115_000518/validation/step100/mcl_jcv01/comparison_1024_native.png",
+      "bytes": 803211,
+      "sha256": "6b7a1086b519ecde8847ccf4aa82412d2543315658484100583078043a60eba8"
+    },
+    {
+      "path": "results/chp_vtok/long_train_20261115_000518/validation/step100/mcl_jcv01/comparison_2048_native.png",
+      "bytes": 772520,
+      "sha256": "8b5916befcb3c2a1914b26e5716774f13e24c471bcee3733eeea37aba7677fc0"
+    },
+    {
+      "path": "results/chp_vtok/long_train_20261115_000518/validation/step100/mcl_jcv01/comparison_256_native.png",
+      "bytes": 880188,
+      "sha256": "d9d9dbcde8378bb09c634a16292b56ea3429b3cf7170a84328ed11b0d8c92380"
+    },
+    {
+      "path": "results/chp_vtok/long_train_20261115_000518/validation/step100/mcl_jcv01/comparison_512_native.png",
+      "bytes": 842388,
+      "sha256": "3be1d8f0dc4674cfab4d17305e5dbc86ec977d8465ed82a2cad9bbddac14b3da"
+    },
+    {
+      "path": "results/chp_vtok/long_train_20261115_000518/validation/step100/mcl_jcv01/comparison_Original_native.png",
+      "bytes": 2350885,
+      "sha256": "35ac7720e29058ad4311e9ed096b2a9e6b8440754970b3b0964f12040f0eba9e"
+    },
+    {
+      "path": "results/chp_vtok/long_train_20261115_000518/validation/step100/mcl_jcv01/metrics.json",
+      "bytes": 11492,
+      "sha256": "3b9eb7ac7372fbe4b0713da44f71e6476323f1b576032e445a1669bd6290ef47"
+    },
+    {
+      "path": "results/chp_vtok/long_train_20261115_000518/validation/step100/mcl_jcv01/summary.csv",
+      "bytes": 1861,
+      "sha256": "d6cc3ad900da2d19207a209adca5738eaae03489938935aef89954a8a4e0af30"
+    },
+    {
+      "path": "results/chp_vtok/long_train_20261115_000518/validation/step100/uvg_beauty/comparison.png",
+      "bytes": 941153,
+      "sha256": "c8c896baadd180609512280bd2fa3f9a67efa6f43c9e9d7054f4c78365c83d9f"
+    },
+    {
+      "path": "results/chp_vtok/long_train_20261115_000518/validation/step100/uvg_beauty/comparison_1024_native.png",
+      "bytes": 907786,
+      "sha256": "0e7139cef0c72ec374fabba4cb3d96a5c42a158bbf3a5220e694f2418d291d50"
+    },
+    {
+      "path": "results/chp_vtok/long_train_20261115_000518/validation/step100/uvg_beauty/comparison_2048_native.png",
+      "bytes": 844243,
+      "sha256": "9b656769b4145e08f473377d339adb0ddafb14ad7df03949f57fb5c908957366"
+    },
+    {
+      "path": "results/chp_vtok/long_train_20261115_000518/validation/step100/uvg_beauty/comparison_256_native.png",
+      "bytes": 1009175,
+      "sha256": "42e49d07d026dcffae6519faa8a0ad16d4b41ca248130465fe98b2bc85e977a5"
+    },
+    {
+      "path": "results/chp_vtok/long_train_20261115_000518/validation/step100/uvg_beauty/comparison_512_native.png",
+      "bytes": 844987,
+      "sha256": "03cfc5d2c994eb71c090563036182d867d23334da9fed61e1f11627ccac88d30"
+    },
+    {
+      "path": "results/chp_vtok/long_train_20261115_000518/validation/step100/uvg_beauty/comparison_Original_native.png",
+      "bytes": 2929756,
+      "sha256": "f47a66e42f728b260870ad21a1e33674e5b65382be01987a2d61db92b2ab2c59"
+    },
+    {
+      "path": "results/chp_vtok/long_train_20261115_000518/validation/step100/uvg_beauty/metrics.json",
+      "bytes": 11509,
+      "sha256": "e2aa754a6e5da25e82493f790b9fd552e1ce2b5da8afce0c26b4b312eedd96af"
+    },
+    {
+      "path": "results/chp_vtok/long_train_20261115_000518/validation/step100/uvg_beauty/summary.csv",
+      "bytes": 1864,
+      "sha256": "7cb0f1c114f2f7a82d7dd0927e4ad937b753c171b9926f934cf38d1767cea0b9"
+    },
+    {
+      "path": "results/chp_vtok/long_train_20261115_000518/validation/step1044/basketball/comparison.png",
+      "bytes": 963807,
+      "sha256": "1420793100458963275facb7457b76f318b47adae2d3509f97029059f69e759e"
+    },
+    {
+      "path": "results/chp_vtok/long_train_20261115_000518/validation/step1044/basketball/comparison_1024_native.png",
+      "bytes": 1003138,
+      "sha256": "5a4d57ab7403c73d6f258b6ad0ba083ad603ba9514034b6576c78cf57a088ff6"
+    },
+    {
+      "path": "results/chp_vtok/long_train_20261115_000518/validation/step1044/basketball/comparison_2048_native.png",
+      "bytes": 986549,
+      "sha256": "8025ed7a0b7ae0b4d8e835d04f3c1682a0d1778b788a5a1046c18bf4de600156"
+    },
+    {
+      "path": "results/chp_vtok/long_train_20261115_000518/validation/step1044/basketball/comparison_256_native.png",
+      "bytes": 970724,
+      "sha256": "37b290e4e3ea3359d3e72f474a2dec8b82e8e6c742aca8bd84113e7d4e04e632"
+    },
+    {
+      "path": "results/chp_vtok/long_train_20261115_000518/validation/step1044/basketball/comparison_512_native.png",
+      "bytes": 968074,
+      "sha256": "1fcb08a66e24c2e1a0d8bfc95f63eae98af9ed672b3a556439d9ab1d3cf325f4"
+    },
+    {
+      "path": "results/chp_vtok/long_train_20261115_000518/validation/step1044/basketball/comparison_Original_native.png",
+      "bytes": 3127899,
+      "sha256": "649ab80a3c21f9946274c2567e3ae4069fcdd98de72ea96d12329af241763a56"
+    },
+    {
+      "path": "results/chp_vtok/long_train_20261115_000518/validation/step1044/basketball/metrics.json",
+      "bytes": 11494,
+      "sha256": "ba904ec08540f0bde5eb13efde099010b7a6ed6485cb2f48d710cdd5690eb332"
+    },
+    {
+      "path": "results/chp_vtok/long_train_20261115_000518/validation/step1044/basketball/summary.csv",
+      "bytes": 1865,
+      "sha256": "420ef5f4862586dcfa735e59c1d0c2e144650f75da9bd68ba8c301d8e239322a"
+    },
+    {
+      "path": "results/chp_vtok/long_train_20261115_000518/validation/step1044/mcl_jcv01/comparison.png",
+      "bytes": 892321,
+      "sha256": "35510428bf20d4365859c64c469224aa4ff1ba1ecf5a3c086852e379a9d274c7"
+    },
+    {
+      "path": "results/chp_vtok/long_train_20261115_000518/validation/step1044/mcl_jcv01/comparison_1024_native.png",
+      "bytes": 928415,
+      "sha256": "2d52a227ebabb60d0100dac582c4850cf32f3ff5ac8117c01a24bfa50c08924b"
+    },
+    {
+      "path": "results/chp_vtok/long_train_20261115_000518/validation/step1044/mcl_jcv01/comparison_2048_native.png",
+      "bytes": 914285,
+      "sha256": "ecfc535b9aadb6e4c7cf12b2c5503ac96aecef077658c537a561ffeceec9463b"
+    },
+    {
+      "path": "results/chp_vtok/long_train_20261115_000518/validation/step1044/mcl_jcv01/comparison_256_native.png",
+      "bytes": 901606,
+      "sha256": "877951ae0f369d1a3eb0346b563ed2fc4615003a7720a8cd54330ab1e1f9cb95"
+    },
+    {
+      "path": "results/chp_vtok/long_train_20261115_000518/validation/step1044/mcl_jcv01/comparison_512_native.png",
+      "bytes": 958762,
+      "sha256": "252f462ee7ebcee1433b0d1f71addc53fa9db82eca4935c71387b8eb820e4efc"
+    },
+    {
+      "path": "results/chp_vtok/long_train_20261115_000518/validation/step1044/mcl_jcv01/comparison_Original_native.png",
+      "bytes": 2350885,
+      "sha256": "35ac7720e29058ad4311e9ed096b2a9e6b8440754970b3b0964f12040f0eba9e"
+    },
+    {
+      "path": "results/chp_vtok/long_train_20261115_000518/validation/step1044/mcl_jcv01/metrics.json",
+      "bytes": 11505,
+      "sha256": "2cfc4d59b98bd3f8e2702b1e2b9b8f6d0ee98be4a158d955ab2721dd41cb97c5"
+    },
+    {
+      "path": "results/chp_vtok/long_train_20261115_000518/validation/step1044/mcl_jcv01/summary.csv",
+      "bytes": 1865,
+      "sha256": "c591efb8a2ba9059f870c75de72e93bf7a28cefa4c86a96c142937246413b558"
+    },
+    {
+      "path": "results/chp_vtok/long_train_20261115_000518/validation/step1044/uvg_beauty/comparison.png",
+      "bytes": 1003242,
+      "sha256": "2e343b90b350dd5d61a69e210e40ff691112ca4c54c692eaa609072273d9e349"
+    },
+    {
+      "path": "results/chp_vtok/long_train_20261115_000518/validation/step1044/uvg_beauty/comparison_1024_native.png",
+      "bytes": 941585,
+      "sha256": "88894a8513422d915874a06fa56656f1ee2516e2c26c5ccbc0f959e12ed0b0da"
+    },
+    {
+      "path": "results/chp_vtok/long_train_20261115_000518/validation/step1044/uvg_beauty/comparison_2048_native.png",
+      "bytes": 938158,
+      "sha256": "f76b3861424ea1eab807af102a885d9e6b82cff3cc4c1bff59ad20874c9944d8"
+    },
+    {
+      "path": "results/chp_vtok/long_train_20261115_000518/validation/step1044/uvg_beauty/comparison_256_native.png",
+      "bytes": 1049982,
+      "sha256": "59623e91a74f0a6406dab5ef213400963e12fd63191e1985a97a65932f2934c5"
+    },
+    {
+      "path": "results/chp_vtok/long_train_20261115_000518/validation/step1044/uvg_beauty/comparison_512_native.png",
+      "bytes": 1043331,
+      "sha256": "fd1388555f176ca685ba931f0f0d6fffcdd0dbb428b47d2a5b1fc5782bf6f0d4"
+    },
+    {
+      "path": "results/chp_vtok/long_train_20261115_000518/validation/step1044/uvg_beauty/comparison_Original_native.png",
+      "bytes": 2929756,
+      "sha256": "f47a66e42f728b260870ad21a1e33674e5b65382be01987a2d61db92b2ab2c59"
+    },
+    {
+      "path": "results/chp_vtok/long_train_20261115_000518/validation/step1044/uvg_beauty/metrics.json",
+      "bytes": 11504,
+      "sha256": "5a54bfb9f051d4e5052f12d328711924d63cab7e0ef53a25c7d939f71896ba70"
+    },
+    {
+      "path": "results/chp_vtok/long_train_20261115_000518/validation/step1044/uvg_beauty/summary.csv",
+      "bytes": 1869,
+      "sha256": "e59d4550803bc02866348b604716996dda472b9b93dd7c3c069feabea87e99c3"
+    },
+    {
+      "path": "results/chp_vtok/long_train_20261115_000518/validation/step300/basketball/comparison.png",
+      "bytes": 939402,
+      "sha256": "31330ce04696ce1b657050ec9c1990373bf603c8be0dff0010de1205d92b602e"
+    },
+    {
+      "path": "results/chp_vtok/long_train_20261115_000518/validation/step300/basketball/comparison_1024_native.png",
+      "bytes": 975602,
+      "sha256": "b7281854cadfaeb10d5501615833764740c977101cbe0052bb03a80d8b32c55e"
+    },
+    {
+      "path": "results/chp_vtok/long_train_20261115_000518/validation/step300/basketball/comparison_2048_native.png",
+      "bytes": 952723,
+      "sha256": "6106d28f1cc5a8e4091ca3108ab30855cd4846840e8ee2d67dfbc734091d798a"
+    },
+    {
+      "path": "results/chp_vtok/long_train_20261115_000518/validation/step300/basketball/comparison_256_native.png",
+      "bytes": 934440,
+      "sha256": "9110e966e6aabf37d12cb4121b602057aed31b1a0526927ef810861e2037f260"
+    },
+    {
+      "path": "results/chp_vtok/long_train_20261115_000518/validation/step300/basketball/comparison_512_native.png",
+      "bytes": 941726,
+      "sha256": "3adac4d52dc42961977a9c5b1b9b8853004e0603dff6b7023ff6017a9f30f043"
+    },
+    {
+      "path": "results/chp_vtok/long_train_20261115_000518/validation/step300/basketball/comparison_Original_native.png",
+      "bytes": 3127899,
+      "sha256": "649ab80a3c21f9946274c2567e3ae4069fcdd98de72ea96d12329af241763a56"
+    },
+    {
+      "path": "results/chp_vtok/long_train_20261115_000518/validation/step300/basketball/metrics.json",
+      "bytes": 11494,
+      "sha256": "9b0e86d3afa0228afbc295940155df1cc6b54112b76f99dbc56a38d4723ef27f"
+    },
+    {
+      "path": "results/chp_vtok/long_train_20261115_000518/validation/step300/basketball/summary.csv",
+      "bytes": 1863,
+      "sha256": "4148720c25dfbb07b044a6e1187430582bc2e2157b8a7286b6e068aed77d6e74"
+    },
+    {
+      "path": "results/chp_vtok/long_train_20261115_000518/validation/step300/mcl_jcv01/comparison.png",
+      "bytes": 864959,
+      "sha256": "7d789c079d3c50f2361c0ccfae3f4ec04b13b5e214d8993fa2c4753ed2eaedbc"
+    },
+    {
+      "path": "results/chp_vtok/long_train_20261115_000518/validation/step300/mcl_jcv01/comparison_1024_native.png",
+      "bytes": 896807,
+      "sha256": "20396e22c152227b56665acd56c23c2167f8576af236f1a068289216cab78f18"
+    },
+    {
+      "path": "results/chp_vtok/long_train_20261115_000518/validation/step300/mcl_jcv01/comparison_2048_native.png",
+      "bytes": 855578,
+      "sha256": "c6782d99dc8ffb32453f418504b37c98771b6e336ad8b42e56d92082bdcc358f"
+    },
+    {
+      "path": "results/chp_vtok/long_train_20261115_000518/validation/step300/mcl_jcv01/comparison_256_native.png",
+      "bytes": 785060,
+      "sha256": "df6b1497881062f261674fefa0582e5010877f4e5c6bfd0efe780830880ed762"
+    },
+    {
+      "path": "results/chp_vtok/long_train_20261115_000518/validation/step300/mcl_jcv01/comparison_512_native.png",
+      "bytes": 835908,
+      "sha256": "c517043a7d3811b3c31696095894a28bbb9d00f0259141235e6635a9731d355b"
+    },
+    {
+      "path": "results/chp_vtok/long_train_20261115_000518/validation/step300/mcl_jcv01/comparison_Original_native.png",
+      "bytes": 2350885,
+      "sha256": "35ac7720e29058ad4311e9ed096b2a9e6b8440754970b3b0964f12040f0eba9e"
+    },
+    {
+      "path": "results/chp_vtok/long_train_20261115_000518/validation/step300/mcl_jcv01/metrics.json",
+      "bytes": 11483,
+      "sha256": "eaa1f2331d4293d0f9141152f3a21b4e948c47b61c846017e7661a169e79bb3b"
+    },
+    {
+      "path": "results/chp_vtok/long_train_20261115_000518/validation/step300/mcl_jcv01/summary.csv",
+      "bytes": 1862,
+      "sha256": "8f83bb4fc07c6472bbb2b7f5821e8be72a98c8cd460691ca5f53d1fce8a196e6"
+    },
+    {
+      "path": "results/chp_vtok/long_train_20261115_000518/validation/step300/uvg_beauty/comparison.png",
+      "bytes": 981868,
+      "sha256": "cb89cdd77d82a33af264c8deb23d0ddae93f2a56417a9252008cf9b8b2375cc7"
+    },
+    {
+      "path": "results/chp_vtok/long_train_20261115_000518/validation/step300/uvg_beauty/comparison_1024_native.png",
+      "bytes": 947219,
+      "sha256": "0d915c0fc08c329713ce541798f3ece0fa583bb60d5c03d8c57092781a9c946b"
+    },
+    {
+      "path": "results/chp_vtok/long_train_20261115_000518/validation/step300/uvg_beauty/comparison_2048_native.png",
+      "bytes": 945311,
+      "sha256": "ea434b86570ae790dcc1f912f2f4f09282872b093710e8676204ba6ae9f16d70"
+    },
+    {
+      "path": "results/chp_vtok/long_train_20261115_000518/validation/step300/uvg_beauty/comparison_256_native.png",
+      "bytes": 1001052,
+      "sha256": "2bbc69dc6f09f36fef2fd4f3a324718ea244ef11665c63ff892f4bfe1c7e9b1d"
+    },
+    {
+      "path": "results/chp_vtok/long_train_20261115_000518/validation/step300/uvg_beauty/comparison_512_native.png",
+      "bytes": 941039,
+      "sha256": "ace8b9c3826950db807f63be1eb07815ce9283b905b8c023d5df48a04d9072a9"
+    },
+    {
+      "path": "results/chp_vtok/long_train_20261115_000518/validation/step300/uvg_beauty/comparison_Original_native.png",
+      "bytes": 2929756,
+      "sha256": "f47a66e42f728b260870ad21a1e33674e5b65382be01987a2d61db92b2ab2c59"
+    },
+    {
+      "path": "results/chp_vtok/long_train_20261115_000518/validation/step300/uvg_beauty/metrics.json",
+      "bytes": 11499,
+      "sha256": "c2009426a28a8b77e36c05d086aeb020a888960b3384d6f1bc5d8d9b2a7801e5"
+    },
+    {
+      "path": "results/chp_vtok/long_train_20261115_000518/validation/step300/uvg_beauty/summary.csv",
+      "bytes": 1864,
+      "sha256": "f732391dc645e1f9dfb758a6fbce26a7346589e2b07dcd4e227f1607a12a5843"
+    },
+    {
+      "path": "results/chp_vtok/long_train_20261115_000518/validation/step600/basketball/comparison.png",
+      "bytes": 959310,
+      "sha256": "060da87730703981365a6bf0e4f6d4a6ad69a8d2e6cc1dbf5506d52765937cfe"
+    },
+    {
+      "path": "results/chp_vtok/long_train_20261115_000518/validation/step600/basketball/comparison_1024_native.png",
+      "bytes": 1004062,
+      "sha256": "57f5d6332d77eafb25d278cf954164ad6cc0d826a695df429a9138646a6c0e36"
+    },
+    {
+      "path": "results/chp_vtok/long_train_20261115_000518/validation/step600/basketball/comparison_2048_native.png",
+      "bytes": 969115,
+      "sha256": "bf8f44c19f6faf4df77f9ce9348bef3942b2272066b3a46f2f9687a5a5bcd839"
+    },
+    {
+      "path": "results/chp_vtok/long_train_20261115_000518/validation/step600/basketball/comparison_256_native.png",
+      "bytes": 977127,
+      "sha256": "2010bf6eb337fc826546438eec7f9ba385e3f6ad05b8af5ce97683a17ea0bfc6"
+    },
+    {
+      "path": "results/chp_vtok/long_train_20261115_000518/validation/step600/basketball/comparison_512_native.png",
+      "bytes": 947585,
+      "sha256": "fc6b855cd7c10d59858f6a2b79cb2a68e15e174732a5c6f5db8e6e527b724069"
+    },
+    {
+      "path": "results/chp_vtok/long_train_20261115_000518/validation/step600/basketball/comparison_Original_native.png",
+      "bytes": 3127899,
+      "sha256": "649ab80a3c21f9946274c2567e3ae4069fcdd98de72ea96d12329af241763a56"
+    },
+    {
+      "path": "results/chp_vtok/long_train_20261115_000518/validation/step600/basketball/metrics.json",
+      "bytes": 11497,
+      "sha256": "80ca8c97c112d5a23b26cc10695c0648df3705bc1da11dbceece1e1017e60106"
+    },
+    {
+      "path": "results/chp_vtok/long_train_20261115_000518/validation/step600/basketball/summary.csv",
+      "bytes": 1866,
+      "sha256": "79a30513840b4f1fff5d3eee13ca0e3f516a614f628d340758aa06e58c096df5"
+    },
+    {
+      "path": "results/chp_vtok/long_train_20261115_000518/validation/step600/mcl_jcv01/comparison.png",
+      "bytes": 889715,
+      "sha256": "ac705af71ffdbf28a5bcc04ff6c4173c40f035c8e20685e2f18ba70314f8e7e4"
+    },
+    {
+      "path": "results/chp_vtok/long_train_20261115_000518/validation/step600/mcl_jcv01/comparison_1024_native.png",
+      "bytes": 935836,
+      "sha256": "e20789616964aa6ead72bebafc395553a562cc2551d4753480707d4c23ada2ce"
+    },
+    {
+      "path": "results/chp_vtok/long_train_20261115_000518/validation/step600/mcl_jcv01/comparison_2048_native.png",
+      "bytes": 909005,
+      "sha256": "47da7f8fd67c56a941f4fc9469eb278d02d58dc4d5594bcfed73cc198fb61814"
+    },
+    {
+      "path": "results/chp_vtok/long_train_20261115_000518/validation/step600/mcl_jcv01/comparison_256_native.png",
+      "bytes": 863950,
+      "sha256": "85af51c1fea94c290ec23ff6821055c8b2afae65735d8bf034c6b4c34cd32787"
+    },
+    {
+      "path": "results/chp_vtok/long_train_20261115_000518/validation/step600/mcl_jcv01/comparison_512_native.png",
+      "bytes": 966665,
+      "sha256": "3d52a65feca476cc418718dd2601ae4dc3ab40f2f185d3c5b622504abf49d833"
+    },
+    {
+      "path": "results/chp_vtok/long_train_20261115_000518/validation/step600/mcl_jcv01/comparison_Original_native.png",
+      "bytes": 2350885,
+      "sha256": "35ac7720e29058ad4311e9ed096b2a9e6b8440754970b3b0964f12040f0eba9e"
+    },
+    {
+      "path": "results/chp_vtok/long_train_20261115_000518/validation/step600/mcl_jcv01/metrics.json",
+      "bytes": 11496,
+      "sha256": "4678d0edcf80b1a2805b4fcb01c4b87cceee84ffeb7fdf6cc0f2b62ff8865194"
+    },
+    {
+      "path": "results/chp_vtok/long_train_20261115_000518/validation/step600/mcl_jcv01/summary.csv",
+      "bytes": 1856,
+      "sha256": "9255a9718cd3ae6cc6e2eb086af0553eeb0a76b1d87da310044d3854c4cbcc51"
+    },
+    {
+      "path": "results/chp_vtok/long_train_20261115_000518/validation/step600/uvg_beauty/comparison.png",
+      "bytes": 995951,
+      "sha256": "e934f94ba18c04d324440a32a1e8c139b30c93347811b574ad6580875687f29a"
+    },
+    {
+      "path": "results/chp_vtok/long_train_20261115_000518/validation/step600/uvg_beauty/comparison_1024_native.png",
+      "bytes": 970330,
+      "sha256": "785adc5f9d3a91797ce704bcc0e439660aae6c8da23da92044368833d2884807"
+    },
+    {
+      "path": "results/chp_vtok/long_train_20261115_000518/validation/step600/uvg_beauty/comparison_2048_native.png",
+      "bytes": 943574,
+      "sha256": "f0d1821c4e5a88afc575fcede0d6fdca92b5280111e802b11786a7f73093f1db"
+    },
+    {
+      "path": "results/chp_vtok/long_train_20261115_000518/validation/step600/uvg_beauty/comparison_256_native.png",
+      "bytes": 994735,
+      "sha256": "4490334b55d7f85f06558679bb77a4d15b62add585452da6797adefdb3c9510f"
+    },
+    {
+      "path": "results/chp_vtok/long_train_20261115_000518/validation/step600/uvg_beauty/comparison_512_native.png",
+      "bytes": 1011934,
+      "sha256": "025e8153209a684ed7ffbafb11e88bd5e872575b721025d06cbf0b19aa55f71f"
+    },
+    {
+      "path": "results/chp_vtok/long_train_20261115_000518/validation/step600/uvg_beauty/comparison_Original_native.png",
+      "bytes": 2929756,
+      "sha256": "f47a66e42f728b260870ad21a1e33674e5b65382be01987a2d61db92b2ab2c59"
+    },
+    {
+      "path": "results/chp_vtok/long_train_20261115_000518/validation/step600/uvg_beauty/metrics.json",
+      "bytes": 11500,
+      "sha256": "cec23ba80739a0d87223679dd402d134f2159c69e1ccb6c7c9ed22b66feee8bd"
+    },
+    {
+      "path": "results/chp_vtok/long_train_20261115_000518/validation/step600/uvg_beauty/summary.csv",
+      "bytes": 1866,
+      "sha256": "5c1cd684ebb54118f270cfe7f8cf95190ab24c264929973566c7a303ad08cf0f"
+    }
+  ]
+}

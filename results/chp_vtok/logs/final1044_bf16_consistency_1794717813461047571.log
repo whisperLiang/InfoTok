@@ -1,0 +1,74 @@
+2026-11-15 12:43:35.647 | INFO     | cosmos_predict1.tokenizer.modules.layers3d:__init__:843 - Working with z of shape (1, 256, 128, 128) = 4194304 dimensions.
+2026-11-15 12:43:36.822 | INFO     | cosmos_predict1.tokenizer.networks.ours_discrete_video:__init__:64 - OURS based on FSQ-VAE, with {'name': 'OURS', 'attn_resolutions': [32], 'channels': 128, 'channels_mult': [2, 4, 4], 'dropout': 0.0, 'in_channels': 3, 'num_res_blocks': 2, 'out_channels': 3, 'resolution': 1024, 'patch_size': 2, 'patch_method': 'haar', 'num_groups': 1, 'legacy_mode': False, 'spatial_compression': 8, 'temporal_compression': 4, 'quantizer': 'FSQ', 'levels': [8, 8, 8, 5, 5, 5], 'encoder': 'FACTORIZED', 'decoder': 'FACTORIZED', 'rate_strategy': 'elbo', 'use_vit': True, 'freeze_original': False, 'vit_config': {'hidden_size': 256, 'intermediate_size': 512, 'num_encoder_layers': 8, 'num_decoder_layers': 8, 'num_attention_heads': 32, 'theta': 10000.0, 'rms_norm_eps': 1e-05, 'initializer_range': 0.02, 'max_num_video_frames': 49, 'switch_rotary_to_1d': 1.0, 'max_sequence_length': 96, 'max_sequence_length_1d': 8192, 'concat_decode_2d': False, 'special_attn': False, 'method': 'mse'}}.
+2026-11-15 12:43:36.823 | INFO     | cosmos_predict1.tokenizer.networks.ours_discrete_video:__init__:67 - model=OURS, num_parameters=112,619,766
+2026-11-15 12:43:36.824 | INFO     | cosmos_predict1.tokenizer.networks.ours_discrete_video:__init__:68 - z_channels=256, embedding_dim=6.
+2026-11-15 12:43:36.824 | INFO     | cosmos_predict1.tokenizer.networks.ours_discrete_video:__init__:87 - Not freezing original model parameters.
+2026-11-15 12:43:36.982 | INFO     | cosmos_predict1.tokenizer.networks.ours_discrete_video:init_adaptive_token:172 - Adaptive token initialized with shape torch.Size([128]) and value 0.0.
+2026-11-15 12:43:36.984 | INFO     | cosmos_predict1.tokenizer.networks.ours_discrete_video:__init__:122 - model=OURS, num_parameters=123,142,646
+{
+  "checkpoint_sha256": "44a3473ac65581a1c3a70c52e8d8e0a993eb95d0b90905fda73dc1cecd2483a1",
+  "dtype": "bfloat16",
+  "shape": [
+    1,
+    3,
+    17,
+    1080,
+    1920
+  ],
+  "budgets": [
+    256,
+    512,
+    1024,
+    2048,
+    256
+  ],
+  "encoder_future_past_ids_equal": true,
+  "decoder_future_past_max_abs": 0.0,
+  "full_vs_recompute_ids_equal": true,
+  "full_vs_stream_ids_equal": false,
+  "full_vs_recompute_id_fraction": 0.0,
+  "full_vs_stream_id_fraction": 0.005664062686264515,
+  "full_vs_stream_rgb_max_abs": 0.03125,
+  "full_vs_stream_rgb_mean_abs": 0.0008087158203125,
+  "full_encode": {
+    "seconds": 3.5591555460123345,
+    "peak_allocated_bytes": 18667966976,
+    "peak_reserved_bytes": 25400705024,
+    "baseline_bytes": 444682240,
+    "incremental_peak_bytes": 18223284736
+  },
+  "repeated_encode": {
+    "seconds": 5.597838842018973,
+    "peak_allocated_bytes": 18701283840,
+    "peak_reserved_bytes": 25400705024,
+    "baseline_bytes": 478277632,
+    "incremental_peak_bytes": 18223006208
+  },
+  "cached_encode": {
+    "seconds": 4.355950119992485,
+    "peak_allocated_bytes": 11109470720,
+    "peak_reserved_bytes": 25400705024,
+    "baseline_bytes": 478318592,
+    "incremental_peak_bytes": 10631152128
+  },
+  "full_decode": {
+    "seconds": 10.117157985980157,
+    "peak_allocated_bytes": 26969911808,
+    "peak_reserved_bytes": 63956844544,
+    "baseline_bytes": 4924715008,
+    "incremental_peak_bytes": 22045196800
+  },
+  "cached_decode": {
+    "seconds": 16.15460824398906,
+    "peak_allocated_bytes": 24784701952,
+    "peak_reserved_bytes": 63956844544,
+    "baseline_bytes": 5136222208,
+    "incremental_peak_bytes": 19648479744
+  },
+  "encoder_cache_bytes": 4445306880,
+  "decoder_cache_bytes": 6200033280,
+  "encoder_cache_entries": 54,
+  "decoder_cache_entries": 65,
+  "actual_new_frames": 17,
+  "history_convolutions_reused": true
+}

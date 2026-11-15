@@ -1,0 +1,222 @@
+[
+  {
+    "phase": "baseline44",
+    "budget": 256,
+    "psnr": 18.269073692022584,
+    "ssim": 0.5920443908841002,
+    "lpips": 0.7321355751916474,
+    "dists": 0.7139131017759734,
+    "actual_bytes_mean": 3216.6666666666665,
+    "actual_bytes_min": 3216,
+    "actual_bytes_max": 3218
+  },
+  {
+    "phase": "baseline44",
+    "budget": 512,
+    "psnr": 18.684667325487325,
+    "ssim": 0.6059904086823557,
+    "lpips": 0.7367921448221394,
+    "dists": 0.7253104237949147,
+    "actual_bytes_mean": 5776.666666666667,
+    "actual_bytes_min": 5776,
+    "actual_bytes_max": 5778
+  },
+  {
+    "phase": "baseline44",
+    "budget": 1024,
+    "psnr": 18.579990012972964,
+    "ssim": 0.6012244843969158,
+    "lpips": 0.7298991902201784,
+    "dists": 0.7196537560107661,
+    "actual_bytes_mean": 10896.666666666666,
+    "actual_bytes_min": 10896,
+    "actual_bytes_max": 10898
+  },
+  {
+    "phase": "baseline44",
+    "budget": 2048,
+    "psnr": 18.67501174702364,
+    "ssim": 0.6015351636737001,
+    "lpips": 0.7369667689005533,
+    "dists": 0.7206976986398884,
+    "actual_bytes_mean": 21136.666666666668,
+    "actual_bytes_min": 21136,
+    "actual_bytes_max": 21138
+  },
+  {
+    "phase": "step100",
+    "budget": 256,
+    "psnr": 19.01460703681497,
+    "ssim": 0.612762967745463,
+    "lpips": 0.7300631964907927,
+    "dists": 0.709320134976331,
+    "actual_bytes_mean": 3216.6666666666665,
+    "actual_bytes_min": 3216,
+    "actual_bytes_max": 3218
+  },
+  {
+    "phase": "step100",
+    "budget": 512,
+    "psnr": 19.198491077797087,
+    "ssim": 0.6162626427762649,
+    "lpips": 0.7488027250065523,
+    "dists": 0.7173068453283871,
+    "actual_bytes_mean": 5776.666666666667,
+    "actual_bytes_min": 5776,
+    "actual_bytes_max": 5778
+  },
+  {
+    "phase": "step100",
+    "budget": 1024,
+    "psnr": 19.304487190994564,
+    "ssim": 0.6190085002020294,
+    "lpips": 0.723105716939066,
+    "dists": 0.7107398287922728,
+    "actual_bytes_mean": 10896.666666666666,
+    "actual_bytes_min": 10896,
+    "actual_bytes_max": 10898
+  },
+  {
+    "phase": "step100",
+    "budget": 2048,
+    "psnr": 19.583624260098325,
+    "ssim": 0.6224712074971667,
+    "lpips": 0.7231886807610007,
+    "dists": 0.7069522493025836,
+    "actual_bytes_mean": 21136.666666666668,
+    "actual_bytes_min": 21136,
+    "actual_bytes_max": 21138
+  },
+  {
+    "phase": "step300",
+    "budget": 256,
+    "psnr": 19.337654599956437,
+    "ssim": 0.6201672495580187,
+    "lpips": 0.7285153082772797,
+    "dists": 0.6941568115178276,
+    "actual_bytes_mean": 3216.6666666666665,
+    "actual_bytes_min": 3216,
+    "actual_bytes_max": 3218
+  },
+  {
+    "phase": "step300",
+    "budget": 512,
+    "psnr": 20.236613778507007,
+    "ssim": 0.6329808200106901,
+    "lpips": 0.7215231201227974,
+    "dists": 0.6876478183503245,
+    "actual_bytes_mean": 5776.666666666667,
+    "actual_bytes_min": 5776,
+    "actual_bytes_max": 5778
+  },
+  {
+    "phase": "step300",
+    "budget": 1024,
+    "psnr": 20.97389991610658,
+    "ssim": 0.6380777429131901,
+    "lpips": 0.7015122560893788,
+    "dists": 0.680929046051175,
+    "actual_bytes_mean": 10896.666666666666,
+    "actual_bytes_min": 10896,
+    "actual_bytes_max": 10898
+  },
+  {
+    "phase": "step300",
+    "budget": 2048,
+    "psnr": 21.12434170292873,
+    "ssim": 0.6389652455554289,
+    "lpips": 0.6960169953458449,
+    "dists": 0.6655097323305467,
+    "actual_bytes_mean": 21136.666666666668,
+    "actual_bytes_min": 21136,
+    "actual_bytes_max": 21138
+  },
+  {
+    "phase": "step600",
+    "budget": 256,
+    "psnr": 19.39923630508722,
+    "ssim": 0.6209704291586783,
+    "lpips": 0.7273790859708599,
+    "dists": 0.6830682053285486,
+    "actual_bytes_mean": 3216.6666666666665,
+    "actual_bytes_min": 3216,
+    "actual_bytes_max": 3218
+  },
+  {
+    "phase": "step600",
+    "budget": 512,
+    "psnr": 20.691293342440737,
+    "ssim": 0.6381964367978713,
+    "lpips": 0.7092069889984879,
+    "dists": 0.668144117383396,
+    "actual_bytes_mean": 5776.666666666667,
+    "actual_bytes_min": 5776,
+    "actual_bytes_max": 5778
+  },
+  {
+    "phase": "step600",
+    "budget": 1024,
+    "psnr": 21.313256058038448,
+    "ssim": 0.6441845052382525,
+    "lpips": 0.6969640780897701,
+    "dists": 0.6628058248875188,
+    "actual_bytes_mean": 10896.666666666666,
+    "actual_bytes_min": 10896,
+    "actual_bytes_max": 10898
+  },
+  {
+    "phase": "step600",
+    "budget": 2048,
+    "psnr": 21.49319633783079,
+    "ssim": 0.6483454400417852,
+    "lpips": 0.6910790859484205,
+    "dists": 0.6527519389694811,
+    "actual_bytes_mean": 21136.666666666668,
+    "actual_bytes_min": 21136,
+    "actual_bytes_max": 21138
+  },
+  {
+    "phase": "step1044",
+    "budget": 256,
+    "psnr": 19.567458508061428,
+    "ssim": 0.62467748744815,
+    "lpips": 0.7232430939580881,
+    "dists": 0.6765207484656689,
+    "actual_bytes_mean": 3216.6666666666665,
+    "actual_bytes_min": 3216,
+    "actual_bytes_max": 3218
+  },
+  {
+    "phase": "step1044",
+    "budget": 512,
+    "psnr": 21.09713150473202,
+    "ssim": 0.6436311988269582,
+    "lpips": 0.7008440003675573,
+    "dists": 0.6625893092622944,
+    "actual_bytes_mean": 5776.666666666667,
+    "actual_bytes_min": 5776,
+    "actual_bytes_max": 5778
+  },
+  {
+    "phase": "step1044",
+    "budget": 1024,
+    "psnr": 21.52965104346182,
+    "ssim": 0.6481848394169527,
+    "lpips": 0.6920744846848881,
+    "dists": 0.6561962786842795,
+    "actual_bytes_mean": 10896.666666666666,
+    "actual_bytes_min": 10896,
+    "actual_bytes_max": 10898
+  },
+  {
+    "phase": "step1044",
+    "budget": 2048,
+    "psnr": 21.735271416458428,
+    "ssim": 0.6508626657373765,
+    "lpips": 0.6860237098207661,
+    "dists": 0.6433217560543734,
+    "actual_bytes_mean": 21136.666666666668,
+    "actual_bytes_min": 21136,
+    "actual_bytes_max": 21138
+  }
+]
