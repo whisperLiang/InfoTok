@@ -1,0 +1,389 @@
+{
+  "captured_asia_shanghai": "2026-11-15T09:59:25.083456+08:00",
+  "status": {
+    "start_utc": "2026-11-14T16:13:23.261750+00:00",
+    "tasks": [
+      {
+        "name": "train_to_100",
+        "exit_code": 0
+      },
+      {
+        "name": "holdout_baseline44_mcl_jcv01",
+        "exit_code": 0
+      },
+      {
+        "name": "holdout_baseline44_uvg_beauty",
+        "exit_code": 0
+      },
+      {
+        "name": "holdout_baseline44_basketball",
+        "exit_code": 0
+      },
+      {
+        "name": "holdout_step100_mcl_jcv01",
+        "exit_code": 0
+      },
+      {
+        "name": "holdout_step100_uvg_beauty",
+        "exit_code": 0
+      },
+      {
+        "name": "holdout_step100_basketball",
+        "exit_code": 0
+      },
+      {
+        "name": "train_to_300",
+        "exit_code": 0
+      },
+      {
+        "name": "holdout_step300_mcl_jcv01",
+        "exit_code": 0
+      },
+      {
+        "name": "holdout_step300_uvg_beauty",
+        "exit_code": 0
+      },
+      {
+        "name": "holdout_step300_basketball",
+        "exit_code": 0
+      },
+      {
+        "name": "train_to_600",
+        "exit_code": 0
+      },
+      {
+        "name": "holdout_step600_mcl_jcv01",
+        "exit_code": 0
+      },
+      {
+        "name": "holdout_step600_uvg_beauty",
+        "exit_code": 0
+      },
+      {
+        "name": "holdout_step600_basketball",
+        "exit_code": 0
+      }
+    ],
+    "active": "train_to_1044",
+    "state": "running"
+  },
+  "latest_training_step": 882,
+  "target_step": 1044,
+  "additional_steps_completed": 838,
+  "additional_steps_target": 1000,
+  "latest_verified_checkpoint": {
+    "path": "/home/whisperliang/InfoTok/checkpoints/chp_vtok/tokenizer/multi_native17_long_20261115_000518/checkpoints/iter_000000850.pt",
+    "checkpoint_sha256": "97e2070b112020c4910e7f038a5f0760c48acd5cbf566af5c86b3ac1d4b51218",
+    "global_step": 850
+  },
+  "checkpoint_hash_recomputed": true,
+  "all_recorded_training_inputs_native": true,
+  "all_recorded_losses_finite": true,
+  "training_steps_recorded": 838,
+  "peak_allocated_bytes": 65505083904,
+  "peak_reserved_bytes": 83212894208,
+  "last10_mean_compute_step_seconds": 36.56942503140017,
+  "gpu": "name, memory.used [MiB], memory.total [MiB], utilization.gpu [%]\nNVIDIA H100 PCIe, 77069 MiB, 81559 MiB, 100 %\n",
+  "completed_training_and_evaluation_tasks": [
+    {
+      "name": "train_to_100",
+      "exit_code": 0
+    },
+    {
+      "name": "holdout_baseline44_mcl_jcv01",
+      "exit_code": 0
+    },
+    {
+      "name": "holdout_baseline44_uvg_beauty",
+      "exit_code": 0
+    },
+    {
+      "name": "holdout_baseline44_basketball",
+      "exit_code": 0
+    },
+    {
+      "name": "holdout_step100_mcl_jcv01",
+      "exit_code": 0
+    },
+    {
+      "name": "holdout_step100_uvg_beauty",
+      "exit_code": 0
+    },
+    {
+      "name": "holdout_step100_basketball",
+      "exit_code": 0
+    },
+    {
+      "name": "train_to_300",
+      "exit_code": 0
+    },
+    {
+      "name": "holdout_step300_mcl_jcv01",
+      "exit_code": 0
+    },
+    {
+      "name": "holdout_step300_uvg_beauty",
+      "exit_code": 0
+    },
+    {
+      "name": "holdout_step300_basketball",
+      "exit_code": 0
+    },
+    {
+      "name": "train_to_600",
+      "exit_code": 0
+    },
+    {
+      "name": "holdout_step600_mcl_jcv01",
+      "exit_code": 0
+    },
+    {
+      "name": "holdout_step600_uvg_beauty",
+      "exit_code": 0
+    },
+    {
+      "name": "holdout_step600_basketball",
+      "exit_code": 0
+    }
+  ],
+  "command_failures": [
+    {
+      "name": "prepare_native_temporal_split",
+      "exit_code": 1
+    }
+  ],
+  "validation_records": 48,
+  "validation_latest_step": 600,
+  "averages": [
+    {
+      "phase": "baseline44",
+      "budget": 256,
+      "n_videos": 3,
+      "psnr": 18.269073692022584,
+      "ssim": 0.5920443908841002,
+      "lpips": 0.7321355751916474,
+      "dists": 0.7139131017759734,
+      "actual_bytes": [
+        3216,
+        3218,
+        3216
+      ]
+    },
+    {
+      "phase": "baseline44",
+      "budget": 512,
+      "n_videos": 3,
+      "psnr": 18.684667325487325,
+      "ssim": 0.6059904086823557,
+      "lpips": 0.7367921448221394,
+      "dists": 0.7253104237949147,
+      "actual_bytes": [
+        5776,
+        5778,
+        5776
+      ]
+    },
+    {
+      "phase": "baseline44",
+      "budget": 1024,
+      "n_videos": 3,
+      "psnr": 18.579990012972964,
+      "ssim": 0.6012244843969158,
+      "lpips": 0.7298991902201784,
+      "dists": 0.7196537560107661,
+      "actual_bytes": [
+        10896,
+        10898,
+        10896
+      ]
+    },
+    {
+      "phase": "baseline44",
+      "budget": 2048,
+      "n_videos": 3,
+      "psnr": 18.67501174702364,
+      "ssim": 0.6015351636737001,
+      "lpips": 0.7369667689005533,
+      "dists": 0.7206976986398884,
+      "actual_bytes": [
+        21136,
+        21138,
+        21136
+      ]
+    },
+    {
+      "phase": "step100",
+      "budget": 256,
+      "n_videos": 3,
+      "psnr": 19.01460703681497,
+      "ssim": 0.612762967745463,
+      "lpips": 0.7300631964907927,
+      "dists": 0.709320134976331,
+      "actual_bytes": [
+        3216,
+        3218,
+        3216
+      ]
+    },
+    {
+      "phase": "step100",
+      "budget": 512,
+      "n_videos": 3,
+      "psnr": 19.198491077797087,
+      "ssim": 0.6162626427762649,
+      "lpips": 0.7488027250065523,
+      "dists": 0.7173068453283871,
+      "actual_bytes": [
+        5776,
+        5778,
+        5776
+      ]
+    },
+    {
+      "phase": "step100",
+      "budget": 1024,
+      "n_videos": 3,
+      "psnr": 19.304487190994564,
+      "ssim": 0.6190085002020294,
+      "lpips": 0.723105716939066,
+      "dists": 0.7107398287922728,
+      "actual_bytes": [
+        10896,
+        10898,
+        10896
+      ]
+    },
+    {
+      "phase": "step100",
+      "budget": 2048,
+      "n_videos": 3,
+      "psnr": 19.583624260098325,
+      "ssim": 0.6224712074971667,
+      "lpips": 0.7231886807610007,
+      "dists": 0.7069522493025836,
+      "actual_bytes": [
+        21136,
+        21138,
+        21136
+      ]
+    },
+    {
+      "phase": "step300",
+      "budget": 256,
+      "n_videos": 3,
+      "psnr": 19.337654599956437,
+      "ssim": 0.6201672495580187,
+      "lpips": 0.7285153082772797,
+      "dists": 0.6941568115178276,
+      "actual_bytes": [
+        3216,
+        3218,
+        3216
+      ]
+    },
+    {
+      "phase": "step300",
+      "budget": 512,
+      "n_videos": 3,
+      "psnr": 20.236613778507007,
+      "ssim": 0.6329808200106901,
+      "lpips": 0.7215231201227974,
+      "dists": 0.6876478183503245,
+      "actual_bytes": [
+        5776,
+        5778,
+        5776
+      ]
+    },
+    {
+      "phase": "step300",
+      "budget": 1024,
+      "n_videos": 3,
+      "psnr": 20.97389991610658,
+      "ssim": 0.6380777429131901,
+      "lpips": 0.7015122560893788,
+      "dists": 0.680929046051175,
+      "actual_bytes": [
+        10896,
+        10898,
+        10896
+      ]
+    },
+    {
+      "phase": "step300",
+      "budget": 2048,
+      "n_videos": 3,
+      "psnr": 21.12434170292873,
+      "ssim": 0.6389652455554289,
+      "lpips": 0.6960169953458449,
+      "dists": 0.6655097323305467,
+      "actual_bytes": [
+        21136,
+        21138,
+        21136
+      ]
+    },
+    {
+      "phase": "step600",
+      "budget": 256,
+      "n_videos": 3,
+      "psnr": 19.39923630508722,
+      "ssim": 0.6209704291586783,
+      "lpips": 0.7273790859708599,
+      "dists": 0.6830682053285486,
+      "actual_bytes": [
+        3216,
+        3218,
+        3216
+      ]
+    },
+    {
+      "phase": "step600",
+      "budget": 512,
+      "n_videos": 3,
+      "psnr": 20.691293342440737,
+      "ssim": 0.6381964367978713,
+      "lpips": 0.7092069889984879,
+      "dists": 0.668144117383396,
+      "actual_bytes": [
+        5776,
+        5778,
+        5776
+      ]
+    },
+    {
+      "phase": "step600",
+      "budget": 1024,
+      "n_videos": 3,
+      "psnr": 21.313256058038448,
+      "ssim": 0.6441845052382525,
+      "lpips": 0.6969640780897701,
+      "dists": 0.6628058248875188,
+      "actual_bytes": [
+        10896,
+        10898,
+        10896
+      ]
+    },
+    {
+      "phase": "step600",
+      "budget": 2048,
+      "n_videos": 3,
+      "psnr": 21.49319633783079,
+      "ssim": 0.6483454400417852,
+      "lpips": 0.6910790859484205,
+      "dists": 0.6527519389694811,
+      "actual_bytes": [
+        21136,
+        21138,
+        21136
+      ]
+    }
+  ],
+  "caveats": [
+    "Same three source scenes; temporal holdout only, no cross-video generalization claim.",
+    "Latest checkpoint is not yet phase-evaluated; quality statistics refer to step 600.",
+    "Frozen backbone, full native RGB/temporal losses and sampled native 256x256 perceptual loss.",
+    "BF16 stream equivalence and realtime limitations from the earlier report remain unresolved."
+  ]
+}
